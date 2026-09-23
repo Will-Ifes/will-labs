@@ -1,0 +1,7 @@
+node_modules/
+*.tgz
+.DS_Store
+
+# Screenshots are generated per run and retained as CI artifacts.
+evidence/*.png
+evidence/index.html

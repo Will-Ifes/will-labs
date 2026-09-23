@@ -1,0 +1,14 @@
+{
+  "name": "@will-labs/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./styles.css": "./styles.css",
+    "./date-field": "./date-field.js"
+  },
+  "files": [
+    "*.js",
+    "styles.css"
+  ]
+}

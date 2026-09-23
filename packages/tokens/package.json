@@ -1,0 +1,15 @@
+{
+  "name": "@will-labs/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./semantic.css": "./semantic.css",
+    "./themes.json": "./themes.json",
+    "./themes.js": "./themes.js"
+  },
+  "files": [
+    "semantic.css",
+    "themes.json",
+    "themes.js"
+  ]
+}
