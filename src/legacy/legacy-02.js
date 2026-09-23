@@ -1,0 +1,9 @@
+
+(()=>{const rail=document.getElementById('ds-carousel'),cards=[...rail.children],prev=document.getElementById('ds-slide-prev'),next=document.getElementById('ds-slide-next'),status=document.getElementById('ds-carousel-status');
+function index(){const r=rail.getBoundingClientRect();let nearest=0,best=Infinity;cards.forEach((card,i)=>{const dist=Math.abs(card.getBoundingClientRect().left-r.left);if(dist<best){best=dist;nearest=i}});return nearest}
+function sync(){const i=index();prev.disabled=i===0;next.disabled=i===cards.length-1;status.textContent=`Card ${i+1} de ${cards.length}`}
+function move(delta){const i=Math.max(0,Math.min(cards.length-1,index()+delta));rail.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});setTimeout(sync,350)}
+prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));rail.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});rail.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}});sync();
+const progress=document.getElementById('ds-progress');document.getElementById('ds-progress-next').addEventListener('click',()=>{progress.value=progress.value>=100?0:Math.min(100,progress.value+15);document.getElementById('ds-progress-label').textContent=progress.value+'%';document.getElementById('ds-progress-state').textContent=progress.value===100?'Importação concluída.':progress.value===0?'Importação reiniciada.':'Importação em andamento.'});
+document.querySelectorAll('.ds-sidebar a[data-pending]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+})();
