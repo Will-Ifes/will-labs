@@ -464,3 +464,183 @@ button:active,
 :root {
   --wl-toast-bottom: 64px;
 }
+/* Editorial spacing is structural: nested examples cannot pull headings into their preview. */
+.ds-view:has(> #dimensoes),
+.ds-view:has(> #movimento) {
+  padding-top: 12px;
+}
+.ds-view .section-head {
+  display: grid;
+  grid-template-columns: minmax(150px, 230px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  margin: 0 0 32px;
+  align-items: start;
+}
+.ds-view .section-head > div {
+  min-width: 0;
+  display: grid;
+  gap: 20px;
+}
+.ds-view .section-head h2,
+.ds-view .section-head p {
+  margin: 0;
+}
+.ds-view .section-head h2 {
+  line-height: 1.12;
+}
+.ds-view .dimension-grid,
+.ds-view .motion-grid,
+.ds-view .motion-extra {
+  align-items: stretch;
+  gap: 20px;
+}
+.ds-view .dimension-card,
+.ds-view .motion-grid article,
+.ds-view .motion-extra article {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.ds-view .dimension-card > *,
+.ds-view .motion-grid article > *,
+.ds-view .motion-extra article > * {
+  margin-block: 0;
+}
+.ds-view .dimension-demo,
+.ds-view .motion-orbit,
+.ds-view .motion-stage {
+  flex: none;
+}
+.ds-view .dimension-card h3,
+.ds-view .motion-grid h3,
+.ds-view .motion-extra h3 {
+  line-height: 1.25;
+}
+.ds-view .dimension-card p,
+.ds-view .motion-grid p,
+.ds-view .motion-extra p {
+  line-height: 1.55;
+}
+.ds-view textarea.ui-input {
+  min-height: 120px !important;
+  height: auto;
+  resize: vertical;
+  overflow: auto;
+  max-height: min(60vh, 500px);
+  box-sizing: border-box;
+}
+.ds-view .ui-input-shell:has(textarea) {
+  overflow: visible;
+}
+.ds-view .ui-field:has(textarea) {
+  align-content: start;
+}
+.ds-view .ui-number-field .ui-number-input {
+  padding-inline: 12px !important;
+}
+.ui-input-action.ui-button--text:hover,
+.ui-input-action.ui-button--text:active,
+.ui-icon-button.ui-button--text:hover,
+.ui-icon-button.ui-button--text:active,
+.wl-dialog [data-close-dialog]:hover,
+.wl-dialog [data-close-dialog]:active {
+  text-decoration: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.ui-input-action.ui-button--text:hover,
+.ui-icon-button.ui-button--text:hover {
+  color: var(--wl-hover) !important;
+}
+.ui-input-action.ui-button--text:active,
+.ui-icon-button.ui-button--text:active {
+  color: var(--wl-text) !important;
+}
+.wl-btn:hover:not(:disabled),
+.wl-btn:active:not(:disabled),
+.wl-card:hover {
+  transform: none;
+}
+@media (max-width: 850px) {
+  .ds-view .section-head {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+.docs-grid-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.docs-grid-slider {
+  width: min(300px, 100%);
+  accent-color: var(--wl-accent);
+}
+.docs-grid-frame {
+  width: 640px;
+  max-width: none;
+  container-type: inline-size;
+}
+.docs-grid-preview {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 16px;
+  border: 1px dashed var(--wl-border);
+  border-radius: 8px;
+}
+.docs-grid-preview > div {
+  min-height: 80px;
+  display: grid;
+  place-items: center;
+  background: var(--wl-muted);
+  border: 1px solid var(--wl-border);
+  border-radius: 6px;
+}
+@container (max-width: 600px) {
+  .docs-grid-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@container (max-width: 380px) {
+  .docs-grid-preview {
+    grid-template-columns: 1fr;
+  }
+}
+/* Search and textarea may grow without a nested container forcing an extra scrollbar. */
+.ds-view .ui-field:has(textarea),
+.ds-view .ui-input-shell:has(textarea) {
+  min-height: 0;
+  overflow: visible;
+}
+.ds-view textarea.ui-input {
+  overflow-y: hidden;
+}
+.ds-view textarea.ui-input:focus {
+  overflow-y: auto;
+}
+.wl-date-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 42px;
+  padding: 0 !important;
+  line-height: 1;
+}
+.wl-date-toggle svg {
+  display: block;
+  margin: auto;
+}
+.ds-view .ui-number-control input.ui-number-input {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-height: 38px !important;
+}
+.ds-view .ui-number-control input.ui-number-input:focus-visible {
+  outline: 0 !important;
+}

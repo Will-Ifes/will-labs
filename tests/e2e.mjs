@@ -162,7 +162,7 @@ try {
       );
       check(
         `${width}/${name}/switch notice`,
-        (await p.locator(".ui-notice p").innerText()).includes("visíveis"),
+        (await p.locator('[data-view="comp-switch"] .ui-notice p').innerText()).includes("visíveis"),
       );
       await p.screenshot({ path: `evidence/${width}-${name}-switch.png` });
       await goto(p, "comp-multiselect-async");

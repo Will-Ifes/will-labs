@@ -44,6 +44,14 @@ document.querySelector("main").append(
 
 `wl-time-field` é importado de `packages/ui/time-field.js`. O campo usa texto no formato de 24 horas e rodas roláveis próprias; `value` e `change` são o contrato público.
 
+## Contratos acrescentados
+
+`Divider({orientation, label})` cria uma separação temática entre grupos. `ScrollArea({children,height,axis,label})` (também exportado como `Scrollbar`) mantém rolagem nativa e recebe o mesmo estilo em Firefox (`scrollbar-color/width`) e Chrome, Edge e Safari (`::-webkit-scrollbar`). A aparência da barra pode variar quando o sistema operacional usa barras sobrepostas.
+
+`ValidationMessage({control,help,message})` conecta ajuda/erro por `aria-describedby` e atualiza `aria-invalid`. `syncValidation` adapta controles legados que já possuem um nó de mensagem; Input, InputNumber, Select, data, hora e multiselect usam esse contrato. `Checkbox` e `RadioGroup` usam controles nativos com o estilo do pacote. `Banner` é a implementação comum de avisos; `Notice` permanece como alias de compatibilidade. `EmptyState` junta ausência, explicação e próxima ação.
+
+`Select` aceita `loadOptions({query,signal})` para busca assíncrona. O loader retorna itens `{value,label,avatar?}[]`; busca anterior é cancelada, e o painel apresenta carregamento, vazio e erro. `Tag` aceita `tone: neutral|info|success|warning|danger`.
+
 ## Multiselect
 
 ```js

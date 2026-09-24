@@ -1066,3 +1066,337 @@ wl-time-field > label {
   outline: 2px solid var(--wl-accent);
   outline-offset: -2px;
 }
+/* Shared rules and native scroll affordance. The pseudo-element branch serves Chromium/Safari. */
+.ui-divider {
+  border: 0;
+  color: var(--wl-secondary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-block: 20px;
+  font: 500 11px var(--wl-font-mono);
+}
+.ui-divider::before,
+.ui-divider::after {
+  content: "";
+  display: block;
+  flex: 1;
+  min-width: 0;
+  border-top: 1px solid var(--wl-border);
+}
+.ui-divider:not(:has(span))::after {
+  display: none;
+}
+.ui-divider--vertical {
+  align-self: stretch;
+  flex-direction: column;
+  margin: 0 16px;
+}
+.ui-divider--vertical::before,
+.ui-divider--vertical::after {
+  border-top: 0;
+  border-left: 1px solid var(--wl-border);
+}
+.ui-field-message {
+  display: block;
+  min-height: 1.3em;
+  color: var(--wl-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.ui-field-message[data-state="error"] {
+  color: var(--wl-danger);
+}
+.ui-scroll-area {
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.ui-scroll-area--x {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.ui-scroll-area--y {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+:where(
+  html,
+  body,
+  .ds-sidebar,
+  .ds-main,
+  .ui-scroll-area,
+  [data-wl-floating],
+  .wl-dialog-content,
+  .wl-async-results,
+  .ui-time-wheel-list,
+  .ui-code,
+  .ui-table-scroll
+) {
+  scrollbar-color: var(--wl-secondary) var(--wl-muted);
+  scrollbar-width: thin;
+}
+:where(
+  html,
+  body,
+  .ds-sidebar,
+  .ds-main,
+  .ui-scroll-area,
+  [data-wl-floating],
+  .wl-dialog-content,
+  .wl-async-results,
+  .ui-time-wheel-list,
+  .ui-code,
+  .ui-table-scroll
+)::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+:where(
+  html,
+  body,
+  .ds-sidebar,
+  .ds-main,
+  .ui-scroll-area,
+  [data-wl-floating],
+  .wl-dialog-content,
+  .wl-async-results,
+  .ui-time-wheel-list,
+  .ui-code,
+  .ui-table-scroll
+)::-webkit-scrollbar-thumb {
+  background: var(--wl-secondary);
+  border: 2px solid var(--wl-muted);
+  border-radius: 999px;
+}
+:where(
+  html,
+  body,
+  .ds-sidebar,
+  .ds-main,
+  .ui-scroll-area,
+  [data-wl-floating],
+  .wl-dialog-content,
+  .wl-async-results,
+  .ui-time-wheel-list,
+  .ui-code,
+  .ui-table-scroll
+)::-webkit-scrollbar-track {
+  background: var(--wl-muted);
+}
+/* Number input: one field boundary, quiet controls, no nested input outline. */
+.ui-number-field {
+  max-width: 250px;
+}
+.ui-number-control {
+  min-height: 40px;
+  align-items: center;
+  overflow: visible;
+}
+.ui-number-input.ui-input {
+  text-align: left;
+  padding-inline: 12px !important;
+  min-height: 38px;
+}
+.ui-number-actions {
+  display: flex;
+  height: 38px;
+  padding-right: 3px;
+  gap: 2px;
+  align-items: center;
+}
+.ui-number-step.ui-button {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  min-height: 32px;
+  border: 0 !important;
+  border-radius: 6px;
+  padding: 0;
+}
+.ui-number-step.ui-button:hover,
+.ui-number-step.ui-button:active {
+  background: var(--wl-muted);
+  color: var(--wl-hover);
+  box-shadow: none;
+}
+.ui-number-step .ui-icon-button-glyph {
+  font-size: 19px;
+}
+.ui-number-control:has([aria-invalid="true"]) {
+  border-color: var(--wl-danger);
+}
+.ui-button--text:hover,
+.ui-button--text:active {
+  text-decoration: none;
+}
+.ui-input-action.ui-button:is(:hover, :active) {
+  transform: translateY(-50%) !important;
+}
+.ui-input-shell:has(textarea) {
+  overflow: visible;
+}
+.ui-select-trigger.ui-button {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+.ui-select-current {
+  flex: 1 1 auto;
+}
+.ui-select-chevron {
+  flex: 0 0 16px;
+  width: 16px;
+  text-align: center;
+  display: inline-grid;
+  place-items: center;
+  margin-left: 8px;
+  font-size: 18px;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+.ui-select-options {
+  max-height: min(340px, calc(100dvh - 16px));
+}
+.ui-select-search {
+  margin: 4px 4px 8px;
+  width: calc(100% - 8px);
+}
+.ui-select-list {
+  max-height: 240px;
+  overflow: auto;
+}
+.ui-select-status {
+  margin: 4px 8px;
+  color: var(--wl-secondary);
+  font-size: 12px;
+}
+.ui-select-status:empty {
+  display: none;
+}
+.ui-choice-group {
+  display: flex;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.ui-choice-group legend {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.ui-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 36px;
+  cursor: pointer;
+}
+.ui-choice input {
+  accent-color: var(--wl-accent);
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+.ui-empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px dashed var(--wl-border);
+  border-radius: var(--wl-radius-surface);
+  background: var(--wl-muted);
+}
+.ui-empty-state-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--wl-border);
+  border-radius: 50%;
+  color: var(--wl-accent);
+  font-size: 21px;
+}
+.ui-empty-state strong {
+  font-size: 18px;
+  line-height: 1.2;
+}
+.ui-empty-state p {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--wl-secondary);
+}
+/* Banner/notice: low-emphasis surface, readable accent, no oversized block. */
+.ui-notice {
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 14px;
+  margin-block: 12px;
+  border-color: var(--wl-border);
+  background: var(--wl-muted);
+}
+.ui-notice-icon {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.ui-notice strong {
+  color: var(--wl-text);
+  font-size: 13px;
+}
+.ui-notice p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.ui-notice[data-kind="warning"] {
+  border-left: 3px solid var(--wl-warning);
+}
+.ui-notice[data-kind="danger"] {
+  border-left: 3px solid var(--wl-danger);
+}
+.ui-notice[data-kind="success"] {
+  border-left: 3px solid var(--wl-success);
+}
+.ui-notice[data-kind="info"] {
+  border-left: 3px solid var(--wl-info);
+}
+/* Apply to every native scroll container, including legacy views and future consumers. */
+:where(*) {
+  scrollbar-color: var(--wl-secondary) var(--wl-muted);
+  scrollbar-width: thin;
+}
+:where(*)::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+:where(*)::-webkit-scrollbar-thumb {
+  background: var(--wl-secondary);
+  border: 2px solid var(--wl-muted);
+  border-radius: 999px;
+}
+:where(*)::-webkit-scrollbar-track {
+  background: var(--wl-muted);
+}
+.ui-tag[data-tone="info"] {
+  color: var(--wl-info);
+  border-color: color-mix(in srgb, var(--wl-info) 45%, var(--wl-border));
+}
+.ui-tag[data-tone="success"] {
+  color: var(--wl-success);
+  border-color: color-mix(in srgb, var(--wl-success) 45%, var(--wl-border));
+}
+.ui-tag[data-tone="warning"] {
+  color: var(--wl-warning);
+  border-color: color-mix(in srgb, var(--wl-warning) 45%, var(--wl-border));
+}
+.ui-tag[data-tone="danger"] {
+  color: var(--wl-danger);
+  border-color: color-mix(in srgb, var(--wl-danger) 45%, var(--wl-border));
+}
+.ui-field-message:empty {
+  display: none;
+}

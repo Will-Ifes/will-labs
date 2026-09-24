@@ -63,6 +63,7 @@ export function Surface({ title, children = [], variant = "content" } = {}) {
     [title ? element("h2", {}, title) : null, ...children],
   );
 }
+import { ValidationMessage } from "./validation.js";
 export function Input({
   label,
   help = "",
@@ -90,7 +91,6 @@ export function Input({
       placeholder,
       rows: multiline ? rows : null,
       "aria-invalid": invalid ? "true" : null,
-      "aria-describedby": help ? id + "-help" : null,
       class: `ui-input ui-input--${size}`,
     },
     multiline ? value : [],
@@ -131,22 +131,28 @@ export function Input({
     });
     shell.append(toggle);
   }
+  const validation = ValidationMessage({
+    control,
+    help,
+    message: invalid ? help : "",
+  });
   const field = element("div", { class: "ui-field" }, [
     element("label", { for: id }, label),
     shell,
-    help
-      ? element(
-          "small",
-          { id: id + "-help", class: invalid ? "ui-error" : "ui-help" },
-          help,
-        )
-      : null,
+    validation.element,
   ]);
+  field.validation = validation;
   field.control = control;
   return field;
 }
-export function Tag({ label, avatar, removable = false, onRemove = () => {} }) {
-  return element("span", { class: "ui-tag" }, [
+export function Tag({
+  label,
+  avatar,
+  tone = "neutral",
+  removable = false,
+  onRemove = () => {},
+}) {
+  return element("span", { class: "ui-tag", "data-tone": tone }, [
     avatar
       ? element("span", { class: "ui-tag-avatar", "aria-hidden": true }, avatar)
       : null,
@@ -162,16 +168,29 @@ export function Tag({ label, avatar, removable = false, onRemove = () => {} }) {
       : null,
   ]);
 }
-export function Notice({ title, text, kind = "info" }) {
-  return element("div", { class: "ui-notice", "data-kind": kind }, [
-    element(
-      "span",
-      { "aria-hidden": true, class: "ui-notice-icon" },
-      { info: "i", success: "✓", warning: "!", danger: "×" }[kind],
-    ),
-    element("div", {}, [element("strong", {}, title), element("p", {}, text)]),
-  ]);
+export function Banner({ title, text, kind = "info" }) {
+  if (!title || !text) throw new TypeError("Banner requires title and text");
+  return element(
+    "div",
+    {
+      class: "ui-notice ui-banner",
+      "data-kind": kind,
+      role: kind === "danger" ? "alert" : "status",
+    },
+    [
+      element(
+        "span",
+        { "aria-hidden": true, class: "ui-notice-icon" },
+        { info: "i", success: "✓", warning: "!", danger: "×" }[kind] || "i",
+      ),
+      element("div", {}, [
+        element("strong", {}, title),
+        element("p", {}, text),
+      ]),
+    ],
+  );
 }
+export const Notice = Banner;
 export function Switch({ label, checked = false, onChange = () => {} }) {
   const state = element("span", { "aria-live": "polite" });
   const button = Button({
@@ -520,3 +539,10 @@ export { Popover, Dropdown, Tooltip, ToastHost } from "./overlays.js";
 export { connectFloating } from "./floating.js";
 export { InputNumber } from "./number-field.js";
 export { Select } from "./select-field.js";
+
+export { Divider } from "./divider.js";
+export { ScrollArea, Scrollbar } from "./scrollbar.js";
+export { ValidationMessage } from "./validation.js";
+
+export { Checkbox, RadioGroup } from "./choice.js";
+export { EmptyState } from "./empty-state.js";

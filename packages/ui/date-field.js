@@ -1,4 +1,5 @@
 import { connectFloating } from "./floating.js";
+import { syncValidation } from "./validation.js";
 const months = [
   "Janeiro",
   "Fevereiro",
@@ -117,10 +118,12 @@ class WLDateField extends HTMLElement {
       this.selected = value;
       hidden.value = value;
       entry.value = value ? value.split("-").reverse().join("/") : "";
-      entry.removeAttribute("aria-invalid");
-      help.textContent =
-        this.getAttribute("help") || "Digite a data ou escolha no calendário.";
-      help.classList.remove("wl-error-text");
+      syncValidation(
+        entry,
+        help,
+        "",
+        this.getAttribute("help") || "Digite a data ou escolha no calendário.",
+      );
       this.render();
       this.dispatchEvent(new Event("change", { bubbles: true }));
       if (focus) {
@@ -144,9 +147,11 @@ class WLDateField extends HTMLElement {
         this.month = new Date(d.getFullYear(), d.getMonth(), 1);
         set(iso(d));
       } else {
-        entry.setAttribute("aria-invalid", "true");
-        help.textContent = `Informe uma data válida entre ${this.min.split("-").reverse().join("/")} e ${this.max.split("-").reverse().join("/")}.`;
-        help.classList.add("wl-error-text");
+        syncValidation(
+          entry,
+          help,
+          `Informe uma data válida entre ${this.min.split("-").reverse().join("/")} e ${this.max.split("-").reverse().join("/")}.`,
+        );
       }
     });
     toggle.addEventListener("click", () =>

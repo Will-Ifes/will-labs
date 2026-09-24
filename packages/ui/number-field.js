@@ -1,4 +1,5 @@
 import { element, IconButton } from "./index.js";
+import { ValidationMessage } from "./validation.js";
 let serial = 0;
 const parse = (text) => {
   const raw = String(text).trim().replace(",", ".");
@@ -38,27 +39,20 @@ export function InputNumber({
     required,
     class: "ui-input ui-number-input",
   });
-  const message =
-    help && element("small", { id: `${id}-help`, class: "ui-help" }, help);
+  const validation = ValidationMessage({ control: input, help });
   const sync = () => {
     input.value = format.format(current);
     input.setAttribute("aria-valuenow", String(current));
     input.setAttribute("aria-valuetext", format.format(current));
-    input.removeAttribute("aria-invalid");
-    if (message) {
-      message.className = "ui-help";
-      message.textContent = help;
-    }
+    validation.clear();
     decrement.disabled = current <= min;
     increment.disabled = current >= max;
   };
   const change = (next, emit = true) => {
     if (!Number.isFinite(next) || next < min || next > max) {
-      input.setAttribute("aria-invalid", "true");
-      if (message) {
-        message.className = "ui-error";
-        message.textContent = `Informe um número entre ${Number.isFinite(min) ? format.format(min) : "−∞"} e ${Number.isFinite(max) ? format.format(max) : "+∞"}.`;
-      }
+      validation.setError(
+        `Informe um número entre ${Number.isFinite(min) ? format.format(min) : "−∞"} e ${Number.isFinite(max) ? format.format(max) : "+∞"}.`,
+      );
       return false;
     }
     current = Math.round(next * 10 ** precision) / 10 ** precision;
@@ -85,13 +79,13 @@ export function InputNumber({
   const field = element("div", { class: "ui-field ui-number-field" }, [
     element("label", { for: id }, label),
     element("div", { class: "ui-number-control" }, [
-      decrement,
       input,
-      increment,
+      element("div", { class: "ui-number-actions" }, [decrement, increment]),
     ]),
-    message,
+    validation.element,
   ]);
   field.control = input;
+  field.validation = validation;
   Object.defineProperty(field, "value", {
     get: () => current,
     set: (number) => change(Number(number), false),

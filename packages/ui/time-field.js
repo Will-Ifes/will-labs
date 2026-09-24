@@ -1,5 +1,6 @@
 import { element, Button } from "./index.js";
 import { connectFloating } from "./floating.js";
+import { syncValidation } from "./validation.js";
 let serial = 0;
 const pad = (n) => String(n).padStart(2, "0");
 const icon = () => {
@@ -118,22 +119,24 @@ export class WLTimeField extends HTMLElement {
   setTime(raw, emit = true) {
     const value = String(raw || "").trim();
     if (value && !this.valid(value)) {
-      this.input?.setAttribute("aria-invalid", "true");
-      if (this.help) {
-        this.help.className = "ui-error";
-        this.help.textContent =
-          "Informe uma hora válida em HH:MM dentro do intervalo permitido.";
-      }
+      if (this.help)
+        syncValidation(
+          this.input,
+          this.help,
+          "Informe uma hora válida em HH:MM dentro do intervalo permitido.",
+        );
       return false;
     }
     this.#value = value;
     if (this.input) {
       this.input.value = value;
-      this.input.removeAttribute("aria-invalid");
       this.hiddenInput.value = value;
-      this.help.className = "ui-help";
-      this.help.textContent =
-        this.getAttribute("help") || "Use HH:MM no formato de 24 horas.";
+      syncValidation(
+        this.input,
+        this.help,
+        "",
+        this.getAttribute("help") || "Use HH:MM no formato de 24 horas.",
+      );
       if (emit) this.dispatchEvent(new Event("change", { bubbles: true }));
     }
     return true;

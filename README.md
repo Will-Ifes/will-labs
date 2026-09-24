@@ -48,6 +48,6 @@ Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. 
 
 A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. O nome do produto usado nos Labs ainda está em escolha.
 
-A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select` e overlays vêm do pacote. Exemplos nativos restantes continuam em revisão. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
+A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. Exemplos nativos restantes continuam em revisão. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 
-A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).
+As regras editoriais inspiradas em no-ai-slop estão em [docs/VOZ-E-CONTEUDO.md](docs/VOZ-E-CONTEUDO.md). A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).

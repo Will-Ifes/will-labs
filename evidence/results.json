@@ -3315,7 +3315,7 @@
       "theme": "paper",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3336,7 +3336,7 @@
       "theme": "paper",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3357,7 +3357,21 @@
       "theme": "paper",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3378,7 +3392,7 @@
       "theme": "paper",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3476,7 +3490,7 @@
       "theme": "paper",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3539,14 +3553,14 @@
       "theme": "paper",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3567,7 +3581,7 @@
       "theme": "paper",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3755,7 +3769,7 @@
       "theme": "forest",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3776,7 +3790,7 @@
       "theme": "forest",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3797,7 +3811,21 @@
       "theme": "forest",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3818,7 +3846,7 @@
       "theme": "forest",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3916,7 +3944,7 @@
       "theme": "forest",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3979,14 +4007,14 @@
       "theme": "forest",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4007,7 +4035,7 @@
       "theme": "forest",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4195,7 +4223,7 @@
       "theme": "petrol-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4216,7 +4244,7 @@
       "theme": "petrol-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4237,7 +4265,21 @@
       "theme": "petrol-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4258,7 +4300,7 @@
       "theme": "petrol-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4356,7 +4398,7 @@
       "theme": "petrol-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4419,14 +4461,14 @@
       "theme": "petrol-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4447,7 +4489,7 @@
       "theme": "petrol-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4635,7 +4677,7 @@
       "theme": "petrol-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4656,7 +4698,7 @@
       "theme": "petrol-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4677,7 +4719,21 @@
       "theme": "petrol-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4698,7 +4754,7 @@
       "theme": "petrol-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4796,7 +4852,7 @@
       "theme": "petrol-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4859,14 +4915,14 @@
       "theme": "petrol-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4887,7 +4943,7 @@
       "theme": "petrol-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5075,7 +5131,7 @@
       "theme": "indigo-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5096,7 +5152,7 @@
       "theme": "indigo-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5117,7 +5173,21 @@
       "theme": "indigo-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5138,7 +5208,7 @@
       "theme": "indigo-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5236,7 +5306,7 @@
       "theme": "indigo-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5299,14 +5369,14 @@
       "theme": "indigo-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5327,7 +5397,7 @@
       "theme": "indigo-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5515,7 +5585,7 @@
       "theme": "indigo-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5536,7 +5606,7 @@
       "theme": "indigo-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5557,7 +5627,21 @@
       "theme": "indigo-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5578,7 +5662,7 @@
       "theme": "indigo-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5676,7 +5760,7 @@
       "theme": "indigo-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5739,14 +5823,14 @@
       "theme": "indigo-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5767,7 +5851,7 @@
       "theme": "indigo-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5955,7 +6039,7 @@
       "theme": "amber-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5976,7 +6060,7 @@
       "theme": "amber-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5997,7 +6081,21 @@
       "theme": "amber-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6018,7 +6116,7 @@
       "theme": "amber-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6116,7 +6214,7 @@
       "theme": "amber-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6179,14 +6277,14 @@
       "theme": "amber-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6207,7 +6305,7 @@
       "theme": "amber-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6395,7 +6493,7 @@
       "theme": "amber-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6416,7 +6514,7 @@
       "theme": "amber-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6437,7 +6535,21 @@
       "theme": "amber-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6458,7 +6570,7 @@
       "theme": "amber-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6556,7 +6668,7 @@
       "theme": "amber-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6619,14 +6731,14 @@
       "theme": "amber-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6647,7 +6759,7 @@
       "theme": "amber-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6835,7 +6947,7 @@
       "theme": "paper",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6856,7 +6968,7 @@
       "theme": "paper",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6877,7 +6989,21 @@
       "theme": "paper",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6898,7 +7024,7 @@
       "theme": "paper",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6996,7 +7122,7 @@
       "theme": "paper",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7059,14 +7185,14 @@
       "theme": "paper",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7087,7 +7213,7 @@
       "theme": "paper",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7275,7 +7401,7 @@
       "theme": "forest",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7296,7 +7422,7 @@
       "theme": "forest",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7317,7 +7443,21 @@
       "theme": "forest",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7338,7 +7478,7 @@
       "theme": "forest",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7436,7 +7576,7 @@
       "theme": "forest",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7499,14 +7639,14 @@
       "theme": "forest",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7527,7 +7667,7 @@
       "theme": "forest",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7715,7 +7855,7 @@
       "theme": "petrol-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7736,7 +7876,7 @@
       "theme": "petrol-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7757,7 +7897,21 @@
       "theme": "petrol-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7778,7 +7932,7 @@
       "theme": "petrol-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7876,7 +8030,7 @@
       "theme": "petrol-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7939,14 +8093,14 @@
       "theme": "petrol-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7967,7 +8121,7 @@
       "theme": "petrol-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8155,7 +8309,7 @@
       "theme": "petrol-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8176,7 +8330,7 @@
       "theme": "petrol-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8197,7 +8351,21 @@
       "theme": "petrol-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8218,7 +8386,7 @@
       "theme": "petrol-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8316,7 +8484,7 @@
       "theme": "petrol-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8379,14 +8547,14 @@
       "theme": "petrol-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8407,7 +8575,7 @@
       "theme": "petrol-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8595,7 +8763,7 @@
       "theme": "indigo-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8616,7 +8784,7 @@
       "theme": "indigo-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8637,7 +8805,21 @@
       "theme": "indigo-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8658,7 +8840,7 @@
       "theme": "indigo-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8756,7 +8938,7 @@
       "theme": "indigo-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8819,14 +9001,14 @@
       "theme": "indigo-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8847,7 +9029,7 @@
       "theme": "indigo-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9035,7 +9217,7 @@
       "theme": "indigo-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9056,7 +9238,7 @@
       "theme": "indigo-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9077,7 +9259,21 @@
       "theme": "indigo-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9098,7 +9294,7 @@
       "theme": "indigo-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9196,7 +9392,7 @@
       "theme": "indigo-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9259,14 +9455,14 @@
       "theme": "indigo-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9287,7 +9483,7 @@
       "theme": "indigo-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9475,7 +9671,7 @@
       "theme": "amber-light",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9496,7 +9692,7 @@
       "theme": "amber-light",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9517,7 +9713,21 @@
       "theme": "amber-light",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9538,7 +9748,7 @@
       "theme": "amber-light",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9636,7 +9846,7 @@
       "theme": "amber-light",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9699,14 +9909,14 @@
       "theme": "amber-light",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9727,7 +9937,7 @@
       "theme": "amber-light",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9915,7 +10125,7 @@
       "theme": "amber-dark",
       "view": "comp-select-options",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9936,7 +10146,7 @@
       "theme": "amber-dark",
       "view": "comp-async",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9957,7 +10167,21 @@
       "theme": "amber-dark",
       "view": "comp-tags",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-divider",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-scrollbar",
+      "overflow": false,
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9978,7 +10202,7 @@
       "theme": "amber-dark",
       "view": "comp-empty",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10076,7 +10300,7 @@
       "theme": "amber-dark",
       "view": "comp-grid",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10139,14 +10363,14 @@
       "theme": "amber-dark",
       "view": "comp-states",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "contexto",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10167,7 +10391,7 @@
       "theme": "amber-dark",
       "view": "comp-banner",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,

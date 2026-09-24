@@ -5,12 +5,19 @@ import {
   Surface,
   Input,
   InputNumber,
+  Divider,
+  ScrollArea,
+  Checkbox,
+  RadioGroup,
+  EmptyState,
+  Tag,
   Select,
   Popover,
   Dropdown,
   Tooltip,
   ToastHost,
   Notice,
+  Banner,
   Switch,
   Tabs,
   Code,
@@ -352,10 +359,10 @@ const normalize = (x) =>
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "")
     .toLowerCase();
-const makeLocalMulti = (avatar = false) => {
+const makeLocalMulti = (avatar = false, paged = true) => {
   const field = el("wl-async-multiselect", {
     label: "Participantes",
-    "page-size": 8,
+    "page-size": paged ? 8 : 100,
     "with-avatar": avatar,
   });
   field.loadOptions = async ({ query, cursor, limit }) => {
@@ -415,8 +422,21 @@ render(
 render(
   "comp-multiselect-tags",
   "Multiselect",
-  "Busca, seleção e remoção usam o mesmo componente incremental.",
-  [Surface({ children: [makeLocalMulti(false)] })],
+  "Compare etiquetas com e sem avatar; depois teste a lista que carrega mais itens ao rolar.",
+  [
+    Surface({
+      title: "Sem avatar · lista completa",
+      children: [makeLocalMulti(false, false)],
+    }),
+    Surface({
+      title: "Com avatar · lista completa",
+      children: [makeLocalMulti(true, false)],
+    }),
+    Surface({
+      title: "Com carregamento ao rolar",
+      children: [makeLocalMulti(true, true)],
+    }),
+  ],
 );
 render(
   "comp-multiselect-avatar",
@@ -649,6 +669,336 @@ multi.after(
     },
   }),
 );
+// Reviewed foundations and catalogue compositions share the package contracts.
+render(
+  "comp-divider",
+  "Divider",
+  "Uma regra para separar grupos sem criar outra superfície.",
+  [
+    Surface({
+      title: "Separação no conteúdo",
+      children: [
+        el("p", {}, "Primeiro grupo de informações."),
+        Divider(),
+        el("p", {}, "Segundo grupo de informações."),
+        Divider({ label: "Próxima etapa" }),
+        el(
+          "p",
+          {},
+          "Uma divisão com rótulo também comunica a mudança de assunto.",
+        ),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-scrollbar",
+  "Barra de rolagem",
+  "Rolagem nativa com espessura e cores dos temas. O mesmo padrão atende teclado, toque e mouse.",
+  [
+    Surface({
+      children: [
+        ScrollArea({
+          height: 180,
+          label: "Lista de laboratórios",
+          children: Array.from({ length: 12 }, (_, i) =>
+            el(
+              "p",
+              {},
+              `Lab ${String(i + 1).padStart(2, "0")} · experimento e resultado`,
+            ),
+          ),
+        }),
+      ],
+    }),
+  ],
+);
+const optionsStatus = el(
+  "p",
+  { role: "status" },
+  "Formato: estudo de caso. Atualizações desativadas.",
+);
+render(
+  "comp-select-options",
+  "Checkbox e rádio",
+  "Escolhas independentes e exclusivas usam controles nativos com a mesma tipografia, espaçamento e cor do pacote.",
+  [
+    Surface({
+      title: "Preferências do Lab",
+      children: [
+        RadioGroup({
+          legend: "Formato",
+          value: "case",
+          options: [
+            { value: "case", label: "Estudo de caso" },
+            { value: "experiment", label: "Experimento" },
+          ],
+          onChange: (v) =>
+            (optionsStatus.textContent = `Formato: ${v === "case" ? "estudo de caso" : "experimento"}.`),
+        }),
+        Checkbox({
+          label: "Receber atualizações do projeto",
+          onChange: (checked) =>
+            (optionsStatus.textContent = checked
+              ? "Atualizações ativadas."
+              : "Atualizações desativadas."),
+        }),
+        Divider(),
+        Dropdown({
+          label: "Ações da seleção",
+          items: [{ label: "Ver critérios" }, { label: "Limpar filtro" }],
+          onSelect: (item) => (optionsStatus.textContent = item.label),
+        }).element,
+        optionsStatus,
+      ],
+    }),
+  ],
+);
+const asyncPeople = [
+  "Ana Martins",
+  "Bruno Almeida",
+  "Carolina Gomes",
+  "Daniel Ferreira",
+];
+const loadPeople = async ({ query, signal }) => {
+  await new Promise((resolve, reject) => {
+    const timer = setTimeout(resolve, 250);
+    signal.addEventListener(
+      "abort",
+      () => {
+        clearTimeout(timer);
+        reject(new DOMException("Cancelado", "AbortError"));
+      },
+      { once: true },
+    );
+  });
+  if (query.toLowerCase() === "erro") throw new Error("Falha simulada");
+  return asyncPeople
+    .filter((label) => normalize(label).includes(normalize(query)))
+    .map((label, i) => ({
+      value: label,
+      label,
+      avatar: label
+        .split(" ")
+        .map((x) => x[0])
+        .join(""),
+    }));
+};
+const asyncStatus = el(
+  "p",
+  { role: "status" },
+  "Abra a lista e busque por um nome.",
+);
+const asyncSelect = Select({
+  label: "Pessoa responsável",
+  placeholder: "Escolha uma pessoa",
+  loadOptions: loadPeople,
+  onChange: (v) => (asyncStatus.textContent = `${v} selecionado.`),
+});
+document.querySelector('[data-view="comp-select"] .ui-surface').append(
+  Divider({ label: "Carregamento assíncrono" }),
+  Select({
+    label: "Responsável com busca",
+    placeholder: "Buscar pessoa",
+    loadOptions: loadPeople,
+  }),
+  el("p", {}, "Digite ‘erro’ para testar a falha de carregamento."),
+);
+render(
+  "comp-async",
+  "Busca assíncrona",
+  "Busque, aguarde, escolha ou simule falha digitando ‘erro’. O mesmo Select aparece na view de seleção.",
+  [Surface({ title: "Responsável", children: [asyncSelect, asyncStatus] })],
+);
+const emptyStatus = el("p", { role: "status" }, "Ainda não há rascunhos.");
+render(
+  "comp-empty",
+  "Empty state",
+  "Explique a ausência de conteúdo e ofereça uma próxima ação concreta.",
+  [
+    Surface({
+      children: [
+        EmptyState({
+          title: "Nenhum rascunho",
+          description:
+            "Crie um rascunho para começar a registrar o experimento.",
+          actionLabel: "Criar rascunho",
+          onAction: () =>
+            (emptyStatus.textContent = "Ação de criar rascunho acionada."),
+        }),
+        emptyStatus,
+      ],
+    }),
+  ],
+);
+render(
+  "comp-banner",
+  "Banner",
+  "Avisos ficam perto do conteúdo a que se referem e usam texto direto.",
+  [
+    Surface({
+      children: [
+        Banner({
+          title: "Alterações não salvas",
+          text: "Salve o rascunho antes de sair desta página.",
+          kind: "warning",
+        }),
+        Banner({
+          title: "Publicação concluída",
+          text: "A versão 3 está disponível no catálogo.",
+          kind: "success",
+        }),
+      ],
+    }),
+  ],
+);
+const tagStatus = el(
+  "p",
+  { role: "status" },
+  "Selecione uma etiqueta para ver seu comportamento.",
+);
+render(
+  "comp-tags",
+  "Etiquetas",
+  "Cores semânticas indicam estado; avatar e remoção seguem o mesmo componente.",
+  [
+    Surface({
+      children: [
+        row(
+          Tag({ label: "Em andamento", tone: "info" }),
+          Tag({ label: "Concluído", tone: "success" }),
+          Tag({ label: "Atenção", tone: "warning" }),
+          Tag({ label: "Ana Martins", avatar: "AM" }),
+          Tag({
+            label: "Removível",
+            removable: true,
+            onRemove: () => (tagStatus.textContent = "Etiqueta removida."),
+          }),
+        ),
+        tagStatus,
+      ],
+    }),
+  ],
+);
+const gridWidth = el("input", {
+  type: "range",
+  min: "280",
+  max: "1000",
+  value: "640",
+  class: "docs-grid-slider",
+  "aria-label": "Largura da área de teste",
+});
+const gridReadout = el("output", {}, "640 px");
+const gridPreview = el(
+  "div",
+  { class: "docs-grid-preview" },
+  Array.from({ length: 6 }, (_, i) => el("div", {}, `Bloco ${i + 1}`)),
+);
+const gridFrame = el("div", { class: "docs-grid-frame" }, gridPreview);
+gridFrame.style.width = "640px";
+gridWidth.addEventListener("input", () => {
+  gridFrame.style.width = `${gridWidth.value}px`;
+  gridReadout.textContent = `${gridWidth.value} px`;
+});
+render(
+  "comp-grid",
+  "Grid responsivo",
+  "Arraste a largura para testar as mudanças de colunas sem redimensionar o navegador.",
+  [
+    Surface({
+      children: [
+        el("div", { class: "docs-grid-controls" }, [
+          el("label", {}, "Largura da área"),
+          gridWidth,
+          gridReadout,
+        ]),
+        ScrollArea({
+          axis: "x",
+          label: "Prévia responsiva",
+          children: gridFrame,
+        }),
+      ],
+    }),
+  ],
+);
+const stateField = Input({
+  label: "Nome do experimento",
+  help: "Use pelo menos três caracteres.",
+  required: true,
+});
+const stateStatus = el(
+  "p",
+  { role: "status" },
+  "Digite um nome para ver a validação.",
+);
+stateField.control.addEventListener("input", () => {
+  const value = stateField.control.value.trim();
+  if (!value) {
+    stateField.validation.setError("Informe um nome.");
+    stateStatus.textContent = "Campo obrigatório.";
+  } else if (value.length < 3) {
+    stateField.validation.setError("Use pelo menos três caracteres.");
+    stateStatus.textContent = "Nome curto demais.";
+  } else {
+    stateField.validation.clear();
+    stateStatus.textContent = "Nome válido.";
+  }
+});
+render(
+  "comp-states",
+  "Estados e validação",
+  "O feedback muda enquanto você digita; erro, ajuda e estado do controle usam um único contrato.",
+  [Surface({ children: [stateField, stateStatus] })],
+);
+render(
+  "contexto",
+  "Em contexto",
+  "Uma composição curta mostra como as peças se encontram em uma tarefa real.",
+  [
+    Surface({
+      title: "Preparar um experimento",
+      children: [
+        el("p", {}, "Defina um nome, escolha uma etapa e salve o rascunho."),
+        Divider(),
+        Input({
+          label: "Nome do experimento",
+          placeholder: "Ex.: Teste do fluxo de convite",
+        }),
+        Select({
+          label: "Etapa",
+          options: [
+            { value: "plan", label: "Planejamento" },
+            { value: "test", label: "Teste" },
+          ],
+        }),
+        Notice({
+          title: "Rascunho local",
+          text: "Este exemplo não envia dados para o produto.",
+          kind: "info",
+        }),
+      ],
+    }),
+  ],
+);
+const textareaField = Input({
+  label: "Descrição do experimento",
+  type: "textarea",
+  rows: 5,
+  placeholder: "O que será testado?",
+  help: "Arraste o canto para ampliar a área de escrita.",
+});
+const textareaStatus = el("p", { role: "status" }, "0 caracteres.");
+textareaField.control.addEventListener(
+  "input",
+  () =>
+    (textareaStatus.textContent = `${textareaField.control.value.length} caracteres.`),
+);
+render(
+  "comp-textarea",
+  "Textarea",
+  "Escreva e redimensione a área; a barra interna aparece apenas quando há texto além da altura disponível.",
+  [Surface({ children: [textareaField, textareaStatus] })],
+);
 // Visible status on every route: source reuse is not a production-readiness claim.
 for (const view of document.querySelectorAll("[data-view]")) {
   const id = view.dataset.view;
@@ -777,3 +1127,7 @@ for (const [id, code] of Object.entries(contracts))
         ),
       ]),
     );
+
+window.addEventListener("hashchange", () =>
+  requestAnimationFrame(() => window.scrollTo(0, 0)),
+);

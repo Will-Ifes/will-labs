@@ -1,4 +1,5 @@
 import { element, Button, Tag } from "./index.js";
+import { ValidationMessage } from "./validation.js";
 let serial = 0;
 /** loadOptions({query,cursor,limit,signal}) => Promise<{items:[{id,label}],nextCursor:null|string}> */
 export class WLAsyncMultiselect extends HTMLElement {
@@ -64,6 +65,10 @@ export class WLAsyncMultiselect extends HTMLElement {
       { "aria-controls": id + "-panel", "aria-expanded": "false" },
       "Selecionar participantes",
     );
+    this.validation = ValidationMessage({
+      control: this.summary,
+      help: this.getAttribute("help") || "",
+    });
     this.details = element("details", { class: "wl-async-disclosure" }, [
       this.summary,
       element("div", { class: "wl-async-panel", id: id + "-panel" }, [
@@ -85,6 +90,7 @@ export class WLAsyncMultiselect extends HTMLElement {
       ),
       this.chips,
       this.details,
+      this.validation.element,
     );
     this.details.addEventListener("toggle", () => {
       this.summary.setAttribute("aria-expanded", String(this.details.open));
@@ -200,6 +206,9 @@ export class WLAsyncMultiselect extends HTMLElement {
     }
   }
   emit() {
+    if (this.hasAttribute("required") && !this.#selected.size)
+      this.validation?.setError("Escolha pelo menos uma opção.");
+    else this.validation?.clear();
     this.dispatchEvent(
       new CustomEvent("wl-change", {
         bubbles: true,

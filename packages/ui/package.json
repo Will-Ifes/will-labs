@@ -10,7 +10,12 @@
     "./select-field": "./select-field.js",
     "./number-field": "./number-field.js",
     "./floating": "./floating.js",
-    "./overlays": "./overlays.js"
+    "./overlays": "./overlays.js",
+    "./divider": "./divider.js",
+    "./scrollbar": "./scrollbar.js",
+    "./validation": "./validation.js",
+    "./choice": "./choice.js",
+    "./empty-state": "./empty-state.js"
   },
   "files": [
     "*.js",

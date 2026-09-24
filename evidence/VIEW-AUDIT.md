@@ -1,6 +1,6 @@
 # Auditoria das views
 
-56 views: 24 migradas localmente, 32 em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; 0 violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.
+58 views: 35 migradas localmente, 23 em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; 0 violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.
 
 | View | Situação | Violações axe |
 | --- | --- | ---: |
@@ -17,16 +17,18 @@
 | comp-number | Migrada · validação local | 0 |
 | comp-date | Em revisão | 0 |
 | comp-select | Migrada · validação local | 0 |
-| comp-select-options | Em revisão | 0 |
+| comp-select-options | Migrada · validação local | 0 |
 | comp-multiselect-tags | Migrada · validação local | 0 |
 | comp-multiselect-avatar | Migrada · validação local | 0 |
-| comp-async | Em revisão | 0 |
+| comp-async | Migrada · validação local | 0 |
 | comp-switch | Migrada · validação local | 0 |
 | comp-tabs | Migrada · validação local | 0 |
-| comp-tags | Em revisão | 0 |
+| comp-tags | Migrada · validação local | 0 |
+| comp-divider | Migrada · validação local | 0 |
+| comp-scrollbar | Migrada · validação local | 0 |
 | comp-card | Migrada · validação local | 0 |
 | comp-feedback | Em revisão | 0 |
-| comp-empty | Em revisão | 0 |
+| comp-empty | Migrada · validação local | 0 |
 | comp-avatar | Em revisão | 0 |
 | comp-labpage | Migrada · validação local | 0 |
 | comp-code-table | Migrada · validação local | 0 |
@@ -40,7 +42,7 @@
 | comp-image | Em revisão | 0 |
 | comp-upload | Em revisão | 0 |
 | comp-calendar | Em revisão | 0 |
-| comp-grid | Em revisão | 0 |
+| comp-grid | Migrada · validação local | 0 |
 | comp-table | Migrada · validação local | 0 |
 | comp-accordion | Em revisão | 0 |
 | comp-collapsible | Em revisão | 0 |
@@ -49,14 +51,14 @@
 | comp-progress | Em revisão | 0 |
 | comp-link | Em revisão | 0 |
 | comp-breadcrumb | Em revisão | 0 |
-| comp-states | Em revisão | 0 |
-| contexto | Em revisão | 0 |
+| comp-states | Migrada · validação local | 0 |
+| contexto | Migrada · validação local | 0 |
 | comp-alert | Em revisão | 0 |
 | comp-toast | Migrada · validação local | 0 |
-| comp-banner | Em revisão | 0 |
+| comp-banner | Migrada · validação local | 0 |
 | comp-time | Migrada · validação local | 0 |
 | comp-datetime | Em revisão | 0 |
-| comp-textarea | Em revisão | 0 |
+| comp-textarea | Migrada · validação local | 0 |
 | comp-shortcuts | Migrada · validação local | 0 |
 | comp-shell | Em revisão | 0 |
 | comp-multiselect-async | Migrada · validação local | 0 |

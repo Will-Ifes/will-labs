@@ -1,0 +1,194 @@
+[
+  {
+    "name": "1440 dimensoes title visible",
+    "passed": true
+  },
+  {
+    "name": "1440 dimensoes intro separated",
+    "passed": true
+  },
+  {
+    "name": "1440 movimento title visible",
+    "passed": true
+  },
+  {
+    "name": "1440 movimento intro separated",
+    "passed": true
+  },
+  {
+    "name": "1440 grid narrow",
+    "passed": true
+  },
+  {
+    "name": "1440 grid wide",
+    "passed": true
+  },
+  {
+    "name": "1440 live error",
+    "passed": true
+  },
+  {
+    "name": "1440 live valid",
+    "passed": true
+  },
+  {
+    "name": "1440 select loading",
+    "passed": true
+  },
+  {
+    "name": "1440 select result",
+    "passed": true
+  },
+  {
+    "name": "1440 select error",
+    "passed": true
+  },
+  {
+    "name": "1440 scrollbar style",
+    "passed": true
+  },
+  {
+    "name": "1440 empty textarea has no internal scroll",
+    "passed": true
+  },
+  {
+    "name": "1440 resized textarea empty",
+    "passed": true
+  },
+  {
+    "name": "1440 date icon aligned",
+    "passed": true
+  },
+  {
+    "name": "1440 paper tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 forest tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 petrol-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 petrol-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 indigo-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 indigo-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 amber-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 amber-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "1440 no runtime errors",
+    "passed": true
+  },
+  {
+    "name": "390 dimensoes title visible",
+    "passed": true
+  },
+  {
+    "name": "390 dimensoes intro separated",
+    "passed": true
+  },
+  {
+    "name": "390 movimento title visible",
+    "passed": true
+  },
+  {
+    "name": "390 movimento intro separated",
+    "passed": true
+  },
+  {
+    "name": "390 grid narrow",
+    "passed": true
+  },
+  {
+    "name": "390 grid wide",
+    "passed": true
+  },
+  {
+    "name": "390 live error",
+    "passed": true
+  },
+  {
+    "name": "390 live valid",
+    "passed": true
+  },
+  {
+    "name": "390 select loading",
+    "passed": true
+  },
+  {
+    "name": "390 select result",
+    "passed": true
+  },
+  {
+    "name": "390 select error",
+    "passed": true
+  },
+  {
+    "name": "390 scrollbar style",
+    "passed": true
+  },
+  {
+    "name": "390 empty textarea has no internal scroll",
+    "passed": true
+  },
+  {
+    "name": "390 resized textarea empty",
+    "passed": true
+  },
+  {
+    "name": "390 date icon aligned",
+    "passed": true
+  },
+  {
+    "name": "390 paper tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 forest tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 petrol-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 petrol-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 indigo-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 indigo-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 amber-light tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 amber-dark tag contrast",
+    "passed": true
+  },
+  {
+    "name": "390 no runtime errors",
+    "passed": true
+  }
+]

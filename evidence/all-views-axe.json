@@ -94,7 +94,7 @@
     "view": "comp-select-options",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -115,7 +115,7 @@
     "view": "comp-async",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -136,7 +136,21 @@
     "view": "comp-tags",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-divider",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-scrollbar",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -157,7 +171,7 @@
     "view": "comp-empty",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -255,7 +269,7 @@
     "view": "comp-grid",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -318,14 +332,14 @@
     "view": "comp-states",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "contexto",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -346,7 +360,7 @@
     "view": "comp-banner",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -367,7 +381,7 @@
     "view": "comp-textarea",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -486,7 +500,7 @@
     "view": "comp-select-options",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -507,7 +521,7 @@
     "view": "comp-async",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -528,7 +542,21 @@
     "view": "comp-tags",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-divider",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-scrollbar",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -549,7 +577,7 @@
     "view": "comp-empty",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -647,7 +675,7 @@
     "view": "comp-grid",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -710,14 +738,14 @@
     "view": "comp-states",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "contexto",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -738,7 +766,7 @@
     "view": "comp-banner",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -759,7 +787,7 @@
     "view": "comp-textarea",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
