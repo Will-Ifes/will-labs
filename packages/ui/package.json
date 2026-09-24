@@ -5,7 +5,8 @@
   "exports": {
     ".": "./index.js",
     "./styles.css": "./styles.css",
-    "./date-field": "./date-field.js"
+    "./date-field": "./date-field.js",
+    "./time-field": "./time-field.js"
   },
   "files": [
     "*.js",

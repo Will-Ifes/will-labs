@@ -21,13 +21,14 @@ export function Button({
   disabled = false,
   ...attrs
 }) {
+  const { class: extraClass = "", ...rest } = attrs;
   return element(
     "button",
     {
       type: "button",
-      class: `ui-button ui-button--${variant}`,
+      class: `ui-button ui-button--${variant} ${extraClass}`.trim(),
       disabled,
-      ...attrs,
+      ...rest,
       onclick: onClick,
     },
     label,
@@ -48,21 +49,69 @@ export function Input({
   required = false,
   name,
   invalid = false,
+  placeholder = "",
+  clearable = false,
+  reveal = false,
+  rows = 4,
+  size = "medium",
 } = {}) {
   const id = `ui-input-${++serial}`;
-  const control = element("input", {
-    id,
-    type,
-    value,
-    required,
-    name,
-    "aria-invalid": invalid ? "true" : null,
-    "aria-describedby": help ? id + "-help" : null,
-    class: "ui-input",
-  });
+  const multiline = type === "textarea";
+  const control = element(
+    multiline ? "textarea" : "input",
+    {
+      id,
+      type: multiline ? null : type,
+      value: multiline ? null : value,
+      required,
+      name,
+      placeholder,
+      rows: multiline ? rows : null,
+      "aria-invalid": invalid ? "true" : null,
+      "aria-describedby": help ? id + "-help" : null,
+      class: `ui-input ui-input--${size}`,
+    },
+    multiline ? value : [],
+  );
+  const shell = element("div", { class: "ui-input-shell" }, control);
+  if (clearable) {
+    const clear = Button({
+      label: "×",
+      variant: "text",
+      class: "ui-input-action",
+      "aria-label": `Limpar ${label}`,
+      onClick: () => {
+        control.value = "";
+        control.dispatchEvent(new Event("input", { bubbles: true }));
+        control.focus();
+      },
+    });
+    const sync = () => {
+      clear.hidden = !control.value;
+    };
+    control.addEventListener("input", sync);
+    sync();
+    shell.append(clear);
+  }
+  if (reveal && type === "password") {
+    const toggle = Button({
+      label: "Mostrar",
+      variant: "text",
+      class: "ui-input-action",
+      "aria-pressed": "false",
+      onClick: () => {
+        const show = control.type === "password";
+        control.type = show ? "text" : "password";
+        toggle.textContent = show ? "Ocultar" : "Mostrar";
+        toggle.setAttribute("aria-pressed", String(show));
+        control.focus();
+      },
+    });
+    shell.append(toggle);
+  }
   const field = element("div", { class: "ui-field" }, [
     element("label", { for: id }, label),
-    control,
+    shell,
     help
       ? element(
           "small",
@@ -73,6 +122,23 @@ export function Input({
   ]);
   field.control = control;
   return field;
+}
+export function Tag({ label, avatar, removable = false, onRemove = () => {} }) {
+  return element("span", { class: "ui-tag" }, [
+    avatar
+      ? element("span", { class: "ui-tag-avatar", "aria-hidden": true }, avatar)
+      : null,
+    element("span", { class: "ui-tag-label" }, label),
+    removable
+      ? Button({
+          label: "×",
+          variant: "text",
+          class: "ui-tag-remove",
+          "aria-label": `Remover ${label}`,
+          onClick: onRemove,
+        })
+      : null,
+  ]);
 }
 export function Notice({ title, text, kind = "info" }) {
   return element("div", { class: "ui-notice", "data-kind": kind }, [
@@ -411,3 +477,4 @@ export function Dialog({
   });
   return { element: dialog, ...controller };
 }
+export { WLTimeField } from "./time-field.js";

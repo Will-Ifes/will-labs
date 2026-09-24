@@ -1,4 +1,4 @@
-import { element, Button } from "./index.js";
+import { element, Button, Tag } from "./index.js";
 let serial = 0;
 /** loadOptions({query,cursor,limit,signal}) => Promise<{items:[{id,label}],nextCursor:null|string}> */
 export class WLAsyncMultiselect extends HTMLElement {
@@ -19,9 +19,15 @@ export class WLAsyncMultiselect extends HTMLElement {
   set value(items) {
     this.#selected = new Map(items.map((x) => [String(x.id), x]));
     if (this.chips) this.renderChips();
+    this.list?.querySelectorAll("input").forEach((input) => {
+      input.checked = this.#selected.has(input.value);
+    });
   }
   connectedCallback() {
-    if (this.details) return;
+    if (this.details) {
+      if (this.details.open && !this.list.children.length) this.reload();
+      return;
+    }
     const id = `multi-${++serial}`;
     this.classList.add("wl-async-multi");
     this.chips = element("div", {
@@ -214,25 +220,28 @@ export class WLAsyncMultiselect extends HTMLElement {
       return;
     }
     for (const [id, item] of this.#selected) {
-      const remove = Button({
-        label: "×",
-        variant: "text",
-        "aria-label": `Remover ${item.label}`,
-        onClick: () => {
-          this.#selected.delete(id);
-          this.renderChips();
-          this.list.querySelectorAll("input").forEach((x) => {
-            if (x.value === id) x.checked = false;
-          });
-          this.emit();
-          this.summary.focus();
-        },
-      });
+      const avatar = this.hasAttribute("with-avatar")
+        ? item.label
+            .split(" ")
+            .slice(0, 2)
+            .map((x) => x[0])
+            .join("")
+        : null;
       this.chips.append(
-        element("span", { class: "wl-async-chip" }, [
-          element("span", {}, item.label),
-          remove,
-        ]),
+        Tag({
+          label: item.label,
+          avatar,
+          removable: true,
+          onRemove: () => {
+            this.#selected.delete(id);
+            this.renderChips();
+            this.list.querySelectorAll("input").forEach((x) => {
+              if (x.value === id) x.checked = false;
+            });
+            this.emit();
+            this.summary.focus();
+          },
+        }),
       );
     }
   }

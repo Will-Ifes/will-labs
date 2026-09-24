@@ -1,0 +1,778 @@
+[
+  {
+    "name": "paper/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "paper/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "paper/trap forward",
+    "passed": true
+  },
+  {
+    "name": "paper/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "paper/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "paper/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "paper/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "paper/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "paper/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "paper/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "paper/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "paper/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "forest/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "forest/trap forward",
+    "passed": true
+  },
+  {
+    "name": "forest/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "forest/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "forest/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "forest/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "forest/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "forest/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "forest/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "forest/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "forest/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/trap forward",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-light/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/trap forward",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "petrol-dark/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/trap forward",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-light/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/trap forward",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "indigo-dark/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "amber-light/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "amber-light/trap forward",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "amber-light/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "amber-light/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-light/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/shortcut actual focus",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/trap reverse",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/trap forward",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close transparent normal",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close contrast normal",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close transparent hover",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close contrast hover",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close transparent active",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/close contrast active",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar transparent normal",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar contrast normal",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar transparent hover",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar contrast hover",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar transparent active",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar contrast active",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/visible keyboard focus",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Salvar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Salvar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Cancelar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Cancelar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Mostrar active contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Excluir hover contrast",
+    "passed": true
+  },
+  {
+    "name": "amber-dark/Excluir active contrast",
+    "passed": true
+  },
+  {
+    "name": "standalone uses package",
+    "passed": true
+  },
+  {
+    "name": "standalone comparison",
+    "passed": true
+  }
+]

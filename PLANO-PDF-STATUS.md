@@ -1,29 +1,20 @@
-# Will Labs · o que falta do plano principal
+# Sprint 1 · Confronto com o PDF
 
-Leitura do arquivo `Will Labs — projeto e plano de execução.pdf`, seção “Sprints e tarefas”. Este inventário avalia somente o conteúdo verificável deste ZIP. Não atribui como concluídos repositório, produto ou deploy que não estejam aqui.
+Fonte: “Will Labs — projeto e plano de execução”, seção Sprints e tarefas. O documento foi tratado como escopo de referência; as ações executadas seguem a solicitação desta etapa. Não foram criados repositório público, contas, infraestrutura ou entregas das sprints seguintes.
 
-## Sprint 1 · Design system e identidade
+| Entregável                               | Estado na v2.4                                                                               | O que resta                                                                                              |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Paleta, tipografia, espaçamento e raios  | Fonte semântica por tema, escala de 4px, superfícies comuns                                  | Revisão editorial dos fundamentos legados e consolidação dos tokens históricos                           |
+| Tema claro/escuro com CSS                | Quatro temas aplicados ao catálogo; amostras geradas da mesma fonte                          | Validação em outros motores e com pessoas usuárias                                                       |
+| Botão, input, card, tabs, código, tabela | Componentes compartilhados importados pela documentação e consumidor independente            | Expandir contratos conforme casos reais do OpsFlow; migrar variantes legadas de campos                   |
+| LabPage com quatro abas                  | Componente composto com Tabs, Code, Surface; Learn/Try/Code/Architecture e três blocos fixos | Conteúdo e links reais dos Labs; integração com o produto                                                |
+| Diagrama e vulnerável/seguro             | Componentes reutilizáveis e responsivos, com simulação local                                 | Diagrama atual é sequência textual; navegação arquitetural complexa e execução real pertencem à evolução |
+| Página pública /design-system            | Rota local funcional e documentação por componente                                           | **Publicação externa pendente**                                                                          |
+| Contraste e navegação por teclado        | Matriz automatizada e evidências renderizadas; detalhes no relatório                         | Leitor de tela, Safari/Firefox, auditoria manual completa do teclado em cada interação legada            |
+| ADR-004 próprio × biblioteca             | Documentada; ADR-001 registra módulos nativos e consequências                                | Reavaliar ao surgir necessidade concreta de outra stack                                                  |
 
-| Entregável do PDF | Evidência neste ZIP | Estado |
-| --- | --- | --- |
-| Paleta, tipografia, espaçamento e raios | Tokens e views de fundamentos | Guia demonstrativo; revisão visual pendente |
-| Temas claro e escuro com tokens CSS | Quatro propostas semânticas, variantes de avatar/controle | Implementado no guia; contraste completo por view pendente |
-| Botão, input, card, tabs, código e tabela | Exemplos navegáveis; card ainda em revisão | Parcial; não há pacote de produção reutilizável |
-| LabPage com quatro abas | Protótipo na view bloqueada | Pendente de validação visual e composição com pacote comum |
-| Diagrama e vulnerável/seguro | Exemplos existentes, bloqueados para aprovação | Pendentes |
-| Página pública `/design-system` | `index.html` local e navegável | Pendente de site e rota pública |
-| Contraste e teclado em todos os componentes | Verificação calculada dos pares principais em v2.3 | Pendente de auditoria por componente, tema e leitor de tela |
-| ADR-004: próprio × biblioteca | Nenhum ADR-004 formal neste ZIP | Pendente |
+A Sprint 1 não é declarada encerrada. As views não migradas permanecem **em revisão**, mesmo quando passam nos testes automáticos. Calendário, upload, overlays não modais e variantes antigas precisam de contratos e testes específicos antes de produção. Dois prints foram fornecidos depois e comparados com o HTML simples. O terceiro não foi recebido.
 
-## Fora do escopo atual
+Sprint 0, OpsFlow/Sprint 2 e publicação de Labs/Sprint 3 não foram executados nesta etapa.
 
-O PDF ainda prevê Sprint 0 (repositório, ADRs de stack, ferramentas e backlog), Sprint 2 (OpsFlow v0.1 com banco, API e telas) e Sprint 3 (publicação do frontend, Labs 01 e 02 e trilha). Este ZIP é apenas um guia interativo; não comprova a conclusão dessas frentes. O PDF orienta publicar pequeno e cedo, com um produto mínimo e dois Labs.
-
-## Arquitetura necessária para cumprir a regra de reutilização integral
-
-1. Separar tokens semânticos e componentes em um pacote versionado, com API explícita de props/estados; a prévia deve importar esse pacote.
-2. Migrar cada view antiga do HTML para composições dos componentes do pacote; remover estilos locais e markup duplicado somente após equivalência funcional.
-3. Manter catálogo de estados e contratos de interação, testes de teclado e snapshots nos quatro temas; verificar contraste de texto, ícones, bordas, estados e dados reais.
-4. Publicar a rota `/design-system` e usar o mesmo pacote no OpsFlow e no LabPage. Gerar o guia offline a partir das mesmas fontes.
-
-A v2.3 inicia a migração: os containers recebem `data-wl-surface`, os campos da nova leva usam primitives compartilhadas e os módulos CSS/JS são fontes editáveis. Ainda há views legadas no documento; portanto não se declara coerência de 100% nem prontidão de produção.
+A revisão mais recente migrou campos de texto, multiselect com/sem avatar e hora; atualizou a composição de data/hora, ainda em revisão; 18 de 55 views têm implementação ou comportamento compartilhado, 37 permanecem em revisão. Há oito temas gerados dos mesmos tokens.

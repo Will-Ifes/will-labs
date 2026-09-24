@@ -1,0 +1,23 @@
+import { readFileSync, writeFileSync } from "node:fs";
+const read = (name) =>
+  JSON.parse(readFileSync(`evidence/${name}.json`, "utf8"));
+const results = read("results");
+const axe = read("all-views-axe");
+const states = read("states");
+const nontext = read("nontext");
+const unique = [...new Map(axe.map((item) => [item.view, item])).values()];
+const migrated = unique.filter((item) => item.status === "migrated").length;
+const violations = axe.flatMap((item) => item.violations || []).length;
+writeFileSync(
+  "evidence/VIEW-AUDIT.md",
+  `# Auditoria das views\n\n${unique.length} views: ${migrated} migradas localmente, ${unique.length - migrated} em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; ${violations} violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.\n\n| View | Situação | Violações axe |\n| --- | --- | ---: |\n${unique.map((item) => `| ${item.view} | ${item.status === "migrated" ? "Migrada · validação local" : "Em revisão"} | ${axe.filter((x) => x.view === item.view).flatMap((x) => x.violations || []).length} |`).join("\n")}\n`,
+);
+const ratio = Math.min(
+  ...nontext.flatMap((item) =>
+    Object.values(item).filter((v) => typeof v === "number"),
+  ),
+);
+writeFileSync(
+  "RELATORIO-v2.4.md",
+  `# Will Labs v2.4 · Sprint 1 parcial\n\nA base v2.3 está preservada na tag Git \`baseline-v2.3\`. O repositório substitui a entrega por ZIP. A documentação importa \`packages/ui\` e há um consumidor independente sem CSS ou scripts legados. A decisão por módulos ES, DOM nativo e Custom Elements consta na ADR-001. O PDF orienta os 16 Labs e o produto futuro; esta etapa constrói o guia e as peças comuns, não os Labs completos.\n\n## Correções verificadas\n\n- Modal, drawer e atalhos fecham por ×, cancelar e Escape e devolvem foco ao acionador, sem alterar a rota.\n- Superfícies, botões, campos, tags, avisos e multiselect usam tokens e primitivas compartilhadas. As views antigas conservam o rótulo **em revisão**.\n- Seletor compacto comparado com \`/home/atman/Downloads/index.html\` e dois prints recebidos; amostras com disco diagonal são geradas dos tokens. Oito temas: Papel, Floresta, Petróleo, Índigo e Âmbar em variantes claras/escuras onde aplicável.\n- Densidade alinhada: campo médio ~44 px no navegador, tag com avatar 30 px; removidos os paddings e margens duplicados do CSS legado. Limpar e Mostrar têm fundo transparente, destaque ao interagir e preservam foco.\n- \`wl-time-field\` aceita HH:MM em 24 horas e tem seletor visual, limites, entrada pelo teclado e Escape. O exemplo isolado e a composição de data/hora usam a mesma peça; o calendário usa SVG local.\n- Multiselect compartilha busca, seleção, remoção, rolagem incremental, vazio, carregamento e erro. Nenhuma view migrada é declarada pronta para produção somente pela aparência.\n\n## Verificação\n\n- Chrome real com viewports 1440×1000 e 390×844, ${results.checks.length} checks na suíte principal, ${states.length} medições de estado, ${nontext.length} medições não textuais e ${axe.length} varreduras axe por view. Razão mínima não textual medida: ${ratio.toFixed(2)}:1.\n- \`tests/audit-redesign.mjs\`: oito temas × dois tamanhos, fluxo de texto/hora/tags, foco e overflow. Dados em \`evidence/audit-redesign.json\`; capturas em \`evidence/audit-input-*.png\` e \`evidence/audit-themes-*.png\`.\n- ${migrated} de ${unique.length} views migradas ou com comportamento compartilhado; ${unique.length - migrated} em revisão. Inventário em \`evidence/VIEW-AUDIT.md\`.\n\n## Pendências da Sprint 1\n\n1. Migrar ${unique.length - migrated} views em revisão e retirar gradualmente adaptadores/markup legados. Select/opções e upload ainda expõem widgets nativos; calendário e demais widgets antigos exigem contrato e teste próprios.\n2. Testar manualmente com leitor de tela e nos motores Firefox/Safari. A auditoria de contraste automática cobre os estados renderizados selecionados, não toda combinação possível.\n3. Integrar as peças a um Lab real e definir o nome final do produto; \`OpsFlow\` é provisório e não foi adotado como nova marca.\n4. Publicar a documentação e ligar CI/PR ao remoto Git quando existir. O terceiro print citado inicialmente não foi recebido.\n\nO brief desta revisão está em \`docs/PROMPT-AUDITORIA-UI.md\` e a comparação medida em \`docs/AUDITORIA-COMPARATIVA.md\`. A arquitetura aplica no próprio repositório a versionamento, CI e revisão ensinados nos Labs, conforme ADR-002 e CONTRIBUTING.\n`,
+);

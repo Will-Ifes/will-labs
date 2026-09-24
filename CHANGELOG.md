@@ -1,3 +1,9 @@
+# Histórico do repositório
+
+## 2.4.0 — validação local
+
+Tokens e UI reutilizáveis, documentação consumidora, correções de foco e multiselect, oito temas, auditoria e evidências. Ver `CHANGES-v2.4.md` e `RELATORIO-v2.4.md`. Repositório local e CI preparado; sem publicação externa.
+
 ## v2.3
 
 Revisão de diálogos, temas, containers, contraste de avatar, switch e multiselect incremental. Consulte CHANGES-v2.3.md.

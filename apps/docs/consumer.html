@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width"
+  /><title>Consumidor independente · Will Labs</title
+  ><link rel="stylesheet" href="../../packages/tokens/semantic.css" /><link
+    rel="stylesheet"
+    href="../../packages/ui/styles.css"
+  /><style>
+    body {
+      font: 16px var(--wl-font);
+      background: var(--wl-bg);
+      color: var(--wl-text);
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+  </style>
+  <body>
+    <h1>Consumidor independente</h1>
+    <p>
+      Esta página importa apenas o pacote de UI e os tokens. Não carrega estilos
+      ou scripts legados.
+    </p>
+    <main></main>
+    <script type="module">
+      import {
+        Surface,
+        Button,
+        Input,
+        Tag,
+        Table,
+        Tabs,
+        Code,
+        LabPage,
+        Diagram,
+        Comparison,
+        element,
+      } from "../../packages/ui/index.js";
+      import "../../packages/ui/time-field.js";
+      document.querySelector("main").append(
+        Surface({
+          title: "Criar fluxo",
+          children: [
+            Input({
+              label: "Nome do fluxo",
+              help: "Exemplo de outro consumidor.",
+              clearable: true,
+            }),
+            element("wl-time-field", {
+              label: "Hora de início",
+              value: "14:30",
+              step: "900",
+            }),
+            Tag({ label: "Exemplo compartilhado", avatar: "WL" }),
+            Button({
+              label: "Salvar",
+              onClick: () => alert("Demonstração local"),
+            }),
+          ],
+        }),
+        LabPage({
+          title: "Mesmo componente LabPage",
+          learn: element("p", {}, "Composição reutilizada fora do catálogo."),
+          tryContent: Comparison({
+            vulnerable: "Sem validação.",
+            secure: "Com validação.",
+          }),
+          code: "await save(flow);",
+          architecture: Diagram({
+            nodes: [
+              { title: "Cliente", description: "Solicita." },
+              { title: "API", description: "Valida." },
+              { title: "Banco", description: "Persiste." },
+            ],
+          }),
+          test: "Use as abas pelo teclado.",
+          production: "Exemplo local.",
+          related: "Design system",
+        }),
+      );
+    </script>
+  </body>
+</html>

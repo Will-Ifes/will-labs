@@ -57,7 +57,30 @@ class WLDateField extends HTMLElement {
     toggle.setAttribute("aria-label", "Abrir calendário");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-controls", `${id}-popup`);
-    toggle.textContent = "▦";
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "1.8");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("aria-hidden", "true");
+    for (const d of [
+      "M4 6.5h16v13H4z",
+      "M7 4v5",
+      "M17 4v5",
+      "M4 10h16",
+      "M8 14h3",
+    ]) {
+      const path = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "path",
+      );
+      path.setAttribute("d", d);
+      svg.append(path);
+    }
+    toggle.replaceChildren(svg);
     const hidden = document.createElement("input");
     hidden.type = "hidden";
     hidden.name = this.getAttribute("name") || id;

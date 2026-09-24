@@ -1,0 +1,146 @@
+[
+  {
+    "theme": "paper",
+    "control": "input",
+    "border": 3.7407478798401086,
+    "focus": 7.065045281006435
+  },
+  {
+    "theme": "paper",
+    "control": "switch off",
+    "thumb": 4.907654462065519,
+    "boundary": 4.621122304267415
+  },
+  {
+    "theme": "paper",
+    "control": "switch on",
+    "thumb": 7.5031126023233075,
+    "boundary": 7.065045281006435
+  },
+  {
+    "theme": "forest",
+    "control": "input",
+    "border": 4.917920587987416,
+    "focus": 9.673982480330391
+  },
+  {
+    "theme": "forest",
+    "control": "switch off",
+    "thumb": 5.120668325952203,
+    "boundary": 4.724234224944845
+  },
+  {
+    "theme": "forest",
+    "control": "switch on",
+    "thumb": 10.485774691542249,
+    "boundary": 9.673982480330391
+  },
+  {
+    "theme": "petrol-light",
+    "control": "input",
+    "border": 3.8271409839060704,
+    "focus": 6.2845483528309405
+  },
+  {
+    "theme": "petrol-light",
+    "control": "switch off",
+    "thumb": 4.816895089898922,
+    "boundary": 4.816895089898922
+  },
+  {
+    "theme": "petrol-light",
+    "control": "switch on",
+    "thumb": 6.2845483528309405,
+    "boundary": 6.2845483528309405
+  },
+  {
+    "theme": "petrol-dark",
+    "control": "input",
+    "border": 4.61176288147393,
+    "focus": 7.939743942711441
+  },
+  {
+    "theme": "petrol-dark",
+    "control": "switch off",
+    "thumb": 4.910091647379162,
+    "boundary": 4.513789017538584
+  },
+  {
+    "theme": "petrol-dark",
+    "control": "switch on",
+    "thumb": 8.636839308164118,
+    "boundary": 7.939743942711441
+  },
+  {
+    "theme": "indigo-light",
+    "control": "input",
+    "border": 3.9987961152083837,
+    "focus": 7.930065429900033
+  },
+  {
+    "theme": "indigo-light",
+    "control": "switch off",
+    "thumb": 4.764173030906986,
+    "boundary": 4.764173030906986
+  },
+  {
+    "theme": "indigo-light",
+    "control": "switch on",
+    "thumb": 7.930065429900033,
+    "boundary": 7.930065429900033
+  },
+  {
+    "theme": "indigo-dark",
+    "control": "input",
+    "border": 4.93874292840213,
+    "focus": 9.320316942077397
+  },
+  {
+    "theme": "indigo-dark",
+    "control": "switch off",
+    "thumb": 4.9097196424685245,
+    "boundary": 4.9097196424685245
+  },
+  {
+    "theme": "indigo-dark",
+    "control": "switch on",
+    "thumb": 9.320316942077397,
+    "boundary": 9.320316942077397
+  },
+  {
+    "theme": "amber-light",
+    "control": "input",
+    "border": 3.5935308711761054,
+    "focus": 6.99573253574521
+  },
+  {
+    "theme": "amber-light",
+    "control": "switch off",
+    "thumb": 4.810035567265164,
+    "boundary": 4.766321487425924
+  },
+  {
+    "theme": "amber-light",
+    "control": "switch on",
+    "thumb": 7.0598935478398195,
+    "boundary": 6.99573253574521
+  },
+  {
+    "theme": "amber-dark",
+    "control": "input",
+    "border": 5.1457870896100255,
+    "focus": 9.442324151805067
+  },
+  {
+    "theme": "amber-dark",
+    "control": "switch off",
+    "thumb": 5.241194322189528,
+    "boundary": 4.747167529959374
+  },
+  {
+    "theme": "amber-dark",
+    "control": "switch on",
+    "thumb": 10.424965080837856,
+    "boundary": 9.442324151805067
+  }
+]

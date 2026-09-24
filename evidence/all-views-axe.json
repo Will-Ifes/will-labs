@@ -1,0 +1,772 @@
+[
+  {
+    "view": "inicio",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "cores",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "tipografia",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "ritmo",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "dimensoes",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "movimento",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "acessibilidade",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-botoes",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-campo",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-input-texto",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-date",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-select",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-select-options",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-tags",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-avatar",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-async",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-switch",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tabs",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tags",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-card",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-feedback",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-empty",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-avatar",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-labpage",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-code-table",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-diagram",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-comparison",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-popover",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-dropdown",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-drawer",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-modal",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tooltip",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-image",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-upload",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-calendar",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-grid",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-table",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-accordion",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-collapsible",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-slider",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-chart",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-progress",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-link",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-breadcrumb",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-states",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "contexto",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-alert",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-toast",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-banner",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-time",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-datetime",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-textarea",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-shortcuts",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-shell",
+    "width": 1440,
+    "theme": "paper",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-async",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "inicio",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "cores",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "tipografia",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "ritmo",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "dimensoes",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "movimento",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "acessibilidade",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-botoes",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-campo",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-input-texto",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-date",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-select",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-select-options",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-tags",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-avatar",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-async",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-switch",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tabs",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tags",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-card",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-feedback",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-empty",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-avatar",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-labpage",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-code-table",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-diagram",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-comparison",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-popover",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-dropdown",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-drawer",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-modal",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-tooltip",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-image",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-upload",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-calendar",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-grid",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-table",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-accordion",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-collapsible",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-slider",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-chart",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-progress",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-link",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-breadcrumb",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-states",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "contexto",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-alert",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-toast",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-banner",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-time",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-datetime",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-textarea",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-shortcuts",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-shell",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "review",
+    "violations": []
+  },
+  {
+    "view": "comp-multiselect-async",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  }
+]

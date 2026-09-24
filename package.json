@@ -1,0 +1,24 @@
+{
+  "name": "will-labs-workspace",
+  "version": "2.4.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/ui",
+    "packages/tokens"
+  ],
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "build": "node packages/tokens/build.mjs",
+    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs",
+    "test:audit": "node tests/audit-views.mjs",
+    "test:states": "node tests/states.mjs && node tests/nontext.mjs",
+    "format": "prettier --write packages/ui apps/docs tests scripts docs",
+    "verify": "node scripts/verify.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "playwright": "1.58.2",
+    "prettier": "3.9.9"
+  }
+}

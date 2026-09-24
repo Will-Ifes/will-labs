@@ -1,0 +1,26 @@
+[
+  {
+    "name": "value setter syncs native checkbox",
+    "passed": true
+  },
+  {
+    "name": "stale response ignored even when loader ignores abort",
+    "passed": true
+  },
+  {
+    "name": "reconnection recovers pending request",
+    "passed": true
+  },
+  {
+    "name": "selection emits public event",
+    "passed": true
+  },
+  {
+    "name": "dialog validates required field",
+    "passed": true
+  },
+  {
+    "name": "dialog confirms and returns focus",
+    "passed": true
+  }
+]

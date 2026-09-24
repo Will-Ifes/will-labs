@@ -1,14 +1,53 @@
-# Will Labs · Design system v2.3
+# Will Labs · Design system v2.4
 
-Abra `index.html` em um navegador para explorar o guia offline. O ZIP conserva as fontes editáveis: `components-v2.3.css`, `components-v2.3.js` e `src/legacy/`. Após editar CSS/JS, execute `python build-v2.3.py` para atualizar o HTML autocontido.
+Repositório do Will Labs, iniciado a partir da v2.3 e concentrado na Sprint 1 do PDF. Biblioteca compartilhada, tokens semânticos e aplicação de documentação que importa os componentes. As demonstrações legadas continuam acessíveis e marcadas **em revisão**.
 
-## Mudanças desta versão
+## Rodar
 
-- Diálogos com controle explícito para abrir, cancelar e fechar; o foco retorna ao botão de origem. Drawer, modal e atalhos usam a mesma lógica.
-- Tema escolhido por quatro cartões com amostra circular diagonal maior. Avatar, ações dentro de campos, switch e superfícies usam cores semânticas em cada tema.
-- Os containers do catálogo recebem o contrato `data-wl-surface`, com variantes `structured` e `content`, e compartilham raio, borda, fundo e padding.
-- Multiselect com carregamento incremental simulado: busca, seleção múltipla, tags removíveis, paginação ao rolar, estado de carregamento e botão alternativo.
-- Sem deslocamento vertical no hover de botões e cards. O foco por teclado usa contorno fino sobre o mesmo realce cromático.
-- Aviso do switch usa a anatomia do componente de aviso e descreve o estado atual.
+Requisito: Node.js 20 ou superior. Não há dependências de runtime nem build obrigatório para abrir a versão distribuída.
 
-O texto em `PLANO-PDF-STATUS.md` confronta esta entrega com a Sprint 1 do PDF e registra o trabalho de arquitetura pendente. A v2.3 permanece uma prévia local: as views antigas marcadas “em revisão” não constituem componentes aprovados nem pacote de produção. Testes visuais em navegador real e leitor de tela ainda são necessários.
+```sh
+npm start
+```
+
+Abra **http://localhost:4174/design-system**. O servidor escuta somente em loopback. Para outra porta: `PORT=4180 npm start`. Use HTTP; módulos ES não são compatíveis com abrir index.html via file://.
+
+## Desenvolver e testar
+
+```sh
+npm ci
+npm run build       # gera CSS e amostras a partir dos tokens
+npx playwright install chromium
+npm test           # interação, 8 temas, desktop/mobile, contraste, estados
+npm run test:audit # axe nas 55 views, desktop claro e mobile escuro
+npm run verify     # gera tokens, sobe servidor isolado e roda toda a validação
+```
+
+Mantenha `npm start` em outro terminal. Para usar Chrome instalado, por exemplo em Linux: `CHROME_PATH=/usr/bin/google-chrome npm run verify`. Os testes usam http://localhost:4174 por padrão e aceitam `BASE_URL`. O comando `verify` usa a porta 4185 e administra seu próprio servidor.
+
+## Estrutura
+
+- `packages/tokens`: fonte semântica única por tema, gerador e CSS; amostras vêm da mesma fonte.
+- `packages/ui`: componentes reutilizáveis, contratos e estilos; não conhece nomes ou dados do catálogo.
+- `apps/docs`: conteúdo, exemplos e loader simulado; importa a UI compartilhada.
+- `apps/docs/consumer.html`: segundo consumidor sem estilos ou scripts legados.
+- `src/legacy`: fontes preservadas das views ainda não migradas; `apps/docs/legacy-05.css` e `legacy-enhancements.js` adaptam essa transição.
+- `docs/adr`: escolha da arquitetura e design system próprio × biblioteca.
+- `tests` e `evidence`: testes reproduzíveis, resultados JSON, auditoria por view e capturas de navegador.
+- `historico`: decisões e fontes da v2.3, mantidas para rastreabilidade. Não são a API atual.
+
+## Usar em outra aplicação
+
+Importe `packages/ui/index.js`, carregue `packages/tokens/semantic.css` e `packages/ui/styles.css`. Consulte `packages/ui/README.md` para contratos e o consumidor independente para uma composição real. Os pacotes internos estão em versão 0.1.0; a versão 2.4 identifica esta entrega do guia.
+
+## Estado real
+
+Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. Não houve publicação externa, implementação do futuro produto de fluxos, revisão com leitor de tela ou validação em Safari/Firefox.
+
+## Histórico e colaboração
+
+A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. O nome do produto usado nos Labs ainda está em escolha.
+
+A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; exemplos nativos restantes continuam em revisão.
+
+A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).
