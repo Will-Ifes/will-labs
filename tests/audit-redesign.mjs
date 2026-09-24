@@ -80,37 +80,36 @@ try {
     );
     assert.equal(await time.locator("input").first().inputValue(), "14:30");
     await time.getByRole("button", { name: "Abrir seleção de hora" }).click();
-    await time
-      .locator(".ui-time-group")
-      .first()
+    const wheel = page.locator(".ui-time-popup:not([hidden])");
+    await wheel
+      .getByRole("group", { name: "Horas" })
       .getByRole("button", { name: "15", exact: true })
       .click();
-    await time
-      .locator(".ui-time-group")
-      .nth(1)
+    await wheel
+      .getByRole("group", { name: "Minutos" })
       .getByRole("button", { name: "45", exact: true })
       .click();
+    assert.equal(await wheel.locator(".ui-time-preview").innerText(), "15:45");
+    await wheel.getByRole("button", { name: "Aplicar" }).click();
     assert.equal(await time.locator("input").first().inputValue(), "15:45");
     await time.getByRole("button", { name: "Abrir seleção de hora" }).click();
-    await time
-      .locator(".ui-time-group")
-      .first()
+    await wheel
+      .getByRole("group", { name: "Horas" })
       .getByRole("button", { name: "23", exact: true })
       .click();
-    const zeroMinute = time
-      .locator(".ui-time-group")
-      .nth(1)
-      .getByRole("button", { name: "00", exact: true });
-    assert.ok(
-      await zeroMinute.evaluate(
-        (element) => element === document.activeElement,
-      ),
-    );
-    await zeroMinute.click();
+    assert.equal(await wheel.locator(".ui-time-preview").innerText(), "23:00");
+    await wheel.getByRole("button", { name: "Aplicar" }).click();
     assert.equal(await time.locator("input").first().inputValue(), "23:00");
     await time.getByRole("button", { name: "Abrir seleção de hora" }).click();
     await page.keyboard.press("Escape");
-    assert.equal(await time.locator(".ui-time-popup").isVisible(), false);
+    assert.equal(
+      await page
+        .locator(
+          `#${await time.getByRole("button", { name: "Abrir seleção de hora" }).getAttribute("aria-controls")}`,
+        )
+        .isVisible(),
+      false,
+    );
     assert.ok(
       await time
         .getByRole("button", { name: "Abrir seleção de hora" })

@@ -19,6 +19,7 @@ export function Button({
   variant = "primary",
   onClick,
   disabled = false,
+  size = "medium",
   ...attrs
 }) {
   const { class: extraClass = "", ...rest } = attrs;
@@ -26,13 +27,34 @@ export function Button({
     "button",
     {
       type: "button",
-      class: `ui-button ui-button--${variant} ${extraClass}`.trim(),
+      class:
+        `ui-button ui-button--${variant} ui-button--${size} ${extraClass}`.trim(),
       disabled,
       ...rest,
       onclick: onClick,
     },
     label,
   );
+}
+export function IconButton({
+  label,
+  onClick,
+  icon = "×",
+  class: extraClass = "",
+  ...attrs
+}) {
+  return Button({
+    label: element(
+      "span",
+      { class: "ui-icon-button-glyph", "aria-hidden": true },
+      icon,
+    ),
+    variant: "text",
+    class: `ui-icon-button ${extraClass}`.trim(),
+    "aria-label": label,
+    onClick,
+    ...attrs,
+  });
 }
 export function Surface({ title, children = [], variant = "content" } = {}) {
   return element(
@@ -78,7 +100,7 @@ export function Input({
     const clear = Button({
       label: "×",
       variant: "text",
-      class: "ui-input-action",
+      class: "ui-input-action ui-input-action--clear",
       "aria-label": `Limpar ${label}`,
       onClick: () => {
         control.value = "";
@@ -339,7 +361,19 @@ export function LabPage({
 /** Scope-owned controller. Returns a disposer; no navigation or delegated document clicks. */
 export function connectDialog(dialog) {
   let opener;
+  const fitViewport = () => {
+    const height = window.visualViewport?.height || window.innerHeight;
+    const available = Math.max(
+      120,
+      height - (dialog.classList.contains("wl-drawer") ? 0 : 16),
+    );
+    dialog.style.maxHeight = `${available}px`;
+    if (dialog.classList.contains("wl-drawer"))
+      dialog.style.height = `${available}px`;
+  };
   const close = (event) => {
+    window.visualViewport?.removeEventListener("resize", fitViewport);
+    window.removeEventListener("resize", fitViewport);
     opener?.isConnected && opener.focus({ preventScroll: true });
     dialog.dispatchEvent(
       new CustomEvent("wl-close", {
@@ -411,6 +445,9 @@ export function connectDialog(dialog) {
       if (dialog.open) return;
       opener = trigger;
       dialog.returnValue = "";
+      fitViewport();
+      window.visualViewport?.addEventListener("resize", fitViewport);
+      window.addEventListener("resize", fitViewport);
       dialog.showModal();
       dialog.querySelector("[data-close-dialog]")?.focus();
     },
@@ -423,6 +460,8 @@ export function connectDialog(dialog) {
       dialog.removeEventListener("cancel", cancel);
       dialog.removeEventListener("click", click);
       dialog.removeEventListener("submit", submit);
+      window.visualViewport?.removeEventListener("resize", fitViewport);
+      window.removeEventListener("resize", fitViewport);
     },
   };
 }
@@ -453,10 +492,8 @@ export function Dialog({
     element("form", { method: "dialog" }, [
       element("header", {}, [
         element("h2", { id }, title),
-        Button({
-          label: "×",
-          variant: "text",
-          "aria-label": "Fechar diálogo",
+        IconButton({
+          label: "Fechar diálogo",
           "data-close-dialog": "",
         }),
       ]),
@@ -478,3 +515,8 @@ export function Dialog({
   return { element: dialog, ...controller };
 }
 export { WLTimeField } from "./time-field.js";
+
+export { Popover, Dropdown, Tooltip, ToastHost } from "./overlays.js";
+export { connectFloating } from "./floating.js";
+export { InputNumber } from "./number-field.js";
+export { Select } from "./select-field.js";

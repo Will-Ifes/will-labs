@@ -14,7 +14,7 @@ Will Labs precisa demonstrar as mesmas peças usadas no produto. Imagens ou exem
 
 ## Decisão
 
-Adotar 3 nesta sprint. Tokens e UI são pacotes internos versionados. A documentação compõe `Surface`, `Button`, `Input`, `Tabs`, `Code`, `Table`, `LabPage`, `Diagram`, `Comparison`, `Switch`, `Tag` e `wl-time-field`; os diálogos são controlados por `connectDialog`; o multiselect recebe um loader e emite `wl-change`. O campo de hora usa entrada HH:MM e seletor visual próprios. O calendário permanece em revisão, portanto a composição de data e hora também não é apresentada como pronta. Não há dados do produto no pacote. Não introduzir bibliotecas apenas para cobrir exemplos ainda sem demanda.
+Adotar 3 nesta sprint. Tokens e UI são pacotes internos versionados. A documentação compõe `Surface`, `Button`, `Input`, `Tabs`, `Code`, `Table`, `LabPage`, `Diagram`, `Comparison`, `Switch`, `Tag` e `wl-time-field`, `InputNumber`, `Select` e overlays com posicionamento compartilhado; os diálogos são controlados por `connectDialog`; o multiselect recebe um loader e emite `wl-change`. O campo de hora usa entrada HH:MM e rodas de hora/minuto próprias. O calendário permanece em revisão, portanto a composição de data e hora também não é apresentada como pronta. Não há dados do produto no pacote. Não introduzir bibliotecas apenas para cobrir exemplos ainda sem demanda.
 
 ## Consequências e limites
 

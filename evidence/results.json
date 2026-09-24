@@ -3292,6 +3292,13 @@
     {
       "width": 1440,
       "theme": "paper",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -3301,7 +3308,7 @@
       "theme": "paper",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3413,14 +3420,14 @@
       "theme": "paper",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3441,7 +3448,7 @@
       "theme": "paper",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3553,7 +3560,7 @@
       "theme": "paper",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3574,7 +3581,7 @@
       "theme": "paper",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -3725,6 +3732,13 @@
     {
       "width": 1440,
       "theme": "forest",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -3734,7 +3748,7 @@
       "theme": "forest",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3846,14 +3860,14 @@
       "theme": "forest",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3874,7 +3888,7 @@
       "theme": "forest",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3986,7 +4000,7 @@
       "theme": "forest",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4007,7 +4021,7 @@
       "theme": "forest",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -4158,6 +4172,13 @@
     {
       "width": 1440,
       "theme": "petrol-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -4167,7 +4188,7 @@
       "theme": "petrol-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4279,14 +4300,14 @@
       "theme": "petrol-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4307,7 +4328,7 @@
       "theme": "petrol-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4419,7 +4440,7 @@
       "theme": "petrol-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4440,7 +4461,7 @@
       "theme": "petrol-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -4591,6 +4612,13 @@
     {
       "width": 1440,
       "theme": "petrol-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -4600,7 +4628,7 @@
       "theme": "petrol-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4712,14 +4740,14 @@
       "theme": "petrol-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4740,7 +4768,7 @@
       "theme": "petrol-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4852,7 +4880,7 @@
       "theme": "petrol-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4873,7 +4901,7 @@
       "theme": "petrol-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -5024,6 +5052,13 @@
     {
       "width": 1440,
       "theme": "indigo-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -5033,7 +5068,7 @@
       "theme": "indigo-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5145,14 +5180,14 @@
       "theme": "indigo-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5173,7 +5208,7 @@
       "theme": "indigo-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5285,7 +5320,7 @@
       "theme": "indigo-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5306,7 +5341,7 @@
       "theme": "indigo-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -5457,6 +5492,13 @@
     {
       "width": 1440,
       "theme": "indigo-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -5466,7 +5508,7 @@
       "theme": "indigo-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5578,14 +5620,14 @@
       "theme": "indigo-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5606,7 +5648,7 @@
       "theme": "indigo-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5718,7 +5760,7 @@
       "theme": "indigo-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5739,7 +5781,7 @@
       "theme": "indigo-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "migrated"
+      "status": "review"
     },
     {
       "width": 1440,
@@ -5890,6 +5932,13 @@
     {
       "width": 1440,
       "theme": "amber-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -5899,7 +5948,7 @@
       "theme": "amber-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6011,14 +6060,14 @@
       "theme": "amber-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6039,7 +6088,7 @@
       "theme": "amber-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6151,7 +6200,7 @@
       "theme": "amber-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6323,6 +6372,13 @@
     {
       "width": 1440,
       "theme": "amber-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -6332,7 +6388,7 @@
       "theme": "amber-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6444,14 +6500,14 @@
       "theme": "amber-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6472,7 +6528,7 @@
       "theme": "amber-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6584,7 +6640,7 @@
       "theme": "amber-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6756,6 +6812,13 @@
     {
       "width": 390,
       "theme": "paper",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -6765,7 +6828,7 @@
       "theme": "paper",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6877,14 +6940,14 @@
       "theme": "paper",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6905,7 +6968,7 @@
       "theme": "paper",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7017,7 +7080,7 @@
       "theme": "paper",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7189,6 +7252,13 @@
     {
       "width": 390,
       "theme": "forest",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -7198,7 +7268,7 @@
       "theme": "forest",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7310,14 +7380,14 @@
       "theme": "forest",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7338,7 +7408,7 @@
       "theme": "forest",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7450,7 +7520,7 @@
       "theme": "forest",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7622,6 +7692,13 @@
     {
       "width": 390,
       "theme": "petrol-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -7631,7 +7708,7 @@
       "theme": "petrol-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7743,14 +7820,14 @@
       "theme": "petrol-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7771,7 +7848,7 @@
       "theme": "petrol-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7883,7 +7960,7 @@
       "theme": "petrol-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8055,6 +8132,13 @@
     {
       "width": 390,
       "theme": "petrol-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -8064,7 +8148,7 @@
       "theme": "petrol-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8176,14 +8260,14 @@
       "theme": "petrol-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8204,7 +8288,7 @@
       "theme": "petrol-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8316,7 +8400,7 @@
       "theme": "petrol-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8488,6 +8572,13 @@
     {
       "width": 390,
       "theme": "indigo-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -8497,7 +8588,7 @@
       "theme": "indigo-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8609,14 +8700,14 @@
       "theme": "indigo-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8637,7 +8728,7 @@
       "theme": "indigo-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8749,7 +8840,7 @@
       "theme": "indigo-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8921,6 +9012,13 @@
     {
       "width": 390,
       "theme": "indigo-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -8930,7 +9028,7 @@
       "theme": "indigo-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9042,14 +9140,14 @@
       "theme": "indigo-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9070,7 +9168,7 @@
       "theme": "indigo-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9182,7 +9280,7 @@
       "theme": "indigo-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9354,6 +9452,13 @@
     {
       "width": 390,
       "theme": "amber-light",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -9363,7 +9468,7 @@
       "theme": "amber-light",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9475,14 +9580,14 @@
       "theme": "amber-light",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9503,7 +9608,7 @@
       "theme": "amber-light",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9615,7 +9720,7 @@
       "theme": "amber-light",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9787,6 +9892,13 @@
     {
       "width": 390,
       "theme": "amber-dark",
+      "view": "comp-number",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
       "view": "comp-date",
       "overflow": false,
       "status": "review"
@@ -9796,7 +9908,7 @@
       "theme": "amber-dark",
       "view": "comp-select",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9908,14 +10020,14 @@
       "theme": "amber-dark",
       "view": "comp-popover",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-dropdown",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9936,7 +10048,7 @@
       "theme": "amber-dark",
       "view": "comp-tooltip",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10048,7 +10160,7 @@
       "theme": "amber-dark",
       "view": "comp-toast",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,

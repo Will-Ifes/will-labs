@@ -1,3 +1,4 @@
+import { connectFloating } from "./floating.js";
 const months = [
   "Janeiro",
   "Fevereiro",
@@ -31,7 +32,14 @@ class WLPanel extends HTMLElement {
 
 class WLDateField extends HTMLElement {
   connectedCallback() {
-    if (this.dataset.ready) return;
+    if (this.dataset.ready) {
+      this.floating = connectFloating({
+        anchor: this.toggle,
+        panel: this.popup,
+        minWidth: true,
+      });
+      return;
+    }
     this.dataset.ready = "true";
     this.classList.add("wl-date-field");
     const id = this.id || `wl-date-${++serial}`;
@@ -160,24 +168,26 @@ class WLDateField extends HTMLElement {
           ?.focus();
       }
     });
-    document.addEventListener("pointerdown", (e) => {
-      if (!this.contains(e.target)) this.close();
+    this.floating = connectFloating({
+      anchor: toggle,
+      panel: popup,
+      minWidth: true,
     });
     if (this.selected) set(this.selected);
     else this.render();
+  }
+  disconnectedCallback() {
+    this.floating?.dispose();
   }
   open() {
     document.querySelectorAll("wl-date-field").forEach((x) => {
       if (x !== this) x.close();
     });
-    this.popup.hidden = false;
-    this.toggle.setAttribute("aria-expanded", "true");
     this.render();
+    this.floating.show();
   }
   close() {
-    if (!this.popup) return;
-    this.popup.hidden = true;
-    this.toggle.setAttribute("aria-expanded", "false");
+    this.floating?.close();
   }
   render() {
     const popup = this.popup;

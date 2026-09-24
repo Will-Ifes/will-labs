@@ -17,7 +17,7 @@ document.querySelectorAll('[data-comparison]').forEach(button=>button.addEventLi
 (function(){
  const views=[...document.querySelectorAll('.ds-view')];
  const links=[...document.querySelectorAll('.ds-sidebar a[href^="#"]')];
- const aliases={'comp-search':'comp-input-texto','comp-password':'comp-input-texto','comp-duration':'comp-date','comp-number':'comp-date','comp-select-avatar':'comp-select','comp-feedback':'comp-feedback','componentes':'comp-botoes','indice':'inicio','aplicacao':'comp-labpage'};
+ const aliases={'comp-search':'comp-input-texto','comp-password':'comp-input-texto','comp-duration':'comp-date','comp-select-avatar':'comp-select','comp-feedback':'comp-feedback','componentes':'comp-botoes','indice':'inicio','aplicacao':'comp-labpage'};
  function show(){const id=decodeURIComponent(location.hash.slice(1))||'inicio';const viewId=aliases[id]||id;const current=views.find(x=>x.dataset.view===viewId)?viewId:'inicio';views.forEach(x=>x.hidden=x.dataset.view!==current);links.forEach(a=>{if(a.hash==='#'+current){a.setAttribute('aria-current','page');a.closest('details')?.setAttribute('open','')}else a.removeAttribute('aria-current')});const sidebar=document.getElementById('ds-sidebar');sidebar.dataset.open='false';const toggle=document.querySelector('.ds-mobile-toggle');toggle.setAttribute('aria-expanded','false');document.title=(document.querySelector('.ds-view:not([hidden]) h1')?.textContent||'Guia')+' · Will Labs';window.scrollTo(0,0)}
  window.addEventListener('hashchange',show);show();
  document.querySelector('.ds-mobile-toggle').addEventListener('click',e=>{const side=document.getElementById('ds-sidebar');const open=side.dataset.open!=='true';side.dataset.open=String(open);e.currentTarget.setAttribute('aria-expanded',String(open))});

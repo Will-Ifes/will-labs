@@ -19,7 +19,7 @@ npm ci
 npm run build       # gera CSS e amostras a partir dos tokens
 npx playwright install chromium
 npm test           # interação, 8 temas, desktop/mobile, contraste, estados
-npm run test:audit # axe nas 55 views, desktop claro e mobile escuro
+npm run test:audit # axe nas views ativas, desktop claro e mobile escuro
 npm run verify     # gera tokens, sobe servidor isolado e roda toda a validação
 ```
 
@@ -48,6 +48,6 @@ Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. 
 
 A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. O nome do produto usado nos Labs ainda está em escolha.
 
-A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; exemplos nativos restantes continuam em revisão.
+A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select` e overlays vêm do pacote. Exemplos nativos restantes continuam em revisão. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 
 A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).

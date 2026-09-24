@@ -1,6 +1,6 @@
 # Auditoria das views
 
-55 views: 18 migradas localmente, 37 em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; 0 violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.
+56 views: 24 migradas localmente, 32 em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; 0 violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.
 
 | View | Situação | Violações axe |
 | --- | --- | ---: |
@@ -14,8 +14,9 @@
 | comp-botoes | Migrada · validação local | 0 |
 | comp-campo | Migrada · validação local | 0 |
 | comp-input-texto | Migrada · validação local | 0 |
+| comp-number | Migrada · validação local | 0 |
 | comp-date | Em revisão | 0 |
-| comp-select | Em revisão | 0 |
+| comp-select | Migrada · validação local | 0 |
 | comp-select-options | Em revisão | 0 |
 | comp-multiselect-tags | Migrada · validação local | 0 |
 | comp-multiselect-avatar | Migrada · validação local | 0 |
@@ -31,11 +32,11 @@
 | comp-code-table | Migrada · validação local | 0 |
 | comp-diagram | Migrada · validação local | 0 |
 | comp-comparison | Migrada · validação local | 0 |
-| comp-popover | Em revisão | 0 |
-| comp-dropdown | Em revisão | 0 |
+| comp-popover | Migrada · validação local | 0 |
+| comp-dropdown | Migrada · validação local | 0 |
 | comp-drawer | Migrada · validação local | 0 |
 | comp-modal | Migrada · validação local | 0 |
-| comp-tooltip | Em revisão | 0 |
+| comp-tooltip | Migrada · validação local | 0 |
 | comp-image | Em revisão | 0 |
 | comp-upload | Em revisão | 0 |
 | comp-calendar | Em revisão | 0 |
@@ -51,7 +52,7 @@
 | comp-states | Em revisão | 0 |
 | contexto | Em revisão | 0 |
 | comp-alert | Em revisão | 0 |
-| comp-toast | Em revisão | 0 |
+| comp-toast | Migrada · validação local | 0 |
 | comp-banner | Em revisão | 0 |
 | comp-time | Migrada · validação local | 0 |
 | comp-datetime | Em revisão | 0 |

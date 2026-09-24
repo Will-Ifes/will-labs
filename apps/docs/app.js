@@ -1,8 +1,15 @@
 import {
   element as el,
   Button,
+  IconButton,
   Surface,
   Input,
+  InputNumber,
+  Select,
+  Popover,
+  Dropdown,
+  Tooltip,
+  ToastHost,
   Notice,
   Switch,
   Tabs,
@@ -217,11 +224,32 @@ render(
       ],
     }),
     Surface({
+      title: "Densidade e ações de ícone",
+      children: [
+        el(
+          "p",
+          {},
+          "Small 32 px · padrão 36 px · large 44 px. O × tem glifo legível e alvo independente do tamanho do botão textual.",
+        ),
+        row(
+          Button({ label: "Small", size: "small" }),
+          Button({ label: "Padrão", size: "medium" }),
+          Button({ label: "Large", size: "large" }),
+          IconButton({
+            label: "Fechar exemplo",
+            onClick: () => {
+              feedback.textContent = "Exemplo fechado.";
+            },
+          }),
+        ),
+      ],
+    }),
+    Surface({
       title: "Uso do pacote",
       children: [
         Code({
           language: "JavaScript",
-          code: "Button({ label: 'Salvar', onClick: () => save() });",
+          code: "Button({ label: 'Salvar', size: 'medium', onClick: () => save() });",
         }),
       ],
     }),
@@ -446,6 +474,136 @@ render(
     Surface({
       title: "Agendar execução",
       children: [row(appointmentDate, appointmentTime), appointmentStatus],
+    }),
+  ],
+);
+const selectStatus = el("p", { role: "status" }, "Opção atual: Planejamento.");
+const selectField = Select({
+  label: "Etapa do laboratório",
+  value: "planejamento",
+  options: [
+    { value: "planejamento", label: "Planejamento", avatar: "PL" },
+    { value: "prototipo", label: "Protótipo", avatar: "PR" },
+    { value: "validacao", label: "Validação", avatar: "VA" },
+  ],
+  onChange: (value) => {
+    const labels = {
+      planejamento: "Planejamento",
+      prototipo: "Protótipo",
+      validacao: "Validação",
+    };
+    selectStatus.textContent = `Opção atual: ${labels[value]}.`;
+  },
+});
+render(
+  "comp-select",
+  "Select",
+  "Seleção consistente entre navegadores, com teclado e lista posicionada dentro da viewport.",
+  [Surface({ title: "Seleção única", children: [selectField, selectStatus] })],
+);
+const numberStatus = el("p", { role: "status" }, "Valor inicial: 12,5.");
+const numberField = InputNumber({
+  label: "Quantidade de horas",
+  value: 12.5,
+  min: 0,
+  max: 24,
+  step: 0.5,
+  help: "De 0 a 24, em intervalos de 0,5.",
+});
+numberField.addEventListener("change", () => {
+  numberStatus.textContent = `Valor: ${numberField.value.toLocaleString("pt-BR")}.`;
+});
+render(
+  "comp-number",
+  "Número",
+  "Valor com limites, passos, entrada decimal por teclado e botões próprios.",
+  [Surface({ title: "InputNumber", children: [numberField, numberStatus] })],
+);
+const popoverStatus = el("p", { role: "status" }, "Nenhuma ação escolhida.");
+const popover = Popover({
+  triggerLabel: "Ver detalhes da versão",
+  title: "Versão 3",
+  text: "Publicada por Ana em 12 de setembro. Duas alterações desde a versão anterior.",
+  actionLabel: "Ver alterações",
+  onAction: () => {
+    popoverStatus.textContent = "Alterações abertas nesta demonstração.";
+  },
+});
+render(
+  "comp-popover",
+  "Popover",
+  "Informação contextual interativa, posicionada dentro da viewport.",
+  [Surface({ children: [popover.element, popoverStatus] })],
+);
+const dropdownStatus = el("p", { role: "status" }, "Escolha uma ação.");
+const dropdown = Dropdown({
+  label: "Ações do fluxo",
+  items: [
+    { label: "Duplicar" },
+    { label: "Compartilhar" },
+    { label: "Arquivar" },
+  ],
+  onSelect: (item) => {
+    dropdownStatus.textContent = `${item.label}: demonstração local.`;
+  },
+});
+render(
+  "comp-dropdown",
+  "Dropdown",
+  "Menu de ações com rotação por setas, Escape e posicionamento adaptativo.",
+  [Surface({ children: [dropdown.element, dropdownStatus] })],
+);
+const tooltip = Tooltip({
+  label: "O que significa?",
+  text: "A execução termina após o último passo.",
+});
+render(
+  "comp-tooltip",
+  "Tooltip",
+  "Ajuda breve em hover e foco, limitada à área visível.",
+  [
+    Surface({
+      children: [
+        tooltip.element,
+        el("p", {}, "Informações essenciais permanecem visíveis na página."),
+      ],
+    }),
+  ],
+);
+const toastHost = ToastHost();
+render(
+  "comp-toast",
+  "Toast",
+  "Retorno breve e discreto; erros que exigem correção permanecem no contexto.",
+  [
+    Surface({
+      title: "Retornos",
+      children: [
+        row(
+          ...[
+            [
+              "Sucesso",
+              "success",
+              "Alterações salvas",
+              "O rascunho foi atualizado.",
+            ],
+            [
+              "Informação",
+              "info",
+              "Execução iniciada",
+              "Acompanhe o progresso na lista.",
+            ],
+            ["Atenção", "warning", "Revise os dados", "Há itens a conferir."],
+            ["Erro", "danger", "Não foi possível salvar", "Tente novamente."],
+          ].map(([label, kind, title, text]) =>
+            Button({
+              label,
+              variant: "outline",
+              onClick: () => toastHost.show({ title, text, kind }),
+            }),
+          ),
+        ),
+      ],
     }),
   ],
 );

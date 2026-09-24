@@ -460,3 +460,7 @@ button:active,
 .ui-surface[data-wl-surface="structured"] .catalog-body .ui-field {
   margin: 0;
 }
+
+:root {
+  --wl-toast-bottom: 64px;
+}

@@ -1,3 +1,4 @@
+import { connectFloating } from "../../packages/ui/floating.js";
 import { themeOptions as themes } from "../../packages/tokens/themes.js";
 const themeSelect = document.getElementById("wl-theme-choice");
 let theme;
@@ -12,6 +13,12 @@ themePicker.innerHTML =
 themeSelect?.closest("label")?.replaceWith(themePicker);
 const trigger = themePicker.querySelector("button"),
   options = themePicker.querySelector(".wl-theme-options");
+const floating = connectFloating({
+  anchor: trigger,
+  panel: options,
+  placement: "bottom",
+  align: "end",
+});
 const split = (a, b) =>
   `linear-gradient(135deg,${a} 0%,${a} 49%,${b} 51%,${b} 100%)`;
 const apply = (v) => {
@@ -43,30 +50,17 @@ Object.entries(themes).forEach(([key, [name, a, b, mode]]) => {
   btt.innerHTML = `<span class="wl-theme-preview" style="--preview-surface:${b}"><span class="wl-theme-swatch" style="background:${split(a, b)}"></span><span class="wl-theme-check" aria-hidden="true">✓</span></span><span class="wl-theme-name">${name}</span><small>${mode}</small>`;
   btt.onclick = () => {
     apply(key);
-    options.hidden = true;
-    trigger.setAttribute("aria-expanded", "false");
-    trigger.focus();
+    floating.close({ returnFocus: true });
   };
   options.querySelector(".wl-theme-grid").append(btt);
 });
 trigger.onclick = () => {
-  options.hidden = !options.hidden;
-  trigger.setAttribute("aria-expanded", String(!options.hidden));
-  if (!options.hidden) options.querySelector('[aria-pressed="true"]')?.focus();
+  if (floating.open) floating.close({ returnFocus: true });
+  else {
+    floating.show();
+    options.querySelector('[aria-pressed="true"]')?.focus();
+  }
 };
-themePicker.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !options.hidden) {
-    options.hidden = true;
-    trigger.setAttribute("aria-expanded", "false");
-    trigger.focus();
-  }
-});
-document.addEventListener("pointerdown", (e) => {
-  if (!themePicker.contains(e.target)) {
-    options.hidden = true;
-    trigger.setAttribute("aria-expanded", "false");
-  }
-});
 apply(theme);
 const table = document.querySelector("#view-comp-table .wl-data-table");
 if (table) {

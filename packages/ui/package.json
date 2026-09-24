@@ -6,7 +6,11 @@
     ".": "./index.js",
     "./styles.css": "./styles.css",
     "./date-field": "./date-field.js",
-    "./time-field": "./time-field.js"
+    "./time-field": "./time-field.js",
+    "./select-field": "./select-field.js",
+    "./number-field": "./number-field.js",
+    "./floating": "./floating.js",
+    "./overlays": "./overlays.js"
   },
   "files": [
     "*.js",

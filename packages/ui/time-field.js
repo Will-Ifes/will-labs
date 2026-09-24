@@ -1,4 +1,5 @@
 import { element, Button } from "./index.js";
+import { connectFloating } from "./floating.js";
 let serial = 0;
 const pad = (n) => String(n).padStart(2, "0");
 const icon = () => {
@@ -31,7 +32,11 @@ export class WLTimeField extends HTMLElement {
   }
   connectedCallback() {
     if (this.input) {
-      document.addEventListener("pointerdown", this.onOutside);
+      this.floating = connectFloating({
+        anchor: this.toggle,
+        panel: this.popup,
+        minWidth: true,
+      });
       return;
     }
     const id = this.id || `ui-time-${++serial}`;
@@ -89,22 +94,15 @@ export class WLTimeField extends HTMLElement {
       if (this.input.value !== this.#value)
         this.setTime(this.input.value, true);
     });
-    this.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !this.popup.hidden) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.close(true);
-      }
+    this.floating = connectFloating({
+      anchor: this.toggle,
+      panel: this.popup,
+      minWidth: true,
     });
-    this.onOutside = (e) => {
-      if (!this.contains(e.target)) this.close();
-    };
-    document.addEventListener("pointerdown", this.onOutside);
     this.setTime(this.getAttribute("value") || this.#value, false);
   }
   disconnectedCallback() {
-    if (this.onOutside)
-      document.removeEventListener("pointerdown", this.onOutside);
+    this.floating?.dispose();
   }
   stepMinutes() {
     return Math.max(1, Math.floor(Number(this.getAttribute("step")) / 60) || 1);
@@ -141,69 +139,182 @@ export class WLTimeField extends HTMLElement {
     return true;
   }
   open() {
-    this.popup.hidden = false;
-    this.toggle.setAttribute("aria-expanded", "true");
-    this.hourDraft = Number(this.#value.slice(0, 2)) || 0;
+    this.draftHour = Number(this.#value.slice(0, 2)) || 0;
+    this.draftMinute = Number(this.#value.slice(3)) || 0;
     this.render();
-    this.popup.querySelector('[aria-pressed="true"]')?.focus();
+    this.floating.show();
+    this.scrollToDraft();
+    this.hourOptions[this.draftHour]?.focus({ preventScroll: true });
   }
   close(focus = false) {
-    if (!this.popup) return;
-    this.popup.hidden = true;
-    this.toggle.setAttribute("aria-expanded", "false");
-    if (focus) this.toggle.focus();
+    this.floating?.close({ returnFocus: focus });
+  }
+  scrollToDraft() {
+    for (const [list, button] of [
+      [this.hourList, this.hourOptions[this.draftHour]],
+      [this.minuteList, this.minuteOptions.get(this.draftMinute)],
+    ]) {
+      if (list && button)
+        list.scrollTop =
+          button.offsetTop + button.offsetHeight / 2 - list.clientHeight / 2;
+    }
+  }
+  select(kind, value, focus = false) {
+    if (kind === "hour") {
+      this.draftHour = value;
+      if (!this.valid(`${pad(value)}:${pad(this.draftMinute)}`)) {
+        const allowed = [...this.minuteOptions.keys()].filter((m) =>
+          this.valid(`${pad(value)}:${pad(m)}`),
+        );
+        this.draftMinute = allowed.reduce(
+          (closest, m) =>
+            Math.abs(m - this.draftMinute) <
+            Math.abs(closest - this.draftMinute)
+              ? m
+              : closest,
+          allowed[0] ?? this.draftMinute,
+        );
+      }
+    } else this.draftMinute = value;
+    this.syncDraft();
+    if (focus) {
+      const list = kind === "hour" ? this.hourList : this.minuteList;
+      const button =
+        kind === "hour"
+          ? this.hourOptions[value]
+          : this.minuteOptions.get(value);
+      if (button) {
+        list.scrollTop =
+          button.offsetTop + button.offsetHeight / 2 - list.clientHeight / 2;
+        button.focus({ preventScroll: true });
+      }
+    }
+  }
+  syncDraft() {
+    this.hourOptions.forEach((button, h) =>
+      button.setAttribute("aria-pressed", String(h === this.draftHour)),
+    );
+    for (const [m, button] of this.minuteOptions) {
+      button.disabled = !this.valid(`${pad(this.draftHour)}:${pad(m)}`);
+      button.setAttribute("aria-pressed", String(m === this.draftMinute));
+    }
+    this.preview.textContent = `${pad(this.draftHour)}:${pad(this.draftMinute)}`;
+    this.apply.disabled = !this.valid(this.preview.textContent);
+  }
+  makeWheel(kind, values) {
+    const list = element("div", {
+      class: "ui-time-wheel-list",
+      role: "group",
+      "aria-label": kind === "hour" ? "Horas" : "Minutos",
+    });
+    const buttons = [];
+    for (const value of values) {
+      const button = Button({
+        label: pad(value),
+        variant: "text",
+        class: "ui-time-wheel-option",
+        "aria-pressed": "false",
+        onClick: () => this.select(kind, value, true),
+      });
+      if (kind === "hour")
+        button.disabled = ![...Array(60).keys()].some((m) =>
+          this.valid(`${pad(value)}:${pad(m)}`),
+        );
+      list.append(button);
+      buttons.push(button);
+    }
+    let timer;
+    list.addEventListener(
+      "scroll",
+      () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          const center = list.scrollTop + list.clientHeight / 2;
+          const nearest = buttons
+            .filter((button) => !button.disabled)
+            .reduce(
+              (best, button) =>
+                !best ||
+                Math.abs(button.offsetTop + button.offsetHeight / 2 - center) <
+                  Math.abs(best.offsetTop + best.offsetHeight / 2 - center)
+                  ? button
+                  : best,
+              null,
+            );
+          if (nearest) this.select(kind, values[buttons.indexOf(nearest)]);
+        }, 90);
+      },
+      { passive: true },
+    );
+    list.addEventListener("keydown", (event) => {
+      if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const enabled = buttons.filter((button) => !button.disabled);
+      const current = enabled.indexOf(document.activeElement);
+      const next =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? enabled.length - 1
+            : Math.min(
+                enabled.length - 1,
+                Math.max(0, current + (event.key === "ArrowDown" ? 1 : -1)),
+              );
+      enabled[next]?.click();
+    });
+    return { list, buttons };
   }
   render() {
     this.popup.replaceChildren();
-    const hour = this.hourDraft ?? (Number(this.#value.slice(0, 2)) || 0);
-    const minute = Number(this.#value.slice(3)) || 0;
-    const hourGroup = element("div", { class: "ui-time-group" }, [
-      element("strong", {}, "Hora"),
-      element("div", { class: "ui-time-options" }),
-    ]);
-    const minuteGroup = element("div", { class: "ui-time-group" }, [
-      element("strong", {}, "Minutos"),
-      element("div", { class: "ui-time-options" }),
-    ]);
-    for (let h = 0; h < 24; h++) {
-      const b = Button({
-        label: pad(h),
-        variant: "text",
-        class: "ui-time-option",
-        "aria-pressed": String(h === hour),
-        onClick: () => {
-          this.hourDraft = h;
-          this.render();
-          const minutes = this.popup.querySelectorAll(".ui-time-group")[1];
-          (
-            minutes.querySelector('[aria-pressed="true"]:not(:disabled)') ||
-            minutes.querySelector("button:not(:disabled)")
-          )?.focus();
-        },
-      });
-      b.disabled = !Array.from(
+    const hours = this.makeWheel("hour", [...Array(24).keys()]);
+    const minutes = this.makeWheel(
+      "minute",
+      Array.from(
         { length: Math.ceil(60 / this.stepMinutes()) },
         (_, i) => i * this.stepMinutes(),
-      ).some((m) => this.valid(`${pad(h)}:${pad(m)}`));
-      hourGroup.lastChild.append(b);
-    }
-    for (let m = 0; m < 60; m += this.stepMinutes()) {
-      const b = Button({
-        label: pad(m),
-        variant: "text",
-        class: "ui-time-option",
-        "aria-pressed": String(m === minute),
-        onClick: () => {
-          if (this.setTime(`${pad(hour)}:${pad(m)}`)) {
-            this.close();
-            this.input.focus();
-          }
-        },
-      });
-      b.disabled = !this.valid(`${pad(hour)}:${pad(m)}`);
-      minuteGroup.lastChild.append(b);
-    }
-    this.popup.append(hourGroup, minuteGroup);
+      ),
+    );
+    this.hourList = hours.list;
+    this.hourOptions = hours.buttons;
+    this.minuteList = minutes.list;
+    this.minuteOptions = new Map(
+      minutes.buttons.map((button, i) => [i * this.stepMinutes(), button]),
+    );
+    this.preview = element("strong", {
+      class: "ui-time-preview",
+      "aria-live": "polite",
+    });
+    this.apply = Button({
+      label: "Aplicar",
+      onClick: () => {
+        if (this.setTime(this.preview.textContent)) {
+          this.close();
+          this.input.focus();
+        }
+      },
+    });
+    this.popup.append(
+      element("div", { class: "ui-time-wheels" }, [
+        element("div", { class: "ui-time-wheel" }, [
+          element("span", {}, "Hora"),
+          hours.list,
+        ]),
+        element("div", { class: "ui-time-wheel" }, [
+          element("span", {}, "Minuto"),
+          minutes.list,
+        ]),
+      ]),
+      element("div", { class: "ui-time-wheel-footer" }, [
+        this.preview,
+        Button({
+          label: "Cancelar",
+          variant: "text",
+          onClick: () => this.close(true),
+        }),
+        this.apply,
+      ]),
+    );
+    this.syncDraft();
   }
 }
 if (!customElements.get("wl-time-field"))

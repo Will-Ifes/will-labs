@@ -70,6 +70,13 @@
     "violations": []
   },
   {
+    "view": "comp-number",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
     "view": "comp-date",
     "width": 1440,
     "theme": "paper",
@@ -80,7 +87,7 @@
     "view": "comp-select",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -192,14 +199,14 @@
     "view": "comp-popover",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-dropdown",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -220,7 +227,7 @@
     "view": "comp-tooltip",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -332,7 +339,7 @@
     "view": "comp-toast",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -455,6 +462,13 @@
     "violations": []
   },
   {
+    "view": "comp-number",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
     "view": "comp-date",
     "width": 390,
     "theme": "petrol-dark",
@@ -465,7 +479,7 @@
     "view": "comp-select",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -577,14 +591,14 @@
     "view": "comp-popover",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-dropdown",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -605,7 +619,7 @@
     "view": "comp-tooltip",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -717,7 +731,7 @@
     "view": "comp-toast",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
