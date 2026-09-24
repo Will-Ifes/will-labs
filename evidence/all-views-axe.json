@@ -301,13 +301,6 @@
     "violations": []
   },
   {
-    "view": "comp-chart",
-    "width": 1440,
-    "theme": "paper",
-    "status": "migrated",
-    "violations": []
-  },
-  {
     "view": "comp-progress",
     "width": 1440,
     "theme": "paper",
@@ -701,13 +694,6 @@
   },
   {
     "view": "comp-slider",
-    "width": 390,
-    "theme": "petrol-dark",
-    "status": "migrated",
-    "violations": []
-  },
-  {
-    "view": "comp-chart",
     "width": 390,
     "theme": "petrol-dark",
     "status": "migrated",

@@ -20,3 +20,12 @@ A v2.3 original foi preservada; não se apresenta a migração parcial como bibl
 - O hover de Cancelar no modal mostra borda sem mudar dimensões; os dois divisores usam uma linha de 1 px. As colunas de opções da hora medem 64 px.
 - Header e footer agora têm demonstrações separadas em miniaturas de página com corpo normal.
 - A auditoria `tests/audit-iteration.mjs` cobre paginação, geometrias, hover, hora e renderização em desktop/mobile, com capturas em `evidence/iteration-*`.
+
+## Tamanho de página, diagrama e escopo tecnológico · 24 set
+
+- Table oferece seleção de 3, 5 ou 10 itens por página, mantendo a paginação sincronizada.
+- FileUpload centraliza rótulo, ajuda, estado e prévia; as demonstrações de header/footer dispensam a moldura externa arredondada.
+- Diagram desenha um grafo SVG de nós e conexões, com equivalente textual, usando a arquitetura alvo do PDF. O gráfico de barras saiu do catálogo e do pacote público por falta de contrato baseado no produto.
+- ADR-001 e o status da Sprint 1 distinguem a escolha local de módulos nativos da decisão ainda pendente de React ou Angular para o site público.
+
+- No mobile, o diagrama inicia no fluxo central; os ramos continuam acessíveis por rolagem horizontal e pela lista textual.

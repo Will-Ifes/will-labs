@@ -14,9 +14,9 @@ A base v2.3 está preservada na tag Git `baseline-v2.3`. O trabalho é versionad
 
 ## Verificação
 
-- Chrome real em 1440×1000 e 390×844: 804 checks funcionais, 194 medições de estado, 24 medições não textuais, 116 varreduras axe, 32 checks desta rodada e 0 violações axe. Menor razão não textual medida: 3.59:1.
+- Chrome real em 1440×1000 e 390×844: 804 checks funcionais, 194 medições de estado, 24 medições não textuais, 114 varreduras axe, 32 checks desta rodada e 0 violações axe. Menor razão não textual medida: 3.59:1.
 - Oito temas foram avaliados na matriz de renderização; as capturas e dados ficam em `evidence/`. As novas interações estão em `tests/audit-final.mjs` e `evidence/audit-final.json`.
-- 58 de 58 views ativas saíram de “em revisão” após migração ou auditoria editorial/local. O inventário por view está em `evidence/VIEW-AUDIT.md`. Este status não substitui validação por usuários ou homologação para produção.
+- 57 de 57 views ativas saíram de “em revisão” após migração ou auditoria editorial/local. O inventário por view está em `evidence/VIEW-AUDIT.md`. Este status não substitui validação por usuários ou homologação para produção.
 
 ## Pendências da Sprint 1
 

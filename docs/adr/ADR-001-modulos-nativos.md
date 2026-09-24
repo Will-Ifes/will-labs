@@ -19,3 +19,7 @@ Usar a terceira opção. `packages/ui` exporta funções de composição e compo
 ## Consequências
 
 O projeto roda com Node sem build de aplicação. A distribuição exige HTTP para os módulos; abrir index.html por file:// não é mais suportado. A API DOM não oferece reconciliação, SSR ou binding de formulários de um framework. A integração futura com React/Angular pode usar adaptadores; não se declara que essa seja a stack definitiva do site público ou OpsFlow. Custom Elements usam light DOM para herdar tokens; estilos globais precisam de governança. O calendário foi isolado mas permanece em revisão: ainda exige melhor contrato de lifecycle e valores. A migração reduz duplicação ativa, mas adapters e styles legados permanecem até suas views serem substituídas.
+
+## Limite frente ao plano
+
+Esta ADR decide a tecnologia da documentação local herdada da v2.3. **Não decide a stack principal do site público** solicitada na Sprint 0 do PDF. Essa decisão entre React e Angular continua aberta. Quando tomada, a documentação e o pacote devem ser avaliados em conjunto: preservar tokens e contratos testados, mas considerar adaptadores ou a migração da renderização DOM para componentes idiomáticos da stack escolhida. Essa avaliação deve preceder a publicação definitiva de `/design-system`.

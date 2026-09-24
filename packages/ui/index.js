@@ -284,9 +284,14 @@ export function Code({ code, language = "text" }) {
     ),
   ]);
 }
-export function Table({ caption, columns, rows, pageSize = 0 }) {
-  const size = pageSize > 0 ? Math.floor(pageSize) : Math.max(rows.length, 1);
-  const pages = Math.max(1, Math.ceil(rows.length / size));
+export function Table({
+  caption,
+  columns,
+  rows,
+  pageSize = 0,
+  pageSizes = [3, 5, 10],
+}) {
+  let size = pageSize > 0 ? Math.floor(pageSize) : Math.max(rows.length, 1);
   let page = 0;
   const body = element("tbody");
   const range = element("span", {
@@ -309,6 +314,7 @@ export function Table({ caption, columns, rows, pageSize = 0 }) {
     onClick: () => show(page + 1),
   });
   function show(index) {
+    const pages = Math.max(1, Math.ceil(rows.length / size));
     page = Math.max(0, Math.min(index, pages - 1));
     body.replaceChildren(
       ...rows.slice(page * size, (page + 1) * size).map((row) =>
@@ -345,6 +351,23 @@ export function Table({ caption, columns, rows, pageSize = 0 }) {
     ),
     body,
   ]);
+  const options = [
+    ...new Set([
+      size,
+      ...pageSizes.filter((value) => Number.isInteger(value) && value > 0),
+    ]),
+  ].sort((a, b) => a - b);
+  const perPage = element(
+    "select",
+    { class: "ui-table-page-size", "aria-label": "Itens por página" },
+    options.map((value) =>
+      element("option", { value, selected: value === size }, value),
+    ),
+  );
+  perPage.addEventListener("change", () => {
+    size = Number(perPage.value);
+    show(0);
+  });
   const frame = element("div", { class: "ui-table-frame" }, [
     element(
       "div",
@@ -364,7 +387,10 @@ export function Table({ caption, columns, rows, pageSize = 0 }) {
             "aria-label": `Paginação: ${caption}`,
           },
           [
-            range,
+            element("div", { class: "ui-table-pagination-meta" }, [
+              range,
+              element("label", {}, ["Itens por página", perPage]),
+            ]),
             element("div", { class: "ui-table-pagination-actions" }, [
               previous,
               position,
@@ -377,22 +403,132 @@ export function Table({ caption, columns, rows, pageSize = 0 }) {
   show(0);
   return frame;
 }
-export function Diagram({ nodes }) {
-  return element(
-    "ol",
-    { class: "ui-diagram", "aria-label": "Etapas do sistema" },
-    nodes.map((n) =>
-      element(
-        "li",
-        {},
-        Surface({
-          title: n.title,
-          children: [element("p", {}, n.description)],
-        }),
-      ),
+/** Connected, data-driven architecture diagram. Coordinates are in a 900 × 560 canvas. */
+export function Diagram({ title = "Arquitetura", nodes = [], edges = [] }) {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = (name, attrs = {}, text = "") => {
+    const node = document.createElementNS(svgNS, name);
+    for (const [key, value] of Object.entries(attrs))
+      node.setAttribute(key, String(value));
+    if (text) node.textContent = text;
+    return node;
+  };
+  const ids = new Map(nodes.map((node) => [node.id, node]));
+  if (
+    ids.size !== nodes.length ||
+    nodes.some(
+      (node) =>
+        !node.id ||
+        !node.title ||
+        !Number.isFinite(node.x) ||
+        !Number.isFinite(node.y),
+    )
+  )
+    throw new TypeError(
+      "Diagram requires unique nodes with id, title, x and y",
+    );
+  if (edges.some(([from, to]) => !ids.has(from) || !ids.has(to)))
+    throw new TypeError("Diagram edge refers to an unknown node");
+  const serialId = `ui-diagram-${++serial}`;
+  const drawing = svg("svg", {
+    class: "ui-diagram-svg",
+    viewBox: "0 0 900 560",
+    role: "img",
+    "aria-labelledby": `${serialId}-title ${serialId}-desc`,
+  });
+  drawing.append(svg("title", { id: `${serialId}-title` }, title));
+  drawing.append(
+    svg(
+      "desc",
+      { id: `${serialId}-desc` },
+      `${nodes.length} nós e ${edges.length} conexões. A descrição de cada nó aparece após o desenho.`,
     ),
   );
+  const marker = svg("marker", {
+    id: `${serialId}-arrow`,
+    viewBox: "0 0 10 10",
+    refX: "8",
+    refY: "5",
+    markerWidth: "7",
+    markerHeight: "7",
+    orient: "auto-start-reverse",
+  });
+  marker.append(
+    svg("path", { d: "M 1 1 L 9 5 L 1 9 Z", class: "ui-diagram-arrow" }),
+  );
+  drawing.append(svg("defs", {}, ""));
+  drawing.lastChild.append(marker);
+  for (const [fromId, toId] of edges) {
+    const from = ids.get(fromId),
+      to = ids.get(toId);
+    const sx = from.x + 70,
+      sy = from.y + 54,
+      tx = to.x + 70,
+      ty = to.y - 3;
+    const mid = (sy + ty) / 2;
+    drawing.append(
+      svg("path", {
+        class: "ui-diagram-edge",
+        d: `M ${sx} ${sy} C ${sx} ${mid}, ${tx} ${mid}, ${tx} ${ty}`,
+        "marker-end": `url(#${serialId}-arrow)`,
+      }),
+    );
+  }
+  for (const node of nodes) {
+    const group = svg("g", {
+      class: `ui-diagram-node ui-diagram-node--${node.kind || "service"}`,
+      transform: `translate(${node.x} ${node.y})`,
+    });
+    group.append(
+      svg("rect", {
+        x: 0,
+        y: 0,
+        width: 140,
+        height: 54,
+        rx: node.kind === "data" ? 14 : 10,
+      }),
+    );
+    group.append(
+      svg("text", { x: 70, y: 32, "text-anchor": "middle" }, node.title),
+    );
+    drawing.append(group);
+  }
+  const scroll = element(
+    "div",
+    {
+      class: "ui-diagram-scroll",
+      tabindex: 0,
+      role: "region",
+      "aria-label": `Desenho: ${title}`,
+    },
+    drawing,
+  );
+  const figure = element("figure", { class: "ui-diagram" }, [
+    scroll,
+    element("figcaption", {}, title),
+    element(
+      "ol",
+      { class: "ui-diagram-details" },
+      nodes.map((node) =>
+        element("li", {}, [
+          element("strong", {}, node.title),
+          node.description ? ` — ${node.description}` : "",
+        ]),
+      ),
+    ),
+  ]);
+  const observer = new IntersectionObserver((entries, current) => {
+    if (!entries[0]?.isIntersecting) return;
+    scroll.scrollLeft = Math.max(
+      0,
+      (scroll.scrollWidth - scroll.clientWidth) / 2,
+    );
+    current.disconnect();
+  });
+  observer.observe(scroll);
+  return figure;
 }
+
 export function Comparison({ vulnerable, secure }) {
   const result = element("p", { "aria-live": "polite" });
   return Surface({
@@ -618,5 +754,4 @@ export {
   Progress,
   Breadcrumb,
   TextLink,
-  BarChart,
 } from "./content.js";

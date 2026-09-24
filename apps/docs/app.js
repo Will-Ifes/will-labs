@@ -14,7 +14,6 @@ import {
   Progress,
   Breadcrumb,
   TextLink,
-  BarChart,
   Divider,
   ScrollArea,
   Checkbox,
@@ -54,10 +53,84 @@ function render(id, title, description, content) {
 const row = (...children) => el("div", { class: "docs-row" }, children);
 const diagram = () =>
   Diagram({
+    title: "Arquitetura alvo · exemplo do plano",
     nodes: [
-      { title: "Interface", description: "Envia a intenção do usuário." },
-      { title: "API", description: "Valida permissão e entrada." },
-      { title: "Banco", description: "Persiste uma execução." },
+      {
+        id: "browser",
+        title: "Browser",
+        x: 380,
+        y: 8,
+        description: "A interface onde a pessoa inicia a ação.",
+      },
+      {
+        id: "edge",
+        title: "CDN / Edge",
+        x: 380,
+        y: 86,
+        description: "Entrega conteúdo perto do navegador.",
+      },
+      {
+        id: "bff",
+        title: "BFF",
+        x: 380,
+        y: 164,
+        description: "Adapta as chamadas da interface.",
+      },
+      {
+        id: "auth",
+        title: "Auth API",
+        x: 120,
+        y: 265,
+        description: "Autenticação e autorização.",
+      },
+      {
+        id: "labs",
+        title: "Labs API",
+        x: 380,
+        y: 265,
+        description: "Dados e tarefas dos laboratórios.",
+      },
+      {
+        id: "content",
+        title: "Content API",
+        x: 640,
+        y: 265,
+        description: "Conteúdo publicado dos Labs.",
+      },
+      {
+        id: "postgres",
+        title: "PostgreSQL",
+        x: 250,
+        y: 370,
+        kind: "data",
+        description: "Persistência relacional.",
+      },
+      {
+        id: "redis",
+        title: "Redis",
+        x: 120,
+        y: 475,
+        kind: "data",
+        description: "Cache previsto na arquitetura alvo.",
+      },
+      {
+        id: "events",
+        title: "Events / Kafka",
+        x: 450,
+        y: 475,
+        description: "Eventos previstos para a fase de escala.",
+      },
+    ],
+    edges: [
+      ["browser", "edge"],
+      ["edge", "bff"],
+      ["bff", "auth"],
+      ["bff", "labs"],
+      ["bff", "content"],
+      ["auth", "postgres"],
+      ["labs", "postgres"],
+      ["postgres", "redis"],
+      ["postgres", "events"],
     ],
   });
 const comparison = () =>
@@ -202,8 +275,8 @@ render(
 render(
   "comp-diagram",
   "Diagrama",
-  "Sequência semântica de etapas. A visualização muda de três colunas para uma no mobile.",
-  [Surface({ title: "Caminho de uma alteração", children: [diagram()] })],
+  "Nós e conexões da arquitetura alvo mostrada no plano. O desenho é rolável no mobile; a descrição textual vem logo abaixo. Estes serviços não estão implementados nesta sprint.",
+  [Surface({ children: [diagram()] })],
 );
 render(
   "comp-comparison",
@@ -1461,35 +1534,15 @@ render(
     }),
   ],
 );
-render(
-  "comp-chart",
-  "Gráficos",
-  "Barras simples para comparação. A descrição acessível contém os mesmos valores do desenho.",
-  [
-    Surface({
-      children: [
-        BarChart({
-          title: "Labs por tema",
-          values: [
-            { label: "Design", value: 6 },
-            { label: "Código", value: 4 },
-            { label: "Segurança", value: 3 },
-            { label: "Dados", value: 5 },
-          ],
-        }),
-      ],
-    }),
-  ],
-);
 function pagePreview(emphasis) {
   return el("div", { class: "docs-page-preview", "data-emphasis": emphasis }, [
     el("header", { class: "docs-page-preview__header" }, [
       el("strong", {}, "will labs"),
-      el(
-        "nav",
-        { "aria-label": "Prévia de navegação" },
-        "Visão geral   Labs   Ajuda",
-      ),
+      el("nav", { "aria-label": "Prévia de navegação" }, [
+        el("span", {}, "Visão geral"),
+        el("span", {}, "Labs"),
+        el("span", {}, "Ajuda"),
+      ]),
     ]),
     el("div", { class: "docs-page-preview__body" }, [
       el("strong", {}, "Experimentos"),
@@ -1510,14 +1563,14 @@ render(
   "Header e footer",
   "Duas composições de página mostram a posição e a função de cada região. O corpo permanece entre elas.",
   [
-    Surface({
-      title: "Header · orientação e ações no topo",
-      children: [pagePreview("header")],
-    }),
-    Surface({
-      title: "Footer · contexto e links no fim",
-      children: [pagePreview("footer")],
-    }),
+    el("section", { class: "docs-shell-example" }, [
+      el("h2", {}, "Header · orientação e ações no topo"),
+      pagePreview("header"),
+    ]),
+    el("section", { class: "docs-shell-example" }, [
+      el("h2", {}, "Footer · contexto e links no fim"),
+      pagePreview("footer"),
+    ]),
   ],
 );
 document.querySelector('[data-view="inicio"]')?.append(
@@ -1613,6 +1666,8 @@ const documentedFoundations = new Set([
   "dimensoes",
   "movimento",
 ]);
+document.querySelector('.ds-sidebar a[href="#comp-chart"]')?.remove();
+document.querySelector('[data-view="comp-chart"]')?.remove();
 // Visible status on every route: source reuse is not a production-readiness claim.
 for (const view of document.querySelectorAll("[data-view]")) {
   const id = view.dataset.view;
@@ -1640,7 +1695,7 @@ for (const view of document.querySelectorAll("[data-view]")) {
   for (const child of [...view.children])
     if (
       !["H1", "P"].includes(child.tagName) &&
-      !child.matches("[data-wl-surface],.ui-code")
+      !child.matches("[data-wl-surface],.ui-code,.docs-shell-example")
     )
       child.setAttribute(
         "data-wl-surface",
@@ -1747,7 +1802,7 @@ const contracts = {
   "comp-labpage":
     "LabPage({ title, learn, tryContent, code, architecture, test, production, related })",
   "comp-diagram":
-    "Diagram({ nodes: [{title: 'API', description: 'Valida a entrada'}] })",
+    "Diagram({ title: 'Arquitetura', nodes: [{id: 'api', title: 'API', x: 100, y: 100}], edges: [] })",
   "comp-comparison":
     "Comparison({ vulnerable: 'Sem validação', secure: 'Permissão verificada' })",
   "comp-modal":

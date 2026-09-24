@@ -91,30 +91,3 @@ export function TextLink({ label, href, external = false } = {}) {
     [label, external ? element("span", { "aria-hidden": true }, " ↗") : null],
   );
 }
-export function BarChart({ title, values = [] } = {}) {
-  const max = Math.max(1, ...values.map((x) => x.value));
-  return element(
-    "figure",
-    {
-      class: "ui-bar-chart",
-      role: "img",
-      "aria-label": `${title}: ${values.map((x) => `${x.label} ${x.value}`).join(", ")}`,
-    },
-    [
-      element("figcaption", {}, title),
-      ...values.map((x) =>
-        element("div", { class: "ui-bar-chart-row", "aria-hidden": true }, [
-          element("span", {}, x.label),
-          element(
-            "div",
-            {},
-            element("span", {
-              style: `width:${Math.max(0, Math.min(100, (x.value / max) * 100))}%`,
-            }),
-          ),
-          element("strong", {}, x.value),
-        ]),
-      ),
-    ],
-  );
-}

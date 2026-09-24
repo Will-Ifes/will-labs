@@ -69,10 +69,34 @@
           }),
           code: "await save(flow);",
           architecture: Diagram({
+            title: "Fluxo mínimo",
             nodes: [
-              { title: "Cliente", description: "Solicita." },
-              { title: "API", description: "Valida." },
-              { title: "Banco", description: "Persiste." },
+              {
+                id: "client",
+                title: "Cliente",
+                x: 380,
+                y: 40,
+                description: "Solicita.",
+              },
+              {
+                id: "api",
+                title: "API",
+                x: 380,
+                y: 150,
+                description: "Valida.",
+              },
+              {
+                id: "database",
+                title: "Banco",
+                x: 380,
+                y: 260,
+                kind: "data",
+                description: "Persiste.",
+              },
+            ],
+            edges: [
+              ["client", "api"],
+              ["api", "database"],
             ],
           }),
           test: "Use as abas pelo teclado.",

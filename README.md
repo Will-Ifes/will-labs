@@ -1,6 +1,6 @@
 # Will Labs · Design system v2.4
 
-Repositório do Will Labs, iniciado a partir da v2.3 e concentrado na Sprint 1 do PDF. Biblioteca compartilhada, tokens semânticos e aplicação de documentação que importa os componentes. As 58 views ativas estão documentadas ou migradas com validação local; os fontes legados permanecem para limpeza gradual. Esse status não é aprovação de produção.
+Repositório do Will Labs, iniciado a partir da v2.3 e concentrado na Sprint 1 do PDF. Biblioteca compartilhada, tokens semânticos e aplicação de documentação que importa os componentes. As 57 views ativas estão documentadas ou migradas com validação local; os fontes legados permanecem para limpeza gradual. Esse status não é aprovação de produção.
 
 ## Rodar
 
@@ -48,6 +48,8 @@ Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. 
 
 A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. O nome do produto usado nos Labs ainda está em escolha.
 
-A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 58 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
+A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 57 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 
 As regras editoriais inspiradas em no-ai-slop estão em [docs/VOZ-E-CONTEUDO.md](docs/VOZ-E-CONTEUDO.md). A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).
+
+O gráfico de barras experimental saiu do catálogo: ainda não há caso de uso e dados reais que justifiquem seu contrato. O diagrama de arquitetura usa nós e conexões em SVG com equivalente textual. A decisão de React ou Angular como stack principal do site público continua pendente na Sprint 0; a ADR-001 atual cobre apenas a migração local do guia.

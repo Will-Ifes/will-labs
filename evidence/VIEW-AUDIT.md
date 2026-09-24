@@ -1,6 +1,6 @@
 # Auditoria das views
 
-58 views ativas: 58 com documentação ou demonstração migrada e validação local; 0 em revisão. O status não representa aprovação para produção. Axe avaliou desktop claro e mobile escuro; 0 violações automáticas no conjunto executado. Leitor de tela e outros motores seguem pendentes.
+57 views ativas: 57 com documentação ou demonstração migrada e validação local; 0 em revisão. O status não representa aprovação para produção. Axe avaliou desktop claro e mobile escuro; 0 violações automáticas no conjunto executado. Leitor de tela e outros motores seguem pendentes.
 
 | View | Situação | Violações axe |
 | --- | --- | ---: |
@@ -47,7 +47,6 @@
 | comp-accordion | Migrada · validação local | 0 |
 | comp-collapsible | Migrada · validação local | 0 |
 | comp-slider | Migrada · validação local | 0 |
-| comp-chart | Migrada · validação local | 0 |
 | comp-progress | Migrada · validação local | 0 |
 | comp-link | Migrada · validação local | 0 |
 | comp-breadcrumb | Migrada · validação local | 0 |

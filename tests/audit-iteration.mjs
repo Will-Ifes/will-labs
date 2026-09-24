@@ -45,6 +45,30 @@ try {
           .innerText()
       ).includes("#1042"),
     );
+    await page
+      .getByRole("combobox", { name: "Itens por página" })
+      .selectOption("5");
+    check(
+      `${width} five items per page`,
+      (await page
+        .locator('[data-view="comp-table"] .ui-table tbody tr')
+        .count()) === 5,
+    );
+    await page
+      .getByRole("combobox", { name: "Itens por página" })
+      .selectOption("10");
+    check(
+      `${width} all items per page`,
+      (await page
+        .locator('[data-view="comp-table"] .ui-table tbody tr')
+        .count()) === 6 &&
+        (await page
+          .getByRole("button", { name: "Próxima página" })
+          .isDisabled()),
+    );
+    await page
+      .getByRole("combobox", { name: "Itens por página" })
+      .selectOption("3");
     await page.screenshot({ path: `evidence/iteration-table-${width}.png` });
     await page.goto(`${base}#comp-grid`);
     const frames = page.locator('[data-view="comp-grid"] .docs-grid-frame');
@@ -97,6 +121,34 @@ try {
         ),
     );
     await page.screenshot({ path: `evidence/iteration-grid-${width}.png` });
+    await page.goto(`${base}#comp-diagram`);
+    check(
+      `${width} connected architecture`,
+      (await page
+        .locator('[data-view="comp-diagram"] .ui-diagram-node')
+        .count()) === 9 &&
+        (await page
+          .locator('[data-view="comp-diagram"] .ui-diagram-edge')
+          .count()) === 9,
+    );
+    check(
+      `${width} architecture text equivalent`,
+      (await page
+        .locator('[data-view="comp-diagram"] .ui-diagram-details li')
+        .count()) === 9,
+    );
+    if (width === 390)
+      check(
+        `${width} diagram starts at main flow`,
+        await page
+          .locator('[data-view="comp-diagram"] .ui-diagram-scroll')
+          .evaluate((el) => el.scrollLeft > 100),
+      );
+    await page.screenshot({ path: `evidence/iteration-diagram-${width}.png` });
+    check(
+      `${width} no chart in catalogue`,
+      (await page.locator('.ds-sidebar a[href="#comp-chart"]').count()) === 0,
+    );
     await page.goto(`${base}#comp-upload`);
     check(
       `${width} upload fills card`,
@@ -107,6 +159,12 @@ try {
           const upload = el.getBoundingClientRect();
           return card.width - upload.width < 70;
         }),
+    );
+    check(
+      `${width} upload content centered`,
+      await page
+        .locator('[data-view="comp-upload"] .ui-upload-status')
+        .evaluate((el) => getComputedStyle(el).textAlign === "center"),
     );
     await page.screenshot({ path: `evidence/iteration-upload-${width}.png` });
     await page.goto(`${base}#comp-shell`);

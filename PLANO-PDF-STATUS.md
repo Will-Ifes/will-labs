@@ -13,10 +13,18 @@ Fonte: “Will Labs — projeto e plano de execução”, seção Sprints e tare
 | Contraste e navegação por teclado        | Matriz automatizada e evidências renderizadas; detalhes no relatório                         | Leitor de tela, Safari/Firefox e auditoria manual completa de uso                  |
 | ADR-004 próprio × biblioteca             | Documentada; ADR-001 registra módulos nativos e consequências                                | Reavaliar ao surgir necessidade concreta de outra stack                            |
 
-A Sprint 1 não é declarada encerrada. As 58 views ativas têm documentação ou demonstração migrada e validação local; nenhuma é homologada para produção apenas por esse status. Calendário e upload agora têm contratos e testes próprios. Permanecem pendentes leitor de tela, Firefox/Safari, remoção dos fontes legados e publicação. Os prints fornecidos orientaram a correção de densidade, controles, posicionamento e exemplos redundantes.
+A Sprint 1 não é declarada encerrada. As 57 views ativas têm documentação ou demonstração migrada e validação local; nenhuma é homologada para produção apenas por esse status. Calendário e upload agora têm contratos e testes próprios. Permanecem pendentes leitor de tela, Firefox/Safari, remoção dos fontes legados e publicação. Os prints fornecidos orientaram a correção de densidade, controles, posicionamento e exemplos redundantes.
 
 Sprint 0, produto de fluxos/Sprint 2 e publicação de Labs/Sprint 3 não foram executados nesta etapa.
 
-A revisão mais recente acrescentou FileUpload, Accordion, Collapsible, Carousel, Avatar, ImageFigure, Progress, Breadcrumb, TextLink e BarChart ao pacote; refinou Banner, Notice, EmptyState, Divider, Modal, Popover e hora. O inventário atualizado é gerado em `evidence/VIEW-AUDIT.md` por `npm run verify`. Há oito temas gerados dos mesmos tokens.
+A revisão mais recente acrescentou FileUpload, Accordion, Collapsible, Carousel, Avatar, ImageFigure, Progress, Breadcrumb, TextLink ao pacote; refinou Banner, Notice, EmptyState, Divider, Modal, Popover e hora. O inventário atualizado é gerado em `evidence/VIEW-AUDIT.md` por `npm run verify`. Há oito temas gerados dos mesmos tokens.
 
 Na última revisão local, `Table` passou a demonstrar paginação e bordas, e o grid responsivo ganhou duas prévias independentes sem sobreposição. Isso melhora o catálogo da Sprint 1; não altera as pendências de homologação acima.
+
+## Ajuste de escopo e stack · 24 set
+
+O diagrama da Sprint 1 agora desenha a arquitetura **alvo** do PDF (Browser → CDN/Edge → BFF → APIs → dados/eventos) com conexões reais, SVG e descrição textual. Ele não afirma que esses serviços já existem. O gráfico de barras foi retirado do catálogo: não está entre os componentes-base pedidos na Sprint 1 e falta um caso de uso do produto que defina seu contrato. O catálogo passa a ter 57 views ativas.
+
+A tecnologia atual é apropriada para a **migração local e progressiva** do guia: módulos ES, Custom Elements, tokens CSS e componentes DOM compartilhados. Ela ainda **não cumpre a decisão da Sprint 0** de escolher React ou Angular como stack principal do site. ADR-001 documenta apenas a escolha para esta migração e explicita esse limite. Antes de apresentar `/design-system` como página pública definitiva, é preciso decidir e registrar a stack principal, avaliar a integração do pacote (adaptadores ou reimplementação idiomática da camada de componentes) e medir o custo da migração. Os tokens e contratos de comportamento podem ser preservados; não há motivo para reescrever às pressas nesta rodada de correções visuais.
+
+A estrutura local já inclui `.gitignore`, `.editorconfig`, Prettier, ADR-002 e testes em Chrome. Ainda faltam itens da Sprint 0 que não foram cobertos por esta entrega local: ADR-003 de idioma, ESLint, hooks de commit, nome/domínio definitivos e repositório público. Eles não exigem reescrever os tokens; a escolha da stack principal é a decisão com maior impacto sobre a aplicação de documentação.

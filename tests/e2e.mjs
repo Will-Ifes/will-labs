@@ -162,7 +162,9 @@ try {
       );
       check(
         `${width}/${name}/switch notice`,
-        (await p.locator('[data-view="comp-switch"] .ui-notice p').innerText()).includes("visíveis"),
+        (
+          await p.locator('[data-view="comp-switch"] .ui-notice p').innerText()
+        ).includes("visíveis"),
       );
       await p.screenshot({ path: `evidence/${width}-${name}-switch.png` });
       await goto(p, "comp-multiselect-async");
@@ -176,10 +178,14 @@ try {
         (await multi.locator("input[type=checkbox]").count()) === 8,
       );
       await multi.locator("input[type=checkbox]").first().check();
+      await multi.locator(".wl-async-results").evaluate((x) => {
+        x.scrollTop = x.scrollHeight;
+        x.dispatchEvent(new Event("scroll"));
+      });
       await multi
-        .locator(".wl-async-results")
-        .evaluate((x) => (x.scrollTop = x.scrollHeight));
-      await p.waitForTimeout(400);
+        .locator("input[type=checkbox]")
+        .nth(15)
+        .waitFor({ timeout: 5000 });
       check(
         `${width}/${name}/incremental scroll`,
         (await multi.locator("input[type=checkbox]").count()) === 16,

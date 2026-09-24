@@ -36,8 +36,8 @@ document.querySelector("main").append(
 | Switch                     | label, checked, onChange(boolean); role=switch e estado textual                                                                                                   |
 | Tabs                       | items: {label,content:Node}[], label; setas, Home/End e roving tabindex                                                                                           |
 | Code                       | code como texto seguro, language; sem execução ou HTML interpretado                                                                                               |
-| Table                      | caption, columns:string[], rows:(string/Node)[][]; scroll horizontal nativo                                                                                       |
-| Diagram                    | nodes:{title,description}[]; sequência textual responsiva, não editor de grafos                                                                                   |
+| Table                      | caption, columns:string[], rows:(string/Node)[][], pageSize?, pageSizes?; paginação e scroll horizontal nativo                                                    |
+| Diagram                    | title, nodes:{id,title,x,y,description?,kind?}[], edges:[fromId,toId][]; SVG com conexões e lista textual                                                         |
 | Comparison                 | vulnerable e secure como texto; comparação didática, sem backend                                                                                                  |
 | LabPage                    | title, learn/tryContent/architecture:Node, code:string, test/production/related:string                                                                            |
 | connectDialog              | dialog nativo; retorna open(trigger), close(reason), dispose(); fecha no Escape e devolve foco; botões com data-close-dialog/data-confirm-dialog/data-save-dialog |
@@ -83,7 +83,7 @@ document.body.append(multi);
 - `FileUpload({label,accept,maxBytes,onChange})` valida tipo e tamanho no navegador, aceita seleção e arraste e mostra prévia. A aplicação consumidora implementa o envio; a demonstração não envia dados.
 - `Accordion({items})` usa `details/summary` nativos. `Collapsible({label,children})` expõe `aria-expanded` e aceita qualquer componente, inclusive `InputNumber`.
 - `Carousel({title,items})` combina scroll snap, arraste por ponteiro, botões e setas. A barra visual é ocultada apenas nesta composição.
-- `Avatar({name,size,src})`, `ImageFigure({src,alt,caption})`, `Progress({label,value,max})`, `Breadcrumb({items})`, `TextLink({label,href,external})` e `BarChart({title,values})` fornecem primitivas para os Labs.
-- `Diagram({nodes})` liga etapas visualmente e conserva a ordem semântica no DOM. `Table` usa separadores de coluna e região de rolagem horizontal.
+- `Avatar({name,size,src})`, `ImageFigure({src,alt,caption})`, `Progress({label,value,max})`, `Breadcrumb({items})`, `TextLink({label,href,external})` fornecem primitivas para os Labs.
+- `Diagram({title,nodes,edges})` desenha nós e conexões reais em SVG, com descrição textual equivalente. O gráfico de barras experimental saiu do catálogo por não pertencer ao escopo base da Sprint 1. `Table` usa separadores de coluna e região de rolagem horizontal.
 
 A documentação usa o pacote via módulos ES. Os componentes têm validação local no Chrome; não há homologação em leitor de tela, Firefox ou Safari.

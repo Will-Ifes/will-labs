@@ -3523,13 +3523,6 @@
     {
       "width": 1440,
       "theme": "paper",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "paper",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -3971,13 +3964,6 @@
       "width": 1440,
       "theme": "forest",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "forest",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -4431,13 +4417,6 @@
     {
       "width": 1440,
       "theme": "petrol-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "petrol-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -4879,13 +4858,6 @@
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "petrol-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -5339,13 +5311,6 @@
     {
       "width": 1440,
       "theme": "indigo-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "indigo-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -5787,13 +5752,6 @@
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "indigo-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -6247,13 +6205,6 @@
     {
       "width": 1440,
       "theme": "amber-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "amber-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -6695,13 +6646,6 @@
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 1440,
-      "theme": "amber-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -7155,13 +7099,6 @@
     {
       "width": 390,
       "theme": "paper",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "paper",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -7603,13 +7540,6 @@
       "width": 390,
       "theme": "forest",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "forest",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -8063,13 +7993,6 @@
     {
       "width": 390,
       "theme": "petrol-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "petrol-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -8511,13 +8434,6 @@
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "petrol-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -8971,13 +8887,6 @@
     {
       "width": 390,
       "theme": "indigo-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "indigo-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -9419,13 +9328,6 @@
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "indigo-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
@@ -9879,13 +9781,6 @@
     {
       "width": 390,
       "theme": "amber-light",
-      "view": "comp-chart",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "amber-light",
       "view": "comp-progress",
       "overflow": false,
       "status": "migrated"
@@ -10327,13 +10222,6 @@
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-slider",
-      "overflow": false,
-      "status": "migrated"
-    },
-    {
-      "width": 390,
-      "theme": "amber-dark",
-      "view": "comp-chart",
       "overflow": false,
       "status": "migrated"
     },
