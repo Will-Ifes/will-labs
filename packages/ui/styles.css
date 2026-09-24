@@ -1831,3 +1831,143 @@ wl-time-field > label {
   border-radius: 2px;
   transform: rotate(45deg);
 }
+/* Data table: one framed surface, visible cell boundaries, compact paging. */
+.ui-table-frame {
+  border: 1px solid var(--wl-border);
+  border-radius: var(--wl-radius-surface);
+  overflow: hidden;
+  background: var(--wl-surface);
+}
+.ui-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.ui-table {
+  min-width: 690px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.ui-table caption {
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ui-table :is(th, td) {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--wl-border);
+  vertical-align: middle;
+}
+.ui-table :is(th, td) + :is(th, td) {
+  border-inline-start: 1px solid var(--wl-border);
+}
+.ui-table thead th {
+  background: var(--wl-muted);
+  color: var(--wl-secondary);
+  border-bottom-color: var(--wl-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.ui-table tbody th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ui-table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+.ui-table tbody tr:hover {
+  background: color-mix(in srgb, var(--wl-muted) 60%, var(--wl-surface));
+}
+.ui-table-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-weight: 650;
+}
+.ui-table-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--wl-info);
+}
+.ui-table-status[data-status="success"]::before {
+  background: var(--wl-success);
+}
+.ui-table-status[data-status="danger"]::before {
+  background: var(--wl-danger);
+}
+.ui-table-pagination {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--wl-border);
+  font-size: 13px;
+}
+.ui-table-pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.ui-table-pagination .ui-button {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 4px 8px;
+}
+@media (max-width: 520px) {
+  .ui-table-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+/* Native bars share the same neutral treatment on Firefox and Chromium/WebKit. */
+:where(*) {
+  scrollbar-color: color-mix(
+      in srgb,
+      var(--wl-secondary) 48%,
+      var(--wl-surface)
+    )
+    var(--wl-muted);
+  scrollbar-width: auto;
+}
+:where(*)::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+:where(*)::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--wl-secondary) 48%, var(--wl-surface));
+  border: 2px solid var(--wl-muted);
+  border-radius: 999px;
+}
+:where(*)::-webkit-scrollbar-track {
+  background: var(--wl-muted);
+}
+.ui-time-wheels {
+  grid-template-columns: repeat(2, 64px);
+  justify-content: center;
+  gap: 12px;
+}
+.ui-tag {
+  padding-inline: 6px;
+  gap: 4px;
+}
+.ui-tag:has(.ui-tag-remove) {
+  padding-inline-end: 3px;
+}
+.ui-table tbody th {
+  background: var(--wl-surface);
+}
+.ui-table tbody tr:hover th {
+  background: color-mix(in srgb, var(--wl-muted) 60%, var(--wl-surface));
+}

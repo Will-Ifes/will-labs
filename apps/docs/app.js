@@ -69,13 +69,47 @@ const code =
   "if (!canEdit(user, flow)) {\n  return response.status(403);\n}\nawait updateFlow(flow);";
 const table = () =>
   Table({
-    caption: "Execuções de exemplo",
-    columns: ["Fluxo", "Estado", "Responsável"],
+    caption: "Execuções recentes",
+    columns: ["Execução", "Fluxo", "Iniciada em", "Status", "Duração"],
     rows: [
-      ["Publicação", "Concluída", "Ana Martins"],
-      ["Backup", "Em andamento", "Bruno Almeida"],
-      ["Importação", "Falhou", "Carolina Gomes"],
-    ],
+      [
+        "#1042",
+        "Revisão de publicação",
+        "23 set · 09:40",
+        "Concluída",
+        "4m 18s",
+      ],
+      [
+        "#1041",
+        "Verificação do release",
+        "23 set · 09:12",
+        "Em andamento",
+        "—",
+      ],
+      ["#1040", "Importação de dados", "22 set · 17:25", "Falhou", "1m 32s"],
+      ["#1039", "Backup diário", "22 set · 08:00", "Concluída", "6m 04s"],
+      ["#1038", "Revisão de acesso", "21 set · 14:16", "Concluída", "2m 51s"],
+      ["#1037", "Publicação do Lab", "21 set · 10:30", "Em andamento", "—"],
+    ].map(([id, flow, started, status, duration]) => [
+      id,
+      flow,
+      started,
+      el(
+        "span",
+        {
+          class: "ui-table-status",
+          "data-status":
+            status === "Concluída"
+              ? "success"
+              : status === "Falhou"
+                ? "danger"
+                : "info",
+        },
+        status,
+      ),
+      duration,
+    ]),
+    pageSize: 3,
   });
 render(
   "comp-card",
@@ -150,8 +184,20 @@ render(
 render(
   "comp-table",
   "Tabela",
-  "Tabela semântica; a região permite rolagem horizontal pelo teclado em telas estreitas.",
-  [Surface({ children: [table()] })],
+  "Linhas e colunas com bordas legíveis, status e paginação. Em telas estreitas, a região rola horizontalmente pelo teclado.",
+  [
+    Surface({
+      title: "Execuções recentes",
+      children: [
+        el(
+          "p",
+          {},
+          "Acompanhe o andamento dos fluxos sem abrir cada execução.",
+        ),
+        table(),
+      ],
+    }),
+  ],
 );
 render(
   "comp-diagram",
@@ -890,45 +936,65 @@ render(
     }),
   ],
 );
-const gridWidth = el("input", {
-  type: "range",
-  min: "280",
-  max: "1000",
-  value: "640",
-  class: "docs-grid-slider",
-  "aria-label": "Largura da área de teste",
-});
-const gridReadout = el("output", {}, "640 px");
-const gridPreview = el(
-  "div",
-  { class: "docs-grid-preview" },
-  Array.from({ length: 6 }, (_, i) => el("div", {}, `Bloco ${i + 1}`)),
-);
-const gridFrame = el("div", { class: "docs-grid-frame" }, gridPreview);
-gridFrame.style.width = "640px";
-gridWidth.addEventListener("input", () => {
-  gridFrame.style.width = `${gridWidth.value}px`;
-  gridReadout.textContent = `${gridWidth.value} px`;
-});
+function gridExample({ title, mixed = false }) {
+  const width = el("input", {
+    type: "range",
+    min: "280",
+    max: "900",
+    value: "640",
+    class: "docs-grid-slider",
+    "aria-label": `Largura do exemplo: ${title}`,
+  });
+  const height = el("input", {
+    type: "range",
+    min: "180",
+    max: "560",
+    value: "320",
+    class: "docs-grid-slider",
+    "aria-label": `Altura do exemplo: ${title}`,
+  });
+  const widthValue = el("output", {}, "640 px");
+  const heightValue = el("output", {}, "320 px");
+  const preview = el(
+    "div",
+    { class: `docs-grid-preview${mixed ? " docs-grid-preview--mixed" : ""}` },
+    Array.from({ length: mixed ? 5 : 6 }, (_, i) =>
+      el("div", {}, `Bloco ${i + 1}`),
+    ),
+  );
+  const frame = el("div", { class: "docs-grid-frame" }, preview);
+  frame.style.width = "640px";
+  frame.style.height = "320px";
+  width.addEventListener("input", () => {
+    frame.style.width = `${width.value}px`;
+    widthValue.textContent = `${width.value} px`;
+  });
+  height.addEventListener("input", () => {
+    frame.style.height = `${height.value}px`;
+    heightValue.textContent = `${height.value} px`;
+  });
+  return Surface({
+    title,
+    children: [
+      el("div", { class: "docs-grid-controls" }, [
+        el("label", {}, ["Largura", width, widthValue]),
+        el("label", {}, ["Altura", height, heightValue]),
+      ]),
+      ScrollArea({
+        axis: "x",
+        label: `Prévia responsiva: ${title}`,
+        children: frame,
+      }),
+    ],
+  });
+}
 render(
   "comp-grid",
   "Grid responsivo",
-  "Arraste a largura para testar as mudanças de colunas sem redimensionar o navegador.",
+  "Ajuste largura e altura de cada exemplo de forma independente. Quando falta altura, o conteúdo rola sem sobreposição.",
   [
-    Surface({
-      children: [
-        el("div", { class: "docs-grid-controls" }, [
-          el("label", {}, "Largura da área"),
-          gridWidth,
-          gridReadout,
-        ]),
-        ScrollArea({
-          axis: "x",
-          label: "Prévia responsiva",
-          children: gridFrame,
-        }),
-      ],
-    }),
+    gridExample({ title: "Blocos uniformes" }),
+    gridExample({ title: "Blocos de tamanhos diferentes", mixed: true }),
   ],
 );
 const stateField = Input({
@@ -1065,45 +1131,6 @@ document.querySelector('[data-view="comp-card"]')?.append(
       ),
     ]),
   ]),
-);
-// Adjustable examples cover equal and mixed-span grids.
-const gridHeight = el("input", {
-  type: "range",
-  min: "140",
-  max: "480",
-  value: "260",
-  "aria-label": "Altura da área de teste",
-});
-const gridHeightOutput = el("output", {}, "260 px");
-const mixedGrid = el(
-  "div",
-  { class: "docs-grid-preview docs-grid-preview--mixed" },
-  Array.from({ length: 5 }, (_, i) => el("div", {}, `Bloco ${i + 1}`)),
-);
-const mixedFrame = el("div", { class: "docs-grid-frame" }, mixedGrid);
-mixedFrame.style.width = "640px";
-mixedFrame.style.height = "260px";
-gridWidth.addEventListener(
-  "input",
-  () => (mixedFrame.style.width = `${gridWidth.value}px`),
-);
-gridHeight.addEventListener("input", () => {
-  mixedFrame.style.height = `${gridHeight.value}px`;
-  gridFrame.style.height = `${gridHeight.value}px`;
-  gridHeightOutput.textContent = `${gridHeight.value} px`;
-});
-document.querySelector('[data-view="comp-grid"] .ui-surface')?.append(
-  el("div", { class: "docs-grid-controls" }, [
-    el("label", {}, "Altura da área"),
-    gridHeight,
-    gridHeightOutput,
-  ]),
-  el("h2", {}, "Blocos com tamanhos diferentes"),
-  ScrollArea({
-    axis: "x",
-    label: "Prévia responsiva com blocos de tamanhos diferentes",
-    children: mixedFrame,
-  }),
 );
 render(
   "comp-upload",
@@ -1454,23 +1481,42 @@ render(
     }),
   ],
 );
+function pagePreview(emphasis) {
+  return el("div", { class: "docs-page-preview", "data-emphasis": emphasis }, [
+    el("header", { class: "docs-page-preview__header" }, [
+      el("strong", {}, "will labs"),
+      el(
+        "nav",
+        { "aria-label": "Prévia de navegação" },
+        "Visão geral   Labs   Ajuda",
+      ),
+    ]),
+    el("div", { class: "docs-page-preview__body" }, [
+      el("strong", {}, "Experimentos"),
+      el(
+        "p",
+        {},
+        "Conteúdo principal da página, com espaço para leitura e tarefas.",
+      ),
+    ]),
+    el("footer", { class: "docs-page-preview__footer" }, [
+      el("span", {}, "Will Labs · Interface de referência"),
+      el("span", {}, "Ajuda   Privacidade"),
+    ]),
+  ]);
+}
 render(
   "comp-shell",
   "Header e footer",
-  "A moldura da documentação é uma composição: marca, navegação, tema, atalhos e contexto de página.",
+  "Duas composições de página mostram a posição e a função de cada região. O corpo permanece entre elas.",
   [
     Surface({
-      title: "Onde esta composição aparece",
-      children: [
-        el(
-          "p",
-          {},
-          "O header mantém o tema e os atalhos disponíveis durante a leitura. O footer identifica a interface. O conteúdo reserva espaço para ambos em mobile.",
-        ),
-        Breadcrumb({
-          items: [{ label: "Início", href: "#inicio" }, { label: "Moldura" }],
-        }),
-      ],
+      title: "Header · orientação e ações no topo",
+      children: [pagePreview("header")],
+    }),
+    Surface({
+      title: "Footer · contexto e links no fim",
+      children: [pagePreview("footer")],
     }),
   ],
 );

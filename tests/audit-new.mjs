@@ -40,7 +40,7 @@ try {
     }
     await page.goto(`${base}#comp-grid`);
     const slider = page.getByRole("slider", {
-      name: "Largura da área de teste",
+      name: "Largura do exemplo: Blocos uniformes",
     });
     await slider.fill("300");
     check(
@@ -124,7 +124,7 @@ try {
       `${width} scrollbar style`,
       await page
         .locator('[data-view="comp-scrollbar"] .ui-scroll-area')
-        .evaluate((el) => getComputedStyle(el).scrollbarWidth === "thin"),
+        .evaluate((el) => getComputedStyle(el).scrollbarWidth === "auto"),
     );
     await page.goto(`${base}#comp-input-texto`);
     const textarea = page.locator('[data-view="comp-input-texto"] textarea');

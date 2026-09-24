@@ -142,7 +142,9 @@ try {
       `${width} mixed grid and height`,
       (await page.locator(".docs-grid-preview--mixed > div").count()) === 5 &&
         (await page
-          .getByRole("slider", { name: "Altura da área de teste" })
+          .getByRole("slider", {
+            name: "Altura do exemplo: Blocos de tamanhos diferentes",
+          })
           .count()) === 1,
     );
     await page.screenshot({

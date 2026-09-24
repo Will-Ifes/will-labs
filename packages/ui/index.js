@@ -284,39 +284,98 @@ export function Code({ code, language = "text" }) {
     ),
   ]);
 }
-export function Table({ caption, columns, rows }) {
-  return element(
-    "div",
-    {
-      class: "ui-table-scroll",
-      tabindex: 0,
-      role: "region",
-      "aria-label": caption,
-    },
-    element("table", { class: "ui-table" }, [
-      element("caption", {}, caption),
-      element(
-        "thead",
-        {},
+export function Table({ caption, columns, rows, pageSize = 0 }) {
+  const size = pageSize > 0 ? Math.floor(pageSize) : Math.max(rows.length, 1);
+  const pages = Math.max(1, Math.ceil(rows.length / size));
+  let page = 0;
+  const body = element("tbody");
+  const range = element("span", {
+    class: "ui-table-range",
+    "aria-live": "polite",
+  });
+  const position = element("span", { class: "ui-table-page" });
+  const previous = Button({
+    label: "←",
+    variant: "outline",
+    size: "small",
+    "aria-label": "Página anterior",
+    onClick: () => show(page - 1),
+  });
+  const next = Button({
+    label: "→",
+    variant: "outline",
+    size: "small",
+    "aria-label": "Próxima página",
+    onClick: () => show(page + 1),
+  });
+  function show(index) {
+    page = Math.max(0, Math.min(index, pages - 1));
+    body.replaceChildren(
+      ...rows.slice(page * size, (page + 1) * size).map((row) =>
         element(
           "tr",
           {},
-          columns.map((c) => element("th", { scope: "col" }, c)),
-        ),
-      ),
-      element(
-        "tbody",
-        {},
-        rows.map((r) =>
-          element(
-            "tr",
-            {},
-            r.map((c) => element("td", {}, c)),
+          row.map((cell, column) =>
+            element(
+              column === 0 ? "th" : "td",
+              column === 0 ? { scope: "row" } : {},
+              cell,
+            ),
           ),
         ),
       ),
-    ]),
-  );
+    );
+    range.textContent = rows.length
+      ? `${page * size + 1}–${Math.min((page + 1) * size, rows.length)} de ${rows.length} registros`
+      : "0 registros";
+    position.textContent = `Página ${page + 1} de ${pages}`;
+    previous.disabled = page === 0;
+    next.disabled = page === pages - 1;
+  }
+  const table = element("table", { class: "ui-table" }, [
+    element("caption", {}, caption),
+    element(
+      "thead",
+      {},
+      element(
+        "tr",
+        {},
+        columns.map((column) => element("th", { scope: "col" }, column)),
+      ),
+    ),
+    body,
+  ]);
+  const frame = element("div", { class: "ui-table-frame" }, [
+    element(
+      "div",
+      {
+        class: "ui-table-scroll",
+        tabindex: 0,
+        role: "region",
+        "aria-label": caption,
+      },
+      table,
+    ),
+    pageSize > 0
+      ? element(
+          "nav",
+          {
+            class: "ui-table-pagination",
+            "aria-label": `Paginação: ${caption}`,
+          },
+          [
+            range,
+            element("div", { class: "ui-table-pagination-actions" }, [
+              previous,
+              position,
+              next,
+            ]),
+          ],
+        )
+      : null,
+  ]);
+  show(0);
+  return frame;
 }
 export function Diagram({ nodes }) {
   return element(

@@ -816,3 +816,124 @@ button:active,
 .docs-card-overlay .ui-surface {
   padding-bottom: 64px;
 }
+/* Independent grid previews retain their own viewport and scroll when short. */
+.docs-grid-controls {
+  gap: 16px;
+}
+.docs-grid-controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 14px;
+}
+.docs-grid-controls output {
+  min-width: 52px;
+  font-variant-numeric: tabular-nums;
+}
+.docs-grid-slider {
+  width: clamp(90px, 14vw, 210px);
+}
+.docs-grid-frame {
+  overflow: auto;
+  border: 1px dashed var(--wl-border);
+  border-radius: 8px;
+}
+.docs-grid-preview {
+  min-height: 100%;
+  border: 0;
+  align-content: start;
+  grid-auto-rows: minmax(80px, auto);
+}
+.docs-grid-preview--mixed {
+  height: auto;
+  min-height: 100%;
+  align-content: start;
+  grid-auto-rows: minmax(80px, auto);
+}
+.docs-grid-preview--mixed > :first-child,
+.docs-grid-preview--mixed > :last-child {
+  grid-column: span 2;
+}
+@container (max-width: 380px) {
+  .docs-grid-preview--mixed > :first-child,
+  .docs-grid-preview--mixed > :last-child {
+    grid-column: auto;
+  }
+}
+[data-view="comp-upload"] > .ui-surface {
+  max-width: 760px;
+}
+[data-view="comp-upload"] .ui-upload {
+  max-width: none;
+  width: 100%;
+}
+.wl-dialog[open] header::after,
+.wl-dialog[open] footer::before {
+  height: 0;
+  background: none;
+  border-top: 1px solid var(--wl-border);
+}
+.wl-dialog[open] footer .wl-btn-outline:hover {
+  border-color: var(--wl-accent);
+  background: var(--wl-muted);
+  color: var(--wl-accent);
+}
+.wl-dialog[open] footer .wl-btn-outline:active {
+  border-color: var(--wl-hover);
+  background: color-mix(in srgb, var(--wl-muted) 70%, var(--wl-accent));
+}
+.docs-page-preview {
+  display: grid;
+  grid-template-rows: auto minmax(120px, 1fr) auto;
+  min-height: 250px;
+  border: 1px solid var(--wl-border);
+  border-radius: var(--wl-radius-surface);
+  overflow: hidden;
+  background: var(--wl-surface);
+}
+.docs-page-preview__header,
+.docs-page-preview__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 18px;
+  font-size: 13px;
+}
+.docs-page-preview__header {
+  border-bottom: 1px solid var(--wl-border);
+}
+.docs-page-preview__footer {
+  border-top: 1px solid var(--wl-border);
+  color: var(--wl-secondary);
+}
+.docs-page-preview__body {
+  padding: 24px 18px;
+}
+.docs-page-preview__body p {
+  max-width: 54ch;
+  margin: 8px 0 0;
+  color: var(--wl-secondary);
+}
+.docs-page-preview[data-emphasis="header"] .docs-page-preview__header,
+.docs-page-preview[data-emphasis="footer"] .docs-page-preview__footer {
+  background: var(--wl-muted);
+  box-shadow: inset 3px 0 var(--wl-accent);
+}
+@media (max-width: 620px) {
+  .docs-grid-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .docs-page-preview__header nav {
+    width: 100%;
+  }
+}
+.docs-page-preview__header nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
