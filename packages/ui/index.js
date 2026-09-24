@@ -168,12 +168,13 @@ export function Tag({
       : null,
   ]);
 }
-export function Banner({ title, text, kind = "info" }) {
+export function Banner({ title, text, kind = "info", compact = false }) {
+  const symbols = { info: "ⓘ", success: "✓", warning: "!", danger: "!" };
   if (!title || !text) throw new TypeError("Banner requires title and text");
   return element(
     "div",
     {
-      class: "ui-notice ui-banner",
+      class: `ui-notice ${compact ? "ui-notice--compact" : "ui-banner"}`,
       "data-kind": kind,
       role: kind === "danger" ? "alert" : "status",
     },
@@ -181,7 +182,7 @@ export function Banner({ title, text, kind = "info" }) {
       element(
         "span",
         { "aria-hidden": true, class: "ui-notice-icon" },
-        { info: "i", success: "✓", warning: "!", danger: "×" }[kind] || "i",
+        symbols[kind] || symbols.info,
       ),
       element("div", {}, [
         element("strong", {}, title),
@@ -190,7 +191,10 @@ export function Banner({ title, text, kind = "info" }) {
     ],
   );
 }
-export const Notice = Banner;
+/** Persistent, compact feedback beside the content it describes. */
+export function Notice(options) {
+  return Banner({ ...options, compact: true });
+}
 export function Switch({ label, checked = false, onChange = () => {} }) {
   const state = element("span", { "aria-live": "polite" });
   const button = Button({
@@ -546,3 +550,14 @@ export { ValidationMessage } from "./validation.js";
 
 export { Checkbox, RadioGroup } from "./choice.js";
 export { EmptyState } from "./empty-state.js";
+export { FileUpload } from "./file-upload.js";
+export { Accordion, Collapsible } from "./disclosure.js";
+export { Carousel } from "./carousel.js";
+export {
+  Avatar,
+  ImageFigure,
+  Progress,
+  Breadcrumb,
+  TextLink,
+  BarChart,
+} from "./content.js";

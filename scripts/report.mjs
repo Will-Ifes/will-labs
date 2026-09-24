@@ -1,28 +1,69 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 const read = (name) =>
   JSON.parse(readFileSync(`evidence/${name}.json`, "utf8"));
 const results = read("results");
 const axe = read("all-views-axe");
 const states = read("states");
 const nontext = read("nontext");
+const finalChecks = existsSync("evidence/audit-final.json")
+  ? read("audit-final").checks.length
+  : 0;
 const unique = [...new Map(axe.map((item) => [item.view, item])).values()];
 const migrated = unique.filter((item) => item.status === "migrated").length;
 const violations = axe.flatMap((item) => item.violations || []).length;
-writeFileSync(
-  "evidence/VIEW-AUDIT.md",
-  `# Auditoria das views\n\n${unique.length} views: ${migrated} migradas localmente, ${unique.length - migrated} em revisão. As views em revisão permanecem exemplos e exigem contrato, migração e testes específicos antes de publicação. Axe verificou desktop claro e mobile escuro; ${violations} violações no conjunto executado. A ausência de violações automáticas não substitui testes de leitor de tela.\n\n| View | Situação | Violações axe |\n| --- | --- | ---: |\n${unique.map((item) => `| ${item.view} | ${item.status === "migrated" ? "Migrada · validação local" : "Em revisão"} | ${axe.filter((x) => x.view === item.view).flatMap((x) => x.violations || []).length} |`).join("\n")}\n`,
-);
 const ratio = Math.min(
   ...nontext.flatMap((item) =>
     Object.values(item).filter((v) => typeof v === "number"),
   ),
 );
+const foundationIds = new Set([
+  "inicio",
+  "cores",
+  "tipografia",
+  "ritmo",
+  "dimensoes",
+  "movimento",
+]);
+writeFileSync(
+  "evidence/VIEW-AUDIT.md",
+  `# Auditoria das views
+
+${unique.length} views ativas: ${migrated} com documentação ou demonstração migrada e validação local; ${unique.length - migrated} em revisão. O status não representa aprovação para produção. Axe avaliou desktop claro e mobile escuro; ${violations} violações automáticas no conjunto executado. Leitor de tela e outros motores seguem pendentes.
+
+| View | Situação | Violações axe |
+| --- | --- | ---: |
+${unique.map((item) => `| ${item.view} | ${item.status === "migrated" ? (foundationIds.has(item.view) ? "Fundamento documentado · validação local" : "Migrada · validação local") : "Em revisão"} | ${axe.filter((x) => x.view === item.view).flatMap((x) => x.violations || []).length} |`).join("\n")}
+`,
+);
 writeFileSync(
   "RELATORIO-v2.4.md",
-  `# Will Labs v2.4 · Sprint 1 parcial\n\nA base v2.3 está preservada na tag Git \`baseline-v2.3\`. O repositório substitui a entrega por ZIP. A documentação importa \`packages/ui\` e há um consumidor independente sem CSS ou scripts legados. A decisão por módulos ES, DOM nativo e Custom Elements consta na ADR-001. O PDF orienta os 16 Labs e o produto futuro; esta etapa constrói o guia e as peças comuns, não os Labs completos.\n\n## Correções verificadas\n\n- Modal, drawer e atalhos fecham por ×, cancelar e Escape e devolvem foco ao acionador, sem alterar a rota.\n- Superfícies, botões, campos, tags, avisos e multiselect usam tokens e primitivas compartilhadas. As views antigas conservam o rótulo **em revisão**.\n- Seletor compacto comparado com \`/home/atman/Downloads/index.html\` e prints recebidos; amostras com disco diagonal são geradas dos tokens. Oito temas: Papel, Floresta, Petróleo, Índigo e Âmbar em variantes claras/escuras onde aplicável.\n- Densidade alinhada: campo médio ~44 px no navegador, tag com avatar 30 px; removidos os paddings e margens duplicados do CSS legado. Limpar e Mostrar têm fundo transparente, destaque ao interagir e preservam foco.\n- \`wl-time-field\` aceita HH:MM em 24 horas e tem rodas roláveis de horas/minutos, prévia, confirmação, limites, entrada pelo teclado e Escape. O exemplo isolado e a composição de data/hora usam a mesma peça; o calendário usa SVG local.\n- InputNumber usa entrada decimal com limites e passos; Select compartilha menu adaptativo; dropdown, popover e tooltip compartilham posicionamento contido na viewport. Toast tem dimensão compacta.
-- Botões textuais usam alturas de 32/36/44 px, enquanto × usa alvo e glifo próprios. Modal e drawer limitam a altura e mantêm conteúdo rolável.
-- Divider, ScrollArea e ValidationMessage fixam separação, barra nativa tematizada e erro/ajuda para campos. Checkbox, RadioGroup, EmptyState e Banner substituem exemplos legados. Dimensões e Movimento têm espaçamento medido; Grid tem prévia ajustável e Estados valida durante a digitação.
-- Multiselect reúne variantes com/sem avatar numa view; Select demonstra busca assíncrona, carregamento, vazio e erro. Nenhuma view migrada é declarada pronta para produção somente pela aparência.\n\n## Verificação\n\n- Chrome real com viewports 1440×1000 e 390×844, ${results.checks.length} checks na suíte principal, ${states.length} medições de estado, ${nontext.length} medições não textuais e ${axe.length} varreduras axe por view. Razão mínima não textual medida: ${ratio.toFixed(2)}:1.\n- \`tests/audit-redesign.mjs\`: oito temas × dois tamanhos, fluxo de texto/hora/tags, foco e overflow. Dados em \`evidence/audit-redesign.json\`; capturas em \`evidence/audit-input-*.png\` e \`evidence/audit-themes-*.png\`.\n- \`tests/audit-overlays.mjs\`: 57 checks de camadas, foco e tamanho em 1440, 390 e 320 px.
-- \`tests/audit-new.mjs\`: 48 checks de layout e contraste de etiquetas, grid, validação e busca assíncrona em desktop/mobile.
-- ${migrated} de ${unique.length} views migradas ou com comportamento compartilhado; ${unique.length - migrated} em revisão. Inventário em \`evidence/VIEW-AUDIT.md\`.\n\n## Pendências da Sprint 1\n\n1. Migrar ${unique.length - migrated} views em revisão e retirar gradualmente adaptadores/markup legados. Upload, calendário e demais widgets antigos exigem contrato e teste próprios.\n2. Testar manualmente com leitor de tela e nos motores Firefox/Safari. A auditoria de contraste automática cobre os estados renderizados selecionados, não toda combinação possível.\n3. Integrar as peças a um Lab real e definir o nome final do produto; \`OpsFlow\` é provisório e não foi adotado como nova marca.\n4. Publicar a documentação e ligar CI/PR ao remoto Git quando existir.\n\nA revisão editorial segue a referência no-ai-slop registrada em \`docs/VOZ-E-CONTEUDO.md\`. A direção visual e as referências de mercado estão em \`docs/DIRETRIZES-VISUAIS.md\`. O brief desta revisão está em \`docs/PROMPT-AUDITORIA-UI.md\` e a comparação medida em \`docs/AUDITORIA-COMPARATIVA.md\`. A arquitetura aplica no próprio repositório a versionamento, CI e revisão ensinados nos Labs, conforme ADR-002 e CONTRIBUTING.\n`,
+  `# Will Labs v2.4 · Sprint 1 em validação
+
+A base v2.3 está preservada na tag Git \`baseline-v2.3\`. O trabalho é versionado no repositório, sem ZIP. A documentação importa \`packages/ui\`; há um consumidor independente sem CSS ou scripts legados. A ADR-001 registra a escolha por módulos ES, DOM nativo e Custom Elements. O PDF orienta os 16 Labs e o produto futuro; esta etapa desenvolve o guia e as peças comuns.
+
+## Correções desta rodada
+
+- Barra de rolagem documentada e aplicada globalmente por CSS padronizado, com regras para Firefox e WebKit. O carrossel oculta a barra e oferece arraste, botões e teclado.
+- Banner e aviso agora têm densidades e funções distintas; toast permanece temporário. Ícones, tipografia e espaçamento foram reduzidos e usam tons semânticos.
+- Seletor de hora mais estreito; hover e seleção seguem a cor de ação de cada tema. Popover tem seta posicionada junto ao acionador.
+- Modal e drawer usam botões de ação proporcionais, ícone de fechar estável e divisórias com recuo. Corrigido o seletor que atingia também “Cancelar”.
+- Tabela separa colunas. Textarea permite redimensionar altura e largura. Erro de validação desaparece após correção. Grid tem segunda prévia com blocos de tamanhos diferentes e controle de altura e largura.
+- Upload, Accordion, Colapsável, Carrossel, Avatar, Imagem, Progresso, Link, Breadcrumb e Gráfico usam implementações compartilhadas. O colapsável usa o InputNumber do pacote. Card e EmptyState ganharam variantes. O diagrama mostra ligações entre etapas.
+- As views de documentação explicam o papel de LabPage, Código e dados, e Comparação de autorização. A página de acessibilidade oferece exemplos interativos e critérios de uso.
+
+## Verificação
+
+- Chrome real em 1440×1000 e 390×844: ${results.checks.length} checks funcionais, ${states.length} medições de estado, ${nontext.length} medições não textuais, ${axe.length} varreduras axe, ${finalChecks} checks desta rodada e ${violations} violações axe. Menor razão não textual medida: ${ratio.toFixed(2)}:1.
+- Oito temas foram avaliados na matriz de renderização; as capturas e dados ficam em \`evidence/\`. As novas interações estão em \`tests/audit-final.mjs\` e \`evidence/audit-final.json\`.
+- ${migrated} de ${unique.length} views ativas saíram de “em revisão” após migração ou auditoria editorial/local. O inventário por view está em \`evidence/VIEW-AUDIT.md\`. Este status não substitui validação por usuários ou homologação para produção.
+
+## Pendências da Sprint 1
+
+1. Retirar gradualmente markup, CSS e controladores legados que permanecem no arquivo inicial, embora as views ativas já consumam o pacote. Reduzir o custo de manutenção antes da publicação.
+2. Testar manualmente com leitor de tela e em Firefox e Safari. A matriz automatizada cobre estados renderizados selecionados, sem afirmar cobertura de todas as combinações.
+3. Integrar as peças a um Lab real e definir o nome final do produto; \`OpsFlow\` continua provisório e não foi adotado como marca.
+4. Publicar a documentação e conectar CI/PR ao remoto Git quando existir.
+
+A direção visual e as referências estão em \`docs/DIRETRIZES-VISUAIS.md\`; a revisão editorial segue \`docs/VOZ-E-CONTEUDO.md\` e a referência no-ai-slop. A arquitetura do próprio repositório aplica versionamento e revisão ensinados nos Labs, conforme ADR-002 e CONTRIBUTING.
+`,
 );

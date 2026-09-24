@@ -46,7 +46,7 @@ try {
     check(
       `${width} grid narrow`,
       await page
-        .locator(".docs-grid-preview")
+        .locator(".docs-grid-preview:not(.docs-grid-preview--mixed)")
         .evaluate(
           (el) =>
             getComputedStyle(el).gridTemplateColumns.split(" ").length === 1,
@@ -56,7 +56,7 @@ try {
     check(
       `${width} grid wide`,
       await page
-        .locator(".docs-grid-preview")
+        .locator(".docs-grid-preview:not(.docs-grid-preview--mixed)")
         .evaluate(
           (el) =>
             getComputedStyle(el).gridTemplateColumns.split(" ").length === 3,

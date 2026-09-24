@@ -3224,49 +3224,49 @@
       "theme": "paper",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3301,7 +3301,7 @@
       "theme": "paper",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3385,7 +3385,7 @@
       "theme": "paper",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3399,7 +3399,7 @@
       "theme": "paper",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3469,21 +3469,21 @@
       "theme": "paper",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3504,49 +3504,49 @@
       "theme": "paper",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3567,7 +3567,7 @@
       "theme": "paper",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3595,14 +3595,14 @@
       "theme": "paper",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "paper",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3616,7 +3616,7 @@
       "theme": "paper",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3678,49 +3678,49 @@
       "theme": "forest",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3755,7 +3755,7 @@
       "theme": "forest",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3839,7 +3839,7 @@
       "theme": "forest",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3853,7 +3853,7 @@
       "theme": "forest",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3923,21 +3923,21 @@
       "theme": "forest",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -3958,49 +3958,49 @@
       "theme": "forest",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4021,7 +4021,7 @@
       "theme": "forest",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4049,14 +4049,14 @@
       "theme": "forest",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "forest",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4070,7 +4070,7 @@
       "theme": "forest",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4132,49 +4132,49 @@
       "theme": "petrol-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4209,7 +4209,7 @@
       "theme": "petrol-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4293,7 +4293,7 @@
       "theme": "petrol-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4307,7 +4307,7 @@
       "theme": "petrol-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4377,21 +4377,21 @@
       "theme": "petrol-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4412,49 +4412,49 @@
       "theme": "petrol-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4475,7 +4475,7 @@
       "theme": "petrol-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4503,14 +4503,14 @@
       "theme": "petrol-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4524,7 +4524,7 @@
       "theme": "petrol-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4586,49 +4586,49 @@
       "theme": "petrol-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4663,7 +4663,7 @@
       "theme": "petrol-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4747,7 +4747,7 @@
       "theme": "petrol-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4761,7 +4761,7 @@
       "theme": "petrol-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4831,21 +4831,21 @@
       "theme": "petrol-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4866,49 +4866,49 @@
       "theme": "petrol-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4929,7 +4929,7 @@
       "theme": "petrol-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4957,14 +4957,14 @@
       "theme": "petrol-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "petrol-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -4978,7 +4978,7 @@
       "theme": "petrol-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5040,49 +5040,49 @@
       "theme": "indigo-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5117,7 +5117,7 @@
       "theme": "indigo-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5201,7 +5201,7 @@
       "theme": "indigo-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5215,7 +5215,7 @@
       "theme": "indigo-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5285,21 +5285,21 @@
       "theme": "indigo-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5320,49 +5320,49 @@
       "theme": "indigo-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5383,7 +5383,7 @@
       "theme": "indigo-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5411,14 +5411,14 @@
       "theme": "indigo-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5432,7 +5432,7 @@
       "theme": "indigo-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5494,49 +5494,49 @@
       "theme": "indigo-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5571,7 +5571,7 @@
       "theme": "indigo-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5655,7 +5655,7 @@
       "theme": "indigo-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5669,7 +5669,7 @@
       "theme": "indigo-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5739,21 +5739,21 @@
       "theme": "indigo-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5774,49 +5774,49 @@
       "theme": "indigo-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5837,7 +5837,7 @@
       "theme": "indigo-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5865,14 +5865,14 @@
       "theme": "indigo-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "indigo-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5886,7 +5886,7 @@
       "theme": "indigo-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -5948,49 +5948,49 @@
       "theme": "amber-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6025,7 +6025,7 @@
       "theme": "amber-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6109,7 +6109,7 @@
       "theme": "amber-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6123,7 +6123,7 @@
       "theme": "amber-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6193,21 +6193,21 @@
       "theme": "amber-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6228,49 +6228,49 @@
       "theme": "amber-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6291,7 +6291,7 @@
       "theme": "amber-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6319,14 +6319,14 @@
       "theme": "amber-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6340,7 +6340,7 @@
       "theme": "amber-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6402,49 +6402,49 @@
       "theme": "amber-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6479,7 +6479,7 @@
       "theme": "amber-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6563,7 +6563,7 @@
       "theme": "amber-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6577,7 +6577,7 @@
       "theme": "amber-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6647,21 +6647,21 @@
       "theme": "amber-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6682,49 +6682,49 @@
       "theme": "amber-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6745,7 +6745,7 @@
       "theme": "amber-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6773,14 +6773,14 @@
       "theme": "amber-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
       "theme": "amber-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6794,7 +6794,7 @@
       "theme": "amber-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 1440,
@@ -6856,49 +6856,49 @@
       "theme": "paper",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -6933,7 +6933,7 @@
       "theme": "paper",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7017,7 +7017,7 @@
       "theme": "paper",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7031,7 +7031,7 @@
       "theme": "paper",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7101,21 +7101,21 @@
       "theme": "paper",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7136,49 +7136,49 @@
       "theme": "paper",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7199,7 +7199,7 @@
       "theme": "paper",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7227,14 +7227,14 @@
       "theme": "paper",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "paper",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7248,7 +7248,7 @@
       "theme": "paper",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7310,49 +7310,49 @@
       "theme": "forest",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7387,7 +7387,7 @@
       "theme": "forest",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7471,7 +7471,7 @@
       "theme": "forest",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7485,7 +7485,7 @@
       "theme": "forest",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7555,21 +7555,21 @@
       "theme": "forest",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7590,49 +7590,49 @@
       "theme": "forest",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7653,7 +7653,7 @@
       "theme": "forest",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7681,14 +7681,14 @@
       "theme": "forest",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "forest",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7702,7 +7702,7 @@
       "theme": "forest",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7764,49 +7764,49 @@
       "theme": "petrol-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7841,7 +7841,7 @@
       "theme": "petrol-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7925,7 +7925,7 @@
       "theme": "petrol-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -7939,7 +7939,7 @@
       "theme": "petrol-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8009,21 +8009,21 @@
       "theme": "petrol-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8044,49 +8044,49 @@
       "theme": "petrol-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8107,7 +8107,7 @@
       "theme": "petrol-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8135,14 +8135,14 @@
       "theme": "petrol-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8156,7 +8156,7 @@
       "theme": "petrol-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8218,49 +8218,49 @@
       "theme": "petrol-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8295,7 +8295,7 @@
       "theme": "petrol-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8379,7 +8379,7 @@
       "theme": "petrol-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8393,7 +8393,7 @@
       "theme": "petrol-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8463,21 +8463,21 @@
       "theme": "petrol-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8498,49 +8498,49 @@
       "theme": "petrol-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8561,7 +8561,7 @@
       "theme": "petrol-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8589,14 +8589,14 @@
       "theme": "petrol-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "petrol-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8610,7 +8610,7 @@
       "theme": "petrol-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8672,49 +8672,49 @@
       "theme": "indigo-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8749,7 +8749,7 @@
       "theme": "indigo-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8833,7 +8833,7 @@
       "theme": "indigo-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8847,7 +8847,7 @@
       "theme": "indigo-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8917,21 +8917,21 @@
       "theme": "indigo-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -8952,49 +8952,49 @@
       "theme": "indigo-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9015,7 +9015,7 @@
       "theme": "indigo-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9043,14 +9043,14 @@
       "theme": "indigo-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9064,7 +9064,7 @@
       "theme": "indigo-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9126,49 +9126,49 @@
       "theme": "indigo-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9203,7 +9203,7 @@
       "theme": "indigo-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9287,7 +9287,7 @@
       "theme": "indigo-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9301,7 +9301,7 @@
       "theme": "indigo-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9371,21 +9371,21 @@
       "theme": "indigo-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9406,49 +9406,49 @@
       "theme": "indigo-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9469,7 +9469,7 @@
       "theme": "indigo-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9497,14 +9497,14 @@
       "theme": "indigo-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "indigo-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9518,7 +9518,7 @@
       "theme": "indigo-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9580,49 +9580,49 @@
       "theme": "amber-light",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9657,7 +9657,7 @@
       "theme": "amber-light",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9741,7 +9741,7 @@
       "theme": "amber-light",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9755,7 +9755,7 @@
       "theme": "amber-light",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9825,21 +9825,21 @@
       "theme": "amber-light",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9860,49 +9860,49 @@
       "theme": "amber-light",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9923,7 +9923,7 @@
       "theme": "amber-light",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9951,14 +9951,14 @@
       "theme": "amber-light",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-light",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -9972,7 +9972,7 @@
       "theme": "amber-light",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10034,49 +10034,49 @@
       "theme": "amber-dark",
       "view": "inicio",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "cores",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "tipografia",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "ritmo",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "dimensoes",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "movimento",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "acessibilidade",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10111,7 +10111,7 @@
       "theme": "amber-dark",
       "view": "comp-date",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10195,7 +10195,7 @@
       "theme": "amber-dark",
       "view": "comp-feedback",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10209,7 +10209,7 @@
       "theme": "amber-dark",
       "view": "comp-avatar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10279,21 +10279,21 @@
       "theme": "amber-dark",
       "view": "comp-image",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-upload",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-calendar",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10314,49 +10314,49 @@
       "theme": "amber-dark",
       "view": "comp-accordion",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-collapsible",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-slider",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-chart",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-progress",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-link",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-breadcrumb",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10377,7 +10377,7 @@
       "theme": "amber-dark",
       "view": "comp-alert",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10405,14 +10405,14 @@
       "theme": "amber-dark",
       "view": "comp-datetime",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-textarea",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,
@@ -10426,7 +10426,7 @@
       "theme": "amber-dark",
       "view": "comp-shell",
       "overflow": false,
-      "status": "review"
+      "status": "migrated"
     },
     {
       "width": 390,

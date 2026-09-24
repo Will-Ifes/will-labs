@@ -31,5 +31,8 @@ export function ValidationMessage({ control, help = "", message = "" } = {}) {
     element: node,
     setError: (text) => update(text),
     clear: () => update(),
+    resolve: () => {
+      syncValidation(control, node, "", "");
+    },
   };
 }

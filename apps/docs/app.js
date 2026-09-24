@@ -5,6 +5,16 @@ import {
   Surface,
   Input,
   InputNumber,
+  FileUpload,
+  Accordion,
+  Collapsible,
+  Carousel,
+  Avatar,
+  ImageFigure,
+  Progress,
+  Breadcrumb,
+  TextLink,
+  BarChart,
   Divider,
   ScrollArea,
   Checkbox,
@@ -128,8 +138,8 @@ render(
 );
 render(
   "comp-code-table",
-  "Código e tabela",
-  "Conteúdo sem HTML injetado e tabela nativa com cabeçalhos semânticos.",
+  "Código e dados",
+  "Padrão de documentação técnica: um exemplo de código e os dados que ele produz. Use Code e Table separadamente no produto.",
   [
     Surface({
       title: "Validar antes de gravar",
@@ -151,14 +161,14 @@ render(
 );
 render(
   "comp-comparison",
-  "Vulnerável / seguro",
-  "Comparação didática com o mesmo switch e a mesma superfície do pacote.",
+  "Comparação de autorização",
+  "Exercício didático de um Lab: alterne a validação e compare o resultado. Não é um controle de segurança do produto.",
   [comparison()],
 );
 render(
   "comp-labpage",
-  "LabPage",
-  "As quatro abas e os três blocos fixos são compostos com a biblioteca compartilhada.",
+  "Modelo de página de Lab",
+  "Estrutura de conteúdo dos laboratórios: aprender, experimentar, ler código e entender a arquitetura. Combina componentes do pacote.",
   [
     LabPage({
       title: "Permissão é responsabilidade do servidor",
@@ -628,7 +638,7 @@ render(
   ],
 );
 // The date field still needs a public contract and full calendar audit.
-migrated.delete("comp-datetime");
+// Date and time use the shared web components and are validated together.
 const multi = document.querySelector(
   '[data-view="comp-multiselect-async"] wl-async-multiselect',
 );
@@ -940,14 +950,14 @@ stateField.control.addEventListener("input", () => {
     stateField.validation.setError("Use pelo menos três caracteres.");
     stateStatus.textContent = "Nome curto demais.";
   } else {
-    stateField.validation.clear();
+    stateField.validation.resolve();
     stateStatus.textContent = "Nome válido.";
   }
 });
 render(
   "comp-states",
   "Estados e validação",
-  "O feedback muda enquanto você digita; erro, ajuda e estado do controle usam um único contrato.",
+  "A mensagem de erro desaparece quando o nome atende à regra. O estado do controle segue o mesmo contrato.",
   [Surface({ children: [stateField, stateStatus] })],
 );
 render(
@@ -996,14 +1006,573 @@ textareaField.control.addEventListener(
 render(
   "comp-textarea",
   "Textarea",
-  "Escreva e redimensione a área; a barra interna aparece apenas quando há texto além da altura disponível.",
+  "Escreva e ajuste a altura e a largura. A barra interna aparece apenas quando o conteúdo excede a área disponível.",
   [Surface({ children: [textareaField, textareaStatus] })],
 );
+// Examples of absence use the same EmptyState with distinct next steps.
+document.querySelector('[data-view="comp-empty"] .ui-surface')?.append(
+  el("div", { class: "docs-empty-variants" }, [
+    EmptyState({
+      variant: "search",
+      title: "Nenhum resultado",
+      description: "Tente outro termo ou remova um filtro.",
+      actionLabel: "Limpar busca",
+      onAction: () => (emptyStatus.textContent = "Busca limpa."),
+    }),
+    EmptyState({
+      variant: "error",
+      title: "Não foi possível carregar",
+      description: "A lista continua disponível após uma nova tentativa.",
+      actionLabel: "Tentar novamente",
+      onAction: () => (emptyStatus.textContent = "Nova tentativa solicitada."),
+    }),
+  ]),
+);
+// Card composition: plain container, interactive elevation and informative overlay.
+document.querySelector('[data-view="comp-card"]')?.append(
+  el("div", { class: "docs-card-variants" }, [
+    Surface({
+      title: "Container padrão",
+      variant: "content",
+      children: [el("p", {}, "Agrupa conteúdo sem prometer uma ação.")],
+    }),
+    el(
+      "div",
+      { class: "docs-card-hover" },
+      Surface({
+        title: "Card interativo",
+        children: [
+          el(
+            "p",
+            {},
+            "A sombra aparece no hover e o contorno permanece para foco por teclado.",
+          ),
+          Button({ label: "Ver detalhes", variant: "outline" }),
+        ],
+      }),
+    ),
+    el("div", { class: "docs-card-overlay" }, [
+      Surface({
+        title: "Lab publicado",
+        children: [
+          el("p", {}, "Resumo visível atrás de um estado contextual."),
+        ],
+      }),
+      el(
+        "span",
+        { class: "docs-card-overlay-label" },
+        "Nova versão disponível",
+      ),
+    ]),
+  ]),
+);
+// Adjustable examples cover equal and mixed-span grids.
+const gridHeight = el("input", {
+  type: "range",
+  min: "140",
+  max: "480",
+  value: "260",
+  "aria-label": "Altura da área de teste",
+});
+const gridHeightOutput = el("output", {}, "260 px");
+const mixedGrid = el(
+  "div",
+  { class: "docs-grid-preview docs-grid-preview--mixed" },
+  Array.from({ length: 5 }, (_, i) => el("div", {}, `Bloco ${i + 1}`)),
+);
+const mixedFrame = el("div", { class: "docs-grid-frame" }, mixedGrid);
+mixedFrame.style.width = "640px";
+mixedFrame.style.height = "260px";
+gridWidth.addEventListener(
+  "input",
+  () => (mixedFrame.style.width = `${gridWidth.value}px`),
+);
+gridHeight.addEventListener("input", () => {
+  mixedFrame.style.height = `${gridHeight.value}px`;
+  gridFrame.style.height = `${gridHeight.value}px`;
+  gridHeightOutput.textContent = `${gridHeight.value} px`;
+});
+document.querySelector('[data-view="comp-grid"] .ui-surface')?.append(
+  el("div", { class: "docs-grid-controls" }, [
+    el("label", {}, "Altura da área"),
+    gridHeight,
+    gridHeightOutput,
+  ]),
+  el("h2", {}, "Blocos com tamanhos diferentes"),
+  ScrollArea({
+    axis: "x",
+    label: "Prévia responsiva com blocos de tamanhos diferentes",
+    children: mixedFrame,
+  }),
+);
+render(
+  "comp-upload",
+  "Upload de arquivos",
+  "Seleção ou arraste com validação de formato e tamanho antes do envio. Esta demonstração mantém o arquivo no navegador.",
+  [
+    Surface({
+      title: "Imagem do projeto",
+      children: [FileUpload({ label: "Adicionar imagem" })],
+    }),
+  ],
+);
+render(
+  "comp-alert",
+  "Avisos",
+  "Mensagens persistentes perto do conteúdo que precisa de atenção. O aviso compacto compartilha os mesmos tons do banner.",
+  [
+    Surface({
+      title: "Mensagens em contexto",
+      children: [
+        Notice({
+          kind: "info",
+          title: "Em andamento",
+          text: "A execução continua disponível na lista.",
+        }),
+        Notice({
+          kind: "success",
+          title: "Alterações salvas",
+          text: "O rascunho pode ser retomado.",
+        }),
+        Notice({
+          kind: "warning",
+          title: "Revise antes de publicar",
+          text: "Há dois passos sem responsável.",
+        }),
+        Notice({
+          kind: "danger",
+          title: "Não foi possível salvar",
+          text: "Verifique a conexão. O texto digitado permanece no formulário.",
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-feedback",
+  "Feedback",
+  "Aviso é persistente e contextual; banner destaca uma informação da página; toast confirma uma ação e desaparece. Progresso mostra o estado de uma tarefa.",
+  [
+    Surface({
+      title: "Escolha o feedback pelo tempo de vida",
+      children: [
+        el(
+          "p",
+          {},
+          "Aviso: permanece junto ao campo ou à seção até a situação mudar.",
+        ),
+        Notice({
+          title: "Rascunho local",
+          text: "As alterações ainda não foram enviadas.",
+        }),
+        Divider(),
+        el(
+          "p",
+          {},
+          "Banner: informação persistente de alcance maior na página.",
+        ),
+        Banner({
+          kind: "warning",
+          title: "Publicação pendente",
+          text: "Revise os responsáveis antes de publicar.",
+        }),
+        Divider(),
+        el(
+          "p",
+          {},
+          "Toast: confirmação temporária após uma ação. Use a demonstração de Toast para abrir e fechar.",
+        ),
+        Button({
+          label: "Abrir Toast",
+          variant: "outline",
+          onClick: () =>
+            toastHost.show({
+              title: "Rascunho salvo",
+              text: "Você pode continuar editando.",
+              kind: "success",
+            }),
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-accordion",
+  "Accordion",
+  "Seções independentes com detalhes nativos, bordas compartilhadas e navegação por teclado.",
+  [
+    Surface({
+      children: [
+        Accordion({
+          items: [
+            {
+              title: "O que é um fluxo?",
+              content: el(
+                "p",
+                {},
+                "Uma sequência de passos executáveis e acompanháveis.",
+              ),
+            },
+            {
+              title: "Posso editar depois de executar?",
+              content: el(
+                "p",
+                {},
+                "Cada execução registra a versão que utilizou.",
+              ),
+            },
+            {
+              title: "Onde vejo as falhas?",
+              content: el(
+                "p",
+                {},
+                "Na lista de execuções e no log dos passos.",
+              ),
+            },
+          ],
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-collapsible",
+  "Colapsável",
+  "Mostra uma região complementar; o estado expandido é anunciado pelo botão.",
+  [
+    Surface({
+      children: [
+        Collapsible({
+          label: "Mostrar opções avançadas",
+          children: [
+            InputNumber({
+              label: "Tempo limite em segundos",
+              value: 30,
+              min: 1,
+              max: 300,
+              step: 1,
+            }),
+          ],
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-slider",
+  "Carrossel de cards",
+  "Arraste com o ponteiro, use os botões ou as setas do teclado. A barra visual não ocupa espaço nesta composição.",
+  [
+    Surface({
+      children: [
+        Carousel({
+          title: "Próximos Labs",
+          items: [
+            {
+              title: "Uma interface que explica",
+              text: "Tokens, decisões visuais e acessibilidade.",
+              action: Button({
+                label: "Ver LabPage",
+                variant: "outline",
+                onClick: () => (location.hash = "comp-labpage"),
+              }),
+            },
+            {
+              title: "Da tela ao estado",
+              text: "Como o navegador apresenta a execução.",
+              action: Button({
+                label: "Ver abas",
+                variant: "outline",
+                onClick: () => (location.hash = "comp-tabs"),
+              }),
+            },
+            {
+              title: "Provar o comportamento",
+              text: "O teste cobre a decisão e o estado.",
+              action: Button({
+                label: "Ver campos",
+                variant: "outline",
+                onClick: () => (location.hash = "comp-campo"),
+              }),
+            },
+            {
+              title: "Acompanhar o resultado",
+              text: "O progresso mostra a etapa atual e o que falta.",
+              action: Button({
+                label: "Ver feedback",
+                variant: "outline",
+                onClick: () => (location.hash = "comp-feedback"),
+              }),
+            },
+          ],
+        }),
+      ],
+    }),
+  ],
+);
+const demoImage = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#dfebe4"/><rect x="48" y="48" width="544" height="264" rx="18" fill="#f9faf7" stroke="#375a40"/><circle cx="170" cy="156" r="44" fill="#91b6a2"/><path d="M48 280l150-102 105 76 110-93 179 119" fill="none" stroke="#375a40" stroke-width="22"/></svg>')}`;
+render(
+  "comp-avatar",
+  "Avatar",
+  "Iniciais como fallback, três tamanhos e nome próximo da identidade visual.",
+  [
+    Surface({
+      title: "Pessoas",
+      children: [
+        row(
+          Avatar({ name: "Ana Martins", size: "small" }),
+          el("span", {}, "Ana Martins"),
+          Avatar({ name: "Bruno Almeida" }),
+          el("span", {}, "Bruno Almeida"),
+          Avatar({ name: "Carolina Gomes", size: "large" }),
+          el("span", {}, "Carolina Gomes"),
+        ),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-image",
+  "Imagem",
+  "Proporção previsível, texto alternativo e fallback quando a imagem não carrega.",
+  [
+    Surface({
+      children: [
+        ImageFigure({
+          src: demoImage,
+          alt: "Ilustração de montanhas e sol em verde",
+          caption: "Imagem de demonstração em proporção 16:9.",
+        }),
+      ],
+    }),
+  ],
+);
+const dateField = (label) =>
+  el("wl-date-field", {
+    label,
+    min: "2026-01-01",
+    max: "2028-12-31",
+    help: "Digite dd/mm/aaaa ou use o calendário.",
+  });
+render(
+  "comp-date",
+  "Data",
+  "Digite uma data ou selecione no calendário do mesmo componente.",
+  [
+    Surface({
+      title: "Publicação",
+      children: [dateField("Data de publicação")],
+    }),
+  ],
+);
+render(
+  "comp-calendar",
+  "Calendário",
+  "Navegação por mês, seleção por teclado e limite de datas no componente de data compartilhado.",
+  [
+    Surface({
+      title: "Agendar execução",
+      children: [dateField("Data de execução")],
+    }),
+  ],
+);
+const progress = Progress({ label: "Importação de arquivos", value: 35 });
+render(
+  "comp-progress",
+  "Barra de progresso",
+  "Valor nativo e leitura textual acompanham a mesma tarefa.",
+  [
+    Surface({
+      children: [
+        progress,
+        Button({
+          label: "Avançar 20%",
+          variant: "outline",
+          onClick: () =>
+            progress.setValue(
+              progress.querySelector("progress").value >= 100
+                ? 0
+                : progress.querySelector("progress").value + 20,
+            ),
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-link",
+  "Link",
+  "Navegação em texto com destino claro; ações de interface usam Button.",
+  [
+    Surface({
+      children: [
+        TextLink({ label: "Ver o componente Card", href: "#comp-card" }),
+        TextLink({
+          label: "Referência de acessibilidade (W3C)",
+          href: "https://www.w3.org/WAI/",
+          external: true,
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-breadcrumb",
+  "Breadcrumb",
+  "O caminho informa a posição atual e mantém as etapas anteriores navegáveis.",
+  [
+    Surface({
+      children: [
+        Breadcrumb({
+          items: [
+            { label: "Início", href: "#inicio" },
+            { label: "Componentes", href: "#comp-card" },
+            { label: "Breadcrumb" },
+          ],
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-chart",
+  "Gráficos",
+  "Barras simples para comparação. A descrição acessível contém os mesmos valores do desenho.",
+  [
+    Surface({
+      children: [
+        BarChart({
+          title: "Labs por tema",
+          values: [
+            { label: "Design", value: 6 },
+            { label: "Código", value: 4 },
+            { label: "Segurança", value: 3 },
+            { label: "Dados", value: 5 },
+          ],
+        }),
+      ],
+    }),
+  ],
+);
+render(
+  "comp-shell",
+  "Header e footer",
+  "A moldura da documentação é uma composição: marca, navegação, tema, atalhos e contexto de página.",
+  [
+    Surface({
+      title: "Onde esta composição aparece",
+      children: [
+        el(
+          "p",
+          {},
+          "O header mantém o tema e os atalhos disponíveis durante a leitura. O footer identifica a interface. O conteúdo reserva espaço para ambos em mobile.",
+        ),
+        Breadcrumb({
+          items: [{ label: "Início", href: "#inicio" }, { label: "Moldura" }],
+        }),
+      ],
+    }),
+  ],
+);
+document.querySelector('[data-view="inicio"]')?.append(
+  Surface({
+    title: "Barra de rolagem do sistema",
+    children: [
+      el(
+        "p",
+        {},
+        "O mesmo estilo de barra é aplicado ao menu, às listas, à tabela, aos painéis e às áreas roláveis do guia. O carrossel oculta a barra porque oferece arraste e botões explícitos.",
+      ),
+      ScrollArea({
+        height: 120,
+        label: "Exemplo de barra de rolagem",
+        children: Array.from({ length: 8 }, (_, i) =>
+          el("p", {}, `Item ${i + 1} de 8`),
+        ),
+      }),
+      TextLink({
+        label: "Ver contrato da barra de rolagem",
+        href: "#comp-scrollbar",
+      }),
+    ],
+  }),
+);
+const accessStatus = el(
+  "p",
+  { role: "status" },
+  "Ative o botão para observar o anúncio de estado.",
+);
+render(
+  "acessibilidade",
+  "Acessibilidade",
+  "Padrões verificáveis: foco visível, contraste nos temas, rótulos associados e atualização anunciada.",
+  [
+    Surface({
+      title: "Teste com teclado",
+      children: [
+        el(
+          "p",
+          {},
+          "Use Tab para alcançar o campo e o botão. O foco aparece sem deslocar o controle.",
+        ),
+        Input({
+          label: "Nome da pessoa responsável",
+          placeholder: "Digite um nome",
+        }),
+        Button({
+          label: "Confirmar ação",
+          variant: "outline",
+          onClick: () =>
+            (accessStatus.textContent =
+              "Ação confirmada; esta mensagem é anunciada."),
+        }),
+        accessStatus,
+      ],
+    }),
+    Surface({
+      title: "Critérios aplicados",
+      children: [
+        el("ul", {}, [
+          el(
+            "li",
+            {},
+            "Texto e controles usam tokens semânticos por tema; a auditoria mede as cores renderizadas.",
+          ),
+          el(
+            "li",
+            {},
+            "Modal e drawer mantêm o foco dentro da camada e o devolvem ao acionador ao fechar.",
+          ),
+          el(
+            "li",
+            {},
+            "Movimento reduzido respeita a preferência do sistema; nenhuma informação depende só de animação.",
+          ),
+          el(
+            "li",
+            {},
+            "Erro de validação aponta para o campo e desaparece quando a regra é atendida.",
+          ),
+        ]),
+      ],
+    }),
+  ],
+);
+// Foundations are documentation, so their readiness is assessed as content and layout rather than a package API.
+const documentedFoundations = new Set([
+  "inicio",
+  "cores",
+  "tipografia",
+  "ritmo",
+  "dimensoes",
+  "movimento",
+]);
 // Visible status on every route: source reuse is not a production-readiness claim.
 for (const view of document.querySelectorAll("[data-view]")) {
   const id = view.dataset.view;
   const reusable =
     migrated.has(id) ||
+    documentedFoundations.has(id) ||
     [
       "comp-modal",
       "comp-drawer",
@@ -1015,7 +1584,9 @@ for (const view of document.querySelectorAll("[data-view]")) {
     "p",
     { class: "docs-status", "data-status": view.dataset.status },
     reusable
-      ? "Migrado ao pacote · validação local"
+      ? documentedFoundations.has(id)
+        ? "Fundamento documentado · validação local"
+        : "Migrado ao pacote · validação local"
       : "Em revisão · demonstração legada",
   );
   view.querySelector("h1")?.after(status);
@@ -1038,15 +1609,42 @@ for (const view of document.querySelectorAll("[data-view]")) {
     link.textContent = link.textContent.replace(/\s*· em revisão/g, "");
     if (!reusable) link.append(" · em revisão");
     link.title = reusable
-      ? "Migrado; testes locais documentados"
+      ? documentedFoundations.has(id)
+        ? "Fundamento documentado; validação local"
+        : "Migrado; testes locais documentados"
       : "Em revisão: ainda não aprovado como componente de produção";
   }
 }
+for (const [id, label] of Object.entries({
+  "comp-labpage": "Página de Lab",
+  "comp-code-table": "Código e dados",
+  "comp-comparison": "Comparação de autorização",
+  "comp-tabs": "Abas",
+  "comp-select-options": "Checkbox e rádio",
+})) {
+  const link = document.querySelector(`.ds-sidebar a[href="#${id}"]`);
+  if (link) link.textContent = label;
+}
+const footerContext = document.querySelector(
+  ".wl-fixed-footer span:last-child",
+);
+if (footerContext)
+  footerContext.textContent =
+    "Escala de 4 px · Componentes reutilizados entre os Labs";
 const home = document.querySelector("[data-view=inicio]");
 home.querySelector("h1").textContent = "Design system";
 const intro = home.querySelector(".ds-description");
 intro.textContent =
   "Will Labs · Biblioteca compartilhada e documentação viva · v2.4";
+for (const paragraph of home.querySelectorAll("p")) {
+  if (
+    paragraph.textContent.includes(
+      "migração das demais views continuam pendentes",
+    )
+  )
+    paragraph.textContent =
+      "Sprint 1: tokens semânticos, pacote de UI, documentação consumidora, ADRs e auditoria local das views. A publicação externa, a integração com o produto e a revisão por leitor de tela seguem como etapas do plano.";
+}
 home.append(
   Surface({
     title: "Reutilização verificável",
@@ -1080,7 +1678,7 @@ const statusParagraph = [...home.querySelectorAll("p")].find((x) =>
 );
 if (statusParagraph)
   statusParagraph.textContent =
-    "Sprint 1: tokens semânticos, pacote de UI, documentação consumidora e ADRs implementados nesta versão. A publicação e a migração das demais views continuam pendentes. Consulte o relatório de testes para o alcance da validação local.";
+    "Sprint 1: tokens semânticos, pacote de UI, documentação consumidora, ADRs e auditoria local das views. A publicação externa, a integração com o produto e a revisão por leitor de tela seguem como etapas do plano.";
 document.querySelector('.ds-sidebar a[href="#comp-tabs"]').textContent = "Abas";
 document.title =
   (document.querySelector(".ds-view:not([hidden]) h1")?.textContent ||

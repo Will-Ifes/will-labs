@@ -48,7 +48,7 @@ document.querySelector("main").append(
 
 `Divider({orientation, label})` cria uma separação temática entre grupos. `ScrollArea({children,height,axis,label})` (também exportado como `Scrollbar`) mantém rolagem nativa e recebe o mesmo estilo em Firefox (`scrollbar-color/width`) e Chrome, Edge e Safari (`::-webkit-scrollbar`). A aparência da barra pode variar quando o sistema operacional usa barras sobrepostas.
 
-`ValidationMessage({control,help,message})` conecta ajuda/erro por `aria-describedby` e atualiza `aria-invalid`. `syncValidation` adapta controles legados que já possuem um nó de mensagem; Input, InputNumber, Select, data, hora e multiselect usam esse contrato. `Checkbox` e `RadioGroup` usam controles nativos com o estilo do pacote. `Banner` é a implementação comum de avisos; `Notice` permanece como alias de compatibilidade. `EmptyState` junta ausência, explicação e próxima ação.
+`ValidationMessage({control,help,message})` conecta ajuda/erro por `aria-describedby` e atualiza `aria-invalid`. `syncValidation` adapta controles legados que já possuem um nó de mensagem; Input, InputNumber, Select, data, hora e multiselect usam esse contrato. `Checkbox` e `RadioGroup` usam controles nativos com o estilo do pacote. `Banner` informa uma condição persistente de alcance da página; `Notice` usa a mesma base visual em formato compacto, junto ao conteúdo afetado. `ToastHost` confirma uma ação e desaparece. `EmptyState` aceita `variant: default|search|error` e junta ausência, explicação e próxima ação. `ValidationMessage.resolve()` remove a mensagem quando o requisito foi atendido.
 
 `Select` aceita `loadOptions({query,signal})` para busca assíncrona. O loader retorna itens `{value,label,avatar?}[]`; busca anterior é cancelada, e o painel apresenta carregamento, vazio e erro. `Tag` aceita `tone: neutral|info|success|warning|danger`.
 
@@ -76,4 +76,14 @@ document.body.append(multi);
 
 ## Migração
 
-`date-field.js` é isolado do legado, mas está **em revisão** e não é reexportado pela API principal. A API pública está em versão 0.1.0 e ainda pode mudar antes da publicação.
+`date-field.js` e `time-field.js` definem Custom Elements importados explicitamente. As demonstrações têm validação local; a API pública ainda pode evoluir antes da publicação. O markup, CSS e os controladores da versão legada seguem no arquivo inicial para remoção gradual.
+
+## Componentes desta rodada
+
+- `FileUpload({label,accept,maxBytes,onChange})` valida tipo e tamanho no navegador, aceita seleção e arraste e mostra prévia. A aplicação consumidora implementa o envio; a demonstração não envia dados.
+- `Accordion({items})` usa `details/summary` nativos. `Collapsible({label,children})` expõe `aria-expanded` e aceita qualquer componente, inclusive `InputNumber`.
+- `Carousel({title,items})` combina scroll snap, arraste por ponteiro, botões e setas. A barra visual é ocultada apenas nesta composição.
+- `Avatar({name,size,src})`, `ImageFigure({src,alt,caption})`, `Progress({label,value,max})`, `Breadcrumb({items})`, `TextLink({label,href,external})` e `BarChart({title,values})` fornecem primitivas para os Labs.
+- `Diagram({nodes})` liga etapas visualmente e conserva a ordem semântica no DOM. `Table` usa separadores de coluna e região de rolagem horizontal.
+
+A documentação usa o pacote via módulos ES. Os componentes têm validação local no Chrome; não há homologação em leitor de tela, Firefox ou Safari.

@@ -28,7 +28,12 @@ export function Popover({
   const panel = element(
     "div",
     { id, class: "ui-popover-panel", role: "dialog", "aria-label": title },
-    [element("strong", {}, title), element("p", {}, text), action],
+    [
+      element("span", { class: "ui-popover-arrow", "aria-hidden": true }),
+      element("strong", {}, title),
+      element("p", {}, text),
+      action,
+    ],
   );
   const floating = connectFloating({ anchor: trigger, panel, minWidth: false });
   trigger.addEventListener("click", () => {

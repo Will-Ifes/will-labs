@@ -17,4 +17,4 @@ Will Labs ensina engenharia de produto com exemplos verificáveis. Sua interface
 
 ## Limite desta etapa
 
-A validação automatizada cobre estados renderizados selecionados, Chrome desktop/mobile e temas. Ainda são necessárias avaliação com usuários, leitor de tela, Firefox/Safari e migração das views legadas em revisão antes de declarar a biblioteca pronta para produção.
+A validação automatizada cobre estados renderizados selecionados, Chrome desktop/mobile e temas. Ainda são necessárias avaliação com usuários, leitor de tela, Firefox/Safari e retirada do markup/CSS/JS legado antes de declarar a biblioteca pronta para produção.

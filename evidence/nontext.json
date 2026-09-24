@@ -3,7 +3,7 @@
     "theme": "paper",
     "control": "input",
     "border": 3.7407478798401086,
-    "focus": 7.065045281006435
+    "focus": 14.836932370828778
   },
   {
     "theme": "paper",
@@ -21,7 +21,7 @@
     "theme": "forest",
     "control": "input",
     "border": 4.917920587987416,
-    "focus": 9.673982480330391
+    "focus": 13.349522579220924
   },
   {
     "theme": "forest",
@@ -39,7 +39,7 @@
     "theme": "petrol-light",
     "control": "input",
     "border": 3.8271409839060704,
-    "focus": 6.2845483528309405
+    "focus": 12.02682873867525
   },
   {
     "theme": "petrol-light",
@@ -57,7 +57,7 @@
     "theme": "petrol-dark",
     "control": "input",
     "border": 4.61176288147393,
-    "focus": 7.939743942711441
+    "focus": 12.342371993514073
   },
   {
     "theme": "petrol-dark",
@@ -75,7 +75,7 @@
     "theme": "indigo-light",
     "control": "input",
     "border": 3.9987961152083837,
-    "focus": 7.930065429900033
+    "focus": 14.105236080321161
   },
   {
     "theme": "indigo-light",
@@ -93,7 +93,7 @@
     "theme": "indigo-dark",
     "control": "input",
     "border": 4.93874292840213,
-    "focus": 9.320316942077397
+    "focus": 13.691574230413138
   },
   {
     "theme": "indigo-dark",
@@ -111,7 +111,7 @@
     "theme": "amber-light",
     "control": "input",
     "border": 3.5935308711761054,
-    "focus": 6.99573253574521
+    "focus": 14.018763486071212
   },
   {
     "theme": "amber-light",
@@ -129,7 +129,7 @@
     "theme": "amber-dark",
     "control": "input",
     "border": 5.1457870896100255,
-    "focus": 9.442324151805067
+    "focus": 13.215463269584712
   },
   {
     "theme": "amber-dark",

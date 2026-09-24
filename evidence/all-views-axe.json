@@ -3,49 +3,49 @@
     "view": "inicio",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "cores",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "tipografia",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "ritmo",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "dimensoes",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "movimento",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "acessibilidade",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -80,7 +80,7 @@
     "view": "comp-date",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -164,7 +164,7 @@
     "view": "comp-feedback",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -178,7 +178,7 @@
     "view": "comp-avatar",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -248,21 +248,21 @@
     "view": "comp-image",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-upload",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-calendar",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -283,49 +283,49 @@
     "view": "comp-accordion",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-collapsible",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-slider",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-chart",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-progress",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-link",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-breadcrumb",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -346,7 +346,7 @@
     "view": "comp-alert",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -374,7 +374,7 @@
     "view": "comp-datetime",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -395,7 +395,7 @@
     "view": "comp-shell",
     "width": 1440,
     "theme": "paper",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -409,49 +409,49 @@
     "view": "inicio",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "cores",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "tipografia",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "ritmo",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "dimensoes",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "movimento",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "acessibilidade",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -486,7 +486,7 @@
     "view": "comp-date",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -570,7 +570,7 @@
     "view": "comp-feedback",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -584,7 +584,7 @@
     "view": "comp-avatar",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -654,21 +654,21 @@
     "view": "comp-image",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-upload",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-calendar",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -689,49 +689,49 @@
     "view": "comp-accordion",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-collapsible",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-slider",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-chart",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-progress",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-link",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
     "view": "comp-breadcrumb",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -752,7 +752,7 @@
     "view": "comp-alert",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -780,7 +780,7 @@
     "view": "comp-datetime",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {
@@ -801,7 +801,7 @@
     "view": "comp-shell",
     "width": 390,
     "theme": "petrol-dark",
-    "status": "review",
+    "status": "migrated",
     "violations": []
   },
   {

@@ -1,6 +1,6 @@
 # Will Labs · Design system v2.4
 
-Repositório do Will Labs, iniciado a partir da v2.3 e concentrado na Sprint 1 do PDF. Biblioteca compartilhada, tokens semânticos e aplicação de documentação que importa os componentes. As demonstrações legadas continuam acessíveis e marcadas **em revisão**.
+Repositório do Will Labs, iniciado a partir da v2.3 e concentrado na Sprint 1 do PDF. Biblioteca compartilhada, tokens semânticos e aplicação de documentação que importa os componentes. As 58 views ativas estão documentadas ou migradas com validação local; os fontes legados permanecem para limpeza gradual. Esse status não é aprovação de produção.
 
 ## Rodar
 
@@ -31,7 +31,7 @@ Mantenha `npm start` em outro terminal. Para usar Chrome instalado, por exemplo 
 - `packages/ui`: componentes reutilizáveis, contratos e estilos; não conhece nomes ou dados do catálogo.
 - `apps/docs`: conteúdo, exemplos e loader simulado; importa a UI compartilhada.
 - `apps/docs/consumer.html`: segundo consumidor sem estilos ou scripts legados.
-- `src/legacy`: fontes preservadas das views ainda não migradas; `apps/docs/legacy-05.css` e `legacy-enhancements.js` adaptam essa transição.
+- `src/legacy`: fontes históricos ainda carregados pelo arquivo inicial. As views ativas já usam contratos compartilhados, mas a remoção gradual desse markup/CSS/JS continua pendente.
 - `docs/adr`: escolha da arquitetura e design system próprio × biblioteca.
 - `tests` e `evidence`: testes reproduzíveis, resultados JSON, auditoria por view e capturas de navegador.
 - `historico`: decisões e fontes da v2.3, mantidas para rastreabilidade. Não são a API atual.
@@ -48,6 +48,6 @@ Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. 
 
 A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. O nome do produto usado nos Labs ainda está em escolha.
 
-A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. Exemplos nativos restantes continuam em revisão. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
+A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 58 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 
 As regras editoriais inspiradas em no-ai-slop estão em [docs/VOZ-E-CONTEUDO.md](docs/VOZ-E-CONTEUDO.md). A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).

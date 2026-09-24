@@ -69,6 +69,16 @@ export function connectFloating({
     panel.style.left = `${Math.round(left)}px`;
     panel.style.top = `${Math.round(top)}px`;
     panel.dataset.placement = useAbove ? "top" : "bottom";
+    if (panel.classList.contains("ui-popover-panel")) {
+      const arrowLeft = Math.max(
+        18,
+        Math.min(fitted.width - 18, trigger.left + trigger.width / 2 - left),
+      );
+      panel.style.setProperty(
+        "--ui-popover-arrow-left",
+        `${Math.round(arrowLeft)}px`,
+      );
+    }
   };
   const schedule = () => {
     if (frame) return;

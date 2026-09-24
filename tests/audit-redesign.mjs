@@ -129,7 +129,7 @@ try {
       await page
         .locator('[data-view="comp-datetime"]')
         .getAttribute("data-status"),
-      "review",
+      "migrated",
     );
     await page.screenshot({ path: `evidence/audit-redesign-${width}.png` });
     await page.close();

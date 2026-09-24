@@ -543,8 +543,8 @@ button:active,
 .ui-input-action.ui-button--text:active,
 .ui-icon-button.ui-button--text:hover,
 .ui-icon-button.ui-button--text:active,
-.wl-dialog [data-close-dialog]:hover,
-.wl-dialog [data-close-dialog]:active {
+.wl-dialog header [data-close-dialog]:hover,
+.wl-dialog header [data-close-dialog]:active {
   text-decoration: none !important;
   transform: none !important;
   box-shadow: none !important;
@@ -643,4 +643,176 @@ button:active,
 }
 .ds-view .ui-number-control input.ui-number-input:focus-visible {
   outline: 0 !important;
+}
+/* Shared scroll surface: WebKit and Firefox rules live in packages/ui/styles.css. */
+.ds-carousel {
+  scrollbar-width: none !important;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.ds-carousel::-webkit-scrollbar {
+  display: none !important;
+}
+.ds-carousel.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+.ds-carousel-card :is(a, button) {
+  user-select: auto;
+}
+.wl-drop {
+  position: relative;
+  padding: 24px;
+  border: 1px dashed var(--wl-border);
+  background: var(--wl-muted);
+  gap: 10px;
+}
+.wl-drop::before {
+  content: "↑";
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--wl-accent);
+  background: var(--wl-surface);
+  font-size: 24px;
+  line-height: 1;
+}
+.wl-drop input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+}
+.wl-drop span {
+  font-weight: 650;
+  color: var(--wl-accent);
+  text-decoration: none;
+}
+.wl-drop:hover span {
+  color: var(--wl-hover);
+}
+.wl-dialog[open] header,
+.wl-dialog[open] footer {
+  position: relative;
+  border: 0;
+  padding: 16px 24px;
+}
+.wl-dialog[open] header::after,
+.wl-dialog[open] footer::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: var(--wl-border);
+}
+.wl-dialog[open] header::after {
+  bottom: 0;
+}
+.wl-dialog[open] footer::before {
+  top: 0;
+}
+.wl-dialog[open] footer :is(button, .ui-button) {
+  min-height: 38px;
+  padding: 7px 12px;
+  font-size: 14px;
+  line-height: 1.35;
+  border-radius: var(--wl-radius-control);
+}
+.wl-dialog[open] footer .wl-btn-outline {
+  color: var(--wl-text);
+  background: transparent;
+  border: 1px solid var(--wl-border);
+}
+.wl-dialog[open] footer .wl-btn-outline:hover {
+  background: var(--wl-muted);
+}
+.wl-dialog[open] header [data-close-dialog] {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 !important;
+  border: 0;
+  background: transparent !important;
+  color: var(--wl-accent);
+  transform: none !important;
+  line-height: 1;
+}
+.wl-dialog[open] header [data-close-dialog]:hover {
+  color: var(--wl-hover);
+}
+.ds-view textarea.ui-input {
+  resize: both;
+  width: min(100%, 640px);
+  min-width: min(240px, 100%);
+  max-width: 100%;
+  overflow: auto;
+}
+.docs-empty-variants,
+.docs-card-variants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin-block: 18px;
+}
+.docs-empty-variants .ui-empty-state {
+  min-height: 210px;
+}
+.docs-card-variants .ui-surface {
+  margin: 0;
+  height: 100%;
+}
+.docs-card-hover .ui-surface {
+  transition:
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+.docs-card-hover:hover .ui-surface,
+.docs-card-hover:focus-within .ui-surface {
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.12);
+  border-color: var(--wl-accent);
+}
+.docs-card-overlay {
+  position: relative;
+}
+.docs-card-overlay-label {
+  position: absolute;
+  inset: auto 12px 12px 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--wl-accent);
+  color: var(--wl-on);
+  font-size: 13px;
+  font-weight: 650;
+}
+.docs-grid-preview--mixed {
+  height: 100%;
+  align-content: stretch;
+  grid-auto-rows: minmax(0, 1fr);
+}
+.docs-grid-preview--mixed > :first-child {
+  grid-column: span 2;
+}
+.docs-grid-preview--mixed > :last-child {
+  grid-column: span 2;
+}
+@container (max-width: 380px) {
+  .docs-grid-preview--mixed > :first-child,
+  .docs-grid-preview--mixed > :last-child {
+    grid-column: auto;
+  }
+}
+.ds-view .ui-surface .ui-notice p {
+  margin: 2px 0 0;
+}
+.docs-card-overlay .ui-surface {
+  padding-bottom: 64px;
 }
