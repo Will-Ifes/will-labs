@@ -87,3 +87,9 @@ document.body.append(multi);
 - `Diagram({title,nodes,edges})` desenha nós e conexões reais em SVG, com descrição textual equivalente. O gráfico de barras experimental saiu do catálogo por não pertencer ao escopo base da Sprint 1. `Table` usa separadores de coluna e região de rolagem horizontal.
 
 A documentação usa o pacote via módulos ES. Os componentes têm validação local no Chrome; não há homologação em leitor de tela, Firefox ou Safari.
+
+## Fluxos e estados de carregamento
+
+`Stepper({steps,current,label})` é um indicador de progresso sem navegação; `.setCurrent(index)` muda a etapa. `Wizard({title,steps,onComplete})` compõe etapas `{label,content,validate?}`, verifica formulários antes de avançar e expõe `.setStep(index)` e `.currentStep`. O consumidor preserva os nós dos campos entre etapas e executa o envio real em `onComplete`.
+
+`Skeleton({lines,avatar,label})` reserva espaço para carregamento; a mensagem textual é obrigatória. `ContextMenu({target,label,items,onSelect})` oferece clique com botão direito, Shift+F10, setas, Home/End e Escape, e retorna `{element,open,close,dispose}`. Inclua sempre uma ação visível que abra o mesmo menu em dispositivos de toque e para descoberta por teclado. “Popup” descreve uma família de camadas, não uma API separada: escolha Popover, Dropdown, Tooltip, Dialog ou ContextMenu pelo propósito.

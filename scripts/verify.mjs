@@ -43,6 +43,7 @@ try {
   await run(process.execPath, ["tests/states.mjs"]);
   await run(process.execPath, ["tests/nontext.mjs"]);
   await run(process.execPath, ["tests/contracts.mjs"]);
+  await run(process.execPath, ["tests/new-components.mjs"]);
   await run(process.execPath, ["tests/audit-views.mjs"]);
   await run(process.execPath, ["tests/audit-redesign.mjs"]);
   await run(process.execPath, ["tests/audit-overlays.mjs"]);

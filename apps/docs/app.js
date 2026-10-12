@@ -35,6 +35,10 @@ import {
   Comparison,
   LabPage,
   connectDialog,
+  Stepper,
+  Wizard,
+  Skeleton,
+  ContextMenu,
 } from "../../packages/ui/index.js";
 import "../../packages/ui/date-field.js";
 import "../../packages/ui/time-field.js";
@@ -1654,6 +1658,147 @@ render(
           ),
         ]),
       ],
+    }),
+  ],
+);
+// New package examples use the same exported components as consuming Labs.
+render(
+  "comp-stepper",
+  "Stepper",
+  "Mostra o andamento de uma tarefa em etapas sem transformar o indicador em navegação.",
+  [
+    Surface({
+      title: "Publicar um Lab",
+      children: [
+        Stepper({ steps: ["Dados", "Experimento", "Revisão"], current: 1 }),
+        el(
+          "p",
+          {},
+          "Etapa atual: experimento. O usuário avança pelos controles do fluxo.",
+        ),
+      ],
+    }),
+  ],
+);
+const labName = Input({
+  label: "Nome do Lab",
+  required: true,
+  value: "Lab de acessibilidade",
+});
+const labGoal = Input({
+  label: "Objetivo",
+  required: true,
+  value: "Testar componentes com teclado",
+});
+const wizardStatus = el("p", { role: "status", "aria-live": "polite" });
+const reviewName = el("strong", {}, labName.control.value);
+const reviewGoal = el("strong", {}, labGoal.control.value);
+labName.control.addEventListener("input", () => {
+  reviewName.textContent = labName.control.value;
+});
+labGoal.control.addEventListener("input", () => {
+  reviewGoal.textContent = labGoal.control.value;
+});
+render(
+  "comp-wizard",
+  "Wizard",
+  "Fluxo composto para uma tarefa real: configurar, revisar e concluir um Lab.",
+  [
+    Surface({
+      children: [
+        Wizard({
+          title: "Preparar Lab",
+          steps: [
+            { label: "Identificação", content: el("form", {}, [labName]) },
+            { label: "Objetivo", content: el("form", {}, [labGoal]) },
+            {
+              label: "Revisão",
+              content: el("div", {}, [
+                el("p", {}, "Confira as informações antes de concluir."),
+                el("p", {}, ["Nome: ", reviewName]),
+                el("p", {}, ["Objetivo: ", reviewGoal]),
+              ]),
+            },
+          ],
+          onComplete: () => {
+            wizardStatus.textContent =
+              "Rascunho do Lab preparado nesta demonstração.";
+          },
+        }),
+        wizardStatus,
+      ],
+    }),
+  ],
+);
+const loadingPreview = Skeleton({
+  lines: 3,
+  avatar: true,
+  label: "Carregando resultados dos Labs",
+});
+const loadingStatus = el(
+  "p",
+  { role: "status", "aria-live": "polite" },
+  "Resultados em carregamento.",
+);
+render(
+  "comp-skeleton",
+  "Skeleton",
+  "Reserva o espaço do conteúdo enquanto os dados chegam, com anúncio textual da operação.",
+  [
+    Surface({
+      title: "Resultados",
+      children: [
+        loadingPreview,
+        loadingStatus,
+        Button({
+          label: "Simular carregamento",
+          variant: "outline",
+          onClick: () => {
+            loadingPreview.hidden = false;
+            loadingStatus.textContent = "Resultados em carregamento.";
+            window.setTimeout(() => {
+              loadingPreview.hidden = true;
+              loadingStatus.textContent = "3 Labs encontrados.";
+            }, 1000);
+          },
+        }),
+      ],
+    }),
+  ],
+);
+const contextTarget = Button({
+  label: "Ações do Lab · clique ou Shift+F10",
+  variant: "outline",
+});
+const contextResult = el(
+  "p",
+  { role: "status", "aria-live": "polite" },
+  "Escolha uma ação para o Lab.",
+);
+const contextMenu = ContextMenu({
+  target: contextTarget,
+  label: "Ações do Lab",
+  items: [
+    { label: "Abrir Lab", value: "open" },
+    { label: "Duplicar rascunho", value: "duplicate" },
+    { label: "Arquivar", value: "archive", disabled: true },
+  ],
+  onSelect: (item) => {
+    contextResult.textContent = `${item.label} selecionado.`;
+  },
+});
+contextTarget.addEventListener("click", () => {
+  const rect = contextTarget.getBoundingClientRect();
+  contextMenu.open(rect.left, rect.bottom + 4);
+});
+render(
+  "comp-context-menu",
+  "Menu de contexto",
+  "Ações relativas a um item, acessíveis por clique, botão direito e Shift+F10.",
+  [
+    Surface({
+      title: "Rascunho do Lab",
+      children: [contextTarget, contextResult],
     }),
   ],
 );

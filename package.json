@@ -10,11 +10,12 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build": "node packages/tokens/build.mjs",
-    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs",
+    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs && node tests/new-components.mjs",
     "test:audit": "node tests/audit-views.mjs",
     "test:states": "node tests/states.mjs && node tests/nontext.mjs",
     "format": "prettier --write packages/ui apps/docs tests scripts docs",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "test:new": "node tests/new-components.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",
