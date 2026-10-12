@@ -11,6 +11,8 @@ const run = (command, args) =>
     );
   });
 await run(process.execPath, ["packages/tokens/build.mjs"]);
+await run("npm", ["run", "build:react"]);
+await run("npm", ["run", "build:site"]);
 // A dedicated port avoids accidentally validating a different running application.
 const port = "4185";
 const server = spawn(process.execPath, ["scripts/serve.mjs"], {
@@ -39,6 +41,8 @@ try {
   }
   if (!ready) throw new Error("Servidor de teste não respondeu");
   process.env.BASE_URL = `http://localhost:${port}/design-system`;
+  process.env.REACT_BASE_URL = `http://localhost:${port}/react/`;
+  await run(process.execPath, ["tests/react-site.mjs"]);
   await run(process.execPath, ["tests/e2e.mjs"]);
   await run(process.execPath, ["tests/states.mjs"]);
   await run(process.execPath, ["tests/nontext.mjs"]);

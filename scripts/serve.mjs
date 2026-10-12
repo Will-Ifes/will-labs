@@ -8,6 +8,15 @@ http
   .createServer(async (req, res) => {
     try {
       let uri = decodeURIComponent(req.url.split("?")[0]);
+      if (uri === "/react") {
+        res.writeHead(302, { Location: "/react/" });
+        res.end();
+        return;
+      }
+      if (uri.startsWith("/react/")) {
+        const asset = uri.slice("/react/".length);
+        uri = `/apps/site/dist/${asset || "index.html"}`;
+      }
       if (uri === "/design-system/") {
         res.writeHead(302, { Location: "/design-system" });
         res.end();
@@ -40,5 +49,7 @@ http
     }
   })
   .listen(port, "127.0.0.1", () =>
-    console.log(`Will Labs: http://localhost:${port}/design-system`),
+    console.log(
+      `Will Labs: http://localhost:${port}/react/ (guia anterior: /design-system)`,
+    ),
   );

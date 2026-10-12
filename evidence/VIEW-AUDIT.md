@@ -1,6 +1,6 @@
 # Auditoria das views
 
-57 views ativas: 57 com documentação ou demonstração migrada e validação local; 0 em revisão. O status não representa aprovação para produção. Axe avaliou desktop claro e mobile escuro; 0 violações automáticas no conjunto executado. Leitor de tela e outros motores seguem pendentes.
+61 views ativas: 61 com documentação ou demonstração migrada e validação local; 0 em revisão. O status não representa aprovação para produção. Axe avaliou desktop claro e mobile escuro; 0 violações automáticas no conjunto executado. Leitor de tela e outros motores seguem pendentes.
 
 | View | Situação | Violações axe |
 | --- | --- | ---: |
@@ -58,6 +58,10 @@
 | comp-time | Migrada · validação local | 0 |
 | comp-datetime | Migrada · validação local | 0 |
 | comp-textarea | Migrada · validação local | 0 |
+| comp-stepper | Migrada · validação local | 0 |
+| comp-wizard | Migrada · validação local | 0 |
+| comp-skeleton | Migrada · validação local | 0 |
+| comp-context-menu | Migrada · validação local | 0 |
 | comp-shortcuts | Migrada · validação local | 0 |
 | comp-shell | Migrada · validação local | 0 |
 | comp-multiselect-async | Migrada · validação local | 0 |

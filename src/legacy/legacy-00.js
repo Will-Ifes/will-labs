@@ -22,5 +22,5 @@ document.querySelectorAll('[data-comparison]').forEach(button=>button.addEventLi
  window.addEventListener('hashchange',show);show();
  document.querySelector('.ds-mobile-toggle').addEventListener('click',e=>{const side=document.getElementById('ds-sidebar');const open=side.dataset.open!=='true';side.dataset.open=String(open);e.currentTarget.setAttribute('aria-expanded',String(open))});
  document.getElementById('theme-secondary').addEventListener('click',()=>document.getElementById('theme').click());
- document.querySelectorAll('[data-empty-action]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('empty-feedback').textContent='Demonstração: esta ação será ligada ao OpsFlow quando a tela existir.'}));
+ document.querySelectorAll('[data-empty-action]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('empty-feedback').textContent='Demonstração: esta ação será ligada ao Will Labs quando a tela existir.'}));
 })();

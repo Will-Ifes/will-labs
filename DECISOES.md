@@ -40,7 +40,7 @@ As soluções visuais e o texto são próprios do Will Labs; as referências ori
 
 ## Catálogo expandido v1.8
 
-Consultas de uso, sem copiar estilos ou código: [Carbon data table](https://carbondesignsystem.com/components/data-table/usage/), [Carbon file uploader](https://carbondesignsystem.com/components/file-uploader/usage/), [Carbon slider](https://carbondesignsystem.com/components/slider/usage/), [Carbon empty states](https://carbondesignsystem.com/patterns/empty-states-pattern/), [Atlassian tooltip](https://atlassian.design/components/tooltip/usage) e [Atlassian avatar](https://atlassian.design/components/avatar). Variações e conteúdo foram escritos para o OpsFlow e para o padrão de Labs do plano do Will Labs.
+Consultas de uso, sem copiar estilos ou código: [Carbon data table](https://carbondesignsystem.com/components/data-table/usage/), [Carbon file uploader](https://carbondesignsystem.com/components/file-uploader/usage/), [Carbon slider](https://carbondesignsystem.com/components/slider/usage/), [Carbon empty states](https://carbondesignsystem.com/patterns/empty-states-pattern/), [Atlassian tooltip](https://atlassian.design/components/tooltip/usage) e [Atlassian avatar](https://atlassian.design/components/avatar). Variações e conteúdo foram escritos para a área Fluxos do Will Labs e para o padrão de Labs do plano do Will Labs.
 
 ## Refinamento v2.0
 

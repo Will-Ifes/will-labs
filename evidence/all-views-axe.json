@@ -378,6 +378,34 @@
     "violations": []
   },
   {
+    "view": "comp-stepper",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-wizard",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-skeleton",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-context-menu",
+    "width": 1440,
+    "theme": "paper",
+    "status": "migrated",
+    "violations": []
+  },
+  {
     "view": "comp-shortcuts",
     "width": 1440,
     "theme": "paper",
@@ -771,6 +799,34 @@
   },
   {
     "view": "comp-textarea",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-stepper",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-wizard",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-skeleton",
+    "width": 390,
+    "theme": "petrol-dark",
+    "status": "migrated",
+    "violations": []
+  },
+  {
+    "view": "comp-context-menu",
     "width": 390,
     "theme": "petrol-dark",
     "status": "migrated",

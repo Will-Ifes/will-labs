@@ -1905,6 +1905,7 @@ home.append(
         { href: "apps/docs/consumer.html" },
         "Abrir consumidor independente →",
       ),
+      el("a", { href: "/react/" }, "Abrir a base React →"),
     ],
   }),
 );

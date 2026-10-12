@@ -12,4 +12,4 @@ O produto e o próprio repositório são material dos Labs. Use problemas observ
 
 Não incluir segredos, node_modules ou capturas geradas em commits. O workflow preserva evidências como artefatos. A definição de pronto de um Lab continua sendo a do plano: problema real, demonstração, código, teste, produção, acessibilidade, relações e decisão quando aplicável.
 
-O nome do produto que alimenta os Labs ainda está sendo revisto. “OpsFlow” permanece apenas como referência histórica/provisória, até decisão do autor.
+A marca do produto é Will Labs; “Fluxos” identifica a funcionalidade. “OpsFlow” permanece apenas nos documentos históricos.

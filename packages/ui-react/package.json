@@ -1,0 +1,26 @@
+{
+  "name": "@will-labs/ui-react",
+  "version": "1.0.0",
+  "type": "module",
+  "peerDependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "dependencies": {
+    "@will-labs/tokens": "1.0.0",
+    "@will-labs/ui": "1.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --emitDeclarationOnly && vite build",
+    "typecheck": "tsc --noEmit"
+  }
+}

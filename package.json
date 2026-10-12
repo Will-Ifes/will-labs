@@ -1,25 +1,37 @@
 {
   "name": "will-labs-workspace",
-  "version": "2.4.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "workspaces": [
     "packages/ui",
-    "packages/tokens"
+    "packages/tokens",
+    "packages/ui-react",
+    "apps/site"
   ],
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "build": "node packages/tokens/build.mjs",
-    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs && node tests/new-components.mjs",
+    "build": "node packages/tokens/build.mjs && npm run build:react && npm run build:site",
+    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs && node tests/new-components.mjs && node tests/react-site.mjs",
     "test:audit": "node tests/audit-views.mjs",
     "test:states": "node tests/states.mjs && node tests/nontext.mjs",
-    "format": "prettier --write packages/ui apps/docs tests scripts docs",
+    "format": "prettier --write packages/ui packages/ui-react apps/docs apps/site tests scripts docs",
     "verify": "node scripts/verify.mjs",
-    "test:new": "node tests/new-components.mjs"
+    "test:new": "node tests/new-components.mjs",
+    "build:react": "npm run build -w @will-labs/ui-react",
+    "build:site": "npm run build -w @will-labs/site",
+    "dev:site": "npm run dev -w @will-labs/site",
+    "typecheck:react": "npm run typecheck -w @will-labs/ui-react && npm run typecheck -w @will-labs/site",
+    "test:react": "node tests/react-site.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",
     "playwright": "1.58.2",
-    "prettier": "3.9.9"
+    "prettier": "3.9.9",
+    "vite": "8.3.4",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "7.0.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }

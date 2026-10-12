@@ -1,25 +1,27 @@
-# ADR-001 — Módulos nativos para a migração da documentação
+# ADR-001 — React como stack principal do site Will Labs
 
-Status: aceito para a Sprint 1 local, 23/09/2026.
+Status: aceito em 12/10/2026. Substitui a decisão anterior **apenas quanto à stack principal**; o histórico da migração local permanece no Git.
 
-## Contexto e problema
+## Contexto
 
-A base v2.3 é um HTML autocontido com scripts globais, estilos repetidos e exemplos não reutilizáveis. Uma reescrita completa perderia comportamento e ampliaria o escopo antes da validação.
+O guia v2.3 começou como HTML com scripts globais. A Sprint 1 extraiu tokens, contratos e componentes DOM em `packages/ui`, permitindo corrigir e testar a interface sem reescrever todas as views. O plano pede uma stack principal para o site e para os Labs. O autor escolheu React e decidiu usar **Will Labs** também como nome do produto de fluxos; “Fluxos” passa a designar a funcionalidade, não uma segunda marca.
 
 ## Alternativas
 
-- React: composição declarativa e amplo ecossistema, mas exige reescrever templates e introduzir build/runtime nesta migração.
-- Angular: contratos e ferramentas integradas, mas uma aplicação nova e a adaptação de todo o guia seriam necessárias.
-- ES modules, funções que produzem DOM nativo e Custom Elements: migração por view, sem runtime de framework, usando dialog, button, input e table nativos.
+- Continuar com módulos DOM nativos como stack principal: preservaria a migração local, mas aumentaria o trabalho de estado e composição nas páginas futuras.
+- Angular: ferramentas integradas, porém introduziria outra arquitetura antes de existir o produto.
+- React: composição declarativa, estado compartilhado e componentes reutilizáveis entre o guia, os Labs e o produto.
 
 ## Decisão
 
-Usar a terceira opção. `packages/ui` exporta funções de composição e componentes com comportamento próprio. `apps/docs` importa essas funções e contém apenas conteúdo de demonstração e adaptação do legado. `packages/tokens/themes.json` gera o CSS semântico. Um consumidor independente comprova que o pacote não depende do CSS do catálogo.
+React é a stack principal da aplicação pública. `packages/ui-react` implementa componentes React próprios com props, estado e semântica nativa; importa **os mesmos tokens e estilos** do design system. `apps/site` consome o pacote em três contextos: catálogo, composição de Lab e demonstração local de Fluxos. `packages/ui` e `apps/docs` permanecem durante a migração das views legadas. O guia antigo não é tratado como implementação React nem removido antes de paridade funcional.
+
+A arquitetura preserva limites: tokens são a fonte de cor, espaço e tema; o pacote React contém comportamento reutilizável sem dados do produto; a aplicação contém conteúdo e fluxos. Um componente só entra como pronto depois de ter contrato, estados, teclado e consumidor real. A escolha de React não implica adicionar uma biblioteca de componentes completa nem trocar tokens.
 
 ## Consequências
 
-O projeto roda com Node sem build de aplicação. A distribuição exige HTTP para os módulos; abrir index.html por file:// não é mais suportado. A API DOM não oferece reconciliação, SSR ou binding de formulários de um framework. A integração futura com React/Angular pode usar adaptadores; não se declara que essa seja a stack definitiva do site público ou OpsFlow. Custom Elements usam light DOM para herdar tokens; estilos globais precisam de governança. O calendário foi isolado mas permanece em revisão: ainda exige melhor contrato de lifecycle e valores. A migração reduz duplicação ativa, mas adapters e styles legados permanecem até suas views serem substituídas.
+Há build e runtime React no site. A base atual usa Vite para desenvolvimento e bundle estático; a hospedagem pública continua por decidir. O pacote React tem dependências pares de React/React DOM para evitar cópias do runtime. A API DOM anterior não é importada dentro de componentes React, evitando dois gerenciadores de estado para o mesmo nó. A migração progressiva exige manter dois catálogos por um período e medir paridade antes de mover `/design-system` para React. O CSS global precisa de revisão quando o guia legado for retirado.
 
-## Limite frente ao plano
+## Limite desta entrega
 
-Esta ADR decide a tecnologia da documentação local herdada da v2.3. **Não decide a stack principal do site público** solicitada na Sprint 0 do PDF. Essa decisão entre React e Angular continua aberta. Quando tomada, a documentação e o pacote devem ser avaliados em conjunto: preservar tokens e contratos testados, mas considerar adaptadores ou a migração da renderização DOM para componentes idiomáticos da stack escolhida. Essa avaliação deve preceder a publicação definitiva de `/design-system`.
+Botão, ícone, superfície, campos de texto, textarea e número, divider, tag, switch, tabs, código, tabela, banner, empty state, progress, stepper, wizard e LabPage já têm API React. Calendário, multiselect, overlays e outras views ainda dependem do pacote DOM; não recebem selo de prontidão React por compartilhar tokens. O produto com persistência e os Labs publicados seguem nas Sprints 2 e 3.

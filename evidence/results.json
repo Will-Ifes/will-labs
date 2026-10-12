@@ -3600,6 +3600,34 @@
     {
       "width": 1440,
       "theme": "paper",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "paper",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -4047,6 +4075,34 @@
     {
       "width": 1440,
       "theme": "forest",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "forest",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -4494,6 +4550,34 @@
     {
       "width": 1440,
       "theme": "petrol-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -4941,6 +5025,34 @@
     {
       "width": 1440,
       "theme": "petrol-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "petrol-dark",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -5388,6 +5500,34 @@
     {
       "width": 1440,
       "theme": "indigo-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -5835,6 +5975,34 @@
     {
       "width": 1440,
       "theme": "indigo-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "indigo-dark",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -6282,6 +6450,34 @@
     {
       "width": 1440,
       "theme": "amber-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -6729,6 +6925,34 @@
     {
       "width": 1440,
       "theme": "amber-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 1440,
+      "theme": "amber-dark",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -7176,6 +7400,34 @@
     {
       "width": 390,
       "theme": "paper",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "paper",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -7623,6 +7875,34 @@
     {
       "width": 390,
       "theme": "forest",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "forest",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -8070,6 +8350,34 @@
     {
       "width": 390,
       "theme": "petrol-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -8517,6 +8825,34 @@
     {
       "width": 390,
       "theme": "petrol-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "petrol-dark",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -8964,6 +9300,34 @@
     {
       "width": 390,
       "theme": "indigo-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -9411,6 +9775,34 @@
     {
       "width": 390,
       "theme": "indigo-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "indigo-dark",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -9858,6 +10250,34 @@
     {
       "width": 390,
       "theme": "amber-light",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
+      "view": "comp-context-menu",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-light",
       "view": "comp-shortcuts",
       "overflow": false,
       "status": "migrated"
@@ -10299,6 +10719,34 @@
       "width": 390,
       "theme": "amber-dark",
       "view": "comp-textarea",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-stepper",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-wizard",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-skeleton",
+      "overflow": false,
+      "status": "migrated"
+    },
+    {
+      "width": 390,
+      "theme": "amber-dark",
+      "view": "comp-context-menu",
       "overflow": false,
       "status": "migrated"
     },
