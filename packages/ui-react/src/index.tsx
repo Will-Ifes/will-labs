@@ -12,7 +12,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { ValidationMessage } from "./validation";
+import { FieldLabel, ValidationMessage } from "./validation";
 
 export type ButtonVariant = "primary" | "outline" | "text" | "danger";
 export type ButtonSize = "small" | "medium" | "large";
@@ -115,7 +115,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const messageId = `${controlId}-message`;
     return (
       <div className="ui-field">
-        <label htmlFor={controlId}>{label}</label>
+        <FieldLabel htmlFor={controlId}>{label}</FieldLabel>
         <div className="ui-input-shell">
           <input
             ref={ref}
@@ -275,23 +275,36 @@ export function Code({
   code: string;
   language?: string;
 }) {
-  const [copyState, setCopyState] = useState("");
+  const [copyState, setCopyState] = useState<"" | "copied" | "failed">("");
+  const reset = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(reset.current), []);
   const copy = async () => {
+    clearTimeout(reset.current);
     try {
       await navigator.clipboard.writeText(code);
-      setCopyState("Código copiado.");
+      setCopyState("copied");
+      reset.current = setTimeout(() => setCopyState(""), 2000);
     } catch {
-      setCopyState("Não foi possível copiar. Selecione o código para copiar manualmente.");
+      setCopyState("failed");
     }
   };
   return (
     <figure className="ui-code">
-      <figcaption>{language}</figcaption>
-      <Button variant="outline" size="small" type="button" onClick={() => void copy()} aria-label={`Copiar código em ${language}`}>Copiar</Button>
+      <figcaption>
+        <span>{language}</span>
+        <Button variant="text" size="small" type="button" className="ui-code-copy" data-state={copyState || undefined} onClick={() => void copy()} aria-label={`Copiar código em ${language}`}>
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+            {copyState === "copied" ? <path d="m5 10.5 3.2 3.2L15 6.5" /> : <><rect x="7" y="7" width="9.5" height="9.5" rx="2" /><path d="M13 4.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v6.5A1.5 1.5 0 0 0 5 12h.5" /></>}
+          </svg>
+          {copyState === "copied" ? "Copiado" : "Copiar"}
+        </Button>
+      </figcaption>
       <pre tabIndex={0} aria-label={`Código em ${language}`}>
         <code>{code}</code>
       </pre>
-      <span className="ui-code-copy-status" role="status">{copyState}</span>
+      <span className={copyState === "failed" ? "ui-code-copy-status" : "ui-code-copy-status ui-visually-hidden"} role="status">
+        {copyState === "copied" ? "Código copiado." : copyState === "failed" ? "Não foi possível copiar. Selecione o código para copiar manualmente." : ""}
+      </span>
     </figure>
   );
 }
@@ -415,7 +428,13 @@ export function Banner({
   children: ReactNode;
   kind?: "info" | "success" | "warning" | "danger";
 }) {
-  const symbols = { info: "ⓘ", success: "✓", warning: "!", danger: "!" };
+  // Formas diferentes por intenção: o significado não depende só da cor.
+  const symbols = {
+    info: <><circle cx="10" cy="10" r="7.5" /><path d="M10 9v4.5M10 6.5h.01" /></>,
+    success: <><circle cx="10" cy="10" r="7.5" /><path d="m6.8 10.2 2.2 2.2 4.2-4.6" /></>,
+    warning: <><path d="M8.7 3.3 2.4 14.4A1.5 1.5 0 0 0 3.7 16.7h12.6a1.5 1.5 0 0 0 1.3-2.3L11.3 3.3a1.5 1.5 0 0 0-2.6 0Z" /><path d="M10 7.5v3.5M10 13.7h.01" /></>,
+    danger: <><path d="M7 2.5h6L17.5 7v6L13 17.5H7L2.5 13V7Z" /><path d="m7.6 7.6 4.8 4.8M12.4 7.6l-4.8 4.8" /></>,
+  };
   return (
     <div
       className="ui-notice ui-banner"
@@ -423,7 +442,9 @@ export function Banner({
       role={kind === "danger" ? "alert" : "status"}
     >
       <span className="ui-notice-icon" aria-hidden="true">
-        {symbols[kind]}
+        <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" focusable="false">
+          {symbols[kind]}
+        </svg>
       </span>
       <div>
         <strong>{title}</strong>
@@ -618,7 +639,7 @@ export const TextareaField = forwardRef<
   const messageId = `${controlId}-message`;
   return (
     <div className="ui-field">
-      <label htmlFor={controlId}>{label}</label>
+      <FieldLabel htmlFor={controlId}>{label}</FieldLabel>
       <textarea
         {...props}
         ref={ref}
@@ -653,7 +674,7 @@ export function NumberField({label,value,onValueChange,help,error,min,max,step=1
   const setNumber = (number:number) => {if(!Number.isFinite(number))return;const next=bounded(number);setDraft(format(next));setInternalError("");if(next!==value)onValueChange(next)};
   const commit = () => {const normalized=draft.trim().replace(",",".");if(!/^-?\d+(?:\.\d+)?$/.test(normalized)){setInternalError("Informe um número válido.");return}const next=Number(normalized);if(next<(min??-Infinity)||next>(max??Infinity)){setInternalError(`Informe um número entre ${min===undefined?"−∞":format(min)} e ${max===undefined?"+∞":format(max)}.`);return}setNumber(next)};
   const validation=error||internalError;
-  return <div className="ui-field ui-number-field"><label htmlFor={controlId}>{label}</label><div className="ui-number-control">
+  return <div className="ui-field ui-number-field"><FieldLabel htmlFor={controlId}>{label}</FieldLabel><div className="ui-number-control">
     <input {...props} id={controlId} type="text" inputMode="decimal" role="spinbutton" className="ui-input ui-number-input" value={draft}
       aria-valuenow={value} aria-valuetext={format(value)} aria-valuemin={min} aria-valuemax={max}
       aria-invalid={validation?true:undefined} aria-describedby={validation||help?messageId:undefined}
@@ -718,7 +739,7 @@ export type {
   MultiOption,
   MultiLoader,
 } from "./selectors";
-export { ValidationMessage } from "./validation";
+export { FieldLabel, ValidationMessage } from "./validation";
 export { DateField, TimeField, FileUpload } from "./fields";
 export { Toast, Skeleton } from "./feedback";
 export { ContextMenu } from "./ContextMenu";

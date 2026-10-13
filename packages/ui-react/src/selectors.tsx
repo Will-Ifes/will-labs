@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { Button, IconButton } from "./index";
 import { FloatingLayer } from "./floating";
-import { ValidationMessage } from "./validation";
+import { FieldLabel, ValidationMessage } from "./validation";
 
 const EMPTY_SELECT_OPTIONS: SelectOption[] = [];
 const EMPTY_MULTI_OPTIONS: MultiOption[] = [];
@@ -136,9 +136,7 @@ export function Select({
   };
   return (
     <div className="ui-field wl-react-select">
-      <span id={`${id}-label`} className="ui-field-label">
-        {label}
-      </span>
+      <FieldLabel id={`${id}-label`}>{label}</FieldLabel>
       <Button
         ref={trigger}
         variant="outline"
@@ -159,7 +157,7 @@ export function Select({
           }
         }}
       >
-        <span id={`${id}-current`}>
+        <span id={`${id}-current`} data-placeholder={selected ? undefined : ""}>
           {selected ? (
             <>
               {selected.avatar && (
@@ -381,9 +379,7 @@ export function Multiselect({
   };
   return (
     <div className="ui-field wl-react-multi">
-      <span id={`${id}-label`} className="ui-field-label">
-        {label}
-      </span>
+      <FieldLabel id={`${id}-label`}>{label}</FieldLabel>
       <Button
         ref={trigger}
         variant="outline"
@@ -397,7 +393,7 @@ export function Multiselect({
         aria-describedby={`${id}-count${error || help ? ` ${id}-message` : ""}`}
         onClick={() => (open ? close(true) : setOpen(true))}
       >
-        <span id={`${id}-value`} className="wl-react-multi-value" title={uniqueValue.map(item => item.label).join(", ")}>
+        <span id={`${id}-value`} className="wl-react-multi-value" data-placeholder={uniqueValue.length ? undefined : ""} title={uniqueValue.map(item => item.label).join(", ")}>
           {uniqueValue.length ? <><span className="wl-react-multi-primary">{uniqueValue[0].label}</span>{uniqueValue.length > 1 && <span className="wl-react-multi-more">+{uniqueValue.length - 1}</span>}</> : `Selecionar ${label.toLocaleLowerCase("pt-BR")}`}
         </span>
         <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg>

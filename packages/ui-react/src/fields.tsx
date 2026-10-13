@@ -2,7 +2,7 @@ import { NavigationIcon } from "./NavigationIcon";
 import { useEffect, useId, useRef, useState, type DragEvent } from "react";
 import { Button, IconButton } from "./index";
 import { FloatingLayer } from "./floating";
-import { ValidationMessage } from "./validation";
+import { FieldLabel, ValidationMessage } from "./validation";
 
 const pad = (value: number) => String(value).padStart(2, "0");
 const iso = (date: Date) =>
@@ -114,7 +114,7 @@ export function DateField({
   const validation = error || internalError;
   return (
     <div className="ui-field wl-react-date">
-      <label htmlFor={`${id}-input`}>{label}</label>
+      <FieldLabel htmlFor={`${id}-input`}>{label}</FieldLabel>
       <div className="wl-react-field-control">
         <input ref={input} id={`${id}-input`} className="ui-input" type="text" inputMode="numeric" placeholder="dd/mm/aaaa" value={draft}
           aria-invalid={validation ? true : undefined} aria-describedby={`${id}-message`}
@@ -235,7 +235,7 @@ export function TimeField({
   const validation = error || internalError;
   return (
     <div className="ui-field wl-react-time">
-      <label htmlFor={`${id}-input`}>{label}</label>
+      <FieldLabel htmlFor={`${id}-input`}>{label}</FieldLabel>
       <div className="wl-react-field-control">
         <input
           ref={input}
@@ -404,9 +404,9 @@ export function FileUpload({
   };
   return (
     <div className="ui-field wl-react-upload">
-      <label id={`${id}-label`} htmlFor={`${id}-file`}>
+      <FieldLabel id={`${id}-label`} htmlFor={`${id}-file`}>
         {label}
-      </label>
+      </FieldLabel>
       <div
         className="wl-react-upload-drop"
         data-dragging={dragging}

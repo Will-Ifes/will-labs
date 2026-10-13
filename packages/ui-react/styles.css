@@ -376,6 +376,145 @@
   gap: 6px;
   flex-wrap: wrap;
 }
+/* Surface: blocos empilhados nunca encostam; especificidade zero para não sobrepor ajustes locais. */
+:where(.ui-surface[data-wl-surface="content"]) > * + *:not(:empty) {
+  margin-top: var(--wl-space-4);
+}
+/* Região de status vazia no fim não acrescenta respiro extra ao padding. */
+.ui-surface[data-wl-surface="content"] > :empty:last-child,
+.ui-surface[data-wl-surface="content"] > :has(+ :empty:last-child) {
+  margin-bottom: 0;
+}
+.ui-surface[data-wl-surface="content"] > :empty:last-child {
+  margin-top: 0;
+}
+.ui-carousel > :last-child {
+  margin-bottom: 0;
+}
+/* Tabs: o padding do painel já define o respiro; margens do conteúdo não somam a ele. */
+.ui-tabs [role="tabpanel"] > :first-child {
+  margin-top: 0;
+}
+.ui-tabs [role="tabpanel"] > :last-child {
+  margin-bottom: 0;
+}
+/* Carousel: cabeçalho a 16px dos cards (8px aqui + 8px de respiro do trilho), como o rodapé. */
+.ui-carousel-head {
+  margin-bottom: var(--wl-space-2);
+}
+/* Tag removível: mesma altura das demais; alvo de 24x24 (WCAG 2.2 AA). */
+.ui-tag .ui-tag-remove.ui-button {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 0;
+  font-size: 16px;
+}
+/* Título da superfície: a margem do bloco seguinte define os 16px (evita 32px antes de botões inline). */
+.ui-surface[data-wl-surface="content"] > h2:not(:last-child) {
+  margin-bottom: 0;
+}
+.ui-surface[data-wl-surface="content"] > p:not(:last-child) {
+  margin-bottom: 0;
+}
+.ui-surface[data-wl-surface="content"] > h2 + :not(:empty) {
+  margin-top: var(--wl-space-4);
+}
+/* Banner: o tom da intenção aparece no fundo, na borda e no ícone, não só na faixa lateral. */
+.ui-notice {
+  --wl-notice-tone: var(--wl-info);
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: var(--wl-space-3);
+  border-color: color-mix(in srgb, var(--wl-notice-tone) 45%, var(--wl-border));
+  border-inline-start-color: var(--wl-notice-tone);
+  background: color-mix(in srgb, var(--wl-notice-tone) 12%, var(--wl-surface));
+}
+.ui-notice[data-kind="success"] { --wl-notice-tone: var(--wl-success); }
+.ui-notice[data-kind="warning"] { --wl-notice-tone: var(--wl-warning); }
+.ui-notice[data-kind="danger"] { --wl-notice-tone: var(--wl-danger); }
+.ui-notice.ui-banner {
+  background: color-mix(in srgb, var(--wl-notice-tone) 12%, var(--wl-surface));
+}
+.ui-notice .ui-notice-icon,
+.ui-notice[data-kind] .ui-notice-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background: none;
+  color: var(--wl-notice-tone);
+}
+.ui-notice-icon svg {
+  display: block;
+}
+/* Indisponível não pode parecer um botão outline ativo: borda tracejada e texto secundário. */
+.ui-button.ui-button:disabled:not(.ui-button--text) {
+  border-style: dashed;
+  border-color: var(--wl-off);
+  background: var(--wl-muted);
+  color: var(--wl-secondary);
+  cursor: not-allowed;
+}
+/* Wizard: título, stepper e painel no ritmo de 16px. */
+.ui-wizard {
+  gap: var(--wl-space-4);
+}
+.ui-wizard > h2 {
+  margin: 0;
+}
+/* Select e Multiselect leem como campo, não como botão: texto do valor igual ao dos inputs. */
+.wl-react-select-trigger.ui-button {
+  color: var(--wl-text);
+  font-weight: 400;
+}
+.wl-react-select-trigger [data-placeholder] {
+  color: var(--wl-secondary);
+}
+/* Progress: rótulo com o mesmo papel tipográfico dos labels de campo. */
+.ui-progress > label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+/* Controles compostos (input + botões) com a mesma altura externa dos inputs simples. */
+.wl-react-field-control .ui-input,
+.ui-number-control .ui-number-input.ui-input {
+  min-height: 38px;
+}
+.wl-react-field-control .ui-button.ui-button {
+  min-height: 32px;
+  height: 32px;
+}
+@media (pointer: coarse) {
+  .ui-number-control {
+    min-height: 44px;
+  }
+  .wl-react-field-control .ui-input,
+  .ui-number-control .ui-number-input.ui-input {
+    min-height: 42px;
+  }
+  .ui-number-actions {
+    height: 42px;
+  }
+  .ui-number-actions .ui-button.ui-button,
+  .wl-react-field-control .ui-button.ui-button {
+    min-height: 36px;
+    height: 36px;
+  }
+  /* Mantém a diferença de tamanho no toque (a regra global eleva tudo a 44px). */
+  .ui-button.ui-button--large.ui-button--large {
+    min-height: 48px;
+  }
+}
+/* FieldLabel: mesma tipografia e distância até o controle em todos os campos. */
+.ui-field:has(> .ui-field-label) {
+  align-content: start;
+}
+.ui-field > .ui-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
 .wl-react-field-control {
   display: flex;
   align-items: center;
@@ -564,7 +703,7 @@
 .wl-react-toast{position:fixed;right:20px;bottom:20px;z-index:1200;width:min(360px,calc(100vw - 40px));display:flex;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--wl-surface);color:var(--wl-text);border:1px solid var(--wl-border);border-left:4px solid var(--wl-accent);border-radius:var(--wl-radius-control);box-shadow:0 12px 30px rgba(0,0,0,.18)}.wl-react-toast[data-kind="danger"]{border-left-color:var(--wl-danger,#a32121)}.wl-react-toast[data-kind="warning"]{border-left-color:var(--wl-warning,#966200)}.wl-react-toast p{margin:4px 0 0;color:var(--wl-secondary)}.wl-react-skeleton{display:grid;gap:10px;max-width:420px}.wl-react-skeleton span{height:16px;border-radius:4px;background:var(--wl-muted);animation:wl-react-skeleton-pulse 1.2s ease-in-out infinite}.wl-react-skeleton span:first-child{height:28px;width:70%}.wl-react-skeleton span:last-child{width:55%}@keyframes wl-react-skeleton-pulse{50%{opacity:.45}}.wl-react-context-trigger{font:inherit;text-align:left;background:var(--wl-surface);color:var(--wl-text);border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);padding:12px 16px;cursor:context-menu}.wl-react-context-trigger:hover{background:var(--wl-muted)}.wl-react-context-trigger:focus-visible{outline:2px solid var(--wl-accent);outline-offset:2px}.wl-react-context-menu{position:fixed;z-index:1300;min-width:180px;max-width:calc(100vw - 16px);padding:5px;background:var(--wl-surface);color:var(--wl-text);border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);box-shadow:0 12px 30px rgba(0,0,0,.18)}.wl-react-context-menu button{display:block;width:100%;padding:9px 12px;border:0;border-radius:4px;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}.wl-react-context-menu button:hover,.wl-react-context-menu button:focus-visible{background:var(--wl-muted);outline:2px solid var(--wl-accent);outline-offset:-2px}.wl-react-context-menu button:disabled{opacity:.5;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.wl-react-skeleton span{animation:none}}
 
 .wl-react-select-trigger.ui-button--small{min-height:32px}.wl-react-select-trigger.ui-button--large{min-height:48px}
-.ui-avatar{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--wl-muted);color:var(--wl-text);border:1px solid var(--wl-border);font-weight:700;font-size:13px}.ui-avatar--small{width:28px;height:28px;font-size:10px}.ui-avatar--large{width:56px;height:56px;font-size:17px}.ui-image-figure{margin:0;max-width:660px}.ui-image-frame{aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;background:var(--wl-muted);border:1px solid var(--wl-border);border-radius:var(--wl-radius-control)}.ui-image-frame img{display:block;width:100%;height:100%;object-fit:cover}.ui-image-figure figcaption{margin-top:8px;color:var(--wl-secondary)}.ui-carousel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.ui-carousel-head h2{margin:0}.ui-carousel-head>div{display:flex;gap:8px}.ui-carousel-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;touch-action:pan-y;cursor:grab;padding:8px 2px}.ui-carousel-track:active{cursor:grabbing}.ui-carousel-track::-webkit-scrollbar{display:none}.ui-carousel-card{flex:0 0 min(260px,85%);scroll-snap-align:start;border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);padding:20px;background:var(--wl-surface)}.ui-carousel-card h3{margin-top:0}.ui-diagram{margin:0}.ui-diagram figcaption{font-weight:700;margin-bottom:12px}.ui-diagram-scroll{overflow:auto;max-width:100%;border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);background:var(--wl-muted)}.ui-diagram-descriptions{columns:2;line-height:1.55;padding-left:20px}.ui-comparison-toggle{display:flex;align-items:center;gap:8px}.ui-comparison-toggle input{accent-color:var(--wl-accent);width:18px;height:18px}.ui-comparison-result{margin-top:16px;padding:16px;border:1px solid var(--wl-border);border-left:4px solid var(--wl-accent);border-radius:var(--wl-radius-control);background:var(--wl-muted)}.ui-comparison-result p{margin-bottom:0}@media(max-width:600px){.ui-diagram-descriptions{columns:1}}
+.ui-avatar{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--wl-muted);color:var(--wl-text);border:1px solid var(--wl-border);font-weight:700;font-size:13px}.ui-avatar--small{width:28px;height:28px;font-size:10px}.ui-avatar--large{width:56px;height:56px;font-size:17px}.ui-image-figure{margin:0;max-width:660px}.ui-image-frame{aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;background:var(--wl-muted);border:1px solid var(--wl-border);border-radius:var(--wl-radius-control)}.ui-image-frame img{display:block;width:100%;height:100%;object-fit:cover}.ui-image-figure figcaption{margin-top:8px;color:var(--wl-secondary)}.ui-carousel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.ui-carousel-head h2{margin:0}.ui-carousel-head>div{display:flex;gap:8px}.ui-carousel-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;touch-action:pan-y;cursor:grab;padding:8px 2px}.ui-carousel-track:active{cursor:grabbing}.ui-carousel-track::-webkit-scrollbar{display:none}.ui-carousel-card{flex:0 0 min(260px,85%);scroll-snap-align:start;border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);padding:20px;background:var(--wl-surface)}.ui-carousel-card h3{margin-top:0}.ui-diagram{margin:0}.ui-diagram figcaption{font-weight:700;margin-bottom:12px}.ui-diagram-scroll{overflow:auto;max-width:100%;border:1px solid var(--wl-border);border-radius:var(--wl-radius-control);background:var(--wl-muted)}.ui-diagram-descriptions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--wl-space-2) var(--wl-space-6);line-height:1.55;margin:var(--wl-space-4) 0;padding-left:20px}.ui-diagram .ui-diagram-descriptions li{position:static;display:list-item;list-style:decimal;min-width:0}.ui-diagram .ui-diagram-descriptions li::before,.ui-diagram .ui-diagram-descriptions li::after{content:none}.ui-comparison-toggle{display:flex;align-items:center;gap:8px}.ui-comparison-toggle input{accent-color:var(--wl-accent);width:18px;height:18px}.ui-comparison-result{margin-top:16px;padding:16px;border:1px solid var(--wl-border);border-left:4px solid var(--wl-accent);border-radius:var(--wl-radius-control);background:var(--wl-muted)}.ui-comparison-result p{margin-bottom:0}@media(max-width:600px){.ui-diagram-descriptions{columns:1}}
 /* Calendar proportions and controls follow the original guide. */
 .wl-react-date {max-width:420px}
 .wl-react-date-toggle.ui-button {background:transparent;border:0;box-shadow:none;color:var(--wl-text);padding:0}
@@ -623,4 +762,4 @@
 .ui-button--text[aria-pressed="true"]:not(:disabled) {background:var(--wl-muted);color:var(--wl-hover);border-color:transparent}
 @media(prefers-reduced-motion:reduce){.ui-button:not(:disabled){transition:none}.ui-button:not(:disabled):active{transform:none}}
 
-.ui-code{position:relative}.ui-code>figcaption{padding-right:88px}.ui-code>.ui-button{position:absolute;top:8px;right:8px;min-height:28px}.ui-code-copy-status:not(:empty){display:block;padding:0 12px 10px;color:var(--wl-secondary);font-size:13px}
+.ui-code{position:relative}.ui-code>figcaption{display:flex;align-items:center;justify-content:space-between;gap:var(--wl-space-3);min-height:40px;padding:4px 6px 4px 16px}.ui-code .ui-code-copy.ui-button{display:inline-flex;align-items:center;gap:6px;min-height:30px;height:30px;padding:0 10px;border:0;border-radius:6px;background:transparent;color:var(--wl-secondary);font-size:12px;font-weight:600}.ui-code .ui-code-copy.ui-button:hover,.ui-code .ui-code-copy.ui-button:focus-visible{background:var(--wl-surface);color:var(--wl-text)}.ui-code .ui-code-copy.ui-button.ui-button[data-state="copied"]{color:var(--wl-success)}.ui-code-copy-status:not(:empty):not(.ui-visually-hidden){display:block;padding:0 16px 12px;color:var(--wl-danger);font-size:13px}

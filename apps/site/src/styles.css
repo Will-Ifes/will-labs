@@ -336,7 +336,7 @@ input {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
   padding: 24px;
   border: 1px solid var(--wl-border);
   border-radius: 16px;
@@ -379,10 +379,12 @@ input {
   display: grid;
   justify-items: start;
   gap: 16px;
-  margin-top: 48px;
 }
+/* Mesmo título das demais views (ver .site-page-head h1). */
 .site-react-catalog-intro h1 {
   margin: 0;
+  font: 600 clamp(2.25rem, 4vw, 3.25rem)/1.12 var(--wl-font-display);
+  letter-spacing: -0.03em;
 }
 @media (max-width: 850px) {
   .site-home-content .wl-showcase {
@@ -429,6 +431,7 @@ input {
 }
 .site-page-head {
   max-width: 70ch;
+  margin-bottom: 0;
 }
 .site-page-head h1 {
   font: 600 clamp(2.25rem, 4vw, 3.25rem)/1.12 var(--wl-font-display);
@@ -669,8 +672,9 @@ input {
 }
 
 /* Composite forms use one label/control rhythm without changing standalone fields. */
-.site-flow-grid > .ui-field { min-width: 0; width: 100%; max-width: none; align-content: start; grid-template-rows: 22px 48px auto; margin-block: 8px; gap: 6px; }
-.site-flow-grid > .ui-field > :first-child { align-self: end; margin: 0; line-height: 20px; }
+.site-flow-grid > .ui-field { min-width: 0; width: 100%; max-width: none; align-content: start; margin-block: 0; gap: 6px; }
+.site-flow-grid { row-gap: var(--wl-space-4); }
+.site-flow-grid > .ui-field > :first-child { margin: 0; }
 .site-flow-grid .ui-input,
 .site-flow-grid .ui-number-control,
 .site-flow-grid .wl-react-field-control,
@@ -679,8 +683,8 @@ input {
 .site-flow-grid .wl-react-field-control .ui-input { height: 46px; min-height: 46px; }
 .site-flow-grid .ui-help,.site-flow-grid .ui-error { margin: 0; }
 
-.site-flow-page { gap: 20px; }
-.site-flow-page .site-page-head p { margin-bottom: 0; }
+.site-flow-page { gap: 24px; }
+.site-stack > :is(.ui-banner, .ui-surface) { margin-block: 0; }
 
 /* Focus keeps controls recognizable without a raised ring or layout shift. */
 .site-shell :is(input,textarea,select):focus-visible {outline:0!important;outline-offset:0!important;box-shadow:inset 0 0 0 2px currentColor!important}

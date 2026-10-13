@@ -12,7 +12,7 @@
   --wl-danger: #A32929;
   --wl-info: #165B73;
   --wl-warning: #765000;
-  --wl-success: #24633D;
+  --wl-success: #11702E;
   --wl-off: #637569;
   --wl-thumb: #FFFFFF;
   color-scheme: light;
@@ -30,7 +30,7 @@
   --wl-danger: #FFB4A9;
   --wl-info: #A7D8F0;
   --wl-warning: #F5D085;
-  --wl-success: #B7E2AE;
+  --wl-success: #6FE0D8;
   --wl-off: #829786;
   --wl-thumb: #15251B;
   color-scheme: dark;
@@ -46,9 +46,9 @@
   --wl-hover: #004E55;
   --wl-on: #FFFFFF;
   --wl-danger: #A52B30;
-  --wl-info: #165C78;
+  --wl-info: #1F4FA3;
   --wl-warning: #765000;
-  --wl-success: #226444;
+  --wl-success: #3C6B12;
   --wl-off: #5B7779;
   --wl-thumb: #FFFFFF;
   color-scheme: light;
@@ -64,9 +64,9 @@
   --wl-hover: #B3F0E9;
   --wl-on: #102C32;
   --wl-danger: #FFB4B3;
-  --wl-info: #ABDBF0;
+  --wl-info: #9CC2FF;
   --wl-warning: #F5D085;
-  --wl-success: #ADE3BD;
+  --wl-success: #B5E08A;
   --wl-off: #809A9B;
   --wl-thumb: #102C32;
   color-scheme: dark;
@@ -100,7 +100,7 @@
   --wl-hover: #DCE2FF;
   --wl-on: #1D2850;
   --wl-danger: #FFB9C4;
-  --wl-info: #B1DEFA;
+  --wl-info: #7CD6F7;
   --wl-warning: #F3D187;
   --wl-success: #B4E5C7;
   --wl-off: #8793AE;
@@ -117,9 +117,9 @@
   --wl-accent: #775118;
   --wl-hover: #5C3D0F;
   --wl-on: #FFFFFF;
-  --wl-danger: #A52D28;
+  --wl-danger: #AD1F45;
   --wl-info: #195D76;
-  --wl-warning: #795000;
+  --wl-warning: #9C4500;
   --wl-success: #356445;
   --wl-off: #7B715E;
   --wl-thumb: #FFFFFF;
@@ -135,9 +135,9 @@
   --wl-accent: #F2CB82;
   --wl-hover: #FFE3AD;
   --wl-on: #322218;
-  --wl-danger: #FFB8AB;
+  --wl-danger: #FFA3BC;
   --wl-info: #A9DDF1;
-  --wl-warning: #F4D184;
+  --wl-warning: #FF9A55;
   --wl-success: #BBE3B9;
   --wl-off: #A29178;
   --wl-thumb: #282016;
