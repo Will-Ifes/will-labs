@@ -1,0 +1,3 @@
+#!/bin/sh
+# Mesmo critério do job Qualidade do CI, só com as verificações rápidas.
+npm run --silent format:check && npm run --silent lint

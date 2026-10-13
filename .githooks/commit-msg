@@ -1,0 +1,3 @@
+#!/bin/sh
+# Valida tipo(escopo): resumo antes de o commit existir.
+npx --no-install commitlint --edit "$1"

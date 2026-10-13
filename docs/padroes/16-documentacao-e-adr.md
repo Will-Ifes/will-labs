@@ -50,7 +50,7 @@ O que fica mais fácil, o que fica mais difícil, o que precisa ser revisto e qu
 
 | ADR | Assunto                     | Sprint |
 | --- | --------------------------- | ------ |
-| 003 | Idioma do conteúdo          | 0      |
+| 003 | Idioma do conteúdo (aceita) | 0      |
 | 005 | Banco de dados              | 2      |
 | 006 | Estratégia de sessão        | 4      |
 | 007 | Pirâmide de testes e runner | 5      |
