@@ -140,9 +140,21 @@ try {
     if (width === 390)
       check(
         `${width} diagram starts at main flow`,
+        // O guia rola o diagrama depois do layout; espera o estado em vez de ler uma vez só.
         await page
           .locator('[data-view="comp-diagram"] .ui-diagram-scroll')
-          .evaluate((el) => el.scrollLeft > 100),
+          .evaluate(
+            (el) =>
+              new Promise((resolve) => {
+                const started = performance.now();
+                const poll = () => {
+                  if (el.scrollLeft > 100) return resolve(true);
+                  if (performance.now() - started > 3000) return resolve(false);
+                  requestAnimationFrame(poll);
+                };
+                poll();
+              }),
+          ),
       );
     await page.screenshot({ path: `evidence/iteration-diagram-${width}.png` });
     check(
