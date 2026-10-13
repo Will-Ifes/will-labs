@@ -3,6 +3,8 @@ import {
   Banner,
   Button,
   EmptyState,
+  DateField,
+  Select,
   NumberField,
   Progress,
   Surface,
@@ -18,12 +20,16 @@ type Flow = {
   name: string;
   description: string;
   steps: number;
+  category: string;
+  dueDate: string;
   status: "Rascunho" | "Executado";
 };
 export function FlowDemo() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [steps, setSteps] = useState(3);
+  const [category, setCategory] = useState("design");
+  const [dueDate, setDueDate] = useState("");
   const [flows, setFlows] = useState<Flow[]>([]);
   const [message, setMessage] = useState("");
   const add = () => {
@@ -37,6 +43,8 @@ export function FlowDemo() {
         name: name.trim(),
         description: description.trim(),
         steps,
+        category,
+        dueDate,
         status: "Rascunho",
       },
       ...items,
@@ -59,6 +67,12 @@ export function FlowDemo() {
       flow.name,
       flow.description || "Sem descrição",
       `${flow.steps} etapas`,
+      flow.category === "design"
+        ? "Design"
+        : flow.category === "quality"
+          ? "Qualidade"
+          : "Acessibilidade",
+      flow.dueDate ? flow.dueDate.split("-").reverse().join("/") : "Sem data",
       <Tag tone={flow.status === "Executado" ? "success" : "neutral"}>
         {flow.status}
       </Tag>,
@@ -103,6 +117,25 @@ export function FlowDemo() {
             max={12}
           />
         </div>
+        <div className="site-demo-grid">
+          <Select
+            label="Área do fluxo"
+            options={[
+              { value: "design", label: "Design" },
+              { value: "quality", label: "Qualidade" },
+              { value: "accessibility", label: "Acessibilidade" },
+            ]}
+            value={category}
+            onChange={setCategory}
+          />
+          <DateField
+            label="Prazo"
+            value={dueDate}
+            onChange={setDueDate}
+            min="2026-01-01"
+            max="2030-12-31"
+          />
+        </div>
         <TextareaField
           label="Objetivo"
           value={description}
@@ -124,7 +157,15 @@ export function FlowDemo() {
         {flows.length ? (
           <Table
             caption="Fluxos locais"
-            columns={["Nome", "Objetivo", "Etapas", "Estado", "Ação"]}
+            columns={[
+              "Nome",
+              "Objetivo",
+              "Etapas",
+              "Área",
+              "Prazo",
+              "Estado",
+              "Ação",
+            ]}
             rows={rows}
             initialPageSize={3}
             pageSizes={[3, 5, 10]}

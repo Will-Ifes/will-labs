@@ -34,9 +34,23 @@ try {
       "amber-light",
       "amber-dark",
     ]) {
+      await page.getByRole("button", { name: /Tema / }).click();
       await page
-        .getByRole("combobox", { name: "Tema visual" })
-        .selectOption(theme);
+        .locator(`.site-theme-grid > button`)
+        .filter({
+          hasText: {
+            paper: "Papel claro",
+            forest: "Floresta escura",
+            "petrol-light": "Petróleo claro",
+            "petrol-dark": "Petróleo escuro",
+            "indigo-light": "Índigo claro",
+            "indigo-dark": "Índigo escuro",
+            "amber-light": "Âmbar claro",
+            "amber-dark": "Âmbar escuro",
+          }[theme],
+        })
+        .click();
+      await page.waitForTimeout(250);
       assert.equal(
         await page.locator("html").getAttribute("data-theme"),
         theme === "forest" || theme.endsWith("dark") ? "dark" : "light",
@@ -87,6 +101,7 @@ try {
         .getAttribute("aria-selected"),
       "true",
     );
+    if (width <= 850) await page.getByRole("button", { name: "Menu" }).click();
     await page.getByRole("link", { name: "Lab de design" }).click();
     await page.getByRole("tab", { name: "Try" }).click();
     await page
@@ -101,6 +116,7 @@ try {
       await page.getByRole("status").last().innerText(),
       /Ação local executada/,
     );
+    if (width <= 850) await page.getByRole("button", { name: "Menu" }).click();
     await page.getByRole("link", { name: "Fluxos" }).click();
     await page
       .getByRole("textbox", { name: "Nome do fluxo" })

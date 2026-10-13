@@ -43,6 +43,7 @@ try {
   process.env.BASE_URL = `http://localhost:${port}/design-system`;
   process.env.REACT_BASE_URL = `http://localhost:${port}/react/`;
   await run(process.execPath, ["tests/react-site.mjs"]);
+  await run(process.execPath, ["tests/react-advanced.mjs"]);
   await run(process.execPath, ["tests/e2e.mjs"]);
   await run(process.execPath, ["tests/states.mjs"]);
   await run(process.execPath, ["tests/nontext.mjs"]);

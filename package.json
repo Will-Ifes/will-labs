@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build": "node packages/tokens/build.mjs && npm run build:react && npm run build:site",
-    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs && node tests/new-components.mjs && node tests/react-site.mjs",
+    "test": "node tests/e2e.mjs && node tests/states.mjs && node tests/nontext.mjs && node tests/contracts.mjs && node tests/new-components.mjs && node tests/react-site.mjs && node tests/react-advanced.mjs",
     "test:audit": "node tests/audit-views.mjs",
     "test:states": "node tests/states.mjs && node tests/nontext.mjs",
     "format": "prettier --write packages/ui packages/ui-react apps/docs apps/site tests scripts docs",
@@ -22,7 +22,7 @@
     "build:site": "npm run build -w @will-labs/site",
     "dev:site": "npm run dev -w @will-labs/site",
     "typecheck:react": "npm run typecheck -w @will-labs/ui-react && npm run typecheck -w @will-labs/site",
-    "test:react": "node tests/react-site.mjs"
+    "test:react": "node tests/react-site.mjs && node tests/react-advanced.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",

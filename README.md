@@ -22,7 +22,7 @@ npm run build       # gera tokens, pacote React e aplicação
 npx playwright install chromium
 npm test           # interação, 8 temas, desktop/mobile, contraste, estados
 npm run test:audit # axe nas views ativas, desktop claro e mobile escuro
-npm run test:react # catálogo, Lab e Fluxos em Chrome, desktop/mobile e 8 temas
+npm run test:react # catálogo, campos avançados, camadas, Lab e Fluxos em Chrome, desktop/mobile e 8 temas
 npm run verify     # build, servidor isolado e toda a validação
 ```
 
@@ -46,6 +46,7 @@ Mantenha `npm start` em outro terminal. Para usar Chrome instalado, por exemplo 
 ```tsx
 import "@will-labs/tokens/semantic.css";
 import "@will-labs/ui/styles.css";
+import "@will-labs/ui-react/styles.css";
 import { Button, TextField } from "@will-labs/ui-react";
 ```
 
@@ -53,7 +54,7 @@ A fonte de tokens está em `packages/tokens/themes.json`. `packages/ui-react/REA
 
 ## Estado real
 
-Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. Não houve publicação externa, implementação do futuro produto de fluxos, revisão com leitor de tela ou validação em Safari/Firefox.
+Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. Não houve publicação externa, implementação do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
 
 ## Histórico e colaboração
 

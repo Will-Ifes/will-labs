@@ -32,3 +32,9 @@ A estrutura local já inclui `.gitignore`, `.editorconfig`, Prettier, ADR-002 e 
 ## Atualização React v1 · 12 out 2026
 
 A primeira versão local dos pacotes é `1.0.0`, sem publicação. Componentes React migrados nesta etapa: Button, IconButton, Surface, TextField, TextareaField, NumberField, Divider, Tag, Switch, Tabs, Code, Table, Banner, EmptyState, Progress, Stepper, Wizard e LabPage. A aplicação de documentação importa os componentes, e um Lab demonstrativo e a tela local de Fluxos exercitam a mesma API. Não foi feita uma conversão automática das views legadas: overlays, seletores avançados, calendário, upload e demais contratos ainda precisam de migração React e validação específica.
+
+## Continuação React v1 · 12 out 2026
+
+Select (incluindo busca assíncrona), Multiselect (busca, tags, paginação incremental, vazio e erro), DateField, TimeField, FileUpload, Modal, Drawer, Popover, Dropdown e Tooltip foram migrados como contratos React reutilizáveis. `ValidationMessage` é a mesma implementação para texto, área de texto, número, seletores, data, hora e upload. O catálogo React demonstra os estados; a tela local de Fluxos também consome Select e DateField. A nova suíte `tests/react-advanced.mjs` cobre desktop/mobile, oito temas, teclado, foco, limites da viewport, erro e recuperação. O CSS específico do pacote é importável de `@will-labs/ui-react/styles.css`.
+
+A paridade total das 61 views do catálogo anterior segue pendente. As validações com leitor de tela e Safari também continuam abertas; o pacote v1 ainda é local e não foi publicado.

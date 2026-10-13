@@ -11,6 +11,8 @@ import {
   type ReactNode,
 } from "react";
 
+import { ValidationMessage } from "./validation";
+
 export type ButtonVariant = "primary" | "outline" | "text" | "danger";
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonProps = Omit<
@@ -123,15 +125,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             {...props}
           />
         </div>
-        {(error || help) && (
-          <small
-            id={messageId}
-            className={error ? "ui-error" : "ui-help"}
-            role={error ? "alert" : undefined}
-          >
-            {error || help}
-          </small>
-        )}
+        <ValidationMessage id={messageId} error={error} help={help} />
       </div>
     );
   },
@@ -612,15 +606,7 @@ export const TextareaField = forwardRef<
         aria-invalid={error ? true : undefined}
         aria-describedby={error || help ? messageId : undefined}
       />
-      {(error || help) && (
-        <small
-          id={messageId}
-          className={error ? "ui-error" : "ui-help"}
-          role={error ? "alert" : undefined}
-        >
-          {error || help}
-        </small>
-      )}
+      <ValidationMessage id={messageId} error={error} help={help} />
     </div>
   );
 });
@@ -700,15 +686,7 @@ export function NumberField({
           +
         </Button>
       </div>
-      {(error || help) && (
-        <small
-          id={messageId}
-          className={error ? "ui-error" : "ui-help"}
-          role={error ? "alert" : undefined}
-        >
-          {error || help}
-        </small>
-      )}
+      <ValidationMessage id={messageId} error={error} help={help} />
     </div>
   );
 }
@@ -755,3 +733,15 @@ export function Progress({
     </div>
   );
 }
+
+export { FloatingLayer } from "./floating";
+export { Modal, Drawer, Popover, Dropdown, Tooltip } from "./overlays";
+export { Select, Multiselect } from "./selectors";
+export type {
+  SelectOption,
+  SelectLoader,
+  MultiOption,
+  MultiLoader,
+} from "./selectors";
+export { ValidationMessage } from "./validation";
+export { DateField, TimeField, FileUpload } from "./fields";
