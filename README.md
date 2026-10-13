@@ -1,6 +1,27 @@
-# Will Labs · Design system v1
+# Will Labs · design system e laboratório de interfaces
 
-Repositório do Will Labs, iniciado a partir do guia v2.3 e concentrado na Sprint 1 do PDF. A stack principal é React. O pacote `@will-labs/ui-react` v1 usa os tokens semânticos compartilhados e é consumido pelo catálogo, por uma composição de Lab e por uma demonstração local de Fluxos. O guia anterior continua disponível durante a migração gradual; sua versão histórica v2.4 não é a versão do pacote. O código-fonte está público no GitHub e o catálogo React está publicado no GitHub Pages. Os pacotes ainda não foram publicados no npm.
+Design system em React e TypeScript, com tokens semânticos, oito temas e um catálogo público de componentes e composições. O projeto reúne implementação, decisões de arquitetura e evidências de testes no mesmo repositório.
+
+[Abrir demonstração](https://will-ifes.github.io/will-labs/) · [Componentes React](packages/ui-react) · [Decisões de arquitetura](docs/adr) · [Evidências](evidence/VIEW-AUDIT.md)
+
+## O problema e a proposta
+
+Construir interfaces consistentes exige mais que repetir estilos: campos, camadas, estados e temas precisam compartilhar contratos. O Will Labs explora essa base com uma biblioteca consumida por uma aplicação real de catálogo e demonstrações locais.
+
+## Por dentro do código
+
+| Caminho | Decisão ou comportamento |
+| --- | --- |
+| [Tokens por tema](packages/tokens/themes.json) | Fonte de valores compartilhada entre componentes e amostras |
+| [Campos React](packages/ui-react/src/fields.tsx) | Contratos dos campos e interação |
+| [Overlays React](packages/ui-react/src/overlays.tsx) | Composição de camadas |
+| [Testes de integração React](tests/react-advanced.mjs) | Exercícios no navegador para componentes avançados |
+| [Auditoria por view](evidence/VIEW-AUDIT.md) | Evidências e limites da validação |
+| [ADR do design system](docs/adr/ADR-004-design-system.md) | Escolha de biblioteca própria e seus compromissos |
+
+## Estado do projeto
+
+O catálogo está publicado. Os pacotes são locais e ainda não estão disponíveis no npm. A migração do guia anterior continua gradual; Fluxos é uma demonstração sem backend persistente. Os relatórios registram validações específicas, sem equivaler a homologação completa em navegadores e leitores de tela.
 
 ## Demonstração pública
 
@@ -64,7 +85,7 @@ Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. 
 
 ## Histórico e colaboração
 
-A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está configurado para verificar cada push na branch principal. Não há ZIP novo: o repositório é a fonte de trabalho. A marca do produto é Will Labs; “Fluxos” identifica uma área do produto.
+O diretório `historico` preserva fontes anteriores e decisões para consulta. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está configurado para verificar cada push na branch principal. Não há ZIP novo: o repositório é a fonte de trabalho. A marca do produto é Will Labs; “Fluxos” identifica uma área do produto.
 
 A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 61 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 
