@@ -33,6 +33,7 @@
 | ✓ | **Commits** (commitlint) | a mensagem foge de `tipo(escopo): resumo` |
 | ✓ | **Interação** (Playwright) | teclado, foco ou estado falha em 1440 ou 390 px, nos 8 temas |
 | ✓ | **Acessibilidade** (axe) | há violação WCAG 2.1 AA |
+| ✓ | **Firefox e WebKit** (smoke test) | Dropdown, Select ou carregamento falham nesses motores |
 
 ## O que ainda não é medido
 
@@ -40,18 +41,19 @@
 | :---: | --- | --- |
 | — | Testes unitários e cobertura | Previsto na Sprint 5 |
 | — | Comparação visual automática | Capturas geradas, sem comparação |
-| — | Leitor de tela, Firefox e Safari | Nunca testados |
+| — | Leitor de tela | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
+| — | Firefox e WebKit | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium |
 | — | Desempenho (Web Vitals) | Previsto na Sprint 12 |
 | — | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min |
 
-<sub>Teste instável conhecido: `audit-iteration.mjs` falhou em 2 de 6 execuções recentes. Há 47 avisos de lint que não bloqueiam.</sub>
+<sub>Há 47 avisos de lint que não bloqueiam e estão registrados como dívida.</sub>
 
 ## Onde o projeto está
 
 | Sprint | | Entrega |
 | --- | :---: | --- |
 | 0 · Fundação | ●●●● | Repositório, licença MIT, ADRs, lint, commits e hooks locais |
-| 1 · Design system | ●●●○ | Tokens, componentes e catálogo público. Falta leitor de tela |
+| 1 · Design system | ●●●○ | Tokens, componentes e catálogo público. Falta executar o roteiro de leitor de tela |
 | 2 · OpsFlow v0.1 | ○○○○ | API, banco e telas do produto |
 | 3 · Lançamento | ○○○○ | Trilha e Labs 01 e 02 |
 
