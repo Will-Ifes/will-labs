@@ -7,7 +7,12 @@
 - Não instale dependências sem necessidade, não crie commits automaticamente e não execute comandos destrutivos.
 - Registre progresso somente quando necessário; comunique impedimentos e resultado de forma objetiva. Encerre quando os critérios do pedido estiverem atendidos.
 
+## Padrões de código
+
+Siga `docs/padroes/README.md`: estrutura, TypeScript, React, foco, acessibilidade, tokens, testes e commits.
+
 ## Contrato do Design System
+
 A especificação funcional fica em `docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md`.
 Leia somente os contratos globais necessários e a seção da view solicitada.
 Cada execução trata uma view ou um defeito isolado. Preserve `/design-system`
