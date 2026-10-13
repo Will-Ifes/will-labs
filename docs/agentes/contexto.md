@@ -8,4 +8,4 @@ Will Labs é um design system e uma aplicação para documentar e reutilizar com
 - npm workspaces, TypeScript, React 19 e Vite. `packages/ui-react` tem React como peer dependency.
 - A ADR-004 registra a escolha de design system próprio. A migração é gradual; o pacote React ainda depende de CSS compartilhado do guia.
 
-Para regras operacionais, veja `AGENTS.md`; para estado atual, `docs/migration-status.md`. A fonte detalhada permanece em `README.md`, ADRs e `evidence/VIEW-AUDIT.md`.
+Para regras operacionais, veja `AGENTS.md`; para estado atual, `docs/plano/status-da-migracao.md`. A fonte detalhada permanece em `README.md`, ADRs e `evidence/VIEW-AUDIT.md`.

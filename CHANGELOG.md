@@ -1,20 +1,14 @@
-# Histórico do repositório
+# Changelog
 
-## 2.4.0 — validação local
+Versões seguem [versionamento semântico](https://semver.org/lang/pt-BR/). A partir da próxima versão, este arquivo é gerado a partir dos commits convencionais.
 
-Tokens e UI reutilizáveis, documentação consumidora, correções de foco e multiselect, oito temas, auditoria e evidências. Ver `CHANGES-v2.4.md` e `RELATORIO-v2.4.md`. Repositório local e CI preparado; sem publicação externa.
+## 1.0.0 · Design system React (Sprint 1)
 
-## v2.3
+- Pacote `@will-labs/ui-react` com 40 componentes exportados, tokens semânticos e 8 temas.
+- Catálogo React publicado no GitHub Pages.
+- Padrões de engenharia em `docs/padroes`.
+- CI com formato, lint, tipos, mensagens de commit, testes de navegador e auditoria axe.
 
-Revisão de diálogos, temas, containers, contraste de avatar, switch e multiselect incremental. Consulte CHANGES-v2.3.md.
+## Versões anteriores
 
-# Versão 2.1
-
-- Calendário com escolha explícita de mês e ano, dias fora do mês, hoje, seleção e hover.
-- Botões apenas com ícone e átomo aplicado a limpar/revelar.
-- Views específicas para data, hora e data e hora, com composição compartilhada de estilos.
-- Tabela com divisórias de coluna e hierarquia revisada.
-- Quatro opções de tema, duas delas ainda em avaliação.
-- Auditoria crítica e inventário de views.
-
-Pendente: revisão visual e acessível em navegador real e extração de componentes de produção.
+O guia HTML v2.x foi a base desta versão. Seus relatórios e notas foram removidos do repositório; o estado de partida continua disponível na tag [`baseline-v2.3`](https://github.com/Will-Ifes/will-labs/tree/baseline-v2.3) e no histórico do Git.

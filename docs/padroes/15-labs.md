@@ -71,7 +71,7 @@ O site monta a página com o componente `LabPage` (quatro abas: Learn, Try, Code
 
 - **Code** aponta para código real do OpsFlow, com link para o commit. Trecho inventado é proibido.
 - **Architecture** mostra o diagrama com o componente destacado e responde: por que existe, quanto custa, alternativa, o que acontece se cair, backup, monitoramento.
-- Textos seguem a [voz do conteúdo](../VOZ-E-CONTEUDO.md). Preço tem data ("valores de outubro de 2026").
+- Textos seguem a [voz do conteúdo](../design-system/voz-e-conteudo.md). Preço tem data ("valores de outubro de 2026").
 
 ## Demonstrações seguras
 

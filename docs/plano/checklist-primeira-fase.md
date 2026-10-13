@@ -1,8 +1,8 @@
 # Will Labs · checklist da primeira fase do Design System React
 
-Este checklist une a **Sprint 1** de *Will Labs — projeto e plano de execução* à especificação de PO em [WILL_LABS_DESIGN_SYSTEM_SPEC.md](./WILL_LABS_DESIGN_SYSTEM_SPEC.md). A versão original em `/design-system` é a referência visual. A primeira fase pode ser publicada com escopo declarado; ela não equivale a concluir todos os cenários E# do catálogo.
+Este checklist une a **Sprint 1** de *Will Labs — projeto e plano de execução* à especificação de PO em [especificacao.md](../design-system/especificacao.md). A versão original em `/design-system` é a referência visual. A primeira fase pode ser publicada com escopo declarado; ela não equivale a concluir todos os cenários E# do catálogo.
 
-**Estado de uma tarefa:** marque `[x]` somente com evidência. `[ ]` significa pendente ou não verificado, nunca falha presumida. Registre o resultado e o ambiente em [migration-status.md](./migration-status.md).
+**Estado de uma tarefa:** marque `[x]` somente com evidência. `[ ]` significa pendente ou não verificado, nunca falha presumida. Registre o resultado e o ambiente em [status-da-migracao.md](./status-da-migracao.md).
 
 ## 1. Percurso de leitura e documentação
 

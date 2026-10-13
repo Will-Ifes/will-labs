@@ -67,7 +67,6 @@
     "node_modules/**",
     "apps/docs/**",
     "src/legacy/**",
-    "packages/ui/**",
-    "historico/**"
+    "packages/ui/**"
   ]
 }
