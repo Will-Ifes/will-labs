@@ -34,7 +34,7 @@ Todo PR e todo push na `main` passam pelos mesmos estágios, nesta ordem, e o pr
 - Hoje o CI (`.github/workflows/ci.yml`) roda os estágios 1 a 4, o de mensagens de commit, 6 e 8, em dois jobs: **Qualidade** (formato, lint, build, tipos, commits) e **Navegador e acessibilidade** (`npm run verify`), que só começa se o primeiro passar. Os estágios 5, 7, 9 e 10 entram nas Sprints 2, 5, 6 e 7 do plano.
 - **Lint:** `oxlint` com a configuração em `.oxlintrc.json`. O ESLint com typescript-eslint não foi usado porque ainda não suporta o TypeScript 7 do projeto. Regras de erro bloqueiam o CI; as de aviso marcam dívida conhecida (refs lidas no render, `setState` em efeito, `tabIndex` em regiões roláveis) e devem ser zeradas quando o arquivo for tocado.
 - **Commits:** `commitlint` com `commitlint.config.js` valida o formato `tipo(escopo): resumo` em todo PR e push.
-- A ilustração animada do pipeline no README fica em `assets/readme/ci-pipeline.svg`. Ao mudar as etapas do workflow, atualize a ilustração no mesmo PR.
+- A ilustração animada do pipeline no README (`assets/readme/ci-pipeline.svg`) é gerada por `node scripts/readme-ci-svg.mjs` a partir da lista de etapas do script. Ao mudar o workflow, atualize a lista e gere de novo no mesmo PR. A ilustração nunca mostra status; o status é o badge.
 - **Tempo:** alvo abaixo de 6 minutos (métrica do plano para a Fase 2) e de 4 minutos na Fase 4. Estágio lento é paralelizado ou cacheado, não removido.
 - Workflows têm `permissions` mínimas (`contents: read` por padrão), `timeout-minutes` e ações fixadas por versão maior (`actions/checkout@v4`) com atualização automática revisada.
 - Artefatos de depuração (capturas, relatórios) sobem com `if: always()`.

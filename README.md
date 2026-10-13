@@ -1,55 +1,112 @@
 # Will Labs
 
-Design system em React e TypeScript, com tokens semânticos, oito temas e um catálogo público de componentes e composições.
+Design system em React e TypeScript, com tokens semânticos, oito temas e um catálogo público. É a Sprint 1 de um laboratório público de engenharia: o mesmo repositório vai receber o OpsFlow (produto de fluxos operacionais) e os 16 Labs que ensinam cada decisão tomada nele.
 
-**React · TypeScript · Design tokens · Playwright · axe-core**
+[Ver catálogo](https://will-ifes.github.io/will-labs/) · [Componentes](packages/ui-react) · [Padrões](docs/padroes/README.md) · [Decisões](docs/adr) · [Auditoria por view](evidence/VIEW-AUDIT.md)
 
-[Ver demonstração](https://will-ifes.github.io/will-labs/) · [Componentes](packages/ui-react) · [Decisões](docs/adr) · [Padrões](docs/padroes/README.md) · [Evidências](evidence/VIEW-AUDIT.md)
-
-[![CI · verificação](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml)
+[![CI](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml)
 [![Deploy · GitHub Pages](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml)
 
 <a href="https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml">
-  <img src="./assets/readme/ci-pipeline.svg" alt="Fluxo ilustrado do CI: tokens, build, testes e auditoria de acessibilidade" width="100%">
+  <img src="./assets/readme/ci-pipeline.svg" alt="Ilustração das etapas do CI. Job 1, qualidade: npm ci, Prettier, oxlint, build, TypeScript e commitlint. Job 2, navegador e acessibilidade: Playwright em 1440 e 390 px, oito temas, axe e capturas." width="100%">
 </a>
 
-<sub>Fluxo ilustrado do pipeline · os badges exibem o resultado do GitHub Actions.</sub>
+<sub>A ilustração mostra as etapas configuradas, não o resultado. O resultado de cada execução é o badge acima.</sub>
 
-## Do componente à interface
+## O que o CI verifica a cada push e pull request
 
-- Tokens compartilhados entre temas, componentes e amostras.
-- Campos, seletores, camadas e feedback com contratos reutilizáveis.
-- Catálogo React que consome a biblioteca do próprio workspace.
-- Testes de interação e auditorias de acessibilidade com evidências versionadas.
+Dois jobs em sequência ([`ci.yml`](.github/workflows/ci.yml)). Se o primeiro falha, o segundo não roda.
 
-> **Estado atual:** catálogo publicado; pacotes locais, ainda sem publicação no npm. A migração do guia anterior continua gradual. Fluxos é uma demonstração sem backend persistente.
+| Etapa | O que mede | Falha quando |
+| --- | --- | --- |
+| **Formato** · Prettier | Código React, site, testes, scripts e docs de padrões | Algum arquivo fora do formato |
+| **Lint** · oxlint | Regras de [`docs/padroes`](docs/padroes/README.md): TypeScript, hooks do React, acessibilidade em JSX, ciclos de import | Qualquer regra de **erro**. Avisos não bloqueiam |
+| **Build** | Tokens, pacote `@will-labs/ui-react` e site | O build quebra |
+| **Tipos** · TypeScript 7 | Pacote e site em modo `strict` | Qualquer erro de tipo |
+| **Commits** · commitlint | Formato `tipo(escopo): resumo` dos commits do push ou do PR | Mensagem fora do padrão |
+| **Interação** · Playwright | Teclado, foco, estados, erros e camadas no Chrome, em 1440 e 390 px, nos oito temas | Qualquer asserção falha |
+| **Contraste** | Texto e controles medidos no navegador, nos estados testados | Contraste abaixo de 4,5:1 (texto) |
+| **Acessibilidade** · axe | Regras WCAG 2.0 A/AA e 2.1 AA | Qualquer violação |
+| **Evidências** | Capturas de tela e relatórios JSON | Não falha: publica um artefato para conferência |
 
-<details>
-<summary><strong>Arquitetura e caminhos de leitura</strong></summary>
+O Pages publica o catálogo a cada push na `main` ([`pages.yml`](.github/workflows/pages.yml)), em paralelo ao CI.
 
-| Caminho | Decisão ou comportamento |
+## Números atuais
+
+Medidos em 13/10/2026, no commit que introduziu este README. Cada linha diz de onde vem o número, para que possa ser conferido.
+
+| Medida | Valor | Fonte |
+| --- | --- | --- |
+| Componentes exportados por `@will-labs/ui-react` | 40 | Exports de `packages/ui-react/dist/index.js` |
+| Temas | 8 (4 famílias, claro e escuro) | `packages/tokens/themes.json` |
+| Views do guia original auditadas pelo axe | 61, com 0 violações | [`evidence/VIEW-AUDIT.md`](evidence/VIEW-AUDIT.md) (desktop claro e mobile escuro) |
+| Larguras testadas | 1440 e 390 px | `tests/react-site.mjs`, `tests/react-advanced.mjs` |
+| Lint | 0 erros, 47 avisos | `npm run lint` |
+| Duração do CI | ~8,5 min (2,4 min qualidade + 6,1 min navegador) | Execução de 13/10/2026 na aba Actions |
+| Site publicado | JS 375 kB (113 kB gzip), CSS 92 kB (16 kB gzip) | Saída de `npm run build:site` |
+
+O tamanho do bundle e a duração do CI são **registrados aqui, não controlados pelo CI**: nenhum limite falha o pipeline se eles crescerem.
+
+## O que ainda não é medido
+
+Sem esta seção, o badge verde diria mais do que prova.
+
+- **Testes unitários e cobertura:** não existem. Todos os testes rodam no navegador. A escolha do runner (Vitest recomendado) entra na ADR-007 da Sprint 5.
+- **Regressão visual:** as capturas são geradas e publicadas, mas **não são comparadas** automaticamente com uma referência. Diferenças visuais só aparecem em revisão humana.
+- **Leitor de tela, Firefox e Safari:** nunca testados. Toda a automação usa Chromium.
+- **Desempenho:** Web Vitals e tempo de carregamento não são medidos (previsto no Lab 11, Sprint 12).
+- **Contraste dos tokens:** os pares de cores dos oito temas foram medidos uma vez, fora do CI. Uma cor nova que reprove o contraste só é pega se aparecer num estado que os testes de navegador exercitam.
+- **Teste instável conhecido:** `tests/audit-iteration.mjs` ("390 diagram starts at main flow") falhou em 2 das últimas 6 execuções sem mudança de código relacionada. Está registrado como dívida.
+- **Avisos de lint:** os 47 avisos (refs lidas no render, `setState` em efeitos, `tabIndex` em regiões roláveis) não bloqueiam e são dívida a ser zerada.
+
+## Onde o projeto está no plano
+
+| Sprint | Entrega | Situação |
+| --- | --- | --- |
+| 0 · Fundação | Repositório público, README, ADRs, Prettier, lint, commits convencionais | Feito, exceto ADR-003 (idioma), licença e git hooks locais |
+| 1 · Design system | Tokens, componentes base, LabPage, `/design-system` público, contraste e teclado | Feito com validação automatizada; leitor de tela e outros navegadores pendentes |
+| 2 · OpsFlow v0.1 | Banco, API de fluxos, telas de lista e execução | Não iniciado. A tela "Fluxos" do catálogo é uma demonstração sem backend |
+| 3 · Primeiro lançamento | Home com trilha e Labs 01 e 02 | Não iniciado |
+
+O plano completo tem 17 sprints e 16 Labs. Os pacotes estão na versão local 1.0.0 e não foram publicados no npm.
+
+## Rodar localmente
+
+Requer Node.js 22.12 ou superior.
+
+```sh
+npm ci
+npm run build
+npm start          # http://localhost:4174/react/ (catálogo) e /design-system (guia original)
+```
+
+Validação, com `npm start` rodando em outro terminal:
+
+```sh
+npm run format:check
+npm run lint
+npm run typecheck:react
+npx playwright install chromium   # ou CHROME_PATH apontando para um Chrome instalado
+npm test
+npm run test:audit
+```
+
+`npm run verify` reproduz o job de navegador do CI com servidor próprio na porta 4185. Ele ainda não roda no Windows; lá, use os comandos acima.
+
+## Estrutura
+
+| Caminho | Conteúdo |
 | --- | --- |
-| [Tokens por tema](packages/tokens/themes.json) | Fonte de valores compartilhada entre componentes e amostras |
-| [Campos React](packages/ui-react/src/fields.tsx) | Contratos dos campos e interação |
-| [Overlays React](packages/ui-react/src/overlays.tsx) | Composição de camadas |
-| [Testes de integração React](tests/react-advanced.mjs) | Exercícios no navegador para componentes avançados |
-| [Auditoria por view](evidence/VIEW-AUDIT.md) | Evidências e limites da validação |
-| [ADR do design system](docs/adr/ADR-004-design-system.md) | Escolha de biblioteca própria e seus compromissos |
+| `packages/tokens` | Fonte única dos 8 temas e gerador do CSS semântico |
+| `packages/ui-react` | Componentes React v1 |
+| `packages/ui` | Contratos e CSS compartilhados com o guia original, em migração |
+| `apps/site` | Catálogo React publicado no Pages, Lab de design e demonstração de Fluxos |
+| `apps/docs`, `src/legacy` | Guia original, preservado como referência visual |
+| `docs/padroes` | Padrões de engenharia: arquitetura, código, testes, CI, backend, Labs |
+| `docs/adr` | Decisões de arquitetura |
+| `tests`, `evidence` | Testes de navegador e evidências geradas por eles |
 
-### Organização
-
-- `packages/tokens`: fonte semântica única por tema, gerador e CSS; amostras vêm da mesma fonte.
-- `packages/ui-react`: componentes React v1 com props, estado e semântica nativa; biblioteca para os novos consumidores.
-- `packages/ui`: contratos DOM e estilos compartilhados durante a migração; não conhece nomes ou dados do catálogo.
-- `apps/site`: aplicação React que importa o pacote; catálogo, Lab de arquitetura e demonstração local de Fluxos.
-- `apps/docs`: guia anterior, exemplos e loader simulado; importa a UI compartilhada.
-- `apps/docs/consumer.html`: segundo consumidor sem estilos ou scripts legados.
-- `src/legacy`: fontes históricos ainda carregados pelo arquivo inicial. As views ativas já usam contratos compartilhados, mas a remoção gradual desse markup/CSS/JS continua pendente.
-- `docs/adr`: escolha da arquitetura e design system próprio × biblioteca.
-- `tests` e `evidence`: testes reproduzíveis, resultados JSON, auditoria por view e capturas de navegador.
-- `historico`: decisões e fontes da v2.3, mantidas para rastreabilidade. Não são a API atual.
-
-### Uso em outra aplicação React
+## Usar em outra aplicação React
 
 ```tsx
 import "@will-labs/tokens/semantic.css";
@@ -58,61 +115,11 @@ import "@will-labs/ui-react/styles.css";
 import { Button, TextField } from "@will-labs/ui-react";
 ```
 
-A fonte de tokens está em `packages/tokens/themes.json`. `packages/ui-react/README.md` lista os contratos migrados. Os pacotes internos estão na **primeira versão 1.0.0**, ainda local e sem publicação. O guia legado v2.4 é preservado como referência de migração.
+O pacote ainda depende do CSS compartilhado de `@will-labs/ui`; separar os dois é dívida registrada em [`docs/padroes/01-arquitetura.md`](docs/padroes/01-arquitetura.md#dívida-conhecida).
 
-</details>
+## Contribuir
 
-<details>
-<summary><strong>Executar e validar</strong></summary>
-
-### Desenvolvimento local
-
-Requisito: Node.js 22.12 ou superior para a build atual. Instale dependências e gere os pacotes antes de iniciar o servidor:
-
-```sh
-npm ci
-npm run build
-npm start
-```
-
-Abra **http://localhost:4174/react/** para o site React v1 ou **http://localhost:4174/design-system** para o guia anterior. O servidor escuta somente em loopback. Para outra porta: `PORT=4180 npm start`. Use HTTP; módulos ES não são compatíveis com abrir index.html via file://.
-
-### Testes
-
-```sh
-npm ci
-npm run build       # gera tokens, pacote React e aplicação
-npx playwright install chromium
-npm test           # interação, 8 temas, desktop/mobile, contraste, estados
-npm run test:audit # axe nas views ativas, desktop claro e mobile escuro
-npm run test:react # catálogo, campos avançados, camadas, Lab e Fluxos em Chrome, desktop/mobile e 8 temas
-npm run verify     # build, servidor isolado e toda a validação
-```
-
-Mantenha `npm start` em outro terminal. Para usar Chrome instalado, por exemplo em Linux: `CHROME_PATH=/usr/bin/google-chrome npm run verify`. Os testes usam http://localhost:4174 por padrão e aceitam `BASE_URL`. O comando `verify` usa a porta 4185 e administra seu próprio servidor.
-
-### Publicação
-
-[Abrir o Will Labs](https://will-ifes.github.io/will-labs/)
-
-A demonstração usa a versão React do catálogo. Os exemplos de Fluxos continuam sendo simulações locais, sem backend ou persistência de dados. A publicação é atualizada pela branch `main` com o workflow `.github/workflows/pages.yml`.
-
-</details>
-
-<details>
-<summary><strong>Documentação e limites de validação</strong></summary>
-
-Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. O código-fonte e o catálogo React estão públicos. Ainda não há implementação persistente do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
-
-O diretório `historico` preserva fontes anteriores e decisões para consulta. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está configurado para verificar cada push na branch principal. Não há ZIP novo: o repositório é a fonte de trabalho. A marca do produto é Will Labs; “Fluxos” identifica uma área do produto.
-
-A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 61 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
-
-As regras editoriais inspiradas em no-ai-slop estão em [docs/VOZ-E-CONTEUDO.md](docs/VOZ-E-CONTEUDO.md). A comparação medida com o HTML simples está em [docs/AUDITORIA-COMPARATIVA.md](docs/AUDITORIA-COMPARATIVA.md).
-
-O gráfico de barras experimental saiu do catálogo: ainda não há caso de uso e dados reais que justifiquem seu contrato. O diagrama de arquitetura usa nós e conexões em SVG com equivalente textual. React foi escolhido como stack principal na ADR-001. A migração do guia legado permanece gradual.
-
-</details>
+Leia os [padrões de engenharia](docs/padroes/README.md) e o [CONTRIBUTING.md](CONTRIBUTING.md). Pull requests usam o [template](.github/pull_request_template.md) com o checklist dos padrões.
 
 ---
 
