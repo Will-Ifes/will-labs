@@ -19,10 +19,17 @@ const JOBS = [
   {
     name: "Job 2 · Navegador e acessibilidade",
     steps: [
-      { label: "Playwright", detail: "1440 e 390 px" },
+      { label: "Chromium", detail: "1440 e 390 px" },
       { label: "8 temas", detail: "interação" },
       { label: "axe", detail: "WCAG 2.1 AA" },
       { label: "Capturas", detail: "artefato" },
+    ],
+  },
+  {
+    name: "Job 3 · Outros motores",
+    steps: [
+      { label: "Firefox", detail: "smoke test" },
+      { label: "WebKit", detail: "smoke test" },
     ],
   },
 ];
@@ -46,7 +53,7 @@ const NODE_Y = 112;
 const CYCLE_S = 8;
 
 const total = JOBS.reduce((sum, job) => sum + job.steps.length, 0);
-const innerWidth = WIDTH - PAD * 2 - GROUP_GAP;
+const innerWidth = WIDTH - PAD * 2 - GROUP_GAP * (JOBS.length - 1);
 const slot = innerWidth / total;
 const pct = (value) => `${(value * 100).toFixed(2)}%`;
 
