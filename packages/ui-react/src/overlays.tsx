@@ -175,12 +175,14 @@ export function Dropdown({
         trigger.current?.focus({ preventScroll: true }),
       );
   };
-  const show = () => {
-    setOpen(true);
-    requestAnimationFrame(() =>
-      options.current.find((item) => !item?.disabled)?.focus(),
-    );
-  };
+  const show = () => setOpen(true);
+  // Foco no primeiro item depois do commit: os itens já existem no portal.
+  useEffect(() => {
+    if (open)
+      options.current
+        .find((item) => item && !item.disabled)
+        ?.focus({ preventScroll: true });
+  }, [open]);
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const enabled = options.current.filter(
       (item): item is HTMLButtonElement => !!item && !item.disabled,
