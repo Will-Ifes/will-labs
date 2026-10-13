@@ -53,10 +53,7 @@ export function Select({
   );
   const close = (focus: boolean) => {
     setOpen(false);
-    if (focus)
-      requestAnimationFrame(() =>
-        trigger.current?.focus({ preventScroll: true }),
-      );
+    if (focus) trigger.current?.focus({ preventScroll: true });
   };
   useEffect(() => {
     if (!open || !loadOptions) return;
@@ -298,10 +295,7 @@ export function Multiselect({
   const id = useId();
   const close = (focus: boolean) => {
     setOpen(false);
-    if (focus)
-      requestAnimationFrame(() =>
-        trigger.current?.focus({ preventScroll: true }),
-      );
+    if (focus) trigger.current?.focus({ preventScroll: true });
   };
   const load = async (next: string | null, append: boolean, term = query) => {
     if (!loaderRef.current || busyRef.current) return;

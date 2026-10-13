@@ -106,10 +106,7 @@ export function Popover({
   const id = useId();
   const close = (focus: boolean) => {
     setOpen(false);
-    if (focus)
-      requestAnimationFrame(() =>
-        button.current?.focus({ preventScroll: true }),
-      );
+    if (focus) button.current?.focus({ preventScroll: true });
   };
   return (
     <>
@@ -170,10 +167,7 @@ export function Dropdown({
   const id = useId();
   const close = (focus: boolean) => {
     setOpen(false);
-    if (focus)
-      requestAnimationFrame(() =>
-        trigger.current?.focus({ preventScroll: true }),
-      );
+    if (focus) trigger.current?.focus({ preventScroll: true });
   };
   const show = () => setOpen(true);
   // Foco no primeiro item depois do commit: os itens já existem no portal.
