@@ -10,11 +10,11 @@
 
 Este arquivo é uma **referência consultada sob demanda**, e **não** deve ser copiado integralmente para `AGENTS.md` nem incluído em todos os prompts. Para reduzir custo, o Codex deve abrir **somente a seção da view em andamento**, além dos contratos globais indispensáveis. Nunca ler o documento inteiro em cada tarefa.
 
-**Instalação:** salvar como `docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md`. Se houver `AGENTS.md`, acrescentar apenas a referência curta abaixo, preservando o restante:
+**Instalação:** salvar como `docs/design-system/especificacao.md`. Se houver `AGENTS.md`, acrescentar apenas a referência curta abaixo, preservando o restante:
 
 ```md
 ## Contrato do Design System
-A especificação funcional fica em `docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md`.
+A especificação funcional fica em `docs/design-system/especificacao.md`.
 Leia somente os contratos globais necessários e a seção da view solicitada.
 NÃO implemente a especificação inteira. Cada execução trata UMA view (ou um defeito
 isolado), com critérios de aceite e orçamento explícitos. Preserve `/design-system`
@@ -24,7 +24,7 @@ como fonte de verdade visual. Não faça commits sem pedido explícito.
 **Primeira solicitação sugerida ao Codex (configuração, não implementação):**
 
 ```text
-Leia APENAS a seção 0 e as seções 1–4 de docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md.
+Leia APENAS a seção 0 e as seções 1–4 de docs/design-system/especificacao.md.
 Confira o AGENTS.md existente e acrescente a referência curta indicada na seção 0,
 sem sobrescrever instruções válidas. Confira se há skills equivalentes já instaladas;
 não duplique. Não toque no código de aplicação, config global, dependências ou MCPs.
@@ -35,7 +35,7 @@ Não rode build nem testes. Apresente diff, arquivos alterados e encerre.
 
 ```text
 Use AGENTS.md e a seção correspondente a [VIEW] em
-`docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md`. Trabalhe SOMENTE em [VIEW] e dependências
+`docs/design-system/especificacao.md`. Trabalhe SOMENTE em [VIEW] e dependências
 estritamente necessárias. Referência visual: `/design-system`, tema [TEMA],
 viewport [LARGURA x ALTURA]. Objetivo verificável: [CRITÉRIOS].
 Etapa 1: inspeção direcionada; Etapa 2: diff mínimo; Etapa 3: testes focalizados;
@@ -64,7 +64,7 @@ Se faltar informação, registre a hipótese e pare antes de decisões irrevers�
 12. **Mudanças rastreáveis.** Antes de mexer, anotar o estado atual e critérios. Depois, informar arquivos modificados, comportamento comprovado e pontos não verificados.
 13. **Sem números inventados.** Economia de tokens, redução de quota, performance e cobertura exigem medição real. Não presumir que prompts curtos garantem menor custo.
 14. **Manter a versão original intocada**, salvo pedido explícito em contrário; a referência de qualidade não deve ser modificada para mascarar diferenças.
-15. **Documentação concisa.** Atualizar `docs/migration-status.md` apenas com mudanças relevantes; não copiar esta especificação nem gerar relatórios quilométricos em todas as tarefas.
+15. **Documentação concisa.** Atualizar `docs/plano/status-da-migracao.md` apenas com mudanças relevantes; não copiar esta especificação nem gerar relatórios quilométricos em todas as tarefas.
 
 ### 1.2 Orçamento operacional recomendado (não é quota técnica)
 
@@ -410,7 +410,7 @@ Pausar a execução e reportar quando: referência original inacessível; arquit
 
 ## 7. Checklist para o responsável pelo projeto
 
-- [ ] Este documento foi salvo em `docs/WILL_LABS_DESIGN_SYSTEM_SPEC.md`.
+- [ ] Este documento foi salvo em `docs/design-system/especificacao.md`.
 - [ ] `AGENTS.md` apenas referencia o documento; não o replica.
 - [ ] Nenhuma skill genérica força leitura completa da especificação.
 - [ ] A versão original permanece preservada e acessível.
@@ -418,6 +418,6 @@ Pausar a execução e reportar quando: referência original inacessível; arquit
 - [ ] A tarefa possui critérios de aceite objetivos e limite de iterações.
 - [ ] O agente não possui autorização implícita para novos pacotes, MCP, config global ou commits.
 - [ ] O consumo de quota foi medido, não adivinhado.
-- [ ] `docs/migration-status.md` registra concluído/testado/pendente sem afirmações falsas.
+- [ ] `docs/plano/status-da-migracao.md` registra concluído/testado/pendente sem afirmações falsas.
 
 **Decisão operacional:** primeiro melhorar a fidelidade e qualidade comprovável. Só depois ampliar funcionalidades. O Will Labs deve impressionar pela consistência, acessibilidade, clareza e comportamento real — não por quantidade de controles demonstrativos.

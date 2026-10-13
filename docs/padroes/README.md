@@ -4,8 +4,8 @@ Estes documentos definem **como** o Will Labs é construído: frontend, backend,
 
 Eles complementam três fontes que continuam valendo:
 
-- [Especificação do design system](../WILL_LABS_DESIGN_SYSTEM_SPEC.md): o **comportamento** de cada view.
-- [Voz do conteúdo](../VOZ-E-CONTEUDO.md): como os **textos** falam.
+- [Especificação do design system](../design-system/especificacao.md): o **comportamento** de cada view.
+- [Voz do conteúdo](../design-system/voz-e-conteudo.md): como os **textos** falam.
 - [ADRs](../adr): as **decisões** registradas. Se uma regra daqui conflitar com uma ADR, a ADR vence e este guia é corrigido.
 
 ## Como ler
