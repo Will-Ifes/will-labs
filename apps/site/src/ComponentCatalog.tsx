@@ -59,7 +59,7 @@ export function ComponentCatalog({ view = "inicio" }: { view?: "inicio" | "compo
         </div>
         <div className="wl-rules" data-wl-surface="content">
           <h3>Onde está o projeto no plano</h3>
-          <p>Sprint 1: tokens semânticos, pacote de UI, documentação consumidora, ADRs e auditoria local das views. A publicação externa, a integração com o produto e a revisão por leitor de tela seguem como etapas do plano.</p>
+          <p>Sprint 1: tokens semânticos, pacote de UI, documentação consumidora, ADRs e auditoria local das views. O catálogo React está publicado. A integração com o produto e a revisão por leitor de tela seguem como etapas do plano.</p>
           <p>Os exemplos com fluxos e permissões nesta edição ilustram o comportamento futuro. Ainda não representam uma integração com o produto.</p>
           <a className="wl-link" href="#comp-states">Ver estados e validação</a>
         </div>

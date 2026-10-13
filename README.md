@@ -1,6 +1,12 @@
 # Will Labs · Design system v1
 
-Repositório do Will Labs, iniciado a partir do guia v2.3 e concentrado na Sprint 1 do PDF. A stack principal é React. O pacote `@will-labs/ui-react` v1 usa os tokens semânticos compartilhados e é consumido pelo catálogo, por uma composição de Lab e por uma demonstração local de Fluxos. O guia anterior continua disponível durante a migração gradual; sua versão histórica v2.4 não é a versão do pacote. O código-fonte da v1 está preparado para publicação no GitHub; os pacotes não foram publicados no npm e não há site hospedado.
+Repositório do Will Labs, iniciado a partir do guia v2.3 e concentrado na Sprint 1 do PDF. A stack principal é React. O pacote `@will-labs/ui-react` v1 usa os tokens semânticos compartilhados e é consumido pelo catálogo, por uma composição de Lab e por uma demonstração local de Fluxos. O guia anterior continua disponível durante a migração gradual; sua versão histórica v2.4 não é a versão do pacote. O código-fonte está público no GitHub e o catálogo React está publicado no GitHub Pages. Os pacotes ainda não foram publicados no npm.
+
+## Demonstração pública
+
+[Abrir o Will Labs](https://will-ifes.github.io/will-labs/)
+
+A demonstração usa a versão React do catálogo. Os exemplos de Fluxos continuam sendo simulações locais, sem backend ou persistência de dados. A publicação é atualizada pela branch `main` com o workflow `.github/workflows/pages.yml`.
 
 ## Rodar
 
@@ -54,7 +60,7 @@ A fonte de tokens está em `packages/tokens/themes.json`. `packages/ui-react/REA
 
 ## Estado real
 
-Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. O código-fonte ainda não está hospedado; também não há site público, implementação do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
+Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. O código-fonte e o catálogo React estão públicos. Ainda não há implementação persistente do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
 
 ## Histórico e colaboração
 
