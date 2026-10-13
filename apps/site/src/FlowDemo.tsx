@@ -87,7 +87,7 @@ export function FlowDemo() {
     ],
   }));
   return (
-    <div className="site-stack">
+    <div className="site-stack site-flow-page">
       <header className="site-page-head">
         <span className="site-eyebrow">WILL LABS / FLUXOS</span>
         <h1>Fluxos como laboratório de produto.</h1>
@@ -101,7 +101,7 @@ export function FlowDemo() {
         reutilização, sem representar um fluxo de produção.
       </Banner>
       <Surface title="Criar rascunho">
-        <div className="site-demo-grid">
+        <div className="site-demo-grid site-flow-grid">
           <TextField
             label="Nome do fluxo"
             value={name}
@@ -117,7 +117,7 @@ export function FlowDemo() {
             max={12}
           />
         </div>
-        <div className="site-demo-grid">
+        <div className="site-demo-grid site-flow-grid">
           <Select
             label="Área do fluxo"
             options={[

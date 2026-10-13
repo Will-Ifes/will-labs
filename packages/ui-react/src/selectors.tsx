@@ -18,6 +18,7 @@ export function Select({
   value,
   onChange,
   placeholder = "Selecione",
+  size = "medium",
   disabled = false,
   help,
   error,
@@ -28,6 +29,7 @@ export function Select({
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  size?: "small" | "medium" | "large";
   disabled?: boolean;
   help?: string;
   error?: string;
@@ -140,6 +142,7 @@ export function Select({
       <Button
         ref={trigger}
         variant="outline"
+        size={size}
         className="wl-react-select-trigger"
         disabled={disabled}
         aria-labelledby={`${id}-label ${id}-current`}
@@ -261,6 +264,9 @@ export function Multiselect({
   value,
   onChange,
   pageSize = 8,
+  maxVisibleTags,
+  maxSelected,
+  display = "summary",
   help,
   error,
   disabled = false,
@@ -271,6 +277,9 @@ export function Multiselect({
   value: MultiOption[];
   onChange: (items: MultiOption[]) => void;
   pageSize?: number;
+  maxVisibleTags?: number;
+  maxSelected?: number;
+  display?: "summary" | "tags";
   help?: string;
   error?: string;
   disabled?: boolean;
@@ -359,60 +368,62 @@ export function Multiselect({
   useEffect(() => {
     if (open) requestAnimationFrame(() => search.current?.focus());
   }, [open]);
-  const visible = loadOptions
-    ? items
-    : options.filter((item) =>
-        item.label
-          .toLocaleLowerCase("pt-BR")
-          .includes(query.toLocaleLowerCase("pt-BR")),
-      );
-  const selected = new Set(value.map((item) => item.id));
-  const toggle = (item: MultiOption) =>
-    onChange(
-      selected.has(item.id)
-        ? value.filter((entry) => entry.id !== item.id)
-        : [...value, item],
-    );
+  const normalize = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
+  const visible = loadOptions ? items : options.filter((item) => normalize(item.label).includes(normalize(query)));
+  const uniqueValue = [...new Map(value.map((item) => [item.id, item])).values()];
+  const selected = new Set(uniqueValue.map((item) => item.id));
+  const visibleTags = maxVisibleTags === undefined ? uniqueValue : uniqueValue.slice(0, Math.max(0, maxVisibleTags));
+  const hiddenTags = uniqueValue.length - visibleTags.length;
+  const atLimit = maxSelected !== undefined && uniqueValue.length >= maxSelected;
+  const toggle = (item: MultiOption) => {
+    if (disabled || (!selected.has(item.id) && atLimit)) return;
+    onChange(selected.has(item.id) ? uniqueValue.filter((entry) => entry.id !== item.id) : [...uniqueValue, item]);
+  };
   return (
     <div className="ui-field wl-react-multi">
       <span id={`${id}-label`} className="ui-field-label">
         {label}
       </span>
-      {value.length > 0 && (
+      <Button
+        ref={trigger}
+        variant="outline"
+        disabled={disabled}
+        className="wl-react-select-trigger wl-react-multi-trigger"
+        aria-labelledby={`${id}-label ${id}-value`}
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        aria-controls={`${id}-panel`}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={`${id}-count${error || help ? ` ${id}-message` : ""}`}
+        onClick={() => (open ? close(true) : setOpen(true))}
+      >
+        <span id={`${id}-value`} className="wl-react-multi-value" title={uniqueValue.map(item => item.label).join(", ")}>
+          {uniqueValue.length ? <><span className="wl-react-multi-primary">{uniqueValue[0].label}</span>{uniqueValue.length > 1 && <span className="wl-react-multi-more">+{uniqueValue.length - 1}</span>}</> : `Selecionar ${label.toLocaleLowerCase("pt-BR")}`}
+        </span>
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg>
+      </Button>
+      {display === "tags" && uniqueValue.length > 0 && (
         <div className="wl-react-chips" aria-label="Itens selecionados">
-          {value.map((item) => (
+          {visibleTags.map((item) => (
             <span className="wl-react-chip" key={item.id}>
               {item.avatar && (
                 <span className="wl-react-avatar" aria-hidden="true">
                   {item.avatar}
                 </span>
               )}
-              {item.label}
+              <span className="wl-react-chip-label" title={item.label}>{item.label}</span>
               <IconButton
+                disabled={disabled}
                 aria-label={`Remover ${item.label}`}
                 icon="×"
                 onClick={() => toggle(item)}
               />
             </span>
           ))}
+          {hiddenTags > 0 && <span className="wl-react-chip wl-react-chip-summary" title={uniqueValue.slice(visibleTags.length).map(item => item.label).join(", ")}>+{hiddenTags} selecionados</span>}
         </div>
       )}
-      <Button
-        ref={trigger}
-        variant="outline"
-        disabled={disabled}
-        className="wl-react-select-trigger"
-        aria-labelledby={`${id}-label`}
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        aria-controls={`${id}-panel`}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error || help ? `${id}-message` : undefined}
-        onClick={() => (open ? close(true) : setOpen(true))}
-      >
-        Selecionar {label.toLocaleLowerCase("pt-BR")}{" "}
-        <span aria-hidden="true">⌄</span>
-      </Button>
+      <span className="wl-react-multi-count" id={`${id}-count`} role="status">{uniqueValue.length} {uniqueValue.length === 1 ? "selecionado" : "selecionados"}{atLimit ? ` · limite de ${maxSelected}` : ""}</span>
       <ValidationMessage id={`${id}-message`} error={error} help={help} />
       <FloatingLayer
         open={open}
@@ -456,6 +467,7 @@ export function Multiselect({
               <input
                 type="checkbox"
                 checked={selected.has(item.id)}
+                disabled={disabled || (atLimit && !selected.has(item.id))}
                 onChange={() => toggle(item)}
               />
               {item.avatar && (

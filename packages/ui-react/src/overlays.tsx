@@ -6,7 +6,7 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
-import { Button, IconButton } from "./index";
+import { Button, IconButton, type ButtonVariant } from "./index";
 import { FloatingLayer } from "./floating";
 
 export type DialogProps = {
@@ -81,19 +81,26 @@ export function Drawer(props: DialogProps) {
   return <DialogBase {...props} drawer />;
 }
 
+export type PopoverProps = {
+  trigger: ReactNode;
+  title: string;
+  children: ReactNode;
+  placement?: "auto" | "top" | "bottom" | "left" | "right";
+  align?: "start" | "center" | "end";
+  triggerVariant?: ButtonVariant;
+  action?: string;
+  onAction?: () => void;
+};
 export function Popover({
   trigger,
   title,
   children,
+  placement = "auto",
+  align = "start",
+  triggerVariant = "outline",
   action,
   onAction,
-}: {
-  trigger: string;
-  title: string;
-  children: ReactNode;
-  action?: string;
-  onAction?: () => void;
-}) {
+}: PopoverProps) {
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
   const id = useId();
@@ -108,10 +115,10 @@ export function Popover({
     <>
       <Button
         ref={button}
-        variant="outline"
+        variant={triggerVariant}
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-controls={id}
+        aria-controls={open ? id : undefined}
         onClick={() => (open ? close(true) : setOpen(true))}
       >
         {trigger}
@@ -124,6 +131,9 @@ export function Popover({
         className="wl-react-popover"
         role="dialog"
         label={title}
+        placement={placement}
+        align={align}
+        initialFocus
       >
         <span className="wl-react-arrow" aria-hidden="true" />
         <strong>{title}</strong>

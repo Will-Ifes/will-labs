@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import {
   Banner,
   Button,
+  Code,
+  FloatingWidget,
   DateField,
   Drawer,
   Dropdown,
@@ -86,6 +88,10 @@ export function AdvancedCatalog() {
   const [modal, setModal] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [popoverPlacement, setPopoverPlacement] = useState<"auto" | "top" | "bottom" | "left" | "right">("auto");
+  const [widgetPosition, setWidgetPosition] = useState<"bottom-right" | "bottom-left" | "top-right" | "top-left">("bottom-right");
+  const [notifications, setNotifications] = useState(2);
+  const [widgetOpen, setWidgetOpen] = useState(false);
   const modalTrigger = useRef<HTMLButtonElement>(null);
   const drawerTrigger = useRef<HTMLButtonElement>(null);
   return (
@@ -104,7 +110,7 @@ export function AdvancedCatalog() {
         O guia anterior continua disponível para comparar comportamento e
         conteúdo.
       </Banner>
-      <Surface title="Seleção">
+      <Surface title="Seleção" id="react-select">
         <div className="site-demo-grid">
           <Select
             label="Categoria"
@@ -126,10 +132,11 @@ export function AdvancedCatalog() {
           {asyncCategory || "nenhuma"}.
         </p>
       </Surface>
-      <Surface title="Múltiplas escolhas">
+      <Surface title="Múltiplas escolhas" id="react-multiselect">
         <div className="site-demo-grid">
           <Multiselect
             label="Pessoas"
+            display="tags"
             options={people.slice(0, 5)}
             value={selectedStatic}
             onChange={setSelectedStatic}
@@ -145,10 +152,10 @@ export function AdvancedCatalog() {
           />
         </div>
         <p role="status">
-          {selected.length + selectedStatic.length} pessoas selecionadas.
+          {selected.length + selectedStatic.length} {selected.length + selectedStatic.length === 1 ? "pessoa selecionada" : "pessoas selecionadas"}.
         </p>
       </Surface>
-      <Surface title="Data, hora e arquivo">
+      <Surface title="Data, hora e arquivo" id="react-date-time-upload">
         <div className="site-demo-grid">
           <DateField
             label="Data prevista"
@@ -179,7 +186,7 @@ export function AdvancedCatalog() {
             : "Nenhum arquivo enviado."}
         </p>
       </Surface>
-      <Surface title="Camadas e decisões">
+      <Surface title="Camadas e decisões" id="react-overlays">
         <div className="site-actions">
           <Button ref={modalTrigger} onClick={() => setModal(true)}>
             Abrir modal
@@ -214,6 +221,53 @@ export function AdvancedCatalog() {
         </div>
         <p role="status">{feedback}</p>
       </Surface>
+      <Surface title="Popover reutilizável" id="popover-react">
+        <p>Informação contextual com ação opcional. O painel escolhe outro lado quando não cabe na posição solicitada.</p>
+        <div className="site-actions">
+          <Select
+            label="Posição preferida"
+            options={["auto", "top", "bottom", "left", "right"].map((value) => ({ value, label: value }))}
+            value={popoverPlacement}
+            onChange={(value) => setPopoverPlacement(value as typeof popoverPlacement)}
+          />
+          <Popover trigger={<span>Ver detalhes do Lab</span>} title="Detalhes do Lab" placement={popoverPlacement} action="Entendi">
+            <p>Este conteúdo aceita texto, links e controles React.</p>
+            <a href="#avancados">Voltar ao catálogo</a>
+          </Popover>
+        </div>
+        <p><strong>API:</strong> trigger, title, children, placement, align, triggerVariant, action e onAction. Estados: fechado, aberto e reposicionado.</p>
+        <p><strong>Acessibilidade:</strong> botão com aria-expanded e aria-haspopup; painel não modal com nome acessível. Escape devolve foco ao acionador; clique externo fecha. Não use para alertas automáticos.</p>
+        <Code language="tsx" code={'<Popover trigger="Ajuda" title="Sobre esta etapa" placement="right">\n  <p>Conteúdo contextual.</p>\n</Popover>'} />
+      </Surface>
+      <Surface title="Floating Widget" id="floating-widget-react">
+        <p>Acionador persistente para ajuda, notificações ou ações rápidas. Esta demonstração não envia mensagens.</p>
+        <div className="site-actions">
+          <Select
+            label="Canto do acionador"
+            options={["bottom-right", "bottom-left", "top-right", "top-left"].map((value) => ({ value, label: value }))}
+            value={widgetPosition}
+            onChange={(value) => setWidgetPosition(value as typeof widgetPosition)}
+          />
+          <Button variant="outline" onClick={() => setNotifications((count) => count ? 0 : 2)}>
+            {notifications ? "Limpar notificações" : "Mostrar 2 notificações"}
+          </Button>
+        </div>
+        <p><strong>API:</strong> label, title, children, icon, position, notificationCount, open, defaultOpen e onOpenChange. Estados: fechado, aberto e com/sem indicador.</p>
+        <p><strong>Acessibilidade:</strong> botão nomeado com aria-expanded; painel não modal com título, fechar explícito e retorno de foco por Escape. O conteúdo fica navegável por Tab.</p>
+        <Code language="tsx" code={'<FloatingWidget label="Abrir ajuda" title="Central de ajuda" icon="?" position="bottom-right" notificationCount={2}>\n  <p>Como podemos ajudar?</p>\n</FloatingWidget>'} />
+      </Surface>
+      <FloatingWidget
+        label="Abrir central de ajuda"
+        title="Central de ajuda"
+        icon="?"
+        position={widgetPosition}
+        notificationCount={notifications}
+        open={widgetOpen}
+        onOpenChange={setWidgetOpen}
+      >
+        <p>Encontre orientação para usar os componentes do Will Labs.</p>
+        <Button variant="text" onClick={() => setWidgetOpen(false)}>Fechar ajuda</Button>
+      </FloatingWidget>
       <Modal
         open={modal}
         onClose={() => setModal(false)}

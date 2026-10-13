@@ -17,7 +17,7 @@ try {
     await page.goto(base);
     await page
       .getByRole("heading", {
-        name: "Componentes para usar, testar e ensinar.",
+        name: "Design system",
       })
       .waitFor();
     await page.screenshot({
@@ -71,6 +71,7 @@ try {
         `${width}/${theme}: ${JSON.stringify(themeAxe.violations.map(({ id, nodes }) => [id, nodes.length]))}`,
       );
     }
+    await page.goto(`${base}#componentes`);
     await page
       .getByRole("textbox", { name: "Nome do projeto" })
       .fill("Lab reutilizável");

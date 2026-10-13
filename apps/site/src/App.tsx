@@ -5,6 +5,14 @@ import { ComponentCatalog } from "./ComponentCatalog";
 import { LabDesign } from "./LabDesign";
 import { FlowDemo } from "./FlowDemo";
 import { AdvancedCatalog } from "./AdvancedCatalog";
+import { FoundationCatalog, foundationIds } from "./FoundationCatalog";
+import { StructureNavigationCatalog, structureNavigationIds } from "./StructureNavigationCatalog";
+import { FormsCatalog, formIds } from "./FormsCatalog";
+import { FeedbackCatalog, feedbackIds } from "./FeedbackCatalog";
+import { LayersCatalog, layerIds } from "./LayersCatalog";
+import { DataFlowCatalog, dataFlowIds } from "./DataFlowCatalog";
+import { GuideUsage } from "./GuideUsage";
+import { FirstPhaseGuide } from "./FirstPhaseGuide";
 
 type Theme = keyof typeof themes;
 const themeNames: Record<Theme, string> = {
@@ -17,29 +25,17 @@ const themeNames: Record<Theme, string> = {
   "amber-light": "Âmbar claro",
   "amber-dark": "Âmbar escuro",
 };
-const groups = [
-  {
-    title: "Fundamentos",
-    links: [{ route: "componentes", label: "Visão geral" }],
-  },
-  {
-    title: "Estrutura",
-    links: [{ route: "lab-design", label: "Lab de design" }],
-  },
-  {
-    title: "Ações e navegação",
-    links: [{ route: "componentes", label: "Componentes React" }],
-  },
-  {
-    title: "Formulários",
-    links: [{ route: "avancados", label: "Seleção e campos" }],
-  },
-  {
-    title: "Camadas",
-    links: [{ route: "avancados", label: "Popover, modal e drawer" }],
-  },
-  { title: "Fluxos compostos", links: [{ route: "fluxos", label: "Fluxos" }] },
-] as const;
+const groups: { title: string; links: [string, string][] }[] = [
+  { title: "Guia", links: [["Visão geral", "inicio"], ["Como usar", "guia-uso"], ["Exemplos de integração", "componentes"], ["Lab de design", "lab-design"], ["Fluxos", "fluxos"]] },
+  { title: "Fundamentos", links: [["Cores", "cores"], ["Tipografia", "tipografia"], ["Espaçamento", "ritmo"], ["Dimensões", "dimensoes"], ["Movimento", "movimento"], ["Acessibilidade", "acessibilidade"], ["Grid responsivo", "comp-grid"], ["Estados e validação", "comp-states"], ["Em contexto", "contexto"]] },
+  { title: "Estrutura", links: [["Card", "comp-card"], ["Divider", "comp-divider"], ["Barra de rolagem", "comp-scrollbar"], ["Header e footer", "comp-shell"]] },
+  { title: "Ações e navegação", links: [["Botões", "comp-botoes"], ["Link", "comp-link"], ["Abas", "comp-tabs"], ["Accordion", "comp-accordion"], ["Colapsável", "comp-collapsible"], ["Breadcrumb", "comp-breadcrumb"], ["Stepper", "comp-stepper"], ["Atalhos", "comp-shortcuts"]] },
+  { title: "Formulários", links: [["Campo base", "comp-campo"], ["Campos de texto", "comp-input-texto"], ["Textarea", "comp-textarea"], ["Número", "comp-number"], ["Data", "comp-date"], ["Hora", "comp-time"], ["Data e hora", "comp-datetime"], ["Calendário", "comp-calendar"], ["Select", "comp-select"], ["Checkbox e rádio", "comp-select-options"], ["Multiselect", "comp-multiselect-tags"], ["Switch", "comp-switch"], ["Upload de arquivos", "comp-upload"]] },
+  { title: "Feedback", links: [["Feedback", "comp-feedback"], ["Avisos", "comp-alert"], ["Banner", "comp-banner"], ["Toast", "comp-toast"], ["Barra de progresso", "comp-progress"], ["Empty state", "comp-empty"], ["Skeleton", "comp-skeleton"], ["Etiquetas", "comp-tags"]] },
+  { title: "Camadas", links: [["Popover", "comp-popover"], ["Dropdown", "comp-dropdown"], ["Menu de contexto", "comp-context-menu"], ["Tooltip", "comp-tooltip"], ["Modal", "comp-modal"], ["Drawer", "comp-drawer"]] },
+  { title: "Dados e conteúdo", links: [["Tabela", "comp-table"], ["Código e dados", "comp-code-table"], ["Diagrama", "comp-diagram"], ["Avatar", "comp-avatar"], ["Imagem", "comp-image"], ["Carrossel de cards", "comp-slider"], ["Comparação de autorização", "comp-comparison"]] },
+  { title: "Fluxos compostos", links: [["Wizard", "comp-wizard"], ["Página de Lab", "comp-labpage"]] },
+];
 
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
@@ -159,7 +155,7 @@ export function App() {
     return saved && saved in themes ? (saved as Theme) : "amber-dark";
   });
   const [route, setRoute] = useState(
-    () => location.hash.slice(1) || "componentes",
+    () => location.hash.slice(1) || "inicio",
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
@@ -167,7 +163,7 @@ export function App() {
   useEffect(() => applyTheme(theme), [theme]);
   useEffect(() => {
     const update = () => {
-      setRoute(location.hash.slice(1) || "componentes");
+      setRoute(location.hash.slice(1) || "inicio");
       setMenuOpen(false);
     };
     window.addEventListener("hashchange", update);
@@ -180,24 +176,19 @@ export function App() {
         data-open={menuOpen}
         aria-label="Navegação do design system"
       >
-        <a className="site-brand" href="#componentes">
+        <a className="site-brand" href="#inicio">
           will labs <small>design system / v1</small>
         </a>
         <nav aria-label="Índice do design system">
           {groups.map((group) => (
             <details className="site-nav-group" open key={group.title}>
               <summary>{group.title}</summary>
-              {group.links.map((link) => (
-                <a
-                  key={`${group.title}-${link.label}`}
-                  href={`#${link.route}`}
-                  aria-current={route === link.route ? "page" : undefined}
-                >
-                  {link.label}
-                </a>
+              {group.links.map(([label, id]) => (
+                  <a key={id} href={`#${id}`} aria-current={route === id ? "page" : undefined}>{label}</a>
               ))}
             </details>
           ))}
+
         </nav>
       </aside>
       {menuOpen && (
@@ -232,15 +223,30 @@ export function App() {
         </header>
         <main>
           <div className="site-view">
-            {route === "lab-design" ? (
+            {foundationIds.includes(route) ? (
+              <FoundationCatalog view={route} />
+            ) : structureNavigationIds.includes(route) ? (
+              <StructureNavigationCatalog view={route} />
+            ) : formIds.includes(route) ? (
+              <FormsCatalog view={route} />
+            ) : feedbackIds.includes(route) ? (
+              <FeedbackCatalog view={route} />
+            ) : layerIds.includes(route) ? (
+              <LayersCatalog view={route} />
+            ) : dataFlowIds.includes(route) ? (
+              <DataFlowCatalog view={route} />
+            ) : route === "guia-uso" ? (
+              <GuideUsage />
+            ) : route === "lab-design" ? (
               <LabDesign />
             ) : route === "fluxos" ? (
               <FlowDemo />
             ) : route === "avancados" ? (
               <AdvancedCatalog />
             ) : (
-              <ComponentCatalog />
+              <ComponentCatalog view={route === "componentes" ? "componentes" : "inicio"} />
             )}
+            <FirstPhaseGuide view={route} />
           </div>
         </main>
         <footer className="site-footer">

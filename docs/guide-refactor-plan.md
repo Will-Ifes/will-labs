@@ -1,0 +1,13 @@
+# Refatoração dirigida do guia React
+
+Referência visual: `/design-system`, sobretudo proporções, tipografia e ritmo. Não trocar a identidade nem reescrever os componentes que já funcionam. Cada correção deve afetar primeiro a peça compartilhada e depois as demonstrações que a usam.
+
+1. **Composição de formulários (prioridade alta):** dar a cada coluna a mesma largura e aos controles a mesma altura; reservar espaço de rótulo e ajuda sem deslocar a linha. Validar Fluxos e Data e hora em 1265, 390 e 320 px, com e sem erro. Nesta rodada, Fluxos recebeu uma regra de composição própria; o campo isolado mantém seu tamanho.
+2. **Seleção múltipla (alta):** um núcleo de seleção com `display="summary"` (padrão) e `display="tags"`. O resumo mostra o primeiro item truncado e `+N`; tags removíveis ficam abaixo do acionador. Verificar 1, 5, 10 e 20 itens, busca assíncrona, teclado e largura mobile. Nesta rodada, variantes e layout estão implementados; a matriz E12 completa da especificação segue pendente.
+3. **Ícones e dados (média):** substituir caracteres tipográficos por SVG coerentes em navegação; revisar rodapé da tabela como barra única, com alcance de botões e seleção de tamanho de página. Nesta rodada, calendário e paginação compartilham setas SVG; demais ícones do catálogo ainda precisam de inventário.
+4. **Ritmo do guia (média):** comparar cada grupo com o original no mesmo tema e viewport; reduzir espaços sem função, rever largura de leitura e densidade de cards por contexto. Corrigir a folha de estilos de cada view, sem CSS global novo para esconder diferenças. Nesta rodada, o espaço inicial de Fluxos foi reduzido.
+5. **Validação e publicação:** testes dirigidos de interações e contraste nos estados renderizados, Chrome/Firefox/Safari e leitor de tela; registrar desvios restantes em `migration-status.md`. Não declarar paridade completa apenas porque o build passou.
+
+Aceite da próxima rodada: Fluxos sem saltos ao surgir validação, Multiselect compacto e com tags funcionando em mobile, tabela com paginação legível, comparação visual das principais views com o original em Papel claro e Âmbar escuro.
+
+**Ajuste de foco, tabela e cores:** foco do guia React usa o mesmo tom de hover com borda interna de 2 px, sem halo externo ou alteração de tamanho. Paginação usa setas de 28 px e seletor de 28 px, mantendo nomes acessíveis e estados desabilitados. A view Cores agrupa as faixas existentes em Identidade, Acentos e Neutros; os oito temas e seus tokens não foram alterados. A referência de tabela foi usada para densidade e organização do rodapé, sem copiar seleção por linha, busca ou ações que esta demonstração ainda não oferece.

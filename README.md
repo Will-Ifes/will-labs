@@ -1,6 +1,6 @@
 # Will Labs · Design system v1
 
-Repositório do Will Labs, iniciado a partir do guia v2.3 e concentrado na Sprint 1 do PDF. A stack principal é React. O pacote `@will-labs/ui-react` v1 usa os tokens semânticos compartilhados e é consumido pelo catálogo, por uma composição de Lab e por uma demonstração local de Fluxos. O guia anterior continua disponível durante a migração gradual; sua versão histórica v2.4 não é a versão do pacote. Esta v1 ainda não foi publicada.
+Repositório do Will Labs, iniciado a partir do guia v2.3 e concentrado na Sprint 1 do PDF. A stack principal é React. O pacote `@will-labs/ui-react` v1 usa os tokens semânticos compartilhados e é consumido pelo catálogo, por uma composição de Lab e por uma demonstração local de Fluxos. O guia anterior continua disponível durante a migração gradual; sua versão histórica v2.4 não é a versão do pacote. O código-fonte da v1 está preparado para publicação no GitHub; os pacotes não foram publicados no npm e não há site hospedado.
 
 ## Rodar
 
@@ -54,11 +54,11 @@ A fonte de tokens está em `packages/tokens/themes.json`. `packages/ui-react/REA
 
 ## Estado real
 
-Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. Não houve publicação externa, implementação do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
+Consulte `RELATORIO-v2.4.md`, `PLANO-PDF-STATUS.md` e `evidence/VIEW-AUDIT.md`. “Migrado ao pacote” identifica arquitetura e validação local; não é uma declaração de prontidão para produção. O código-fonte ainda não está hospedado; também não há site público, implementação do futuro produto de fluxos nem revisão com leitor de tela ou Safari. A migração React permanece parcial.
 
 ## Histórico e colaboração
 
-A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está preparado para um futuro remoto; nenhum push ou run remoto foi realizado. Não há ZIP novo: o repositório é a fonte de trabalho. A marca do produto é Will Labs; “Fluxos” identifica uma área do produto.
+A tag `baseline-v2.3` preserva a base fornecida. A evolução está na branch `feat/design-system-reutilizavel`. Consulte `CONTRIBUTING.md` e ADR-002. O workflow `.github/workflows/ci.yml` está configurado para verificar cada push na branch principal. Não há ZIP novo: o repositório é a fonte de trabalho. A marca do produto é Will Labs; “Fluxos” identifica uma área do produto.
 
 A revisão comparativa com o HTML simples está em [docs/PROMPT-AUDITORIA-UI.md](docs/PROMPT-AUDITORIA-UI.md) e [RELATORIO-v2.4.md](RELATORIO-v2.4.md). Oito temas são gerados de `packages/tokens/themes.json`. A hora é `wl-time-field`; `InputNumber`, `Select`, `Divider`, `ScrollArea`, `ValidationMessage`, `Checkbox`, `RadioGroup`, `EmptyState` e overlays vêm do pacote. O inventário atual de 61 views e seus limites de validação está em `evidence/VIEW-AUDIT.md`. A direção visual e suas referências estão em [docs/DIRETRIZES-VISUAIS.md](docs/DIRETRIZES-VISUAIS.md).
 

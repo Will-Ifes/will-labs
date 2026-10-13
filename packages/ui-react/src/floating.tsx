@@ -16,7 +16,8 @@ export type FloatingLayerProps = {
   role?: "dialog" | "listbox" | "menu" | "tooltip" | "group";
   label?: string;
   id?: string;
-  placement?: "top" | "bottom";
+  placement?: "auto" | "top" | "bottom" | "left" | "right";
+  initialFocus?: boolean;
   align?: "start" | "center" | "end";
   minWidth?: boolean;
   style?: CSSProperties;
@@ -33,6 +34,7 @@ export function FloatingLayer({
   label,
   id,
   placement = "bottom",
+  initialFocus = false,
   align = "start",
   minWidth = false,
   style,
@@ -67,38 +69,42 @@ export function FloatingLayer({
       panel.style.left = `${leftEdge}px`;
       panel.style.top = `${topEdge}px`;
       const desired = panel.getBoundingClientRect();
-      const below = Math.max(0, bottomEdge - rect.bottom - gap);
-      const above = Math.max(0, rect.top - topEdge - gap);
-      const useAbove =
-        placement === "top"
-          ? above >= desired.height || above > below
-          : below < desired.height && above > below;
-      panel.style.maxHeight = `${Math.max(0, useAbove ? above : below)}px`;
+      const space = {
+        top: Math.max(0, rect.top - topEdge - gap),
+        bottom: Math.max(0, bottomEdge - rect.bottom - gap),
+        left: Math.max(0, rect.left - leftEdge - gap),
+        right: Math.max(0, rightEdge - rect.right - gap),
+      };
+      const preferred = placement === "auto" ? "bottom" : placement;
+      const opposite = { top: "bottom", bottom: "top", left: "right", right: "left" } as const;
+      const order = [preferred, opposite[preferred], ...(["bottom", "top", "right", "left"] as const)]
+        .filter((side, index, all) => all.indexOf(side) === index);
+      const fits = (side: keyof typeof space) =>
+        (side === "left" || side === "right" ? desired.width : desired.height) <= space[side];
+      const side = order.find(fits) ?? order.reduce((best, candidate) =>
+        space[candidate] > space[best] ? candidate : best, order[0]);
+      const horizontal = side === "left" || side === "right";
+      panel.style.maxWidth = `${Math.max(0, horizontal ? space[side] : width - 2 * margin)}px`;
+      panel.style.maxHeight = `${Math.max(0, horizontal ? height - 2 * margin : space[side])}px`;
       const fitted = panel.getBoundingClientRect();
-      const wantedLeft =
-        align === "center"
-          ? rect.left + rect.width / 2 - fitted.width / 2
-          : align === "end"
-            ? rect.right - fitted.width
-            : rect.left;
-      const left = Math.max(
-        leftEdge,
-        Math.min(wantedLeft, rightEdge - fitted.width),
-      );
-      const wantedTop = useAbove
-        ? rect.top - gap - fitted.height
-        : rect.bottom + gap;
-      const top = Math.max(
-        topEdge,
-        Math.min(wantedTop, bottomEdge - fitted.height),
-      );
+      const wantedLeft = horizontal
+        ? side === "right" ? rect.right + gap : rect.left - gap - fitted.width
+        : align === "center" ? rect.left + rect.width / 2 - fitted.width / 2
+        : align === "end" ? rect.right - fitted.width : rect.left;
+      const wantedTop = horizontal
+        ? align === "center" ? rect.top + rect.height / 2 - fitted.height / 2
+        : align === "end" ? rect.bottom - fitted.height : rect.top
+        : side === "top" ? rect.top - gap - fitted.height : rect.bottom + gap;
+      const left = Math.max(leftEdge, Math.min(wantedLeft, rightEdge - fitted.width));
+      const top = Math.max(topEdge, Math.min(wantedTop, bottomEdge - fitted.height));
       panel.style.left = `${Math.round(left)}px`;
       panel.style.top = `${Math.round(top)}px`;
-      panel.dataset.placement = useAbove ? "top" : "bottom";
-      panel.style.setProperty(
-        "--wl-arrow-left",
-        `${Math.round(Math.max(18, Math.min(fitted.width - 18, rect.left + rect.width / 2 - left)))}px`,
-      );
+      panel.dataset.placement = side;
+      panel.style.setProperty("--wl-arrow-left",
+        `${Math.round(Math.max(12, Math.min(fitted.width - 12, rect.left + rect.width / 2 - left)))}px`);
+      panel.style.setProperty("--wl-arrow-top",
+        `${Math.round(Math.max(12, Math.min(fitted.height - 12, rect.top + rect.height / 2 - top)))}px`);
+      panel.style.setProperty("--wl-panel-max-height", `${Math.max(0, horizontal ? height - 2 * margin : space[side])}px`);
       panel.style.visibility = "visible";
     };
     const schedule = () => {
@@ -134,6 +140,14 @@ export function FloatingLayer({
     document.addEventListener("keydown", key, true);
     window.addEventListener("hashchange", route);
     position();
+    if (initialFocus && role === "dialog") {
+      requestAnimationFrame(() => {
+        const target = panel.querySelector<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        (target ?? panel).focus({ preventScroll: true });
+      });
+    }
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
@@ -145,7 +159,7 @@ export function FloatingLayer({
       document.removeEventListener("keydown", key, true);
       window.removeEventListener("hashchange", route);
     };
-  }, [open, anchorRef, align, minWidth, placement]);
+  }, [open, anchorRef, align, minWidth, placement, initialFocus, role]);
   if (!open) return null;
   return createPortal(
     <div
@@ -153,6 +167,7 @@ export function FloatingLayer({
       id={id}
       className={`wl-floating ${className}`.trim()}
       role={role}
+      tabIndex={role === "dialog" ? -1 : undefined}
       aria-label={label}
       style={{ ...style, visibility: "hidden" }}
     >

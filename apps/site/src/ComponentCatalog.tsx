@@ -24,29 +24,54 @@ const rows: TableRow[] = [
   { id: "03", cells: ["03", "Produto", "Planejado"] },
   { id: "04", cells: ["04", "Testes", "Planejado"] },
 ];
-export function ComponentCatalog() {
+export function ComponentCatalog({ view = "inicio" }: { view?: "inicio" | "componentes" }) {
   const [name, setName] = useState("Will Labs");
   const [details, setDetails] = useState(false);
   const [steps, setSteps] = useState(3);
   const [description, setDescription] = useState("");
   const [result, setResult] = useState("");
   return (
-    <div className="site-stack">
-      <header className="site-page-head">
-        <span className="site-eyebrow">DESIGN SYSTEM / REACT</span>
-        <h1>Componentes para usar, testar e ensinar.</h1>
-        <p>
-          Esta aplicação importa o pacote React. Os mesmos tokens e classes
-          visuais sustentam o guia anterior enquanto a migração acontece por
-          partes.
-        </p>
-        <Tag tone="info">Base React em migração</Tag>
+    <div className="site-stack" id={view}>
+      {view === "inicio" && <><header className="site-page-head site-home-head">
+        <h1>Design system</h1>
+        <p>Will Labs · Biblioteca compartilhada e documentação viva · v1</p>
       </header>
-      <Banner title="Escopo desta versão">
-        Os componentes abaixo têm API React e um segundo consumidor na página de
-        Lab. O catálogo legado segue disponível enquanto as demais views são
-        migradas.
-      </Banner>
+      <div className="site-home-content">
+        <div className="wl-showcase">
+          <article className="wl-card" data-wl-surface="content">
+            <span className="eyebrow">01 / FUNDAÇÕES</span>
+            <h2>Regras para usar</h2>
+            <p>Cor, tipo, espaçamento, grid responsivo e estados de interação.</p>
+            <a className="wl-link" href="#cores">Abrir fundamentos</a>
+          </article>
+          <article className="wl-card" data-wl-surface="content">
+            <span className="eyebrow">02 / CATÁLOGO</span>
+            <h2>Um componente por view</h2>
+            <p>Veja variantes, comportamento, validação e uso no produto de fluxos.</p>
+            <a className="wl-link" href="#comp-botoes">Abrir botões</a>
+          </article>
+          <article className="wl-card" data-wl-surface="content">
+            <span className="eyebrow">03 / NO PRODUTO</span>
+            <h2>LabPage e produto de fluxos</h2>
+            <p>Componentes combinados em um Lab com navegação própria e conteúdo.</p>
+            <a className="wl-link" href="#lab-design">Abrir LabPage</a>
+          </article>
+        </div>
+        <div className="wl-rules" data-wl-surface="content">
+          <h3>Onde está o projeto no plano</h3>
+          <p>Sprint 1: tokens semânticos, pacote de UI, documentação consumidora, ADRs e auditoria local das views. A publicação externa, a integração com o produto e a revisão por leitor de tela seguem como etapas do plano.</p>
+          <p>Os exemplos com fluxos e permissões nesta edição ilustram o comportamento futuro. Ainda não representam uma integração com o produto.</p>
+          <a className="wl-link" href="#comp-states">Ver estados e validação</a>
+        </div>
+      </div>
+      </>}
+      {view === "componentes" && <><div className="site-react-catalog-intro" id="componentes">
+        <h1>Exemplos de integração</h1>
+        <Tag tone="info">Pacote React v1</Tag>
+        <Banner title="Escopo desta versão">
+          Estes exemplos combinam componentes React em tarefas. Para ver variantes e comportamento de cada peça, use as views específicas do índice.
+        </Banner>
+      </div>
       <Surface title="Ações e campos" id="acoes-e-campos">
         <div className="site-demo-grid">
           <div>
@@ -202,11 +227,7 @@ export function ComponentCatalog() {
         />
         <p role="status">{result}</p>
       </Surface>
-      <p className="site-footnote">
-        Os outros contratos seguem no{" "}
-        <a href="/design-system">guia existente</a> até receberem uma
-        implementação React testada.
-      </p>
+      </>}
     </div>
   );
 }

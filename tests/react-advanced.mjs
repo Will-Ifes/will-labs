@@ -142,11 +142,9 @@ try {
       .fill("Participante 20");
     await page.getByRole("checkbox", { name: /Participante 20/ }).check();
     await page.getByRole("button", { name: "Concluir" }).click();
-    assert.equal(
-      await page
-        .getByRole("button", { name: "Remover Participante 20" })
-        .count(),
-      1,
+    assert.match(
+      await page.locator("#react-multiselect p[role=status]").innerText(),
+      /1 pessoa selecionada/,
     );
     await page
       .getByRole("button", { name: "Abrir calendário de Data prevista" })
@@ -198,10 +196,7 @@ try {
     await withinViewport(menu);
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
-    assert.match(
-      await page.getByRole("status").last().innerText(),
-      /Ação escolhida/,
-    );
+    await page.getByText(/Ação escolhida:/).waitFor();
     await page.getByRole("button", { name: "O que é isto?" }).focus();
     await withinViewport(page.getByRole("tooltip"));
     await page.screenshot({

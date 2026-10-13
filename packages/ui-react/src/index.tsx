@@ -1,3 +1,4 @@
+import { NavigationIcon } from "./NavigationIcon";
 import {
   forwardRef,
   useEffect,
@@ -146,13 +147,19 @@ export function Divider({ label }: { label?: string }) {
 export function Tag({
   children,
   tone = "neutral",
+  avatar,
+  onRemove,
 }: {
   children: ReactNode;
   tone?: "neutral" | "info" | "success" | "warning" | "danger";
+  avatar?: string;
+  onRemove?: () => void;
 }) {
   return (
     <span className="ui-tag" data-tone={tone}>
+      {avatar && <span className="ui-tag-avatar" aria-hidden="true">{avatar}</span>}
       <span className="ui-tag-label">{children}</span>
+      {onRemove && <Button variant="text" size="small" className="ui-tag-remove" aria-label={`Remover ${typeof children === "string" ? children : "etiqueta"}`} onClick={onRemove}>×</Button>}
     </span>
   );
 }
@@ -184,7 +191,7 @@ export function Switch({
   );
 }
 
-export type TabItem = { id: string; label: string; content: ReactNode };
+export type TabItem = { id: string; label: string; content: ReactNode; disabled?: boolean };
 export function Tabs({
   items,
   label = "Seções",
@@ -199,6 +206,7 @@ export function Tabs({
   const refs = useRef<Array<HTMLButtonElement | null>>([]);
   if (!items.length) return null;
   const activate = (index: number) => {
+    if (items[index]?.disabled) return;
     setActive(index);
     refs.current[index]?.focus();
   };
@@ -206,14 +214,15 @@ export function Tabs({
     event: KeyboardEvent<HTMLButtonElement>,
     index: number,
   ) => {
-    const next = (
-      {
-        ArrowRight: (index + 1) % items.length,
-        ArrowLeft: (index - 1 + items.length) % items.length,
-        Home: 0,
-        End: items.length - 1,
-      } as Record<string, number>
-    )[event.key];
+    const enabled = items.map((item, itemIndex) => item.disabled ? -1 : itemIndex).filter(itemIndex => itemIndex >= 0);
+    if (!enabled.length) return;
+    const position = enabled.indexOf(index);
+    const next = ({
+      ArrowRight: enabled[(position + 1) % enabled.length],
+      ArrowLeft: enabled[(position - 1 + enabled.length) % enabled.length],
+      Home: enabled[0],
+      End: enabled[enabled.length - 1],
+    } as Record<string, number>)[event.key];
     if (next !== undefined) {
       event.preventDefault();
       activate(next);
@@ -234,6 +243,7 @@ export function Tabs({
             id={`${base}-${item.id}-tab`}
             aria-controls={`${base}-${item.id}-panel`}
             aria-selected={index === active}
+            disabled={item.disabled}
             tabIndex={index === active ? 0 : -1}
             onClick={() => activate(index)}
             onKeyDown={(event) => onKeyDown(event, index)}
@@ -265,12 +275,23 @@ export function Code({
   code: string;
   language?: string;
 }) {
+  const [copyState, setCopyState] = useState("");
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopyState("Código copiado.");
+    } catch {
+      setCopyState("Não foi possível copiar. Selecione o código para copiar manualmente.");
+    }
+  };
   return (
     <figure className="ui-code">
       <figcaption>{language}</figcaption>
+      <Button variant="outline" size="small" type="button" onClick={() => void copy()} aria-label={`Copiar código em ${language}`}>Copiar</Button>
       <pre tabIndex={0} aria-label={`Código em ${language}`}>
         <code>{code}</code>
       </pre>
+      <span className="ui-code-copy-status" role="status">{copyState}</span>
     </figure>
   );
 }
@@ -365,7 +386,7 @@ export function Table({
             disabled={safePage === 0}
             onClick={() => setPage(safePage - 1)}
           >
-            ←
+            <NavigationIcon direction="left" />
           </Button>
           <span className="ui-table-page">
             Página {safePage + 1} de {pages}
@@ -377,7 +398,7 @@ export function Table({
             disabled={safePage >= pages - 1}
             onClick={() => setPage(safePage + 1)}
           >
-            →
+            <NavigationIcon direction="right" />
           </Button>
         </div>
       </nav>
@@ -611,84 +632,35 @@ export const TextareaField = forwardRef<
   );
 });
 
-export type NumberFieldProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size" | "value" | "onChange"
-> & {
+export type NumberFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size" | "value" | "onChange" | "min" | "max" | "step"> & {
   label: string;
   value: number;
   onValueChange: (value: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
   help?: string;
   error?: string;
 };
-export function NumberField({
-  label,
-  value,
-  onValueChange,
-  help,
-  error,
-  min,
-  max,
-  step = 1,
-  id,
-  ...props
-}: NumberFieldProps) {
-  const generated = useId();
-  const controlId = id || generated;
-  const messageId = `${controlId}-message`;
-  const stepValue = Number(step) || 1;
-  const setBounded = (next: number) => {
-    if (!Number.isFinite(next)) return;
-    onValueChange(
-      Math.min(
-        Number(max ?? Infinity),
-        Math.max(Number(min ?? -Infinity), next),
-      ),
-    );
-  };
-  return (
-    <div className="ui-field ui-number-field">
-      <label htmlFor={controlId}>{label}</label>
-      <div className="ui-number-control">
-        <Button
-          variant="text"
-          className="ui-number-step"
-          aria-label={`Diminuir ${label}`}
-          disabled={
-            props.disabled || (min !== undefined && value <= Number(min))
-          }
-          onClick={() => setBounded(value - stepValue)}
-        >
-          −
-        </Button>
-        <input
-          {...props}
-          id={controlId}
-          type="number"
-          className="ui-input ui-number-input"
-          value={value}
-          min={min}
-          max={max}
-          step={step}
-          aria-invalid={error ? true : undefined}
-          aria-describedby={error || help ? messageId : undefined}
-          onChange={(event) => setBounded(event.currentTarget.valueAsNumber)}
-        />
-        <Button
-          variant="text"
-          className="ui-number-step"
-          aria-label={`Aumentar ${label}`}
-          disabled={
-            props.disabled || (max !== undefined && value >= Number(max))
-          }
-          onClick={() => setBounded(value + stepValue)}
-        >
-          +
-        </Button>
-      </div>
-      <ValidationMessage id={messageId} error={error} help={help} />
-    </div>
-  );
+export function NumberField({label,value,onValueChange,help,error,min,max,step=1,id,...props}:NumberFieldProps) {
+  const generated = useId(), controlId = id || generated, messageId = `${controlId}-message`;
+  const precision = Math.min(8, String(step).split(".")[1]?.length || 0);
+  const format = (number:number) => new Intl.NumberFormat("pt-BR", {minimumFractionDigits:precision,maximumFractionDigits:precision}).format(number);
+  const [draft,setDraft] = useState(format(value));
+  const [internalError,setInternalError] = useState("");
+  useEffect(() => {setDraft(format(value));setInternalError("");},[value,precision]);
+  const bounded = (number:number) => Math.min(max ?? Infinity,Math.max(min ?? -Infinity,Math.round(number * 10**precision)/10**precision));
+  const setNumber = (number:number) => {if(!Number.isFinite(number))return;const next=bounded(number);setDraft(format(next));setInternalError("");if(next!==value)onValueChange(next)};
+  const commit = () => {const normalized=draft.trim().replace(",",".");if(!/^-?\d+(?:\.\d+)?$/.test(normalized)){setInternalError("Informe um número válido.");return}const next=Number(normalized);if(next<(min??-Infinity)||next>(max??Infinity)){setInternalError(`Informe um número entre ${min===undefined?"−∞":format(min)} e ${max===undefined?"+∞":format(max)}.`);return}setNumber(next)};
+  const validation=error||internalError;
+  return <div className="ui-field ui-number-field"><label htmlFor={controlId}>{label}</label><div className="ui-number-control">
+    <input {...props} id={controlId} type="text" inputMode="decimal" role="spinbutton" className="ui-input ui-number-input" value={draft}
+      aria-valuenow={value} aria-valuetext={format(value)} aria-valuemin={min} aria-valuemax={max}
+      aria-invalid={validation?true:undefined} aria-describedby={validation||help?messageId:undefined}
+      onChange={event=>{setDraft(event.target.value);if(internalError)setInternalError("")}} onBlur={commit}
+      onKeyDown={event=>{if(event.key==="Enter"){event.preventDefault();commit()}else if(event.key==="ArrowUp"||event.key==="ArrowDown"){event.preventDefault();setNumber(value+(event.key==="ArrowUp"?step:-step))}else if(event.key==="Home"&&min!==undefined){event.preventDefault();setNumber(min)}else if(event.key==="End"&&max!==undefined){event.preventDefault();setNumber(max)}}}/>
+    <div className="ui-number-actions"><Button variant="text" className="ui-number-step" aria-label={`Diminuir ${label}`} disabled={props.disabled||(min!==undefined&&value<=min)} onClick={()=>setNumber(value-step)}>−</Button><Button variant="text" className="ui-number-step" aria-label={`Aumentar ${label}`} disabled={props.disabled||(max!==undefined&&value>=max)} onClick={()=>setNumber(value+step)}>+</Button></div>
+  </div><ValidationMessage id={messageId} error={validation} help={help}/></div>;
 }
 
 export function EmptyState({
@@ -735,6 +707,9 @@ export function Progress({
 }
 
 export { FloatingLayer } from "./floating";
+export { FloatingWidget } from "./FloatingWidget";
+export type { FloatingWidgetProps } from "./FloatingWidget";
+export type { PopoverProps } from "./overlays";
 export { Modal, Drawer, Popover, Dropdown, Tooltip } from "./overlays";
 export { Select, Multiselect } from "./selectors";
 export type {
@@ -745,3 +720,8 @@ export type {
 } from "./selectors";
 export { ValidationMessage } from "./validation";
 export { DateField, TimeField, FileUpload } from "./fields";
+export { Toast, Skeleton } from "./feedback";
+export { ContextMenu } from "./ContextMenu";
+export type { ContextMenuItem } from "./ContextMenu";
+export { Avatar, ImageFigure, Carousel, Diagram, Comparison } from "./content";
+export type { CarouselItem, DiagramNode } from "./content";

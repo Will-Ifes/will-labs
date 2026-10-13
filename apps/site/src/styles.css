@@ -1,4 +1,7 @@
 :root {
+  --wl-font: Roboto, Arial, sans-serif;
+  --wl-font-display: Roboto, Arial, sans-serif;
+  --wl-font-mono: "Roboto Mono", monospace;
   font-family: var(--wl-font);
   background: var(--wl-bg);
   color: var(--wl-text);
@@ -304,6 +307,91 @@ input {
   font-weight: 700;
   box-shadow: inset 3px 0 var(--wl-accent);
 }
+.site-brand small {
+  font-size: 0.65rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.site-home-head {
+  max-width: none;
+  margin-bottom: 0;
+}
+.site-home-head h1 {
+  font: 600 clamp(2.25rem, 4vw, 3.25rem)/1.12 var(--wl-font-display);
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+}
+.site-home-head p {
+  color: var(--wl-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.site-home-content {
+  display: grid;
+  gap: 24px;
+}
+.site-home-content .wl-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+  border: 1px solid var(--wl-border);
+  border-radius: 16px;
+}
+.site-home-content .wl-card,
+.site-home-content .wl-rules {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--wl-border);
+  border-radius: 16px;
+  background: var(--wl-surface);
+  color: var(--wl-text);
+}
+.site-home-content .wl-card h2 {
+  margin: 8px 0;
+  font: 600 1.35rem/1.3 var(--wl-font-display);
+}
+.site-home-content .wl-card p,
+.site-home-content .wl-rules p {
+  color: var(--wl-secondary);
+  line-height: 1.5;
+}
+.site-home-content .wl-card p {
+  min-height: 3.5em;
+}
+.site-home-content .eyebrow {
+  font: 500 0.7rem/1.5 var(--wl-font-mono);
+  letter-spacing: 0.1em;
+}
+.site-home-content .wl-link {
+  color: var(--wl-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-home-content .wl-rules h3 {
+  margin: 0 0 24px;
+  font-size: 1.1rem;
+}
+.site-react-catalog-intro {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  margin-top: 48px;
+}
+.site-react-catalog-intro h1 {
+  margin: 0;
+}
+@media (max-width: 850px) {
+  .site-home-content .wl-showcase {
+    grid-template-columns: 1fr;
+  }
+  .site-home-content .wl-card p {
+    min-height: 0;
+  }
+}
 .site-main {
   min-height: 100vh;
 }
@@ -579,3 +667,30 @@ input {
     transition: none;
   }
 }
+
+/* Composite forms use one label/control rhythm without changing standalone fields. */
+.site-flow-grid > .ui-field { min-width: 0; width: 100%; max-width: none; align-content: start; grid-template-rows: 22px 48px auto; margin-block: 8px; gap: 6px; }
+.site-flow-grid > .ui-field > :first-child { align-self: end; margin: 0; line-height: 20px; }
+.site-flow-grid .ui-input,
+.site-flow-grid .ui-number-control,
+.site-flow-grid .wl-react-field-control,
+.site-flow-grid .wl-react-select-trigger { width: 100%; max-width: none; min-height: 48px; height: 48px; }
+.site-flow-grid .ui-number-input.ui-input { min-height: 46px; height: 46px; }
+.site-flow-grid .wl-react-field-control .ui-input { height: 46px; min-height: 46px; }
+.site-flow-grid .ui-help,.site-flow-grid .ui-error { margin: 0; }
+
+.site-flow-page { gap: 20px; }
+.site-flow-page .site-page-head p { margin-bottom: 0; }
+
+/* Focus keeps controls recognizable without a raised ring or layout shift. */
+.site-shell :is(input,textarea,select):focus-visible {outline:0!important;outline-offset:0!important;box-shadow:inset 0 0 0 2px currentColor!important}
+.site-shell button:focus-visible {outline:0!important;outline-offset:0!important;box-shadow:none!important}
+.site-shell button:not(.ui-button):focus-visible {background:var(--wl-muted);color:var(--wl-text);border-color:var(--wl-accent)}
+.site-shell :is(.ui-input,.ui-table-page-size):focus-visible {border-color:var(--wl-accent);box-shadow:inset 0 0 0 1px var(--wl-accent)!important}
+.site-shell :is(.ui-number-control,.wl-react-field-control):focus-within {outline:0;outline-offset:0;border-color:var(--wl-accent);box-shadow:inset 0 0 0 1px var(--wl-accent)}
+.site-shell :is(.ui-number-control,.wl-react-field-control) .ui-input:focus-visible {box-shadow:none!important}
+/* A clicked button keeps its pressed tone while focused; only toggles retain it after blur. */
+.site-shell .ui-button:not(:disabled):focus {background:color-mix(in srgb,var(--wl-accent) 78%,black);color:var(--wl-on);border-color:color-mix(in srgb,var(--wl-accent) 78%,black);box-shadow:none!important;outline:0!important}
+.site-shell .ui-button--text:not(:disabled):focus,.site-shell .ui-icon-button.ui-button:not(:disabled):focus {background:var(--wl-muted);color:var(--wl-hover);border-color:transparent}
+.site-shell .ui-button--danger:not(:disabled):is(:hover,:focus) {background:color-mix(in srgb,var(--wl-danger) 82%,black);color:var(--wl-surface);border-color:transparent}
+.site-shell .ui-table-pagination .ui-button:not(:disabled):focus,.site-shell .wl-react-calendar-arrow.ui-button:not(:disabled):focus {background:var(--wl-muted);color:var(--wl-accent);border-color:transparent}
