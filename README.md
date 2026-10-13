@@ -11,7 +11,7 @@
 </div>
 
 <a href="https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml">
-  <img src="./assets/readme/ci-pipeline.svg" alt="Etapas do CI. Qualidade: npm ci, Prettier, oxlint, build, TypeScript, commitlint. Navegador: Playwright em 1440 e 390 px, oito temas, axe, capturas." width="100%">
+  <img src="./assets/readme/ci-pipeline.svg" alt="Etapas do CI. Qualidade: npm ci, Prettier, oxlint, build, TypeScript, commitlint. Navegador: Chromium em 1440 e 390 px, oito temas, axe, capturas. Outros motores: Firefox e WebKit." width="100%">
 </a>
 <p align="center"><sub>Etapas configuradas no CI. O resultado real de cada execução é o badge acima.</sub></p>
 
