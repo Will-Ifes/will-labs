@@ -50,7 +50,7 @@
 
 | Sprint | | Entrega |
 | --- | :---: | --- |
-| 0 · Fundação | ●●●○ | Repositório, ADRs, lint, commits. Falta licença e ADR de idioma |
+| 0 · Fundação | ●●●● | Repositório, licença MIT, ADRs, lint, commits e hooks locais |
 | 1 · Design system | ●●●○ | Tokens, componentes e catálogo público. Falta leitor de tela |
 | 2 · OpsFlow v0.1 | ○○○○ | API, banco e telas do produto |
 | 3 · Lançamento | ○○○○ | Trilha e Labs 01 e 02 |
