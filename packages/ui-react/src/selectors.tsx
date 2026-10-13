@@ -89,20 +89,19 @@ export function Select({
       controller.abort();
     };
   }, [open, query, retry, !!loadOptions]);
+  // Foco inicial só ao abrir, logo após o commit. Um quadro de atraso deixava
+  // o foco voltar para a opção atual depois que o usuário já tinha navegado.
   useEffect(() => {
     if (!open) return;
-    const frame = requestAnimationFrame(() => {
-      if (loadOptions) search.current?.focus();
-      else
-        optionRefs.current[
-          Math.max(
-            0,
-            items.findIndex((item) => item.value === value),
-          )
-        ]?.focus();
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [open, loadOptions, items.length, value]);
+    if (loadOptions) search.current?.focus();
+    else
+      optionRefs.current[
+        Math.max(
+          0,
+          items.findIndex((item) => item.value === value),
+        )
+      ]?.focus();
+  }, [open]);
   const show = () => {
     if (!disabled) {
       setQuery("");
