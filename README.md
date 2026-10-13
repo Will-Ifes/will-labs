@@ -4,7 +4,7 @@ Design system em React e TypeScript, com tokens semânticos, oito temas e um cat
 
 **React · TypeScript · Design tokens · Playwright · axe-core**
 
-[Ver demonstração](https://will-ifes.github.io/will-labs/) · [Componentes](packages/ui-react) · [Decisões](docs/adr) · [Evidências](evidence/VIEW-AUDIT.md)
+[Ver demonstração](https://will-ifes.github.io/will-labs/) · [Componentes](packages/ui-react) · [Decisões](docs/adr) · [Padrões](docs/padroes/README.md) · [Evidências](evidence/VIEW-AUDIT.md)
 
 [![CI · verificação](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml)
 [![Deploy · GitHub Pages](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml)

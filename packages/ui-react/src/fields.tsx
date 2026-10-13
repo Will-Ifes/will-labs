@@ -71,9 +71,15 @@ export function DateField({
   useEffect(() => {
     if (!open || !chooser) return;
     const frame = requestAnimationFrame(() => {
-      const list = panel.current?.querySelector<HTMLElement>(`.wl-react-calendar-options[data-kind="${chooser}"]`);
-      const selected = list?.querySelector<HTMLElement>('[aria-current="true"]');
-      if (list && selected) list.scrollTop = selected.offsetTop - list.offsetTop - list.clientHeight / 2;
+      const list = panel.current?.querySelector<HTMLElement>(
+        `.wl-react-calendar-options[data-kind="${chooser}"]`,
+      );
+      const selected = list?.querySelector<HTMLElement>(
+        '[aria-current="true"]',
+      );
+      if (list && selected)
+        list.scrollTop =
+          selected.offsetTop - list.offsetTop - list.clientHeight / 2;
       selected?.focus({ preventScroll: true });
     });
     return () => cancelAnimationFrame(frame);
@@ -81,16 +87,25 @@ export function DateField({
   const close = (focus: boolean) => {
     setOpen(false);
     setChooser(null);
-    if (focus) requestAnimationFrame(() => trigger.current?.focus({ preventScroll: true }));
+    if (focus)
+      requestAnimationFrame(() =>
+        trigger.current?.focus({ preventScroll: true }),
+      );
   };
   const commit = () => {
     const text = draft.trim();
-    if (!text) { if (value) onChange(""); setInternalError(""); return; }
+    if (!text) {
+      if (value) onChange("");
+      setInternalError("");
+      return;
+    }
     const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(text);
     const candidate = match && `${match[3]}-${match[2]}-${match[1]}`;
     const date = candidate && parseISO(candidate);
     if (!date || !candidate || candidate < min || candidate > max) {
-      setInternalError(`Informe uma data válida entre ${displayDate(min)} e ${displayDate(max)}.`);
+      setInternalError(
+        `Informe uma data válida entre ${displayDate(min)} e ${displayDate(max)}.`,
+      );
       return;
     }
     setInternalError("");
@@ -102,53 +117,297 @@ export function DateField({
     const target = iso(date);
     if (target < min || target > max) return;
     setMonth(new Date(date.getFullYear(), date.getMonth(), 1));
-    requestAnimationFrame(() => panel.current?.querySelector<HTMLButtonElement>(`[data-date="${target}"]`)?.focus({ preventScroll: true }));
+    requestAnimationFrame(() =>
+      panel.current
+        ?.querySelector<HTMLButtonElement>(`[data-date="${target}"]`)
+        ?.focus({ preventScroll: true }),
+    );
   };
   const start = new Date(month.getFullYear(), month.getMonth(), 1);
   const offset = (start.getDay() + 6) % 7;
-  const cells = Array.from({ length: 42 }, (_, index) => new Date(month.getFullYear(), month.getMonth(), index + 1 - offset));
+  const cells = Array.from(
+    { length: 42 },
+    (_, index) =>
+      new Date(month.getFullYear(), month.getMonth(), index + 1 - offset),
+  );
   const before = new Date(month.getFullYear(), month.getMonth() - 1, 1);
   const after = new Date(month.getFullYear(), month.getMonth() + 1, 1);
-  const canShow = (date: Date) => iso(new Date(date.getFullYear(), date.getMonth() + 1, 0)) >= min && iso(date) <= max;
-  const minYear = Number(min.slice(0, 4)), maxYear = Number(max.slice(0, 4));
+  const canShow = (date: Date) =>
+    iso(new Date(date.getFullYear(), date.getMonth() + 1, 0)) >= min &&
+    iso(date) <= max;
+  const minYear = Number(min.slice(0, 4)),
+    maxYear = Number(max.slice(0, 4));
   const validation = error || internalError;
   return (
     <div className="ui-field wl-react-date">
       <FieldLabel htmlFor={`${id}-input`}>{label}</FieldLabel>
       <div className="wl-react-field-control">
-        <input ref={input} id={`${id}-input`} className="ui-input" type="text" inputMode="numeric" placeholder="dd/mm/aaaa" value={draft}
-          aria-invalid={validation ? true : undefined} aria-describedby={`${id}-message`}
-          onChange={event => { setDraft(event.target.value); if (internalError) setInternalError(""); }}
-          onBlur={commit} onKeyDown={event => { if (event.key === "Enter") { event.preventDefault(); commit(); } }} />
-        <IconButton ref={trigger} className="wl-react-date-toggle" icon={<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M4 6.5h16v13H4z"/><path d="M7 4v5"/><path d="M17 4v5"/><path d="M4 10h16"/><path d="M8 14h3"/></svg>}
-          aria-label={`Abrir calendário de ${label}`} aria-expanded={open} aria-controls={`${id}-calendar`}
-          onClick={() => { if (open) close(true); else { const date = parseISO(value) || new Date(); setMonth(new Date(date.getFullYear(), date.getMonth(), 1)); setOpen(true); } }}
-          onKeyDown={event => { if (event.key === "ArrowDown") { event.preventDefault(); setOpen(true); requestAnimationFrame(() => panel.current?.querySelector<HTMLButtonElement>('[aria-pressed="true"]:not(:disabled),.wl-react-calendar-grid button:not(:disabled)')?.focus()); } }} />
+        <input
+          ref={input}
+          id={`${id}-input`}
+          className="ui-input"
+          type="text"
+          inputMode="numeric"
+          placeholder="dd/mm/aaaa"
+          value={draft}
+          aria-invalid={validation ? true : undefined}
+          aria-describedby={`${id}-message`}
+          onChange={(event) => {
+            setDraft(event.target.value);
+            if (internalError) setInternalError("");
+          }}
+          onBlur={commit}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              commit();
+            }
+          }}
+        />
+        <IconButton
+          ref={trigger}
+          className="wl-react-date-toggle"
+          icon={
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 6.5h16v13H4z" />
+              <path d="M7 4v5" />
+              <path d="M17 4v5" />
+              <path d="M4 10h16" />
+              <path d="M8 14h3" />
+            </svg>
+          }
+          aria-label={`Abrir calendário de ${label}`}
+          aria-expanded={open}
+          aria-controls={`${id}-calendar`}
+          onClick={() => {
+            if (open) close(true);
+            else {
+              const date = parseISO(value) || new Date();
+              setMonth(new Date(date.getFullYear(), date.getMonth(), 1));
+              setOpen(true);
+            }
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowDown") {
+              event.preventDefault();
+              setOpen(true);
+              requestAnimationFrame(() =>
+                panel.current
+                  ?.querySelector<HTMLButtonElement>(
+                    '[aria-pressed="true"]:not(:disabled),.wl-react-calendar-grid button:not(:disabled)',
+                  )
+                  ?.focus(),
+              );
+            }
+          }}
+        />
       </div>
       <ValidationMessage id={`${id}-message`} error={validation} help={help} />
-      <FloatingLayer open={open} anchorRef={trigger} onClose={close} id={`${id}-calendar`} role="dialog" label={`Calendário de ${label}`} className="wl-react-calendar">
+      <FloatingLayer
+        open={open}
+        anchorRef={trigger}
+        onClose={close}
+        id={`${id}-calendar`}
+        role="dialog"
+        label={`Calendário de ${label}`}
+        className="wl-react-calendar"
+      >
         <div ref={panel}>
           <div className="wl-react-calendar-head">
-            <Button size="small" variant="text" className="wl-react-calendar-arrow" aria-label="Mês anterior" disabled={!canShow(before)} onClick={() => { setMonth(before); setChooser(null); }}><NavigationIcon direction="left" /></Button>
+            <Button
+              size="small"
+              variant="text"
+              className="wl-react-calendar-arrow"
+              aria-label="Mês anterior"
+              disabled={!canShow(before)}
+              onClick={() => {
+                setMonth(before);
+                setChooser(null);
+              }}
+            >
+              <NavigationIcon direction="left" />
+            </Button>
             <div className="wl-react-month-year">
               <div className="wl-react-calendar-chooser">
-                <button ref={monthChoice} type="button" aria-label="Selecionar mês" aria-expanded={chooser === "month"} onClick={() => setChooser(chooser === "month" ? null : "month")}>{monthNames[month.getMonth()]}</button>
-                {chooser === "month" && <div className="wl-react-calendar-options" data-kind="month" role="group" aria-label="Meses">{monthNames.map((name, index) => <button type="button" key={name} aria-current={index === month.getMonth()} onClick={() => { setMonth(new Date(month.getFullYear(), index, 1)); setChooser(null); requestAnimationFrame(() => monthChoice.current?.focus()); }}>{name}</button>)}</div>}
+                <button
+                  ref={monthChoice}
+                  type="button"
+                  aria-label="Selecionar mês"
+                  aria-expanded={chooser === "month"}
+                  onClick={() =>
+                    setChooser(chooser === "month" ? null : "month")
+                  }
+                >
+                  {monthNames[month.getMonth()]}
+                </button>
+                {chooser === "month" && (
+                  <div
+                    className="wl-react-calendar-options"
+                    data-kind="month"
+                    role="group"
+                    aria-label="Meses"
+                  >
+                    {monthNames.map((name, index) => (
+                      <button
+                        type="button"
+                        key={name}
+                        aria-current={index === month.getMonth()}
+                        onClick={() => {
+                          setMonth(new Date(month.getFullYear(), index, 1));
+                          setChooser(null);
+                          requestAnimationFrame(() =>
+                            monthChoice.current?.focus(),
+                          );
+                        }}
+                      >
+                        {name}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="wl-react-calendar-chooser">
-                <button ref={yearChoice} type="button" aria-label="Selecionar ano" aria-expanded={chooser === "year"} onClick={() => setChooser(chooser === "year" ? null : "year")}>{month.getFullYear()}</button>
-                {chooser === "year" && <div className="wl-react-calendar-options" data-kind="year" role="group" aria-label="Anos">{Array.from({length: Math.max(0, maxYear-minYear+1)}, (_, index) => minYear+index).map(year => <button type="button" key={year} aria-current={year === month.getFullYear()} onClick={() => { setMonth(new Date(year, month.getMonth(), 1)); setChooser(null); requestAnimationFrame(() => yearChoice.current?.focus()); }}>{year}</button>)}</div>}
+                <button
+                  ref={yearChoice}
+                  type="button"
+                  aria-label="Selecionar ano"
+                  aria-expanded={chooser === "year"}
+                  onClick={() => setChooser(chooser === "year" ? null : "year")}
+                >
+                  {month.getFullYear()}
+                </button>
+                {chooser === "year" && (
+                  <div
+                    className="wl-react-calendar-options"
+                    data-kind="year"
+                    role="group"
+                    aria-label="Anos"
+                  >
+                    {Array.from(
+                      { length: Math.max(0, maxYear - minYear + 1) },
+                      (_, index) => minYear + index,
+                    ).map((year) => (
+                      <button
+                        type="button"
+                        key={year}
+                        aria-current={year === month.getFullYear()}
+                        onClick={() => {
+                          setMonth(new Date(year, month.getMonth(), 1));
+                          setChooser(null);
+                          requestAnimationFrame(() =>
+                            yearChoice.current?.focus(),
+                          );
+                        }}
+                      >
+                        {year}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-            <Button size="small" variant="text" className="wl-react-calendar-arrow" aria-label="Próximo mês" disabled={!canShow(after)} onClick={() => { setMonth(after); setChooser(null); }}><NavigationIcon direction="right" /></Button>
+            <Button
+              size="small"
+              variant="text"
+              className="wl-react-calendar-arrow"
+              aria-label="Próximo mês"
+              disabled={!canShow(after)}
+              onClick={() => {
+                setMonth(after);
+                setChooser(null);
+              }}
+            >
+              <NavigationIcon direction="right" />
+            </Button>
           </div>
-          <div className="wl-react-calendar-grid" role="group" aria-label={`${monthNames[month.getMonth()]} de ${month.getFullYear()}`}>
-            {["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"].map(day => <span key={day} aria-hidden="true">{day}</span>)}
-            {cells.map(date => { const key = iso(date), selected = key === value, today = key === currentDay(); return <button key={key} data-date={key} data-today={today || undefined} data-outside={date.getMonth() !== month.getMonth() || undefined} type="button" aria-label={fullDate.format(date)} aria-pressed={selected} disabled={key < min || key > max}
-              onClick={() => { onChange(key); setDraft(displayDate(key)); setInternalError(""); close(false); requestAnimationFrame(() => input.current?.focus({ preventScroll: true })); }}
-              onKeyDown={event => { const shift = ({ArrowRight:1,ArrowLeft:-1,ArrowDown:7,ArrowUp:-7} as Record<string,number>)[event.key]; if (shift) { event.preventDefault(); const next = new Date(date); next.setDate(date.getDate()+shift); focusDate(next); } else if (event.key === "Home" || event.key === "End") { event.preventDefault(); const day = (date.getDay()+6)%7; const next = new Date(date); next.setDate(date.getDate() + (event.key === "Home" ? -day : 6-day)); focusDate(next); } else if (event.key === "PageUp" || event.key === "PageDown") { event.preventDefault(); const next = new Date(date); next.setMonth(date.getMonth() + (event.key === "PageUp" ? -1 : 1)); focusDate(next); } }}>{date.getDate()}</button>; })}
+          <div
+            className="wl-react-calendar-grid"
+            role="group"
+            aria-label={`${monthNames[month.getMonth()]} de ${month.getFullYear()}`}
+          >
+            {["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"].map((day) => (
+              <span key={day} aria-hidden="true">
+                {day}
+              </span>
+            ))}
+            {cells.map((date) => {
+              const key = iso(date),
+                selected = key === value,
+                today = key === currentDay();
+              return (
+                <button
+                  key={key}
+                  data-date={key}
+                  data-today={today || undefined}
+                  data-outside={
+                    date.getMonth() !== month.getMonth() || undefined
+                  }
+                  type="button"
+                  aria-label={fullDate.format(date)}
+                  aria-pressed={selected}
+                  disabled={key < min || key > max}
+                  onClick={() => {
+                    onChange(key);
+                    setDraft(displayDate(key));
+                    setInternalError("");
+                    close(false);
+                    requestAnimationFrame(() =>
+                      input.current?.focus({ preventScroll: true }),
+                    );
+                  }}
+                  onKeyDown={(event) => {
+                    const shift = (
+                      {
+                        ArrowRight: 1,
+                        ArrowLeft: -1,
+                        ArrowDown: 7,
+                        ArrowUp: -7,
+                      } as Record<string, number>
+                    )[event.key];
+                    if (shift) {
+                      event.preventDefault();
+                      const next = new Date(date);
+                      next.setDate(date.getDate() + shift);
+                      focusDate(next);
+                    } else if (event.key === "Home" || event.key === "End") {
+                      event.preventDefault();
+                      const day = (date.getDay() + 6) % 7;
+                      const next = new Date(date);
+                      next.setDate(
+                        date.getDate() +
+                          (event.key === "Home" ? -day : 6 - day),
+                      );
+                      focusDate(next);
+                    } else if (
+                      event.key === "PageUp" ||
+                      event.key === "PageDown"
+                    ) {
+                      event.preventDefault();
+                      const next = new Date(date);
+                      next.setMonth(
+                        date.getMonth() + (event.key === "PageUp" ? -1 : 1),
+                      );
+                      focusDate(next);
+                    }
+                  }}
+                >
+                  {date.getDate()}
+                </button>
+              );
+            })}
           </div>
-          <p className="wl-react-calendar-caption">Hoje tem contorno · use as setas para percorrer os dias</p>
+          <p className="wl-react-calendar-caption">
+            Hoje tem contorno · use as setas para percorrer os dias
+          </p>
         </div>
       </FloatingLayer>
     </div>

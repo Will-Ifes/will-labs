@@ -62,7 +62,9 @@ export function Select({
     setLoadError(false);
     const timer = window.setTimeout(
       () => {
-        loaderRef.current!({ query, signal: controller.signal })
+        const loader = loaderRef.current;
+        if (!loader) return;
+        loader({ query, signal: controller.signal })
           .then((result) => {
             if (!controller.signal.aborted) {
               if (!Array.isArray(result)) throw new Error("Resposta inválida");
@@ -359,16 +361,34 @@ export function Multiselect({
   useEffect(() => {
     if (open) requestAnimationFrame(() => search.current?.focus());
   }, [open]);
-  const normalize = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("pt-BR");
-  const visible = loadOptions ? items : options.filter((item) => normalize(item.label).includes(normalize(query)));
-  const uniqueValue = [...new Map(value.map((item) => [item.id, item])).values()];
+  const normalize = (text: string) =>
+    text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase("pt-BR");
+  const visible = loadOptions
+    ? items
+    : options.filter((item) =>
+        normalize(item.label).includes(normalize(query)),
+      );
+  const uniqueValue = [
+    ...new Map(value.map((item) => [item.id, item])).values(),
+  ];
   const selected = new Set(uniqueValue.map((item) => item.id));
-  const visibleTags = maxVisibleTags === undefined ? uniqueValue : uniqueValue.slice(0, Math.max(0, maxVisibleTags));
+  const visibleTags =
+    maxVisibleTags === undefined
+      ? uniqueValue
+      : uniqueValue.slice(0, Math.max(0, maxVisibleTags));
   const hiddenTags = uniqueValue.length - visibleTags.length;
-  const atLimit = maxSelected !== undefined && uniqueValue.length >= maxSelected;
+  const atLimit =
+    maxSelected !== undefined && uniqueValue.length >= maxSelected;
   const toggle = (item: MultiOption) => {
     if (disabled || (!selected.has(item.id) && atLimit)) return;
-    onChange(selected.has(item.id) ? uniqueValue.filter((entry) => entry.id !== item.id) : [...uniqueValue, item]);
+    onChange(
+      selected.has(item.id)
+        ? uniqueValue.filter((entry) => entry.id !== item.id)
+        : [...uniqueValue, item],
+    );
   };
   return (
     <div className="ui-field wl-react-multi">
@@ -386,10 +406,40 @@ export function Multiselect({
         aria-describedby={`${id}-count${error || help ? ` ${id}-message` : ""}`}
         onClick={() => (open ? close(true) : setOpen(true))}
       >
-        <span id={`${id}-value`} className="wl-react-multi-value" data-placeholder={uniqueValue.length ? undefined : ""} title={uniqueValue.map(item => item.label).join(", ")}>
-          {uniqueValue.length ? <><span className="wl-react-multi-primary">{uniqueValue[0].label}</span>{uniqueValue.length > 1 && <span className="wl-react-multi-more">+{uniqueValue.length - 1}</span>}</> : `Selecionar ${label.toLocaleLowerCase("pt-BR")}`}
+        <span
+          id={`${id}-value`}
+          className="wl-react-multi-value"
+          data-placeholder={uniqueValue.length ? undefined : ""}
+          title={uniqueValue.map((item) => item.label).join(", ")}
+        >
+          {uniqueValue.length ? (
+            <>
+              <span className="wl-react-multi-primary">
+                {uniqueValue[0].label}
+              </span>
+              {uniqueValue.length > 1 && (
+                <span className="wl-react-multi-more">
+                  +{uniqueValue.length - 1}
+                </span>
+              )}
+            </>
+          ) : (
+            `Selecionar ${label.toLocaleLowerCase("pt-BR")}`
+          )}
         </span>
-        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg>
+        <svg
+          viewBox="0 0 20 20"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m5 7 5 5 5-5" />
+        </svg>
       </Button>
       {display === "tags" && uniqueValue.length > 0 && (
         <div className="wl-react-chips" aria-label="Itens selecionados">
@@ -400,7 +450,9 @@ export function Multiselect({
                   {item.avatar}
                 </span>
               )}
-              <span className="wl-react-chip-label" title={item.label}>{item.label}</span>
+              <span className="wl-react-chip-label" title={item.label}>
+                {item.label}
+              </span>
               <IconButton
                 disabled={disabled}
                 aria-label={`Remover ${item.label}`}
@@ -409,10 +461,24 @@ export function Multiselect({
               />
             </span>
           ))}
-          {hiddenTags > 0 && <span className="wl-react-chip wl-react-chip-summary" title={uniqueValue.slice(visibleTags.length).map(item => item.label).join(", ")}>+{hiddenTags} selecionados</span>}
+          {hiddenTags > 0 && (
+            <span
+              className="wl-react-chip wl-react-chip-summary"
+              title={uniqueValue
+                .slice(visibleTags.length)
+                .map((item) => item.label)
+                .join(", ")}
+            >
+              +{hiddenTags} selecionados
+            </span>
+          )}
         </div>
       )}
-      <span className="wl-react-multi-count" id={`${id}-count`} role="status">{uniqueValue.length} {uniqueValue.length === 1 ? "selecionado" : "selecionados"}{atLimit ? ` · limite de ${maxSelected}` : ""}</span>
+      <span className="wl-react-multi-count" id={`${id}-count`} role="status">
+        {uniqueValue.length}{" "}
+        {uniqueValue.length === 1 ? "selecionado" : "selecionados"}
+        {atLimit ? ` · limite de ${maxSelected}` : ""}
+      </span>
       <ValidationMessage id={`${id}-message`} error={error} help={help} />
       <FloatingLayer
         open={open}

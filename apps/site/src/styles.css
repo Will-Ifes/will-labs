@@ -672,29 +672,102 @@ input {
 }
 
 /* Composite forms use one label/control rhythm without changing standalone fields. */
-.site-flow-grid > .ui-field { min-width: 0; width: 100%; max-width: none; align-content: start; margin-block: 0; gap: 6px; }
-.site-flow-grid { row-gap: var(--wl-space-4); }
-.site-flow-grid > .ui-field > :first-child { margin: 0; }
+.site-flow-grid > .ui-field {
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  align-content: start;
+  margin-block: 0;
+  gap: 6px;
+}
+.site-flow-grid {
+  row-gap: var(--wl-space-4);
+}
+.site-flow-grid > .ui-field > :first-child {
+  margin: 0;
+}
 .site-flow-grid .ui-input,
 .site-flow-grid .ui-number-control,
 .site-flow-grid .wl-react-field-control,
-.site-flow-grid .wl-react-select-trigger { width: 100%; max-width: none; min-height: 48px; height: 48px; }
-.site-flow-grid .ui-number-input.ui-input { min-height: 46px; height: 46px; }
-.site-flow-grid .wl-react-field-control .ui-input { height: 46px; min-height: 46px; }
-.site-flow-grid .ui-help,.site-flow-grid .ui-error { margin: 0; }
+.site-flow-grid .wl-react-select-trigger {
+  width: 100%;
+  max-width: none;
+  min-height: 48px;
+  height: 48px;
+}
+.site-flow-grid .ui-number-input.ui-input {
+  min-height: 46px;
+  height: 46px;
+}
+.site-flow-grid .wl-react-field-control .ui-input {
+  height: 46px;
+  min-height: 46px;
+}
+.site-flow-grid .ui-help,
+.site-flow-grid .ui-error {
+  margin: 0;
+}
 
-.site-flow-page { gap: 24px; }
-.site-stack > :is(.ui-banner, .ui-surface) { margin-block: 0; }
+.site-flow-page {
+  gap: 24px;
+}
+.site-stack > :is(.ui-banner, .ui-surface) {
+  margin-block: 0;
+}
 
 /* Focus keeps controls recognizable without a raised ring or layout shift. */
-.site-shell :is(input,textarea,select):focus-visible {outline:0!important;outline-offset:0!important;box-shadow:inset 0 0 0 2px currentColor!important}
-.site-shell button:focus-visible {outline:0!important;outline-offset:0!important;box-shadow:none!important}
-.site-shell button:not(.ui-button):focus-visible {background:var(--wl-muted);color:var(--wl-text);border-color:var(--wl-accent)}
-.site-shell :is(.ui-input,.ui-table-page-size):focus-visible {border-color:var(--wl-accent);box-shadow:inset 0 0 0 1px var(--wl-accent)!important}
-.site-shell :is(.ui-number-control,.wl-react-field-control):focus-within {outline:0;outline-offset:0;border-color:var(--wl-accent);box-shadow:inset 0 0 0 1px var(--wl-accent)}
-.site-shell :is(.ui-number-control,.wl-react-field-control) .ui-input:focus-visible {box-shadow:none!important}
+.site-shell :is(input, textarea, select):focus-visible {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  box-shadow: inset 0 0 0 2px currentColor !important;
+}
+.site-shell button:focus-visible {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+.site-shell button:not(.ui-button):focus-visible {
+  background: var(--wl-muted);
+  color: var(--wl-text);
+  border-color: var(--wl-accent);
+}
+.site-shell :is(.ui-input, .ui-table-page-size):focus-visible {
+  border-color: var(--wl-accent);
+  box-shadow: inset 0 0 0 1px var(--wl-accent) !important;
+}
+.site-shell :is(.ui-number-control, .wl-react-field-control):focus-within {
+  outline: 0;
+  outline-offset: 0;
+  border-color: var(--wl-accent);
+  box-shadow: inset 0 0 0 1px var(--wl-accent);
+}
+.site-shell
+  :is(.ui-number-control, .wl-react-field-control)
+  .ui-input:focus-visible {
+  box-shadow: none !important;
+}
 /* A clicked button keeps its pressed tone while focused; only toggles retain it after blur. */
-.site-shell .ui-button:not(:disabled):focus {background:color-mix(in srgb,var(--wl-accent) 78%,black);color:var(--wl-on);border-color:color-mix(in srgb,var(--wl-accent) 78%,black);box-shadow:none!important;outline:0!important}
-.site-shell .ui-button--text:not(:disabled):focus,.site-shell .ui-icon-button.ui-button:not(:disabled):focus {background:var(--wl-muted);color:var(--wl-hover);border-color:transparent}
-.site-shell .ui-button--danger:not(:disabled):is(:hover,:focus) {background:color-mix(in srgb,var(--wl-danger) 82%,black);color:var(--wl-surface);border-color:transparent}
-.site-shell .ui-table-pagination .ui-button:not(:disabled):focus,.site-shell .wl-react-calendar-arrow.ui-button:not(:disabled):focus {background:var(--wl-muted);color:var(--wl-accent);border-color:transparent}
+.site-shell .ui-button:not(:disabled):focus {
+  background: color-mix(in srgb, var(--wl-accent) 78%, black);
+  color: var(--wl-on);
+  border-color: color-mix(in srgb, var(--wl-accent) 78%, black);
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+.site-shell .ui-button--text:not(:disabled):focus,
+.site-shell .ui-icon-button.ui-button:not(:disabled):focus {
+  background: var(--wl-muted);
+  color: var(--wl-hover);
+  border-color: transparent;
+}
+.site-shell .ui-button--danger:not(:disabled):is(:hover, :focus) {
+  background: color-mix(in srgb, var(--wl-danger) 82%, black);
+  color: var(--wl-surface);
+  border-color: transparent;
+}
+.site-shell .ui-table-pagination .ui-button:not(:disabled):focus,
+.site-shell .wl-react-calendar-arrow.ui-button:not(:disabled):focus {
+  background: var(--wl-muted);
+  color: var(--wl-accent);
+  border-color: transparent;
+}

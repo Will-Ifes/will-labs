@@ -1,13 +1,264 @@
 import { useRef, useState, type ReactNode } from "react";
-import { Button, ContextMenu, Drawer, Dropdown, Modal, Popover, Surface, TextareaField, TextField, Tooltip } from "@will-labs/ui-react";
+import {
+  Button,
+  ContextMenu,
+  Drawer,
+  Dropdown,
+  Modal,
+  Popover,
+  Surface,
+  TextareaField,
+  TextField,
+  Tooltip,
+} from "@will-labs/ui-react";
 import "./catalog-views.css";
-const titles:Record<string,string>={"comp-popover":"Popover","comp-dropdown":"Dropdown","comp-context-menu":"Menu de contexto","comp-tooltip":"Tooltip","comp-modal":"Modal","comp-drawer":"Drawer"};
-export const layerIds=Object.keys(titles);
-function Page({view,description,children}:{view:string;description:string;children:ReactNode}){return <div className="catalog-view"><header className="site-page-head"><h1>{titles[view]}</h1><p>{description}</p></header>{children}</div>}
-function PopoverView(){const [status,setStatus]=useState("");return <Page view="comp-popover" description="Conteúdo contextual interativo, aberto por um controle e fechado sem perder o contexto."><Surface title="Detalhes da versão"><Popover trigger="Ver detalhes da versão" title="Versão 3" placement="auto" action="Ver alterações" onAction={()=>setStatus("Alterações da versão consultadas.")}><p>Publicada por Ana em 12 de setembro. Há duas alterações desde a versão anterior.</p></Popover><p role="status">{status}</p><p>Use para contexto curto com ação. Para uma tarefa longa ou bloqueante, use modal ou drawer.</p></Surface></Page>}
-function DropdownView(){const [result,setResult]=useState("Nenhuma ação escolhida.");return <Page view="comp-dropdown" description="Menu de ações para um objeto. As opções são botões, não textos clicáveis."><Surface title="Ações do fluxo"><Dropdown label="Ações do fluxo" items={[{id:"duplicate",label:"Duplicar"},{id:"share",label:"Compartilhar"},{id:"archive",label:"Arquivar"}]} onSelect={item=>setResult(`Ação escolhida: ${item.label}.`)}/><p role="status">{result}</p><p>O menu fecha após selecionar. Escape também fecha e devolve o foco ao acionador.</p></Surface></Page>}
-function ContextMenuView(){const [result,setResult]=useState("Abrir Lab selecionado.");return <Page view="comp-context-menu" description="Ações relativas a um item, acessíveis por clique, botão direito e Shift+F10."><Surface title="Rascunho do Lab"><ContextMenu label="Ações do Lab" items={[{id:"open",label:"Abrir Lab"},{id:"duplicate",label:"Duplicar rascunho"},{id:"archive",label:"Arquivar"}]} onSelect={item=>setResult(`${item.label} selecionado.`)}>Ações do Lab · clique ou Shift+F10</ContextMenu><p role="status">{result}</p></Surface></Page>}
-function TooltipView(){return <Page view="comp-tooltip" description="Ajuda breve, sem ação dentro; aparece em hover e foco."><Surface title="Ajuda em contexto"><Tooltip label="O que significa?" text="Uma versão guarda o estado do Lab usado numa execução."/><p>Informação essencial deve continuar visível na página. Tooltip não substitui label nem mensagem de erro.</p></Surface></Page>}
-function ModalView(){const [open,setOpen]=useState(false),[status,setStatus]=useState(""),trigger=useRef<HTMLButtonElement>(null);return <Page view="comp-modal" description="Confirmação curta com decisão explícita e consequências compreensíveis."><Surface title="Arquivar fluxo"><Button ref={trigger} onClick={()=>setOpen(true)}>Abrir confirmação</Button><p>Escape e clique no botão de fechar dispensam a confirmação. O botão principal descreve o efeito.</p><p role="status">{status}</p></Surface><Modal open={open} onClose={()=>setOpen(false)} title="Arquivar fluxo?" triggerRef={trigger} footer={<><Button variant="outline" onClick={()=>setOpen(false)}>Cancelar</Button><Button variant="danger" onClick={()=>{setOpen(false);setStatus("Fluxo arquivado nesta demonstração.")}}>Arquivar fluxo</Button></>}><p>O fluxo sai da lista principal. As execuções anteriores continuam disponíveis.</p></Modal></Page>}
-function DrawerView(){const [open,setOpen]=useState(false),[name,setName]=useState("Revisão de publicação"),[description,setDescription]=useState("Conferir e publicar"),[status,setStatus]=useState(""),trigger=useRef<HTMLButtonElement>(null);return <Page view="comp-drawer" description="Painel lateral para editar ou inspecionar sem perder a lista de origem."><Surface title="Editar fluxo"><Button ref={trigger} onClick={()=>setOpen(true)}>Editar fluxo no drawer</Button><p>O fundo permanece reconhecível, mas o foco fica no painel enquanto está aberto.</p><p role="status">{status}</p></Surface><Drawer open={open} onClose={()=>setOpen(false)} title="Editar fluxo" triggerRef={trigger} footer={<><Button variant="outline" onClick={()=>setOpen(false)}>Cancelar</Button><Button onClick={()=>{setOpen(false);setStatus(`Alterações de ${name} salvas nesta demonstração.`)}}>Salvar alterações</Button></>}><TextField label="Nome do fluxo" value={name} onChange={e=>setName(e.target.value)}/><TextareaField label="Descrição" value={description} onChange={e=>setDescription(e.target.value)} rows={4}/></Drawer></Page>}
-export function LayersCatalog({view}:{view:string}){switch(view){case "comp-popover":return <PopoverView/>;case "comp-dropdown":return <DropdownView/>;case "comp-context-menu":return <ContextMenuView/>;case "comp-tooltip":return <TooltipView/>;case "comp-modal":return <ModalView/>;case "comp-drawer":return <DrawerView/>;default:return null}}
+const titles: Record<string, string> = {
+  "comp-popover": "Popover",
+  "comp-dropdown": "Dropdown",
+  "comp-context-menu": "Menu de contexto",
+  "comp-tooltip": "Tooltip",
+  "comp-modal": "Modal",
+  "comp-drawer": "Drawer",
+};
+export const layerIds = Object.keys(titles);
+function Page({
+  view,
+  description,
+  children,
+}: {
+  view: string;
+  description: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="catalog-view">
+      <header className="site-page-head">
+        <h1>{titles[view]}</h1>
+        <p>{description}</p>
+      </header>
+      {children}
+    </div>
+  );
+}
+function PopoverView() {
+  const [status, setStatus] = useState("");
+  return (
+    <Page
+      view="comp-popover"
+      description="Conteúdo contextual interativo, aberto por um controle e fechado sem perder o contexto."
+    >
+      <Surface title="Detalhes da versão">
+        <Popover
+          trigger="Ver detalhes da versão"
+          title="Versão 3"
+          placement="auto"
+          action="Ver alterações"
+          onAction={() => setStatus("Alterações da versão consultadas.")}
+        >
+          <p>
+            Publicada por Ana em 12 de setembro. Há duas alterações desde a
+            versão anterior.
+          </p>
+        </Popover>
+        <p role="status">{status}</p>
+        <p>
+          Use para contexto curto com ação. Para uma tarefa longa ou bloqueante,
+          use modal ou drawer.
+        </p>
+      </Surface>
+    </Page>
+  );
+}
+function DropdownView() {
+  const [result, setResult] = useState("Nenhuma ação escolhida.");
+  return (
+    <Page
+      view="comp-dropdown"
+      description="Menu de ações para um objeto. As opções são botões, não textos clicáveis."
+    >
+      <Surface title="Ações do fluxo">
+        <Dropdown
+          label="Ações do fluxo"
+          items={[
+            { id: "duplicate", label: "Duplicar" },
+            { id: "share", label: "Compartilhar" },
+            { id: "archive", label: "Arquivar" },
+          ]}
+          onSelect={(item) => setResult(`Ação escolhida: ${item.label}.`)}
+        />
+        <p role="status">{result}</p>
+        <p>
+          O menu fecha após selecionar. Escape também fecha e devolve o foco ao
+          acionador.
+        </p>
+      </Surface>
+    </Page>
+  );
+}
+function ContextMenuView() {
+  const [result, setResult] = useState("Abrir Lab selecionado.");
+  return (
+    <Page
+      view="comp-context-menu"
+      description="Ações relativas a um item, acessíveis por clique, botão direito e Shift+F10."
+    >
+      <Surface title="Rascunho do Lab">
+        <ContextMenu
+          label="Ações do Lab"
+          items={[
+            { id: "open", label: "Abrir Lab" },
+            { id: "duplicate", label: "Duplicar rascunho" },
+            { id: "archive", label: "Arquivar" },
+          ]}
+          onSelect={(item) => setResult(`${item.label} selecionado.`)}
+        >
+          Ações do Lab · clique ou Shift+F10
+        </ContextMenu>
+        <p role="status">{result}</p>
+      </Surface>
+    </Page>
+  );
+}
+function TooltipView() {
+  return (
+    <Page
+      view="comp-tooltip"
+      description="Ajuda breve, sem ação dentro; aparece em hover e foco."
+    >
+      <Surface title="Ajuda em contexto">
+        <Tooltip
+          label="O que significa?"
+          text="Uma versão guarda o estado do Lab usado numa execução."
+        />
+        <p>
+          Informação essencial deve continuar visível na página. Tooltip não
+          substitui label nem mensagem de erro.
+        </p>
+      </Surface>
+    </Page>
+  );
+}
+function ModalView() {
+  const [open, setOpen] = useState(false),
+    [status, setStatus] = useState(""),
+    trigger = useRef<HTMLButtonElement>(null);
+  return (
+    <Page
+      view="comp-modal"
+      description="Confirmação curta com decisão explícita e consequências compreensíveis."
+    >
+      <Surface title="Arquivar fluxo">
+        <Button ref={trigger} onClick={() => setOpen(true)}>
+          Abrir confirmação
+        </Button>
+        <p>
+          Escape e clique no botão de fechar dispensam a confirmação. O botão
+          principal descreve o efeito.
+        </p>
+        <p role="status">{status}</p>
+      </Surface>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Arquivar fluxo?"
+        triggerRef={trigger}
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Cancelar
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                setOpen(false);
+                setStatus("Fluxo arquivado nesta demonstração.");
+              }}
+            >
+              Arquivar fluxo
+            </Button>
+          </>
+        }
+      >
+        <p>
+          O fluxo sai da lista principal. As execuções anteriores continuam
+          disponíveis.
+        </p>
+      </Modal>
+    </Page>
+  );
+}
+function DrawerView() {
+  const [open, setOpen] = useState(false),
+    [name, setName] = useState("Revisão de publicação"),
+    [description, setDescription] = useState("Conferir e publicar"),
+    [status, setStatus] = useState(""),
+    trigger = useRef<HTMLButtonElement>(null);
+  return (
+    <Page
+      view="comp-drawer"
+      description="Painel lateral para editar ou inspecionar sem perder a lista de origem."
+    >
+      <Surface title="Editar fluxo">
+        <Button ref={trigger} onClick={() => setOpen(true)}>
+          Editar fluxo no drawer
+        </Button>
+        <p>
+          O fundo permanece reconhecível, mas o foco fica no painel enquanto
+          está aberto.
+        </p>
+        <p role="status">{status}</p>
+      </Surface>
+      <Drawer
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Editar fluxo"
+        triggerRef={trigger}
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setOpen(false)}>
+              Cancelar
+            </Button>
+            <Button
+              onClick={() => {
+                setOpen(false);
+                setStatus(`Alterações de ${name} salvas nesta demonstração.`);
+              }}
+            >
+              Salvar alterações
+            </Button>
+          </>
+        }
+      >
+        <TextField
+          label="Nome do fluxo"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextareaField
+          label="Descrição"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          rows={4}
+        />
+      </Drawer>
+    </Page>
+  );
+}
+export function LayersCatalog({ view }: { view: string }) {
+  switch (view) {
+    case "comp-popover":
+      return <PopoverView />;
+    case "comp-dropdown":
+      return <DropdownView />;
+    case "comp-context-menu":
+      return <ContextMenuView />;
+    case "comp-tooltip":
+      return <TooltipView />;
+    case "comp-modal":
+      return <ModalView />;
+    case "comp-drawer":
+      return <DrawerView />;
+    default:
+      return null;
+  }
+}

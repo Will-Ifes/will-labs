@@ -76,35 +76,73 @@ export function FloatingLayer({
         right: Math.max(0, rightEdge - rect.right - gap),
       };
       const preferred = placement === "auto" ? "bottom" : placement;
-      const opposite = { top: "bottom", bottom: "top", left: "right", right: "left" } as const;
-      const order = [preferred, opposite[preferred], ...(["bottom", "top", "right", "left"] as const)]
-        .filter((side, index, all) => all.indexOf(side) === index);
+      const opposite = {
+        top: "bottom",
+        bottom: "top",
+        left: "right",
+        right: "left",
+      } as const;
+      const order = [
+        preferred,
+        opposite[preferred],
+        ...(["bottom", "top", "right", "left"] as const),
+      ].filter((side, index, all) => all.indexOf(side) === index);
       const fits = (side: keyof typeof space) =>
-        (side === "left" || side === "right" ? desired.width : desired.height) <= space[side];
-      const side = order.find(fits) ?? order.reduce((best, candidate) =>
-        space[candidate] > space[best] ? candidate : best, order[0]);
+        (side === "left" || side === "right"
+          ? desired.width
+          : desired.height) <= space[side];
+      const side =
+        order.find(fits) ??
+        order.reduce(
+          (best, candidate) =>
+            space[candidate] > space[best] ? candidate : best,
+          order[0],
+        );
       const horizontal = side === "left" || side === "right";
       panel.style.maxWidth = `${Math.max(0, horizontal ? space[side] : width - 2 * margin)}px`;
       panel.style.maxHeight = `${Math.max(0, horizontal ? height - 2 * margin : space[side])}px`;
       const fitted = panel.getBoundingClientRect();
       const wantedLeft = horizontal
-        ? side === "right" ? rect.right + gap : rect.left - gap - fitted.width
-        : align === "center" ? rect.left + rect.width / 2 - fitted.width / 2
-        : align === "end" ? rect.right - fitted.width : rect.left;
+        ? side === "right"
+          ? rect.right + gap
+          : rect.left - gap - fitted.width
+        : align === "center"
+          ? rect.left + rect.width / 2 - fitted.width / 2
+          : align === "end"
+            ? rect.right - fitted.width
+            : rect.left;
       const wantedTop = horizontal
-        ? align === "center" ? rect.top + rect.height / 2 - fitted.height / 2
-        : align === "end" ? rect.bottom - fitted.height : rect.top
-        : side === "top" ? rect.top - gap - fitted.height : rect.bottom + gap;
-      const left = Math.max(leftEdge, Math.min(wantedLeft, rightEdge - fitted.width));
-      const top = Math.max(topEdge, Math.min(wantedTop, bottomEdge - fitted.height));
+        ? align === "center"
+          ? rect.top + rect.height / 2 - fitted.height / 2
+          : align === "end"
+            ? rect.bottom - fitted.height
+            : rect.top
+        : side === "top"
+          ? rect.top - gap - fitted.height
+          : rect.bottom + gap;
+      const left = Math.max(
+        leftEdge,
+        Math.min(wantedLeft, rightEdge - fitted.width),
+      );
+      const top = Math.max(
+        topEdge,
+        Math.min(wantedTop, bottomEdge - fitted.height),
+      );
       panel.style.left = `${Math.round(left)}px`;
       panel.style.top = `${Math.round(top)}px`;
       panel.dataset.placement = side;
-      panel.style.setProperty("--wl-arrow-left",
-        `${Math.round(Math.max(12, Math.min(fitted.width - 12, rect.left + rect.width / 2 - left)))}px`);
-      panel.style.setProperty("--wl-arrow-top",
-        `${Math.round(Math.max(12, Math.min(fitted.height - 12, rect.top + rect.height / 2 - top)))}px`);
-      panel.style.setProperty("--wl-panel-max-height", `${Math.max(0, horizontal ? height - 2 * margin : space[side])}px`);
+      panel.style.setProperty(
+        "--wl-arrow-left",
+        `${Math.round(Math.max(12, Math.min(fitted.width - 12, rect.left + rect.width / 2 - left)))}px`,
+      );
+      panel.style.setProperty(
+        "--wl-arrow-top",
+        `${Math.round(Math.max(12, Math.min(fitted.height - 12, rect.top + rect.height / 2 - top)))}px`,
+      );
+      panel.style.setProperty(
+        "--wl-panel-max-height",
+        `${Math.max(0, horizontal ? height - 2 * margin : space[side])}px`,
+      );
       panel.style.visibility = "visible";
     };
     const schedule = () => {

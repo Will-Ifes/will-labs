@@ -34,7 +34,10 @@ export function FloatingWidget({
   };
   const close = (returnFocus: boolean) => {
     setOpen(false);
-    if (returnFocus) requestAnimationFrame(() => trigger.current?.focus({ preventScroll: true }));
+    if (returnFocus)
+      requestAnimationFrame(() =>
+        trigger.current?.focus({ preventScroll: true }),
+      );
   };
   return (
     <>
@@ -43,11 +46,15 @@ export function FloatingWidget({
         type="button"
         className="wl-widget-trigger"
         data-position={position}
-        aria-label={notificationCount && notificationCount > 0 ? `${label}, ${notificationCount} notificações` : label}
+        aria-label={
+          notificationCount && notificationCount > 0
+            ? `${label}, ${notificationCount} notificações`
+            : label
+        }
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? id : undefined}
-        onClick={() => open ? close(true) : setOpen(true)}
+        onClick={() => (open ? close(true) : setOpen(true))}
       >
         <span aria-hidden="true">{icon}</span>
         {notificationCount !== undefined && notificationCount > 0 && (
@@ -70,7 +77,10 @@ export function FloatingWidget({
       >
         <header>
           <strong>{title}</strong>
-          <IconButton aria-label={`Fechar ${title}`} onClick={() => close(true)} />
+          <IconButton
+            aria-label={`Fechar ${title}`}
+            onClick={() => close(true)}
+          />
         </header>
         <div className="wl-floating-widget-body">{children}</div>
       </FloatingLayer>

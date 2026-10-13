@@ -6,7 +6,10 @@ import { LabDesign } from "./LabDesign";
 import { FlowDemo } from "./FlowDemo";
 import { AdvancedCatalog } from "./AdvancedCatalog";
 import { FoundationCatalog, foundationIds } from "./FoundationCatalog";
-import { StructureNavigationCatalog, structureNavigationIds } from "./StructureNavigationCatalog";
+import {
+  StructureNavigationCatalog,
+  structureNavigationIds,
+} from "./StructureNavigationCatalog";
 import { FormsCatalog, formIds } from "./FormsCatalog";
 import { FeedbackCatalog, feedbackIds } from "./FeedbackCatalog";
 import { LayersCatalog, layerIds } from "./LayersCatalog";
@@ -26,15 +29,113 @@ const themeNames: Record<Theme, string> = {
   "amber-dark": "Âmbar escuro",
 };
 const groups: { title: string; links: [string, string][] }[] = [
-  { title: "Guia", links: [["Visão geral", "inicio"], ["Como usar", "guia-uso"], ["Exemplos de integração", "componentes"], ["Lab de design", "lab-design"], ["Fluxos", "fluxos"]] },
-  { title: "Fundamentos", links: [["Cores", "cores"], ["Tipografia", "tipografia"], ["Espaçamento", "ritmo"], ["Dimensões", "dimensoes"], ["Movimento", "movimento"], ["Acessibilidade", "acessibilidade"], ["Grid responsivo", "comp-grid"], ["Estados e validação", "comp-states"], ["Em contexto", "contexto"]] },
-  { title: "Estrutura", links: [["Card", "comp-card"], ["Divider", "comp-divider"], ["Barra de rolagem", "comp-scrollbar"], ["Header e footer", "comp-shell"]] },
-  { title: "Ações e navegação", links: [["Botões", "comp-botoes"], ["Link", "comp-link"], ["Abas", "comp-tabs"], ["Accordion", "comp-accordion"], ["Colapsável", "comp-collapsible"], ["Breadcrumb", "comp-breadcrumb"], ["Stepper", "comp-stepper"], ["Atalhos", "comp-shortcuts"]] },
-  { title: "Formulários", links: [["Campo base", "comp-campo"], ["Campos de texto", "comp-input-texto"], ["Textarea", "comp-textarea"], ["Número", "comp-number"], ["Data", "comp-date"], ["Hora", "comp-time"], ["Data e hora", "comp-datetime"], ["Calendário", "comp-calendar"], ["Select", "comp-select"], ["Checkbox e rádio", "comp-select-options"], ["Multiselect", "comp-multiselect-tags"], ["Switch", "comp-switch"], ["Upload de arquivos", "comp-upload"]] },
-  { title: "Feedback", links: [["Feedback", "comp-feedback"], ["Avisos", "comp-alert"], ["Banner", "comp-banner"], ["Toast", "comp-toast"], ["Barra de progresso", "comp-progress"], ["Empty state", "comp-empty"], ["Skeleton", "comp-skeleton"], ["Etiquetas", "comp-tags"]] },
-  { title: "Camadas", links: [["Popover", "comp-popover"], ["Dropdown", "comp-dropdown"], ["Menu de contexto", "comp-context-menu"], ["Tooltip", "comp-tooltip"], ["Modal", "comp-modal"], ["Drawer", "comp-drawer"]] },
-  { title: "Dados e conteúdo", links: [["Tabela", "comp-table"], ["Código e dados", "comp-code-table"], ["Diagrama", "comp-diagram"], ["Avatar", "comp-avatar"], ["Imagem", "comp-image"], ["Carrossel de cards", "comp-slider"], ["Comparação de autorização", "comp-comparison"]] },
-  { title: "Fluxos compostos", links: [["Wizard", "comp-wizard"], ["Página de Lab", "comp-labpage"]] },
+  {
+    title: "Guia",
+    links: [
+      ["Visão geral", "inicio"],
+      ["Como usar", "guia-uso"],
+      ["Exemplos de integração", "componentes"],
+      ["Lab de design", "lab-design"],
+      ["Fluxos", "fluxos"],
+    ],
+  },
+  {
+    title: "Fundamentos",
+    links: [
+      ["Cores", "cores"],
+      ["Tipografia", "tipografia"],
+      ["Espaçamento", "ritmo"],
+      ["Dimensões", "dimensoes"],
+      ["Movimento", "movimento"],
+      ["Acessibilidade", "acessibilidade"],
+      ["Grid responsivo", "comp-grid"],
+      ["Estados e validação", "comp-states"],
+      ["Em contexto", "contexto"],
+    ],
+  },
+  {
+    title: "Estrutura",
+    links: [
+      ["Card", "comp-card"],
+      ["Divider", "comp-divider"],
+      ["Barra de rolagem", "comp-scrollbar"],
+      ["Header e footer", "comp-shell"],
+    ],
+  },
+  {
+    title: "Ações e navegação",
+    links: [
+      ["Botões", "comp-botoes"],
+      ["Link", "comp-link"],
+      ["Abas", "comp-tabs"],
+      ["Accordion", "comp-accordion"],
+      ["Colapsável", "comp-collapsible"],
+      ["Breadcrumb", "comp-breadcrumb"],
+      ["Stepper", "comp-stepper"],
+      ["Atalhos", "comp-shortcuts"],
+    ],
+  },
+  {
+    title: "Formulários",
+    links: [
+      ["Campo base", "comp-campo"],
+      ["Campos de texto", "comp-input-texto"],
+      ["Textarea", "comp-textarea"],
+      ["Número", "comp-number"],
+      ["Data", "comp-date"],
+      ["Hora", "comp-time"],
+      ["Data e hora", "comp-datetime"],
+      ["Calendário", "comp-calendar"],
+      ["Select", "comp-select"],
+      ["Checkbox e rádio", "comp-select-options"],
+      ["Multiselect", "comp-multiselect-tags"],
+      ["Switch", "comp-switch"],
+      ["Upload de arquivos", "comp-upload"],
+    ],
+  },
+  {
+    title: "Feedback",
+    links: [
+      ["Feedback", "comp-feedback"],
+      ["Avisos", "comp-alert"],
+      ["Banner", "comp-banner"],
+      ["Toast", "comp-toast"],
+      ["Barra de progresso", "comp-progress"],
+      ["Empty state", "comp-empty"],
+      ["Skeleton", "comp-skeleton"],
+      ["Etiquetas", "comp-tags"],
+    ],
+  },
+  {
+    title: "Camadas",
+    links: [
+      ["Popover", "comp-popover"],
+      ["Dropdown", "comp-dropdown"],
+      ["Menu de contexto", "comp-context-menu"],
+      ["Tooltip", "comp-tooltip"],
+      ["Modal", "comp-modal"],
+      ["Drawer", "comp-drawer"],
+    ],
+  },
+  {
+    title: "Dados e conteúdo",
+    links: [
+      ["Tabela", "comp-table"],
+      ["Código e dados", "comp-code-table"],
+      ["Diagrama", "comp-diagram"],
+      ["Avatar", "comp-avatar"],
+      ["Imagem", "comp-image"],
+      ["Carrossel de cards", "comp-slider"],
+      ["Comparação de autorização", "comp-comparison"],
+    ],
+  },
+  {
+    title: "Fluxos compostos",
+    links: [
+      ["Wizard", "comp-wizard"],
+      ["Página de Lab", "comp-labpage"],
+    ],
+  },
 ];
 
 function applyTheme(theme: Theme) {
@@ -154,9 +255,7 @@ export function App() {
     const saved = localStorage.getItem("wl-react-theme-choice");
     return saved && saved in themes ? (saved as Theme) : "amber-dark";
   });
-  const [route, setRoute] = useState(
-    () => location.hash.slice(1) || "inicio",
-  );
+  const [route, setRoute] = useState(() => location.hash.slice(1) || "inicio");
   const [menuOpen, setMenuOpen] = useState(false);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const shortcutTrigger = useRef<HTMLButtonElement>(null);
@@ -184,11 +283,16 @@ export function App() {
             <details className="site-nav-group" open key={group.title}>
               <summary>{group.title}</summary>
               {group.links.map(([label, id]) => (
-                  <a key={id} href={`#${id}`} aria-current={route === id ? "page" : undefined}>{label}</a>
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  aria-current={route === id ? "page" : undefined}
+                >
+                  {label}
+                </a>
               ))}
             </details>
           ))}
-
         </nav>
       </aside>
       {menuOpen && (
@@ -244,7 +348,9 @@ export function App() {
             ) : route === "avancados" ? (
               <AdvancedCatalog />
             ) : (
-              <ComponentCatalog view={route === "componentes" ? "componentes" : "inicio"} />
+              <ComponentCatalog
+                view={route === "componentes" ? "componentes" : "inicio"}
+              />
             )}
             <FirstPhaseGuide view={route} />
           </div>

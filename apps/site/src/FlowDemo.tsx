@@ -73,10 +73,14 @@ export function FlowDemo() {
           ? "Qualidade"
           : "Acessibilidade",
       flow.dueDate ? flow.dueDate.split("-").reverse().join("/") : "Sem data",
-      <Tag tone={flow.status === "Executado" ? "success" : "neutral"}>
+      <Tag
+        key="status"
+        tone={flow.status === "Executado" ? "success" : "neutral"}
+      >
         {flow.status}
       </Tag>,
       <Button
+        key="run"
         size="small"
         variant="outline"
         disabled={flow.status === "Executado"}

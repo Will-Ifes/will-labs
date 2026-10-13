@@ -1,12 +1,50 @@
-name: Design system
+name: CI
+
 on:
   push:
     branches: [main]
   pull_request:
+
 permissions:
   contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  quality:
+    name: Qualidade · formato, lint, tipos e commits
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Formato (Prettier)
+        run: npm run format:check
+      - name: Lint (oxlint)
+        run: npm run lint
+      - name: Build dos pacotes
+        run: npm run build
+      - name: Tipos (TypeScript)
+        run: npm run typecheck:react
+      - name: Mensagens de commit (PR)
+        if: github.event_name == 'pull_request'
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+      - name: Mensagens de commit (push)
+        if: github.event_name == 'push' && github.event.before != '0000000000000000000000000000000000000000'
+        run: npx commitlint --from ${{ github.event.before }} --to ${{ github.sha }} --verbose
+
   verify:
+    name: Build, testes de navegador e acessibilidade
+    needs: quality
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -15,10 +53,14 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm run verify
-      - uses: actions/upload-artifact@v4
+      - name: Instalar dependências
+        run: npm ci
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build, testes e auditoria axe
+        run: npm run verify
+      - name: Publicar evidências visuais
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: browser-evidence
