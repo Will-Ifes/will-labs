@@ -8,7 +8,7 @@
 
 Criei o Will Labs para reunir componentes, decisões de engenharia e demonstrações em uma aplicação pública. O guia HTML original já tinha uma identidade definida. A migração para React exigiu preservar essa referência e transformar os exemplos em peças reutilizáveis, com contratos, estados e comportamento verificável.
 
-Este caso apresenta o design system e o catálogo. A API, o produto OpsFlow e os Labs futuros pertencem ao roadmap. A demonstração de Fluxos ainda não tem backend.
+Este caso apresenta o design system e o catálogo. A API, o produto WilFlowLab e os Labs futuros pertencem ao roadmap. A demonstração de Fluxos ainda não tem backend.
 
 ## O recorte disponível
 
