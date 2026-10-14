@@ -413,11 +413,11 @@
   gap: 6px;
   flex-wrap: wrap;
 }
-/* Surface: blocos empilhados nunca encostam; especificidade zero para não sobrepor ajustes locais. */
+/* Zero specificity so local spacing rules still win. */
 :where(.ui-surface[data-wl-surface="content"]) > * + *:not(:empty) {
   margin-top: var(--wl-space-4);
 }
-/* Região de status vazia no fim não acrescenta respiro extra ao padding. */
+/* An empty trailing status region must not add space below the padding. */
 .ui-surface[data-wl-surface="content"] > :empty:last-child,
 .ui-surface[data-wl-surface="content"] > :has(+ :empty:last-child) {
   margin-bottom: 0;
@@ -428,18 +428,17 @@
 .ui-carousel > :last-child {
   margin-bottom: 0;
 }
-/* Tabs: o padding do painel já define o respiro; margens do conteúdo não somam a ele. */
 .ui-tabs [role="tabpanel"] > :first-child {
   margin-top: 0;
 }
 .ui-tabs [role="tabpanel"] > :last-child {
   margin-bottom: 0;
 }
-/* Carousel: cabeçalho a 16px dos cards (8px aqui + 8px de respiro do trilho), como o rodapé. */
+/* 8px here plus the track's 8px padding gives 16px. */
 .ui-carousel-head {
   margin-bottom: var(--wl-space-2);
 }
-/* Tag removível: mesma altura das demais; alvo de 24x24 (WCAG 2.2 AA). */
+/* 24x24 target meets WCAG 2.2 AA without growing the tag. */
 .ui-tag .ui-tag-remove.ui-button {
   width: 24px;
   min-width: 24px;
@@ -448,7 +447,7 @@
   padding: 0;
   font-size: 16px;
 }
-/* Título da superfície: a margem do bloco seguinte define os 16px (evita 32px antes de botões inline). */
+/* Inline-level siblings do not collapse margins, which doubled the gap to 32px. */
 .ui-surface[data-wl-surface="content"] > h2:not(:last-child) {
   margin-bottom: 0;
 }
@@ -458,7 +457,6 @@
 .ui-surface[data-wl-surface="content"] > h2 + :not(:empty) {
   margin-top: var(--wl-space-4);
 }
-/* Banner: o tom da intenção aparece no fundo, na borda e no ícone, não só na faixa lateral. */
 .ui-notice {
   --wl-notice-tone: var(--wl-info);
   grid-template-columns: 20px minmax(0, 1fr);
@@ -490,7 +488,7 @@
 .ui-notice-icon svg {
   display: block;
 }
-/* Indisponível não pode parecer um botão outline ativo: borda tracejada e texto secundário. */
+/* Dashed border keeps disabled buttons distinct from the outline variant. */
 .ui-button.ui-button:disabled:not(.ui-button--text) {
   border-style: dashed;
   border-color: var(--wl-off);
@@ -498,14 +496,12 @@
   color: var(--wl-secondary);
   cursor: not-allowed;
 }
-/* Wizard: título, stepper e painel no ritmo de 16px. */
 .ui-wizard {
   gap: var(--wl-space-4);
 }
 .ui-wizard > h2 {
   margin: 0;
 }
-/* Select e Multiselect leem como campo, não como botão: texto do valor igual ao dos inputs. */
 .wl-react-select-trigger.ui-button {
   color: var(--wl-text);
   font-weight: 400;
@@ -513,13 +509,11 @@
 .wl-react-select-trigger [data-placeholder] {
   color: var(--wl-secondary);
 }
-/* Progress: rótulo com o mesmo papel tipográfico dos labels de campo. */
 .ui-progress > label {
   font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
 }
-/* Controles compostos (input + botões) com a mesma altura externa dos inputs simples. */
 .wl-react-field-control .ui-input,
 .ui-number-control .ui-number-input.ui-input {
   min-height: 38px;
@@ -544,12 +538,11 @@
     min-height: 36px;
     height: 36px;
   }
-  /* Mantém a diferença de tamanho no toque (a regra global eleva tudo a 44px). */
+  /* The global coarse-pointer rule raises every button to 44px. */
   .ui-button.ui-button--large.ui-button--large {
     min-height: 48px;
   }
 }
-/* FieldLabel: mesma tipografia e distância até o controle em todos os campos. */
 .ui-field:has(> .ui-field-label) {
   align-content: start;
 }

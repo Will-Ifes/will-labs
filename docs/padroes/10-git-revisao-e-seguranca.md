@@ -39,7 +39,7 @@ O CI precisa estar verde para o merge.
 - [ ] Arquivos e nomes seguem [02](02-estrutura-de-arquivos.md) e [03](03-nomenclatura.md).
 - [ ] Sem `any`, `!`, `enum`, `@ts-ignore` ou `as` em dado externo ([04](04-typescript.md)).
 - [ ] Reutiliza primitivas existentes; nada duplicado ([05](05-componentes.md)).
-- [ ] Funções curtas, sem número mágico, sem `catch` vazio ([06](06-funcoes-e-codigo-limpo.md)).
+- [ ] Funções curtas, sem número mágico, sem `catch` vazio; comentários só se indispensáveis, em inglês, até 3 linhas ([06](06-funcoes-e-codigo-limpo.md)).
 - [ ] DTO não chega a componente; texto de interface fora do modelo ([07](07-dados-dto-e-estado.md)).
 - [ ] Sem cor fixa, espaço fora da escala ou `!important` novo ([08](08-estilos-e-tokens.md)).
 - [ ] Teclado, foco, contraste e alvo de toque conferidos.

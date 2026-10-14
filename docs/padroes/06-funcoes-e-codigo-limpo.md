@@ -107,18 +107,27 @@ Textos de interface repetidos em mais de um lugar viram constante no módulo de 
 - Mensagem para o usuário diz o que aconteceu e o que fazer. Mensagem para o log diz onde e com que dados.
 - Nunca exiba stack trace ou detalhes internos na interface.
 
-## Comentários
+## Comentários (obrigatório, regra do repositório)
 
-- Explicam **por que**, nunca **o quê**. O código diz o quê.
-- Um bom comentário diz qual problema uma linha estranha evita:
+- **Só quando o código não consegue se explicar sozinho.** Antes de comentar, tente um nome melhor, uma função extraída ou uma constante nomeada.
+- **Em inglês**, como o resto do código ([ADR-013](../adr/ADR-013-comentarios.md)).
+- **No máximo 3 linhas; de preferência 1.**
+- Explicam **por que** (um bug evitado, um limite externo, uma armadilha), nunca **o quê**.
 
 ```ts
-// Foco no primeiro item depois do commit: os itens já existem no portal.
+// Focus after commit; a rAF delay could land after the user moved focus.
 useEffect(() => { ... }, [open]);
 ```
 
+| Não comente                                      | Faça em vez disso                               |
+| ------------------------------------------------ | ----------------------------------------------- |
+| `// Wizard: title, stepper and panel 16px apart` | Nada: o CSS já diz                              |
+| `// increment counter`                           | Nada: `count += 1` já diz                       |
+| `// 2000 ms of feedback`                         | `const COPY_FEEDBACK_MS = 2000`                 |
+| Bloco explicando um algoritmo longo              | Extrair funções com nomes que contam a história |
+
 - Código comentado não é commitado. O histórico do Git guarda o que foi removido.
-- `TODO` só com referência a uma issue: `// TODO(#42): remover após migrar o Select`.
+- `TODO` só com referência a uma issue: `// TODO(#42): remove after the Select migration`.
 
 ## Duplicação
 

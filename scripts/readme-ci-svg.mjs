@@ -1,7 +1,4 @@
-// Gera assets/readme/ci-pipeline.svg, a ilustração do pipeline usada no README.
-// É uma ilustração das etapas configuradas em .github/workflows/ci.yml, não um status:
-// o resultado real de cada execução aparece no badge do GitHub Actions.
-// Ao mudar o workflow, atualize JOBS e rode `node scripts/readme-ci-svg.mjs`.
+// Illustration of the configured CI jobs, not a status. Keep JOBS in sync with ci.yml.
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const JOBS = [
@@ -34,7 +31,7 @@ const JOBS = [
   },
 ];
 
-// Paleta do tema Âmbar escuro (packages/tokens/themes.json).
+// Amber dark palette from packages/tokens/themes.json.
 const C = {
   bg: "#241C16",
   surface: "#32271E",

@@ -1,6 +1,6 @@
 # 3. Nomenclatura
 
-Idioma: **nomes de código em inglês**, porque APIs, props e bibliotecas são em inglês e misturar idiomas num mesmo identificador (`aoClicarBotao`) dificulta a busca. **Textos visíveis, comentários e documentação em português brasileiro. Testes inteiros em inglês** (ver [09-testes.md](09-testes.md)).
+Idioma: **nomes de código em inglês**, porque APIs, props e bibliotecas são em inglês e misturar idiomas num mesmo identificador (`aoClicarBotao`) dificulta a busca. **Textos visíveis e documentação em português brasileiro. Comentários de código e testes inteiros em inglês** (ver [06](06-funcoes-e-codigo-limpo.md) e [09](09-testes.md)).
 
 ## Tabela de referência (obrigatório)
 

@@ -1,4 +1,3 @@
-// Commits seguem docs/padroes/10-git-revisao-e-seguranca.md: tipo(escopo): resumo.
 export default {
   extends: ["@commitlint/config-conventional"],
   rules: {
@@ -19,7 +18,7 @@ export default {
         "revert",
       ],
     ],
-    // Resumos em português começam com letra minúscula ou nome próprio (Select, Dropdown).
+    // Portuguese summaries may start with a component name such as Select.
     "subject-case": [0],
     "header-max-length": [2, "always", 100],
     "body-max-line-length": [1, "always", 100],

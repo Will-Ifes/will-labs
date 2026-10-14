@@ -54,7 +54,7 @@ Controles compostos (input com botão) medem o mesmo por fora. Os botões intern
 - Seletores de no máximo 3 níveis. Sem seletor por id. Sem estilizar por tag solta fora de um bloco.
 - Para vencer uma regra existente, repita a classe (`.ui-button.ui-button`). **`!important` é proibido** em código novo.
 - Regras gerais que podem ser sobrescritas localmente usam `:where()`, com especificidade zero.
-- Toda regra que não é óbvia ganha um comentário de uma linha com o motivo.
+- Comentário em CSS segue a regra de [06](06-funcoes-e-codigo-limpo.md#comentários-obrigatório-regra-do-repositório): só se o motivo não for óbvio, em inglês, uma linha.
 
 ## Responsividade e movimento
 

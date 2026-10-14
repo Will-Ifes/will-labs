@@ -380,7 +380,6 @@ input {
   justify-items: start;
   gap: 16px;
 }
-/* Mesmo título das demais views (ver .site-page-head h1). */
 .site-react-catalog-intro h1 {
   margin: 0;
   font: 600 clamp(2.25rem, 4vw, 3.25rem)/1.12 var(--wl-font-display);

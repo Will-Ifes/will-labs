@@ -27,5 +27,6 @@
 - [ ] Reutiliza tokens e primitivas; sem cor fixa, espaço fora da escala ou `!important`.
 - [ ] Teclado, foco, contraste e alvo de toque conferidos.
 - [ ] Testes novos em inglês, com `describe` / `context` / `it("should ...")`.
+- [ ] Comentários só onde o código não se explica, em inglês, no máximo 3 linhas.
 - [ ] ADR, changelog e documentação atualizados quando aplicável.
 - [ ] O guia original (`/design-system`) continua igual, ou a mudança é intencional e explicada.

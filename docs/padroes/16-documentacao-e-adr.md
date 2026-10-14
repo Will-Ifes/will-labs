@@ -66,10 +66,10 @@ Todo pacote em `packages/` tem README com: o que é, instalação, exemplo míni
 
 ## Comentários de API pública
 
-Componentes e funções exportados por pacotes têm um comentário TSDoc de uma ou duas linhas dizendo o que fazem e qualquer restrição não óbvia (formato de data, unidade, efeito colateral). Não repita o que o tipo já diz.
+Só quando o nome e os tipos não bastam: um TSDoc de uma linha, em inglês, com a restrição não óbvia (formato de data, unidade, efeito colateral). Não repita o que o tipo já diz. Mesma regra de [06](06-funcoes-e-codigo-limpo.md#comentários-obrigatório-regra-do-repositório).
 
 ```ts
-/** Campo de data civil. `value` é AAAA-MM-DD; nunca converte para instante UTC. */
+/** Civil date: `value` is YYYY-MM-DD and never converted to a UTC instant. */
 export function DateField(props: DateFieldProps) { ... }
 ```
 

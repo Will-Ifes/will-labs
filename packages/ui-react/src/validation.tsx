@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-/** Label acima do campo. Usa `<span>` quando o controle não é nativo (ex.: botão de Select). */
+/** Renders a `<span>` when the control is not a native input (e.g. the Select button). */
 export function FieldLabel({
   id,
   htmlFor,

@@ -140,7 +140,7 @@ try {
     if (width === 390)
       check(
         `${width} diagram starts at main flow`,
-        // O guia rola o diagrama depois do layout; espera o estado em vez de ler uma vez só.
+        // The guide scrolls the diagram after layout, so poll instead of reading once.
         await page
           .locator('[data-view="comp-diagram"] .ui-diagram-scroll')
           .evaluate(
