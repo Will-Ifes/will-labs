@@ -48,17 +48,17 @@ O que fica mais fácil, o que fica mais difícil, o que precisa ser revisto e qu
 
 ### ADRs já previstas pelo plano
 
-| ADR | Assunto                     | Sprint |
-| --- | --------------------------- | ------ |
-| 003 | Idioma do conteúdo (aceita) | 0      |
-| 005 | Banco de dados              | 2      |
-| 006 | Estratégia de sessão        | 4      |
-| 007 | Pirâmide de testes e runner | 5      |
-| 008 | Registrador e DNS           | 8      |
-| 009 | Redis                       | 12     |
-| 010 | Resiliência de integrações  | 14     |
+| ADR | Assunto                              | Sprint |
+| --- | ------------------------------------ | ------ |
+| 003 | Idioma do conteúdo (aceita)          | 0      |
+| 005 | Banco de dados (aceita)              | 2      |
+| 006 | Estratégia de sessão                 | 4      |
+| 007 | Pirâmide de testes e runner (aceita) | 5      |
+| 008 | Registrador e DNS                    | 8      |
+| 009 | Redis                                | 12     |
+| 010 | Resiliência de integrações           | 14     |
 
-Este guia ainda pede ADRs para: linguagem e framework do backend, gerenciamento de estado do frontend se surgir necessidade, e biblioteca de validação.
+Também aceitas: ADR-011 (hospedagem) e ADR-012 (API: TypeScript, Hono e Zod). Ainda falta ADR para gerenciamento de estado do frontend, se surgir necessidade.
 
 ## README de pacote
 
