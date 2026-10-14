@@ -52,8 +52,8 @@ export function CaseStudy() {
         </p>
         <p>
           O recorte deste caso é o design system e seu catálogo. O produto
-          OpsFlow, a API e os Labs futuros pertencem ao roadmap; a demonstração
-          de Fluxos ainda não tem backend.
+          WilFlowLab, a API e os Labs futuros pertencem ao roadmap; a
+          demonstração de Fluxos ainda não tem backend.
         </p>
       </Surface>
 
