@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./.github/readme-cover.svg" alt="Will Labs: Interfaces reais. Decisões visíveis." width="100%" />
+</p>
+
 <div align="center">
 
 # Will Labs
@@ -15,15 +19,24 @@
 </a>
 <p align="center"><sub>Etapas configuradas no CI. O resultado real de cada execução é o badge acima.</sub></p>
 
+## Explore o diferencial
+
+| Ponto de entrada | O que observar |
+| --- | --- |
+| [Do contrato ao componente](packages/ui-react) | O pacote React permite seguir a implementação além da demonstração. |
+| [Evidência de navegador](evidence/VIEW-AUDIT.md) | A auditoria registra verificações e limites da avaliação por view. |
+
 ## Em números
 
 |        40         |           8            |           61            |              0              |
 | :---------------: | :--------------------: | :---------------------: | :-------------------------: |
-| componentes React | temas (claro e escuro) | views auditadas com axe | violações de acessibilidade |
+| componentes React | temas (claro e escuro) | views auditadas com axe | violações detectadas pelo axe |
 
 <sub>Medido em 13/10/2026. Fontes: exports de `@will-labs/ui-react`, `themes.json` e [`evidence/VIEW-AUDIT.md`](evidence/VIEW-AUDIT.md).</sub>
 
-## O que o CI garante
+A avaliação automática cobre os cenários registrados e não substitui testes manuais com tecnologias assistivas.
+
+## O que o CI verifica
 
 |     | Etapa                                                                    | Reprova quando                                                          |
 | :-: | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
@@ -32,19 +45,19 @@
 |  ✓  | **Tipos** (TypeScript estrito, [tsconfig.base.json](tsconfig.base.json)) | há erro de tipo                                                         |
 |  ✓  | **Commits** (commitlint)                                                 | a mensagem foge de `tipo(escopo): resumo`                               |
 |  ✓  | **Interação** (Playwright)                                               | teclado, foco ou estado falha em 1440 ou 390 px, nos 8 temas            |
-|  ✓  | **Acessibilidade** (axe)                                                 | há violação WCAG 2.1 AA                                                 |
+|  ✓  | **Acessibilidade** (axe)                                                 | axe identifica uma violação nos cenários auditados                                                 |
 |  ✓  | **Firefox e WebKit** (smoke test)                                        | Dropdown, Select ou carregamento falham nesses motores                  |
 
 ## O que ainda não é medido
 
 |     | Lacuna                            | Situação                                                                           |
 | :-: | --------------------------------- | ---------------------------------------------------------------------------------- |
-|  —  | Testes unitários e cobertura      | Previsto na Sprint 5                                                               |
-|  —  | Comparação visual automática      | Capturas geradas, sem comparação                                                   |
-|  —  | Leitor de tela                    | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
-|  —  | Firefox e WebKit                  | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium  |
-|  —  | Desempenho (Web Vitals)           | Previsto na Sprint 12                                                              |
-|  —  | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min                                       |
+|  ·  | Testes unitários e cobertura      | Previsto na Sprint 5                                                               |
+|  ·  | Comparação visual automática      | Capturas geradas, sem comparação                                                   |
+|  ·  | Leitor de tela                    | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
+|  ·  | Firefox e WebKit                  | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium  |
+|  ·  | Desempenho (Web Vitals)           | Previsto na Sprint 12                                                              |
+|  ·  | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min                                       |
 
 ## Onde o projeto está
 
