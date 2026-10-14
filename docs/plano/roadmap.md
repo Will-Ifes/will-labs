@@ -366,7 +366,7 @@ Dezesseis Labs, todos alimentados pelo mesmo produto. "Entra em" diz quando o La
 | 13  | Integrations                | REST, GraphQL, webhooks, retries, timeout, idempotência       | v0.4     | 14     |
 | 14  | AI for Developers           | LLM API, RAG, tool calling, custo de token, prompt injection  | v0.5     | 15     |
 | 15  | Engineering Decisions       | Trade-offs, restrições, alternativas, ADR, medição            | v0.4     | 16     |
-| 16  | Languages                   | O mesmo problema em linguagens diferentes                     | backlog  | 16     |
+| 16  | Languages                   | O mesmo problema em linguagens diferentes                     | v1.0     | 16     |
 
 O Lab 03 não tem sprint própria no PDF: o conteúdo nasce do frontend das Sprints 2 e 3 e precisa de uma sprint definida.
 
@@ -415,7 +415,7 @@ Revisadas ao fim de cada fase.
 | Labs publicados                   | 6                  | 16                 | 0                                        |
 | ADRs escritas                     | 8                  | 25                 | 10 (001–005, 007, 011–013 e ADR do nome) |
 | Cobertura de testes no WilFlowLab | 60%                | 75%                | — (produto não iniciado)                 |
-| Tempo de build e deploy           | < 6 min            | < 4 min            | ~8,5 min (CI do design system)           |
+| Tempo de build e deploy           | < 6 min            | < 4 min            | ~6 min (CI do design system, PR 9)       |
 | Custo mensal                      | R$ 0               | < R$ 30            | R$ 0                                     |
 | Artigos publicados                | 4                  | 16                 | 0                                        |
 
