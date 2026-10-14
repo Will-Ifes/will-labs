@@ -49,10 +49,24 @@ Abra https://will-ifes.github.io/will-labs/ e marque cada item. Anote o que foi 
 - [ ] O erro de nome vazio é anunciado.
 - [ ] A tabela é lida com cabeçalhos de coluna.
 
+## Pré-checagem automática (14/10/2026)
+
+Antes do teste com leitor de tela, a árvore de acessibilidade do catálogo (o que o navegador entrega ao NVDA) foi conferida item a item em Chromium, em 1280 px. **Resultado: 26 de 26 itens ok.** Isso reduz o risco, mas não substitui ouvir a página: ordem de leitura, verbosidade e anúncios ao vivo só um leitor de tela confirma.
+
+| Área      | Verificado                                                                                                                                                       | Resultado |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Estrutura | Título da página; um `h1` por view (5 views); títulos sem pular nível; navegação como landmark; item atual com `aria-current`                                    | Ok        |
+| Campos    | Todo controle com nome acessível em Campo base, Select, Data, Multiselect e Fluxos; Select abre a lista pelo teclado e foca uma opção                            | Ok        |
+| Camadas   | Modal é `dialog` nativo modal, com nome; Esc fecha e devolve o foco ao botão; Dropdown exposto como `menu` com `menuitem`; tooltip ligado por `aria-describedby` | Ok        |
+| Camadas   | Tab dentro do modal: o foco circula pelos botões do modal e passa pela barra do navegador, sem alcançar o conteúdo da página (comportamento nativo do `dialog`)  | Ok        |
+| Feedback  | Avisos com `role="status"` ou `"alert"`; toast com `role="status"`; barra de progresso com nome e valor                                                          | Ok        |
+| Fluxos    | Erro de nome vazio numa região `status`; tabela com 9 cabeçalhos com `scope` e `caption`                                                                         | Ok        |
+
 ## Registro
 
 Para cada problema, abra uma issue com: leitor, navegador, view, passo, o que foi falado e o que deveria ser falado. Ao terminar, registre aqui a data e o resultado.
 
-| Data | Leitor e navegador | Resultado           | Issues |
-| ---- | ------------------ | ------------------- | ------ |
-| —    | —                  | Ainda não executado | —      |
+| Data       | Leitor e navegador                                           | Resultado           | Issues |
+| ---------- | ------------------------------------------------------------ | ------------------- | ------ |
+| 14/10/2026 | Pré-checagem automática (Chromium, árvore de acessibilidade) | 26/26 ok            | —      |
+| —          | NVDA                                                         | Ainda não executado | —      |
