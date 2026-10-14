@@ -88,8 +88,7 @@ export function Select({
       controller.abort();
     };
   }, [open, query, retry, !!loadOptions]);
-  // Foco inicial só ao abrir, logo após o commit. Um quadro de atraso deixava
-  // o foco voltar para a opção atual depois que o usuário já tinha navegado.
+  // Focus only on open, right after commit; a rAF delay stole focus back.
   useEffect(() => {
     if (!open) return;
     if (loadOptions) search.current?.focus();

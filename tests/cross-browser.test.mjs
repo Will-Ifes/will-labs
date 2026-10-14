@@ -1,5 +1,4 @@
-// Smoke test do catálogo React em Firefox e WebKit. O restante da suíte roda em Chromium.
-// Estrutura segue docs/padroes/09-testes.md: describe (alvo) → context (situação) → it ("should …").
+// The full suite runs on Chromium; this covers Firefox and WebKit.
 import assert from "node:assert/strict";
 import { after, before, describe, it } from "node:test";
 import { firefox, webkit } from "playwright";

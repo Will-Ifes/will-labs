@@ -170,7 +170,7 @@ export function Dropdown({
     if (focus) trigger.current?.focus({ preventScroll: true });
   };
   const show = () => setOpen(true);
-  // Foco no primeiro item depois do commit: os itens já existem no portal.
+  // Focus after commit; a rAF delay could land after the user moved focus.
   useEffect(() => {
     if (open)
       options.current

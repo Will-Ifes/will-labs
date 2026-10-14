@@ -10,6 +10,7 @@
 ## Padrões de código
 
 Siga `docs/padroes/README.md`: estrutura, TypeScript, React, foco, acessibilidade, tokens, testes e commits.
+Comentários de código só onde o código não se explica sozinho, em inglês, no máximo 3 linhas (de preferência 1).
 
 ## Contrato do Design System
 

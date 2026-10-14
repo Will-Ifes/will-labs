@@ -1,6 +1,6 @@
 # ADR-003 — Idioma do conteúdo e do código
 
-Status: aceito em 13/10/2026.
+Status: aceito em 13/10/2026. A linha sobre comentários de código foi substituída pela [ADR-013](ADR-013-comentarios.md).
 Labs relacionados: 03-frontend, 10-documentation
 
 ## Contexto

@@ -488,7 +488,7 @@ export function Banner({
   children: ReactNode;
   kind?: "info" | "success" | "warning" | "danger";
 }) {
-  // Formas diferentes por intenção: o significado não depende só da cor.
+  // Distinct shapes per kind so meaning never depends on color alone.
   const symbols = {
     info: (
       <>
