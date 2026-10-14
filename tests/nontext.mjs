@@ -1,9 +1,9 @@
 import { chromium } from "playwright";
 import { writeFile } from "node:fs/promises";
-const b = await chromium.launch({
+const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || undefined,
 });
-const p = await b.newPage();
+const p = await browser.newPage();
 const rows = [];
 await p.goto(process.env.BASE_URL || "http://localhost:4174/design-system");
 await p.locator(".docs-brand").waitFor();
@@ -28,7 +28,7 @@ for (const theme of [
     await p
       .locator(".ui-input")
       .first()
-      .evaluate((e, theme) => {
+      .evaluate((e, themeName) => {
         const c = (s) =>
             s
               .match(/[\d.]+/g)
@@ -45,7 +45,7 @@ for (const theme of [
             (Math.max(l(a), l(b)) + 0.05) / (Math.min(l(a), l(b)) + 0.05);
         const s = getComputedStyle(e);
         return {
-          theme,
+          theme: themeName,
           control: "input",
           border: ratio(s.borderTopColor, s.backgroundColor),
           focus: ratio(s.outlineColor, s.backgroundColor),
@@ -62,7 +62,7 @@ for (const theme of [
     if (state === "on") await sw.click();
     rows.push(
       await sw.evaluate(
-        (e, { theme, state }) => {
+        (e, { theme: themeName, state: stateName }) => {
           const c = (s) =>
               s
                 .match(/[\d.]+/g)
@@ -85,8 +85,8 @@ for (const theme of [
               e.closest("[data-wl-surface]"),
             ).backgroundColor;
           return {
-            theme,
-            control: "switch " + state,
+            theme: themeName,
+            control: "switch " + stateName,
             thumb: ratio(thumb, track),
             boundary: ratio(track, surface),
           };
@@ -96,7 +96,7 @@ for (const theme of [
     );
   }
 }
-await b.close();
+await browser.close();
 await writeFile("evidence/nontext.json", JSON.stringify(rows, null, 2));
 console.log(JSON.stringify(rows, null, 2));
 if (

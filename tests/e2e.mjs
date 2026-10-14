@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import AxeBuilder from "@axe-core/playwright";
+import { AxeBuilder } from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 const base = process.env.BASE_URL || "http://localhost:4174/design-system";

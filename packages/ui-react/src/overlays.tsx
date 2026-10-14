@@ -1,12 +1,15 @@
 import {
   useEffect,
+  useEffectEvent,
   useId,
   useRef,
   useState,
+  type KeyboardEvent,
   type ReactNode,
   type RefObject,
 } from "react";
-import { Button, IconButton, type ButtonVariant } from "./index";
+import { Button, type ButtonVariant } from "./Button";
+import { IconButton } from "./IconButton";
 import { FloatingLayer } from "./floating";
 
 export type DialogProps = {
@@ -29,8 +32,7 @@ function DialogBase({
   const ref = useRef<HTMLDialogElement>(null);
   const id = useId();
   const wasOpen = useRef(false);
-  const closeRef = useRef(onClose);
-  closeRef.current = onClose;
+  const requestClose = useEffectEvent(onClose);
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
@@ -49,19 +51,24 @@ function DialogBase({
     if (!dialog) return;
     const cancel = (event: Event) => {
       event.preventDefault();
-      closeRef.current();
+      requestClose();
+    };
+    // Backdrop clicks land on the dialog itself; Escape (cancel) is the keyboard path.
+    const backdrop = (event: MouseEvent) => {
+      if (event.target === dialog) requestClose();
     };
     dialog.addEventListener("cancel", cancel);
-    return () => dialog.removeEventListener("cancel", cancel);
+    dialog.addEventListener("mousedown", backdrop);
+    return () => {
+      dialog.removeEventListener("cancel", cancel);
+      dialog.removeEventListener("mousedown", backdrop);
+    };
   }, []);
   return (
     <dialog
       ref={ref}
       className={`wl-react-dialog ${drawer ? "wl-react-drawer" : "wl-react-modal"}`}
       aria-labelledby={`${id}-title`}
-      onMouseDown={(event) => {
-        if (event.target === ref.current) onClose();
-      }}
     >
       <div className="wl-react-dialog-layout">
         <header>
@@ -177,7 +184,7 @@ export function Dropdown({
         .find((item) => item && !item.disabled)
         ?.focus({ preventScroll: true });
   }, [open]);
-  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const moveFocus = (event: KeyboardEvent<HTMLButtonElement>) => {
     const enabled = options.current.filter(
       (item): item is HTMLButtonElement => !!item && !item.disabled,
     );
@@ -227,25 +234,24 @@ export function Dropdown({
         minWidth
         className="wl-react-menu"
       >
-        <div onKeyDown={onKeyDown}>
-          {items.map((item, index) => (
-            <button
-              key={item.id}
-              ref={(node) => {
-                options.current[index] = node;
-              }}
-              type="button"
-              role="menuitem"
-              disabled={item.disabled}
-              onClick={() => {
-                onSelect(item);
-                close(true);
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {items.map((item, index) => (
+          <button
+            key={item.id}
+            ref={(node) => {
+              options.current[index] = node;
+            }}
+            type="button"
+            role="menuitem"
+            disabled={item.disabled}
+            onKeyDown={moveFocus}
+            onClick={() => {
+              onSelect(item);
+              close(true);
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
       </FloatingLayer>
     </>
   );

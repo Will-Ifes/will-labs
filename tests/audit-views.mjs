@@ -1,5 +1,5 @@
 import { chromium } from "playwright";
-import AxeBuilder from "@axe-core/playwright";
+import { AxeBuilder } from "@axe-core/playwright";
 import { writeFile } from "node:fs/promises";
 const b = await chromium.launch({
   executablePath: process.env.CHROME_PATH || undefined,

@@ -51,34 +51,45 @@ function Page({
 }
 const code =
   "if (!canEdit(user, flow)) {\n  return response.status(403);\n}\nawait updateFlow(flow);";
-const rows: TableRow[] = [
+type ExecutionStatus = "Concluída" | "Em andamento" | "Falhou";
+type ExecutionRow = readonly [
+  id: string,
+  flow: string,
+  started: string,
+  status: ExecutionStatus,
+  duration: string,
+];
+const executions: readonly ExecutionRow[] = [
   ["#1042", "Revisão de publicação", "23 set · 09:40", "Concluída", "4m 18s"],
   ["#1041", "Verificação do release", "23 set · 09:12", "Em andamento", "—"],
   ["#1040", "Importação de dados", "22 set · 17:25", "Falhou", "1m 32s"],
   ["#1039", "Backup diário", "22 set · 08:00", "Concluída", "6m 04s"],
   ["#1038", "Revisão de acesso", "21 set · 14:16", "Concluída", "2m 51s"],
   ["#1037", "Publicação do Lab", "21 set · 10:30", "Em andamento", "—"],
-].map(([id, flow, started, status, duration]) => ({
-  id,
-  cells: [
+];
+const rows: TableRow[] = executions.map(
+  ([id, flow, started, status, duration]) => ({
     id,
-    flow,
-    started,
-    <Tag
-      key="status"
-      tone={
-        status === "Concluída"
-          ? "success"
-          : status === "Falhou"
-            ? "danger"
-            : "info"
-      }
-    >
-      {status}
-    </Tag>,
-    duration,
-  ],
-}));
+    cells: [
+      id,
+      flow,
+      started,
+      <Tag
+        key="status"
+        tone={
+          status === "Concluída"
+            ? "success"
+            : status === "Falhou"
+              ? "danger"
+              : "info"
+        }
+      >
+        {status}
+      </Tag>,
+      duration,
+    ],
+  }),
+);
 function ExecutionTable() {
   return (
     <Table

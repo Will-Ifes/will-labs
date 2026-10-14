@@ -1,4 +1,4 @@
-import { useCallback, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   Banner,
   Button,
@@ -43,7 +43,7 @@ function Page({
 }
 function FeedbackView() {
   const [open, setOpen] = useState(false),
-    close = useCallback(() => setOpen(false), []);
+    close = () => setOpen(false);
   return (
     <Page
       view="comp-feedback"
@@ -150,7 +150,7 @@ function ToastView() {
       "info",
     ),
     [open, setOpen] = useState(false),
-    close = useCallback(() => setOpen(false), []);
+    close = () => setOpen(false);
   return (
     <Page
       view="comp-toast"

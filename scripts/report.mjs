@@ -1,21 +1,10 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 const read = (name) =>
   JSON.parse(readFileSync(`evidence/${name}.json`, "utf8"));
-const results = read("results");
 const axe = read("all-views-axe");
-const states = read("states");
-const nontext = read("nontext");
-const finalChecks = existsSync("evidence/audit-final.json")
-  ? read("audit-final").checks.length
-  : 0;
 const unique = [...new Map(axe.map((item) => [item.view, item])).values()];
 const migrated = unique.filter((item) => item.status === "migrated").length;
 const violations = axe.flatMap((item) => item.violations || []).length;
-const ratio = Math.min(
-  ...nontext.flatMap((item) =>
-    Object.values(item).filter((v) => typeof v === "number"),
-  ),
-);
 const foundationIds = new Set([
   "inicio",
   "cores",

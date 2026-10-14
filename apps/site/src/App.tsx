@@ -138,16 +138,19 @@ const groups: { title: string; links: [string, string][] }[] = [
   },
 ];
 
+function themeAttributes(theme: Theme): { palette: string; tone: string } {
+  const [palette, tone] = theme.split("-");
+  if (palette && tone) return { palette, tone };
+  return theme === "forest"
+    ? { palette: "forest", tone: "dark" }
+    : { palette: "paper", tone: "light" };
+}
+
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
-  const [palette, tone] = theme.includes("-")
-    ? theme.split("-")
-    : [
-        theme === "forest" ? "forest" : "paper",
-        theme === "forest" ? "dark" : "light",
-      ];
-  root.dataset.theme = tone;
-  root.dataset.palette = palette;
+  const { palette, tone } = themeAttributes(theme);
+  root.setAttribute("data-theme", tone);
+  root.setAttribute("data-palette", palette);
   localStorage.setItem("wl-react-theme-choice", theme);
 }
 function ThemePicker({

@@ -30,13 +30,13 @@ try {
   let ready = false;
   for (let i = 0; i < 40; i++) {
     if (serverError) throw serverError;
-    try {
-      const response = await fetch(`http://localhost:${port}/design-system`);
-      if (response.ok) {
-        ready = true;
-        break;
-      }
-    } catch {}
+    const response = await fetch(
+      `http://localhost:${port}/design-system`,
+    ).catch(() => null);
+    if (response?.ok) {
+      ready = true;
+      break;
+    }
     await setTimeout(100);
   }
   if (!ready) throw new Error("Servidor de teste não respondeu");

@@ -1,9 +1,27 @@
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
-import { Button, IconButton } from "./index";
+import {
+  useEffect,
+  useEffectEvent,
+  useId,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type RefObject,
+} from "react";
+import { Button } from "./Button";
+import { IconButton } from "./IconButton";
 import { FloatingLayer } from "./floating";
 import { FieldLabel, ValidationMessage } from "./validation";
 
 const EMPTY_SELECT_OPTIONS: SelectOption[] = [];
+const SEARCH_DEBOUNCE_MS = 150;
+
+type PendingLoad = { timer: number; controller: AbortController };
+function cancelPendingLoad(pending: RefObject<PendingLoad | null>) {
+  if (!pending.current) return;
+  window.clearTimeout(pending.current.timer);
+  pending.current.controller.abort();
+  pending.current = null;
+}
 const EMPTY_MULTI_OPTIONS: MultiOption[] = [];
 
 export type SelectOption = { value: string; label: string; avatar?: string };
@@ -31,8 +49,8 @@ export function Select({
   placeholder?: string;
   size?: "small" | "medium" | "large";
   disabled?: boolean;
-  help?: string;
-  error?: string;
+  help?: string | undefined;
+  error?: string | undefined;
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -40,9 +58,7 @@ export function Select({
   const [chosen, setChosen] = useState<SelectOption | null>(null);
   const [busy, setBusy] = useState(false);
   const [loadError, setLoadError] = useState(false);
-  const [retry, setRetry] = useState(0);
-  const loaderRef = useRef(loadOptions);
-  loaderRef.current = loadOptions;
+  const pendingLoad = useRef<PendingLoad | null>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const search = useRef<HTMLInputElement>(null);
   const optionRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -51,46 +67,40 @@ export function Select({
   const selected = [...options, ...loaded, ...(chosen ? [chosen] : [])].find(
     (item) => item.value === value,
   );
-  const close = (focus: boolean) => {
-    setOpen(false);
-    if (focus) trigger.current?.focus({ preventScroll: true });
-  };
-  useEffect(() => {
-    if (!open || !loadOptions) return;
+  useEffect(() => () => cancelPendingLoad(pendingLoad), []);
+  const requestOptions = (term: string) => {
+    if (!loadOptions) return;
+    cancelPendingLoad(pendingLoad);
     const controller = new AbortController();
     setBusy(true);
     setLoadError(false);
     const timer = window.setTimeout(
       () => {
-        const loader = loaderRef.current;
-        if (!loader) return;
-        loader({ query, signal: controller.signal })
+        loadOptions({ query: term, signal: controller.signal })
           .then((result) => {
-            if (!controller.signal.aborted) {
-              if (!Array.isArray(result)) throw new Error("Resposta inválida");
-              setLoaded(result);
-            }
+            if (controller.signal.aborted) return;
+            if (!Array.isArray(result)) throw new Error("Invalid response");
+            setLoaded(result);
           })
           .catch(() => {
-            if (!controller.signal.aborted) {
-              setLoaded([]);
-              setLoadError(true);
-            }
+            if (controller.signal.aborted) return;
+            setLoaded([]);
+            setLoadError(true);
           })
           .finally(() => {
             if (!controller.signal.aborted) setBusy(false);
           });
       },
-      query ? 150 : 0,
+      term ? SEARCH_DEBOUNCE_MS : 0,
     );
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [open, query, retry, !!loadOptions]);
-  // Focus only on open, right after commit; a rAF delay stole focus back.
-  useEffect(() => {
-    if (!open) return;
+    pendingLoad.current = { timer, controller };
+  };
+  const close = (focus: boolean) => {
+    cancelPendingLoad(pendingLoad);
+    setOpen(false);
+    if (focus) trigger.current?.focus({ preventScroll: true });
+  };
+  const focusInitialOption = useEffectEvent(() => {
     if (loadOptions) search.current?.focus();
     else
       optionRefs.current[
@@ -99,11 +109,16 @@ export function Select({
           items.findIndex((item) => item.value === value),
         )
       ]?.focus();
+  });
+  // Focus only on open, right after commit; a rAF delay stole focus back.
+  useEffect(() => {
+    if (open) focusInitialOption();
   }, [open]);
   const show = () => {
     if (!disabled) {
       setQuery("");
       setOpen(true);
+      requestOptions("");
     }
   };
   const choose = (item: SelectOption) => {
@@ -111,7 +126,7 @@ export function Select({
     onChange(item.value);
     close(true);
   };
-  const move = (event: KeyboardEvent<HTMLDivElement>) => {
+  const move = (event: KeyboardEvent<HTMLElement>) => {
     if (
       !["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key) ||
       !items.length
@@ -181,65 +196,67 @@ export function Select({
         minWidth
         className="wl-react-select-panel"
       >
-        <div onKeyDown={move}>
-          {loadOptions && (
-            <input
-              ref={search}
-              className="ui-input"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              aria-label={`Buscar ${label}`}
-              placeholder="Buscar opção"
-            />
-          )}
-          <div className="wl-react-option-list" aria-busy={busy}>
-            {items.map((item, index) => (
-              <div
-                key={item.value}
-                ref={(node) => {
-                  optionRefs.current[index] = node;
-                }}
-                role="option"
-                tabIndex={-1}
-                aria-selected={item.value === value}
-                className="wl-react-option"
-                onClick={() => choose(item)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    choose(item);
-                  }
-                }}
-              >
-                {item.avatar && (
-                  <span className="wl-react-avatar" aria-hidden="true">
-                    {item.avatar}
-                  </span>
-                )}
-                {item.label}
-              </div>
-            ))}
-          </div>
-          <p className="wl-react-option-status" role="status">
-            {busy
-              ? "Carregando opções…"
-              : loadError
-                ? "Não foi possível carregar as opções."
-                : !items.length
-                  ? "Nenhuma opção encontrada."
-                  : ""}
-          </p>
-          {loadError && (
-            <Button
-              size="small"
-              variant="outline"
-              onClick={() => setRetry((count) => count + 1)}
+        {loadOptions && (
+          <input
+            ref={search}
+            className="ui-input"
+            type="search"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              requestOptions(event.target.value);
+            }}
+            onKeyDown={move}
+            aria-label={`Buscar ${label}`}
+            placeholder="Buscar opção"
+          />
+        )}
+        <div className="wl-react-option-list" aria-busy={busy}>
+          {items.map((item, index) => (
+            <div
+              key={item.value}
+              ref={(node) => {
+                optionRefs.current[index] = node;
+              }}
+              role="option"
+              tabIndex={-1}
+              aria-selected={item.value === value}
+              className="wl-react-option"
+              onClick={() => choose(item)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  choose(item);
+                } else move(event);
+              }}
             >
-              Tentar novamente
-            </Button>
-          )}
+              {item.avatar && (
+                <span className="wl-react-avatar" aria-hidden="true">
+                  {item.avatar}
+                </span>
+              )}
+              {item.label}
+            </div>
+          ))}
         </div>
+        <p className="wl-react-option-status" role="status">
+          {busy
+            ? "Carregando opções…"
+            : loadError
+              ? "Não foi possível carregar as opções."
+              : !items.length
+                ? "Nenhuma opção encontrada."
+                : ""}
+        </p>
+        {loadError && (
+          <Button
+            size="small"
+            variant="outline"
+            onClick={() => requestOptions(query)}
+          >
+            Tentar novamente
+          </Button>
+        )}
       </FloatingLayer>
     </div>
   );
@@ -275,8 +292,8 @@ export function Multiselect({
   maxVisibleTags?: number;
   maxSelected?: number;
   display?: "summary" | "tags";
-  help?: string;
-  error?: string;
+  help?: string | undefined;
+  error?: string | undefined;
   disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
@@ -289,17 +306,30 @@ export function Multiselect({
   const busyRef = useRef(false);
   const requestRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
-  const loaderRef = useRef(loadOptions);
-  loaderRef.current = loadOptions;
+  const searchTimer = useRef(0);
   const trigger = useRef<HTMLButtonElement>(null);
   const search = useRef<HTMLInputElement>(null);
   const id = useId();
+  const cancelLoads = () => {
+    window.clearTimeout(searchTimer.current);
+    abortRef.current?.abort();
+    requestRef.current++;
+    busyRef.current = false;
+  };
+  useEffect(
+    () => () => {
+      window.clearTimeout(searchTimer.current);
+      abortRef.current?.abort();
+    },
+    [],
+  );
   const close = (focus: boolean) => {
+    cancelLoads();
     setOpen(false);
     if (focus) trigger.current?.focus({ preventScroll: true });
   };
   const load = async (next: string | null, append: boolean, term = query) => {
-    if (!loaderRef.current || busyRef.current) return;
+    if (!loadOptions || busyRef.current) return;
     busyRef.current = true;
     setBusy(true);
     setLoadError(false);
@@ -307,14 +337,14 @@ export function Multiselect({
     abortRef.current = controller;
     const version = ++requestRef.current;
     try {
-      const result = await loaderRef.current({
+      const result = await loadOptions({
         query: term.trim(),
         cursor: next,
         limit: pageSize,
         signal: controller.signal,
       });
       if (controller.signal.aborted || version !== requestRef.current) return;
-      if (!Array.isArray(result.items)) throw new Error("Resposta inválida");
+      if (!Array.isArray(result.items)) throw new Error("Invalid response");
       setItems((previous) => {
         const known = new Map(
           (append ? previous : []).map((item) => [item.id, item]),
@@ -334,31 +364,24 @@ export function Multiselect({
       }
     }
   };
-  useEffect(() => {
-    if (!open) return;
+  const restartSearch = (term: string) => {
     if (!loadOptions) return;
-    abortRef.current?.abort();
-    requestRef.current++;
-    busyRef.current = false;
+    cancelLoads();
     setItems([]);
     setCursor(null);
     setDone(false);
     setLoadError(false);
-    const timer = window.setTimeout(
-      () => {
-        void load(null, false, query);
-      },
-      query ? 150 : 0,
+    searchTimer.current = window.setTimeout(
+      () => void load(null, false, term),
+      term ? SEARCH_DEBOUNCE_MS : 0,
     );
-    return () => {
-      clearTimeout(timer);
-      abortRef.current?.abort();
-      requestRef.current++;
-      busyRef.current = false;
-    };
-  }, [open, query, pageSize, !!loadOptions]);
+  };
+  const show = () => {
+    setOpen(true);
+    restartSearch(query);
+  };
   useEffect(() => {
-    if (open) requestAnimationFrame(() => search.current?.focus());
+    if (open) search.current?.focus();
   }, [open]);
   const normalize = (text: string) =>
     text
@@ -373,6 +396,7 @@ export function Multiselect({
   const uniqueValue = [
     ...new Map(value.map((item) => [item.id, item])).values(),
   ];
+  const [firstValue] = uniqueValue;
   const selected = new Set(uniqueValue.map((item) => item.id));
   const visibleTags =
     maxVisibleTags === undefined
@@ -403,7 +427,7 @@ export function Multiselect({
         aria-controls={`${id}-panel`}
         aria-invalid={error ? true : undefined}
         aria-describedby={`${id}-count${error || help ? ` ${id}-message` : ""}`}
-        onClick={() => (open ? close(true) : setOpen(true))}
+        onClick={() => (open ? close(true) : show())}
       >
         <span
           id={`${id}-value`}
@@ -411,11 +435,9 @@ export function Multiselect({
           data-placeholder={uniqueValue.length ? undefined : ""}
           title={uniqueValue.map((item) => item.label).join(", ")}
         >
-          {uniqueValue.length ? (
+          {firstValue ? (
             <>
-              <span className="wl-react-multi-primary">
-                {uniqueValue[0].label}
-              </span>
+              <span className="wl-react-multi-primary">{firstValue.label}</span>
               {uniqueValue.length > 1 && (
                 <span className="wl-react-multi-more">
                   +{uniqueValue.length - 1}
@@ -498,7 +520,10 @@ export function Multiselect({
           className="ui-input"
           type="search"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            restartSearch(event.target.value);
+          }}
         />
         <div
           className="wl-react-multi-list"

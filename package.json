@@ -24,10 +24,11 @@
     "typecheck:react": "npm run typecheck -w @will-labs/ui-react && npm run typecheck -w @will-labs/site",
     "test:react": "node tests/react-site.mjs && node tests/react-advanced.mjs",
     "format:check": "prettier --check packages/ui-react apps/site tests scripts docs/padroes .github .oxlintrc.json commitlint.config.js",
-    "lint": "oxlint -c .oxlintrc.json packages/ui-react/src apps/site/src packages/tokens",
+    "lint": "oxlint -c .oxlintrc.json --deny-warnings packages/ui-react/src apps/site/src packages/tokens tests scripts commitlint.config.js",
     "lint:commits": "commitlint --from origin/main --to HEAD --verbose",
     "prepare": "git config core.hooksPath .githooks || true",
-    "test:cross-browser": "node --test tests/cross-browser.test.mjs"
+    "test:cross-browser": "node --test tests/cross-browser.test.mjs",
+    "typecheck": "npm run typecheck:react"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",

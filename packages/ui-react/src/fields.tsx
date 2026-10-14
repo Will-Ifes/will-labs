@@ -1,6 +1,7 @@
 import { NavigationIcon } from "./NavigationIcon";
 import { useEffect, useId, useRef, useState, type DragEvent } from "react";
-import { Button, IconButton } from "./index";
+import { Button } from "./Button";
+import { IconButton } from "./IconButton";
 import { FloatingLayer } from "./floating";
 import { FieldLabel, ValidationMessage } from "./validation";
 
@@ -9,8 +10,9 @@ const iso = (date: Date) =>
   `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 function parseISO(value: string) {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) return null;
-  const date = new Date(+match[1], +match[2] - 1, +match[3]);
+  const [, year, month, day] = match ?? [];
+  if (!year || !month || !day) return null;
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
   return iso(date) === value ? date : null;
 }
 const displayDate = (value: string) =>
@@ -45,8 +47,8 @@ export function DateField({
   onChange: (value: string) => void;
   min?: string;
   max?: string;
-  help?: string;
-  error?: string;
+  help?: string | undefined;
+  error?: string | undefined;
 }) {
   const [draft, setDraft] = useState(displayDate(value));
   const [internalError, setInternalError] = useState("");
@@ -62,12 +64,14 @@ export function DateField({
   const monthChoice = useRef<HTMLButtonElement>(null);
   const yearChoice = useRef<HTMLButtonElement>(null);
   const id = useId();
-  useEffect(() => {
+  const [syncedValue, setSyncedValue] = useState(value);
+  if (value !== syncedValue) {
+    setSyncedValue(value);
     setDraft(displayDate(value));
     setInternalError("");
     const parsed = parseISO(value);
     if (parsed) setMonth(new Date(parsed.getFullYear(), parsed.getMonth(), 1));
-  }, [value]);
+  }
   useEffect(() => {
     if (!open || !chooser) return;
     const frame = requestAnimationFrame(() => {
@@ -435,8 +439,8 @@ export function TimeField({
   min?: string;
   max?: string;
   stepMinutes?: number;
-  help?: string;
-  error?: string;
+  help?: string | undefined;
+  error?: string | undefined;
 }) {
   const step = Math.max(1, Math.min(60, Math.floor(stepMinutes)));
   const [draft, setDraft] = useState(value);
@@ -449,15 +453,21 @@ export function TimeField({
   const hourList = useRef<HTMLDivElement>(null),
     minuteList = useRef<HTMLDivElement>(null);
   const id = useId();
-  useEffect(() => {
+  const [syncedValue, setSyncedValue] = useState(value);
+  if (value !== syncedValue) {
+    setSyncedValue(value);
     setDraft(value);
     if (value) setInternalError("");
-  }, [value]);
+  }
   useEffect(() => {
     if (!open) return;
-    for (const list of [hourList.current, minuteList.current]) {
+    const lists = [
+      [hourList.current, hour],
+      [minuteList.current, minute],
+    ] as const;
+    for (const [list, selectedValue] of lists) {
       const selected = list?.querySelector<HTMLElement>(
-        '[aria-pressed="true"]',
+        `[data-value="${selectedValue}"]`,
       );
       if (list && selected)
         list.scrollTop =
@@ -552,6 +562,7 @@ export function TimeField({
                 <button
                   type="button"
                   key={index}
+                  data-value={index}
                   aria-label={`${pad(index)} horas`}
                   aria-pressed={hour === index}
                   onClick={() => setHour(index)}
@@ -568,6 +579,7 @@ export function TimeField({
                 <button
                   type="button"
                   key={number}
+                  data-value={number}
                   aria-label={`${pad(number)} minutos`}
                   aria-pressed={minute === number}
                   disabled={
@@ -624,36 +636,26 @@ export function FileUpload({
   const [dragging, setDragging] = useState(false);
   const [preview, setPreview] = useState("");
   const id = useId();
-  useEffect(() => {
-    if (!file || !file.type.startsWith("image/")) {
-      setPreview("");
-      return;
-    }
-    const url = URL.createObjectURL(file);
-    setPreview(url);
-    return () => URL.revokeObjectURL(url);
-  }, [file]);
+  useEffect(
+    () => () => {
+      if (preview) URL.revokeObjectURL(preview);
+    },
+    [preview],
+  );
+  const reject = (message: string) => {
+    setFile(null);
+    setPreview("");
+    setError(message);
+    onChange(null);
+  };
   const receive = (next: File | null) => {
     setDragging(false);
-    if (!next) {
-      setFile(null);
-      setError("");
-      onChange(null);
-      return;
-    }
-    if (!accept.includes(next.type)) {
-      setFile(null);
-      onChange(null);
-      setError("Formato não aceito.");
-      return;
-    }
-    if (next.size > maxBytes) {
-      setFile(null);
-      onChange(null);
-      setError(`Arquivo acima de ${Math.round(maxBytes / 1048576)} MB.`);
-      return;
-    }
+    if (!next) return reject("");
+    if (!accept.includes(next.type)) return reject("Formato não aceito.");
+    if (next.size > maxBytes)
+      return reject(`Arquivo acima de ${Math.round(maxBytes / 1048576)} MB.`);
     setFile(next);
+    setPreview(next.type.startsWith("image/") ? URL.createObjectURL(next) : "");
     setError("");
     onChange(next);
   };
@@ -695,7 +697,7 @@ export function FileUpload({
       </div>
       <ValidationMessage
         error={error}
-        help={`${accept.map((type) => type.split("/")[1].toUpperCase()).join(", ")}, até ${Math.round(maxBytes / 1048576)} MB.`}
+        help={`${accept.map((type) => type.slice(type.indexOf("/") + 1).toUpperCase()).join(", ")}, até ${Math.round(maxBytes / 1048576)} MB.`}
       />
       <p role="status" className="wl-react-upload-status">
         {file

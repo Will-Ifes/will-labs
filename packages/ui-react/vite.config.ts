@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: resolve(import.meta.dirname, "src/index.tsx"),
+      entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["es"],
       fileName: "index",
     },

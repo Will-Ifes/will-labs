@@ -1,5 +1,5 @@
 import { useId, useRef, useState, type ReactNode } from "react";
-import { IconButton } from "./index";
+import { IconButton } from "./IconButton";
 import { FloatingLayer } from "./floating";
 
 export type FloatingWidgetProps = {
