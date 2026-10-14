@@ -21,6 +21,8 @@
 
 ## Explore o diferencial
 
+**[Estudo de caso: do guia visual ao componente React](https://will-ifes.github.io/will-labs/#estudo-de-caso)** · [Versão com referências no repositório](docs/case-study.md)
+
 | Ponto de entrada | O que observar |
 | --- | --- |
 | [Do contrato ao componente](packages/ui-react) | O pacote React permite seguir a implementação além da demonstração. |

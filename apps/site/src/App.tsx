@@ -16,6 +16,7 @@ import { LayersCatalog, layerIds } from "./LayersCatalog";
 import { DataFlowCatalog, dataFlowIds } from "./DataFlowCatalog";
 import { GuideUsage } from "./GuideUsage";
 import { FirstPhaseGuide } from "./FirstPhaseGuide";
+import { CaseStudy } from "./CaseStudy";
 
 type Theme = keyof typeof themes;
 const themeNames: Record<Theme, string> = {
@@ -34,6 +35,7 @@ const groups: { title: string; links: [string, string][] }[] = [
     links: [
       ["Visão geral", "inicio"],
       ["Como usar", "guia-uso"],
+      ["Estudo de caso", "estudo-de-caso"],
       ["Exemplos de integração", "componentes"],
       ["Lab de design", "lab-design"],
       ["Fluxos", "fluxos"],
@@ -342,6 +344,8 @@ export function App() {
               <LayersCatalog view={route} />
             ) : dataFlowIds.includes(route) ? (
               <DataFlowCatalog view={route} />
+            ) : route === "estudo-de-caso" ? (
+              <CaseStudy />
             ) : route === "guia-uso" ? (
               <GuideUsage />
             ) : route === "lab-design" ? (
