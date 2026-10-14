@@ -17,6 +17,33 @@ Legenda: ✅ feito · 🟡 parcial · ⬜ não iniciado · 🔁 contínuo
 | 5   | Contas Cloudflare e Neon e segredos no GitHub                                     | ⬜         | **Will**   |
 | 6   | Teste com NVDA ([roteiro](roteiro-leitor-de-tela.md))                             | ⬜         | **Will**   |
 
+## Visão
+
+Will Labs é um laboratório público de engenharia de software: um produto real e pequeno (WilFlowLab) que cresce em público, com um Lab de ensino por trás de cada decisão técnica. Não é um portfólio com lista de tecnologias; é uma trilha em que cada Lab responde a um problema que o produto teve de verdade.
+
+**Promessa:** "Pegue uma ideia e leve até um sistema seguro, monitorado e documentado na internet, entendendo cada decisão no caminho."
+
+**Público, em ordem de prioridade:**
+
+1. Dev júnior ou pleno que programa, mas nunca colocou nada no ar sozinho (DNS, HTTPS, deploy, rollback, backup).
+2. Dev de front-end que quer entender back-end, infraestrutura e segurança sem virar SRE.
+3. Pessoa em transição de carreira que precisa de uma trilha ordenada.
+4. Recrutador ou tech lead avaliando o autor, que lê as decisões, não só o código.
+
+| Portfólio comum                  | Will Labs                                     |
+| -------------------------------- | --------------------------------------------- |
+| Mostra o resultado final         | Mostra o problema, as alternativas e o porquê |
+| Projetos independentes e parados | Um produto só, que envelhece em público       |
+| Lista tecnologias                | Justifica cada tecnologia com um gargalo real |
+| README curto                     | Documentação, ADRs, runbooks e incidentes     |
+| Ninguém aprende nada com ele     | Serve de material de estudo                   |
+
+**Fora de escopo na v1:** curso pago, plataforma de vídeo, certificação, comunidade com moderação, conteúdo em inglês. Nada disso bloqueia o lançamento.
+
+**Ciclo de todo conteúdo:** problema real no produto → alternativas → decisão (ADR) → implementação → medição → Lab publicado. Nenhum Lab começa por "o que é X".
+
+**Por que um produto de fluxos operacionais:** gera eventos, tem estados, falha de formas interessantes, pede permissões por papel e produz dados de monitoramento. Um blog não daria nada disso.
+
 ## Regras do projeto
 
 Princípios que valem para todas as sprints (PDF, "Princípios"):
@@ -50,6 +77,30 @@ Princípios que valem para todas as sprints (PDF, "Princípios"):
 **Sprint** (PDF): entregável público no ar · CI verde em `main` · changelog atualizado · ADRs da sprint escritas · retro de 15 minutos anotada.
 
 **Lab:** está em [`docs/padroes/15-labs.md`](../padroes/15-labs.md#definição-de-pronto-obrigatório-do-plano), igual ao PDF, com a data de revisão.
+
+## Visão geral das sprints
+
+Dezessete sprints em quatro fases, cerca de oito meses em ritmo de duas semanas. Cada sprint termina com algo que outra pessoa consegue ler ou usar. O primeiro lançamento público é na Sprint 3.
+
+| Sprint | Fase     | Objetivo                            | Entregável público                           | Situação |
+| ------ | -------- | ----------------------------------- | -------------------------------------------- | -------- |
+| 0      | Fundação | Decisões iniciais e repositório     | Repo público + README + 3 ADRs               | 🟡       |
+| 1      | Fundação | Design system e identidade          | Página de design system no ar                | 🟡       |
+| 2      | Fundação | WilFlowLab v0.1 rodando             | Produto com CRUD e execução                  | ⬜       |
+| 3      | Fundação | Primeiro lançamento                 | Site no ar + Labs 01 e 02                    | ⬜       |
+| 4      | Produto  | Autenticação e papéis               | WilFlowLab v0.2 com login + Lab 06 (parte 1) | ⬜       |
+| 5      | Produto  | Estratégia de testes                | Suíte de testes + Lab 05                     | ⬜       |
+| 6      | Produto  | CI/CD e automação                   | Pipeline completo + Lab 08                   | ⬜       |
+| 7      | Produto  | Dependências e supply chain         | Lab 12 + auditoria do projeto                | ⬜       |
+| 8      | Infra    | Domínio, DNS e HTTPS                | Domínio próprio + Lab 07 (parte 1)           | ⬜       |
+| 9      | Infra    | Docker, Nginx, VPS, firewall        | Lab 07 (parte 2) + Linux Lab                 | ⬜       |
+| 10     | Infra    | Segurança aplicada e Attack Lab     | Lab 06 completo                              | ⬜       |
+| 11     | Infra    | Observabilidade e backup            | WilFlowLab v0.3 + Labs 09 e 10               | ⬜       |
+| 12     | Escala   | Performance e cache                 | Lab 11 + Web Vitals medidos                  | ⬜       |
+| 13     | Escala   | Eventos, filas e tempo real         | WilFlowLab v0.4 + Lab 04                     | ⬜       |
+| 14     | Escala   | Integrações externas                | Lab 13 + integração real                     | ⬜       |
+| 15     | Escala   | IA para devs e no produto           | WilFlowLab v0.5 + Lab 14                     | ⬜       |
+| 16     | Escala   | Decisões, escala e fechamento da v1 | WilFlowLab v1.0 + Labs 15 e 16               | ⬜       |
 
 ## Fase 1 · Fundação (Sprints 0–3)
 
@@ -398,6 +449,20 @@ Acrescentado em 14/10/2026: os dois projetos voltam a ser mantidos, publicados e
 | D5  | Onde publicar os artigos: só no site ou também em plataforma externa | ⬜                                                                                  |
 | D6  | Em qual sprint entra o Lab 03 · Frontend                             | ⬜                                                                                  |
 
+## Arquitetura alvo (v1.0)
+
+Browser → CDN/Edge → BFF → APIs (fluxos, autenticação, conteúdo) → dados (Postgres, Redis) e eventos (fila). O catálogo já mostra esse diagrama no componente `Diagram`, sem afirmar que os serviços existem.
+
+Cada caixa vira uma página clicável no Infrastructure Lab (Sprint 16): por que existe, quanto custa, qual a alternativa, o que acontece se cair, como é o backup e como é monitorada.
+
+## Produção e laboratórios sob demanda
+
+| Fica sempre no ar (produção)                        | Sobe só durante o Lab                              |
+| --------------------------------------------------- | -------------------------------------------------- |
+| Site e produto (Pages), API (Workers), banco (Neon) | VPS, Docker, Kubernetes, Kafka, cargas de estresse |
+
+O leitor aprende Kubernetes sem que o projeto pague por um cluster ligado o mês inteiro. O domínio começa em subdomínio gratuito e só é comprado na Sprint 8, quando a compra vira aula.
+
 ## Hospedagem e custo
 
 Decidido na ADR-011 e no [estudo de hospedagem](estudo-de-hospedagem.md), que substitui a tabela de stack do PDF (Cloudflare Pages ou Vercel, Postgres gratuito, Redis, Sentry, Docker e Kubernetes locais, Kafka local). Custo previsto até a Sprint 7: R$ 0. Domínio (~R$ 4–6/mês) só na Sprint 8, quando a compra vira aula. Regra de gasto: subir de plano só com problema medido, registrado em ADR.
@@ -424,3 +489,7 @@ Uma fatia por sprint, nunca uma sprint inteira:
 | Lab de custos com painel de gasto real         | Lab 07       | Gasto acima de zero       |
 | Newsletter dos Labs novos                      | Product      | 6 Labs publicados         |
 | Versão em vídeo dos três Labs âncora           | Marketing    | v1.0 completa             |
+
+## Como usar este plano
+
+Marque as caixas conforme avançar e mova para o backlog o que não couber na sprint, em vez de estendê-la. Sprint que estica deixa de medir capacidade.
