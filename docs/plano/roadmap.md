@@ -38,29 +38,41 @@ Will Labs é um laboratório público de engenharia de software: um produto real
 | README curto                     | Documentação, ADRs, runbooks e incidentes     |
 | Ninguém aprende nada com ele     | Serve de material de estudo                   |
 
-**Fora de escopo na v1:** curso pago, plataforma de vídeo, certificação, comunidade com moderação, conteúdo em inglês. Nada disso bloqueia o lançamento.
+**Fora de escopo na v1:** curso pago, plataforma de vídeo, certificação, comunidade com moderação, conteúdo em inglês. Tudo isso pode vir depois; nada disso bloqueia o lançamento.
 
-**Ciclo de todo conteúdo:** problema real no produto → alternativas → decisão (ADR) → implementação → medição → Lab publicado. Nenhum Lab começa por "o que é X".
+**Ciclo do projeto:** Problema → Contexto → Alternativas → Decisão/ADR → Implementação → Medição → Documentação → Evolução, e a evolução gera o próximo problema. Nenhum Lab começa por "o que é X"; começa pelo problema que fez X existir.
 
-**Por que um produto de fluxos operacionais:** gera eventos, tem estados, falha de formas interessantes, pede permissões por papel e produz dados de monitoramento. Um blog não daria nada disso.
+### O produto
+
+O WilFlowLab é a cobaia: uma ferramenta simples de fluxos operacionais (criar um fluxo, executar, acompanhar status, ver falhas). Ele existe para gerar os problemas reais de todos os Labs.
+
+**Por que um produto de operações:** gera eventos, tem estados, falha de formas interessantes, pede permissões por papel e produz dados de monitoramento. Um blog não daria nada disso.
+
+**Escopo da v0.1, propositalmente pequeno:**
+
+- Cadastro de fluxo com nome, descrição e passos
+- Execução manual de um fluxo, com registro de início e fim
+- Lista de execuções com status: pendente, executando, concluída, falhou
+- Detalhe da execução com log dos passos
 
 ## Regras do projeto
 
 Princípios que valem para todas as sprints (PDF, "Princípios"):
 
-1. **Nada entra sem problema.** Tecnologia sem problema associado vira ruído.
-2. **Publicar pequeno e cedo.** A primeira versão pública sai com 1 produto mínimo e 2 Labs.
-3. **Toda decisão vira ADR.**
-4. **Todo Lab é reproduzível** com um comando.
-5. **Custo é conteúdo.** Preço no Lab; teto público de **R$ 50/mês**.
-6. **Laboratório pesado roda sob demanda.** Kubernetes, Kafka e estresse não ficam 24/7 no ar.
-7. **Documentação é entrega, não sobra.**
+1. **Nada entra sem problema.** Tecnologia adicionada porque existe vira ruído. Kafka só aparece quando há fila acumulando.
+2. **Publicar pequeno e cedo.** A primeira versão pública sai com 1 produto mínimo e 2 Labs, não com 16.
+3. **Toda decisão vira ADR.** Contexto, problema, opções, decisão, consequências. Sempre.
+4. **Todo Lab é reproduzível.** Quem lê consegue rodar localmente com um comando.
+5. **Custo é conteúdo.** O preço de cada serviço aparece no Lab; o teto de gasto, **R$ 50/mês**, é público.
+6. **Laboratório pesado roda sob demanda.** Kubernetes, Kafka e cargas de estresse não ficam 24/7 no ar.
+7. **Documentação é entrega, não sobra.** Um Lab sem README e sem runbook não está pronto.
 
 - **Regra de corte:** ideia que não cabe nas regras vai para o backlog, não para a sprint atual.
 - **Uma sprint** tem uma fatia do produto, o Lab que explica a decisão, as ADRs e, quando houver o que contar, um artigo.
 - **Nunca entra:** tecnologia sem problema, refatoração sem medição antes e depois, Lab sobre algo que o produto ainda não usa.
 - **Capacidade:** 8 a 12 horas por sprint de duas semanas. Se sobrar tempo, as sprints encurtam; a ordem não muda.
-- **Quadro:** no máximo **2 itens em "Em progresso"** ao mesmo tempo.
+- **Quadro:** colunas Backlog → Sprint → Em progresso → Em revisão → Publicado, com no máximo **2 itens em "Em progresso"**. O maior risco do projeto é abrir doze frentes e não fechar nenhuma.
+- **Marcos:** Sprint 3 site no ar · Sprint 7 produto confiável · Sprint 11 infra e segurança · Sprint 16 v1.0 completa.
 - **Se uma fase atrasar,** corta-se Labs da fase; o marco seguinte não é adiado.
 
 ### Cerimônias
@@ -76,7 +88,9 @@ Princípios que valem para todas as sprints (PDF, "Princípios"):
 
 **Sprint** (PDF): entregável público no ar · CI verde em `main` · changelog atualizado · ADRs da sprint escritas · retro de 15 minutos anotada.
 
-**Lab:** está em [`docs/padroes/15-labs.md`](../padroes/15-labs.md#definição-de-pronto-obrigatório-do-plano), igual ao PDF, com a data de revisão.
+**Lab:** está em [`docs/padroes/15-labs.md`](../padroes/15-labs.md#definição-de-pronto-obrigatório-do-plano), igual ao PDF, com a data de revisão. A mesma lista é a checklist de publicação, aplicada antes do merge.
+
+**Anatomia de uma página de Lab** (detalhes em `docs/padroes/15-labs.md`): título → abas Learn, Try, Code e Architecture → problema real do WilFlowLab → demonstração interativa → como corrigir → como testar → produção (custo, limites, falhas) → Labs relacionados. Formatos de demonstração padronizados como componentes: Vulnerável/Seguro, Simulador e Cenário de decisão.
 
 ## Visão geral das sprints
 
@@ -231,7 +245,7 @@ Objetivo: a jornada "do localhost à internet" completa e documentada. É a fase
 - ⬜ `www` e domínio raiz, decidindo qual é o canônico
 - ⬜ Cabeçalhos de segurança: HSTS, CSP, `X-Content-Type-Options`
 - ⬜ Simulador de DNS: o leitor configura registros e vê a resolução
-- ⬜ Lab 07 (parte 1) · Domínio, DNS e HTTPS
+- ⬜ Lab 07 (parte 1) · Domínio, DNS e HTTPS: o que acontece ao digitar uma URL, registrador × DNS × hospedagem, TLS e certificados, por que o TLS termina no proxy
 - ⬜ ADR-008: registrador e provedor de DNS
 
 ### Sprint 9 · Servidor, Linux, Docker e rede ⬜
@@ -285,7 +299,7 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 - ⬜ Revisar consultas lentas e criar os índices necessários
 - ⬜ Cache em camadas: HTTP, aplicação e Redis
 - ⬜ Medir de novo e publicar o antes e depois
-- ⬜ Lab 11 · Scale & Performance ("Redis existe aqui para demonstrar cache compartilhado, não porque o sistema precisa dele")
+- ⬜ Lab 11 · Scale & Performance: cada camada de cache, o que invalidar e quando ("Redis existe aqui para demonstrar cache compartilhado, não porque o sistema precisa dele")
 - ⬜ ADR-009: Redis, com o gargalo que o justificou
 
 ### Sprint 13 · Eventos, filas e tempo real ⬜
@@ -295,7 +309,7 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 - ⬜ Tela de execuções atualizada em tempo real via WebSocket (Durable Objects)
 - ⬜ Reprocessamento: idempotência, retentativas e fila de mensagens mortas
 - ⬜ Laboratório local de Kafka, sob demanda, com produtor e consumidor
-- ⬜ Lab 04 · Architecture: monólito × BFF × microsserviços, síncrono × assíncrono
+- ⬜ Lab 04 · Architecture: monólito × BFF × microsserviços, síncrono × assíncrono, quando um evento resolve e quando complica
 - ⬜ Tag `v0.4.0`
 
 ### Sprint 14 · Integrações externas ⬜
@@ -304,7 +318,7 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 - ⬜ Uma integração real de notificação (e-mail ou mensageria)
 - ⬜ Timeout, retentativa com backoff e circuit breaker nas chamadas externas
 - ⬜ Simular a queda de um serviço externo e demonstrar a degradação controlada
-- ⬜ Lab 13 · Integrations: REST × GraphQL × webhook, chaves de API, idempotência
+- ⬜ Lab 13 · Integrations: REST × GraphQL × webhook, chaves de API, idempotência, "o que acontece quando o serviço externo cai"
 - ⬜ ADR-010: estratégia de resiliência
 
 ### Sprint 15 · IA para devs e IA no produto ⬜
@@ -314,8 +328,8 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 - ⬜ Streaming de resposta e estados de carregamento adequados
 - ⬜ Cache de respostas, limite de uso e controle de custo por token
 - ⬜ Segurança: prompt injection, vazamento de dados no prompt, fallback quando a IA falha
-- ⬜ Lab 14 · AI for Developers: IA no desenvolvimento e no produto, RAG, tool calling, avaliação de resposta
-- ⬜ Artigo sobre quando **não** usar IA
+- ⬜ Lab 14 · AI for Developers: IA no fluxo de desenvolvimento (revisão, testes, código legado) e dentro do produto, RAG, tool calling, avaliação de resposta
+- ⬜ Artigo sobre quando **não** usar IA e escrever código normal
 - ⬜ Tag `v0.5.0`
 
 ### Sprint 16 · Decisões, escala e fechamento da v1 ⬜
@@ -332,6 +346,8 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 - ⬜ Tag `v1.0.0` e artigo de retrospectiva do primeiro ano
 
 ## Mapa dos Labs
+
+Dezesseis Labs, todos alimentados pelo mesmo produto. "Entra em" diz quando o Lab é publicado: nenhum sai antes de o WilFlowLab ter o problema que ele resolve.
 
 | #   | Lab                         | O que ensina                                                  | Entra em | Sprint |
 | --- | --------------------------- | ------------------------------------------------------------- | -------- | ------ |
@@ -354,11 +370,15 @@ Objetivo: mostrar o sistema crescendo por necessidade medida, não por vontade d
 
 O Lab 03 não tem sprint própria no PDF: o conteúdo nasce do frontend das Sprints 2 e 3 e precisa de uma sprint definida.
 
-**Labs âncora** (não podem faltar na v1 pública): 07 · Infrastructure & Deployment, 06 · Security (com o Attack Lab) e 10 · Documentation (com o Troubleshooting Lab).
+**Labs âncora**, que carregam a promessa e não podem faltar na v1 pública:
+
+- **07 · Infrastructure & Deployment:** a jornada "do localhost à internet": servidor, VPS, Linux, domínio, DNS, HTTPS, certificado, reverse proxy, firewall, Docker, deploy, rollback, backup.
+- **06 · Security:** com o Attack Lab, cada vulnerabilidade em versão vulnerável e corrigida, lado a lado, com teste que prova a correção.
+- **10 · Documentation:** README, OpenAPI, C4, ADRs, runbooks e um Troubleshooting Lab com incidentes plantados para o leitor investigar.
 
 ### Trilha de 12 etapas (home)
 
-Chamada: "Quer aprender a colocar um projeto na internet?" · Frase-guia: _Build it. Understand it. Measure it. Secure it. Document it. Improve it._
+Com dezesseis Labs, a home precisa de um caminho único. Cada etapa abre os Labs relacionados e marca o progresso do visitante. Chamada: "Quer aprender a colocar um projeto na internet?" · Frase-guia: _Build it. Understand it. Measure it. Secure it. Document it. Improve it._
 
 | Etapa            | Labs abertos                                         |
 | ---------------- | ---------------------------------------------------- |
@@ -449,23 +469,25 @@ Acrescentado em 14/10/2026: os dois projetos voltam a ser mantidos, publicados e
 | D5  | Onde publicar os artigos: só no site ou também em plataforma externa | ⬜                                                                                  |
 | D6  | Em qual sprint entra o Lab 03 · Frontend                             | ⬜                                                                                  |
 
+Cada decisão vira ADR quando for tomada.
+
 ## Arquitetura alvo (v1.0)
 
-Browser → CDN/Edge → BFF → APIs (fluxos, autenticação, conteúdo) → dados (Postgres, Redis) e eventos (fila). O catálogo já mostra esse diagrama no componente `Diagram`, sem afirmar que os serviços existem.
+Browser → CDN/Edge → BFF → Auth API, Labs API e Content API → PostgreSQL → Redis e Events/Kafka.
 
 Cada caixa vira uma página clicável no Infrastructure Lab (Sprint 16): por que existe, quanto custa, qual a alternativa, o que acontece se cair, como é o backup e como é monitorada.
 
 ## Produção e laboratórios sob demanda
 
-| Fica sempre no ar (produção)                        | Sobe só durante o Lab                              |
-| --------------------------------------------------- | -------------------------------------------------- |
-| Site e produto (Pages), API (Workers), banco (Neon) | VPS, Docker, Kubernetes, Kafka, cargas de estresse |
+| Fica sempre no ar (produção)                             | Sobe só durante o Lab                                                 |
+| -------------------------------------------------------- | --------------------------------------------------------------------- |
+| Frontend, BFF e PostgreSQL (hoje: Pages, Workers e Neon) | Kafka, Kubernetes, Redis pesado, Attack Lab, VPS e cargas de estresse |
 
 O leitor aprende Kubernetes sem que o projeto pague por um cluster ligado o mês inteiro. O domínio começa em subdomínio gratuito e só é comprado na Sprint 8, quando a compra vira aula.
 
 ## Hospedagem e custo
 
-Decidido na ADR-011 e no [estudo de hospedagem](estudo-de-hospedagem.md), que substitui a tabela de stack do PDF (Cloudflare Pages ou Vercel, Postgres gratuito, Redis, Sentry, Docker e Kubernetes locais, Kafka local). Custo previsto até a Sprint 7: R$ 0. Domínio (~R$ 4–6/mês) só na Sprint 8, quando a compra vira aula. Regra de gasto: subir de plano só com problema medido, registrado em ADR.
+Decidido na ADR-011 e no [estudo de hospedagem](estudo-de-hospedagem.md), que substitui a tabela de stack do PDF (Cloudflare Pages ou Vercel, Postgres gratuito, Redis, Sentry, Docker e Kubernetes locais, Kafka local). Custo previsto até a Sprint 7: R$ 0. Domínio (~R$ 4–6/mês) só na Sprint 8, quando a compra vira aula. Regra de gasto: subir de plano só com problema medido (banco pausando por inatividade, cota de build estourando, egress acima do limite); o aumento vira ADR e conteúdo do Lab de custos. Preços e limites de plano gratuito mudam com frequência: confirmar na sprint em que cada serviço entrar.
 
 ## Backlog contínuo 🔁
 
