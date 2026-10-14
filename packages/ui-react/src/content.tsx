@@ -5,7 +5,8 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
-import { Button, Surface } from "./index";
+import { Button } from "./Button";
+import { Surface } from "./Surface";
 
 export function Avatar({
   name,
@@ -78,7 +79,17 @@ export function Carousel({
       block: "nearest",
       inline: "start",
     });
-    setActive(next);
+  };
+  const syncActive = () => {
+    const track = region.current;
+    const [first, second] = Array.from(track?.children ?? []) as HTMLElement[];
+    if (!track || !first) return;
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+    const step = second
+      ? second.offsetLeft - first.offsetLeft
+      : first.offsetWidth;
+    const next = atEnd ? items.length - 1 : Math.round(track.scrollLeft / step);
+    setActive(Math.max(0, Math.min(items.length - 1, next)));
   };
   const down = (event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "touch") return;
@@ -97,18 +108,6 @@ export function Carousel({
     if (!drag.current) return;
     drag.current = null;
     event.currentTarget.releasePointerCapture(event.pointerId);
-    const width =
-      (region.current?.firstElementChild as HTMLElement | null)?.offsetWidth ||
-      1;
-    setActive(
-      Math.max(
-        0,
-        Math.min(
-          items.length - 1,
-          Math.round((region.current?.scrollLeft || 0) / width),
-        ),
-      ),
-    );
   };
   return (
     <section className="ui-carousel" aria-label={title}>
@@ -144,16 +143,7 @@ export function Carousel({
         onPointerDown={down}
         onPointerMove={pointerMove}
         onPointerUp={pointerUp}
-        onKeyDown={(e) => {
-          if (e.key === "ArrowRight") {
-            e.preventDefault();
-            move(active + 1);
-          }
-          if (e.key === "ArrowLeft") {
-            e.preventDefault();
-            move(active - 1);
-          }
-        }}
+        onScroll={syncActive}
       >
         {items.map((item) => (
           <article className="ui-carousel-card" key={item.id}>

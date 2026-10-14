@@ -17,45 +17,43 @@
 
 ## Em números
 
-| 40 | 8 | 61 | 0 |
-| :---: | :---: | :---: | :---: |
+|        40         |           8            |           61            |              0              |
+| :---------------: | :--------------------: | :---------------------: | :-------------------------: |
 | componentes React | temas (claro e escuro) | views auditadas com axe | violações de acessibilidade |
 
 <sub>Medido em 13/10/2026. Fontes: exports de `@will-labs/ui-react`, `themes.json` e [`evidence/VIEW-AUDIT.md`](evidence/VIEW-AUDIT.md).</sub>
 
 ## O que o CI garante
 
-| | Etapa | Reprova quando |
-| :---: | --- | --- |
-| ✓ | **Formato** (Prettier) | um arquivo sai do padrão |
-| ✓ | **Lint** (oxlint) | uma regra de erro dos [padrões](docs/padroes/README.md) é violada |
-| ✓ | **Tipos** (TypeScript strict) | há erro de tipo |
-| ✓ | **Commits** (commitlint) | a mensagem foge de `tipo(escopo): resumo` |
-| ✓ | **Interação** (Playwright) | teclado, foco ou estado falha em 1440 ou 390 px, nos 8 temas |
-| ✓ | **Acessibilidade** (axe) | há violação WCAG 2.1 AA |
-| ✓ | **Firefox e WebKit** (smoke test) | Dropdown, Select ou carregamento falham nesses motores |
+|     | Etapa                                                                    | Reprova quando                                                          |
+| :-: | ------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+|  ✓  | **Formato** (Prettier)                                                   | um arquivo sai do padrão                                                |
+|  ✓  | **Lint** (oxlint)                                                        | qualquer erro ou aviso das regras dos [padrões](docs/padroes/README.md) |
+|  ✓  | **Tipos** (TypeScript estrito, [tsconfig.base.json](tsconfig.base.json)) | há erro de tipo                                                         |
+|  ✓  | **Commits** (commitlint)                                                 | a mensagem foge de `tipo(escopo): resumo`                               |
+|  ✓  | **Interação** (Playwright)                                               | teclado, foco ou estado falha em 1440 ou 390 px, nos 8 temas            |
+|  ✓  | **Acessibilidade** (axe)                                                 | há violação WCAG 2.1 AA                                                 |
+|  ✓  | **Firefox e WebKit** (smoke test)                                        | Dropdown, Select ou carregamento falham nesses motores                  |
 
 ## O que ainda não é medido
 
-| | Lacuna | Situação |
-| :---: | --- | --- |
-| — | Testes unitários e cobertura | Previsto na Sprint 5 |
-| — | Comparação visual automática | Capturas geradas, sem comparação |
-| — | Leitor de tela | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
-| — | Firefox e WebKit | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium |
-| — | Desempenho (Web Vitals) | Previsto na Sprint 12 |
-| — | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min |
-
-<sub>Há 47 avisos de lint que não bloqueiam e estão registrados como dívida.</sub>
+|     | Lacuna                            | Situação                                                                           |
+| :-: | --------------------------------- | ---------------------------------------------------------------------------------- |
+|  —  | Testes unitários e cobertura      | Previsto na Sprint 5                                                               |
+|  —  | Comparação visual automática      | Capturas geradas, sem comparação                                                   |
+|  —  | Leitor de tela                    | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
+|  —  | Firefox e WebKit                  | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium  |
+|  —  | Desempenho (Web Vitals)           | Previsto na Sprint 12                                                              |
+|  —  | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min                                       |
 
 ## Onde o projeto está
 
-| Sprint | | Entrega |
-| --- | :---: | --- |
-| 0 · Fundação | ●●●● | Repositório, licença MIT, ADRs, lint, commits e hooks locais |
+| Sprint            |      | Entrega                                                                            |
+| ----------------- | :--: | ---------------------------------------------------------------------------------- |
+| 0 · Fundação      | ●●●● | Repositório, licença MIT, ADRs, lint, commits e hooks locais                       |
 | 1 · Design system | ●●●○ | Tokens, componentes e catálogo público. Falta executar o roteiro de leitor de tela |
-| 2 · OpsFlow v0.1 | ○○○○ | API, banco e telas do produto |
-| 3 · Lançamento | ○○○○ | Trilha e Labs 01 e 02 |
+| 2 · OpsFlow v0.1  | ○○○○ | API, banco e telas do produto                                                      |
+| 3 · Lançamento    | ○○○○ | Trilha e Labs 01 e 02                                                              |
 
 <sub>Plano completo: 17 sprints e 16 Labs. "Fluxos" no catálogo é uma demonstração sem backend.</sub>
 
@@ -89,16 +87,16 @@ Os testes usam Chromium (`npx playwright install chromium`) ou um Chrome indicad
 
 <br>
 
-| Caminho | Conteúdo |
-| --- | --- |
-| `packages/tokens` | Fonte única dos 8 temas |
-| `packages/ui-react` | Componentes React |
-| `packages/ui` | CSS compartilhado com o guia original, em migração |
-| `apps/site` | Catálogo publicado no Pages |
-| `apps/docs` | Guia original, preservado como referência |
-| `docs/padroes` | Padrões de engenharia |
-| `docs/adr` | Decisões de arquitetura |
-| `tests`, `evidence` | Testes de navegador e evidências |
+| Caminho             | Conteúdo                                           |
+| ------------------- | -------------------------------------------------- |
+| `packages/tokens`   | Fonte única dos 8 temas                            |
+| `packages/ui-react` | Componentes React                                  |
+| `packages/ui`       | CSS compartilhado com o guia original, em migração |
+| `apps/site`         | Catálogo publicado no Pages                        |
+| `apps/docs`         | Guia original, preservado como referência          |
+| `docs/padroes`      | Padrões de engenharia                              |
+| `docs/adr`          | Decisões de arquitetura                            |
+| `tests`, `evidence` | Testes de navegador e evidências                   |
 
 </details>
 

@@ -1,10 +1,10 @@
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { writeFile } from "node:fs/promises";
-const b = await chromium.launch({
+const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || undefined,
 });
-const p = await b.newPage();
+const p = await browser.newPage();
 const base = process.env.BASE_URL || "http://localhost:4174/design-system";
 const checks = [];
 const ok = (name, v) => {
@@ -91,6 +91,6 @@ try {
   process.exitCode = 1;
 } finally {
   await writeFile("evidence/contracts.json", JSON.stringify(checks, null, 2));
-  await b.close();
+  await browser.close();
   console.log(JSON.stringify(checks, null, 2));
 }

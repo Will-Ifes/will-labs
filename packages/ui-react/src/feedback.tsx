@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { IconButton } from "./index";
+import { useEffect, useEffectEvent } from "react";
+import { IconButton } from "./IconButton";
 export function Toast({
   open,
   title,
@@ -15,11 +15,12 @@ export function Toast({
   onClose: () => void;
   duration?: number;
 }) {
+  const closeAfterTimeout = useEffectEvent(onClose);
   useEffect(() => {
     if (!open || duration <= 0) return;
-    const timer = window.setTimeout(onClose, duration);
+    const timer = window.setTimeout(() => closeAfterTimeout(), duration);
     return () => window.clearTimeout(timer);
-  }, [open, duration, onClose]);
+  }, [open, duration]);
   if (!open) return null;
   return (
     <div

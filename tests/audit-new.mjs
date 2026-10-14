@@ -29,11 +29,13 @@ try {
         `${width} ${view} intro separated`,
         await page
           .locator(`.ds-view:not([hidden])`)
-          .evaluate((root, selector) => {
+          .evaluate((root, targetSelector) => {
             const p = root
               .querySelector(".section-head p")
               ?.getBoundingClientRect();
-            const grid = root.querySelector(selector)?.getBoundingClientRect();
+            const grid = root
+              .querySelector(targetSelector)
+              ?.getBoundingClientRect();
             return !!p && !!grid && p.bottom + 12 <= grid.top;
           }, selector),
       );

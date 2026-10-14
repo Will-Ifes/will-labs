@@ -414,7 +414,14 @@ function Dimensions() {
 function Movement() {
   const [active, setActive] = useState("");
   const [run, setRun] = useState(0);
-  const items = [
+  const items: ReadonlyArray<
+    readonly [
+      eyebrow: string,
+      title: string,
+      description: string,
+      effect: string,
+    ]
+  > = [
     [
       "01 / MICRO",
       "120–160 ms",

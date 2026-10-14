@@ -1,11 +1,11 @@
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { writeFile } from "node:fs/promises";
-const b = await chromium.launch({
+const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH || undefined,
 });
-const c = await b.newContext();
-const p = await c.newPage();
+const context = await browser.newContext();
+const p = await context.newPage();
 const checks = [];
 const base = process.env.BASE_URL || "http://localhost:4174/design-system";
 const ok = (name, value) => {
@@ -116,7 +116,7 @@ try {
     await show.focus();
     await p.keyboard.press("Tab");
     const focus = await p.evaluate(() => {
-      let s = getComputedStyle(document.activeElement);
+      const s = getComputedStyle(document.activeElement);
       return s.outlineStyle !== "none" && parseFloat(s.outlineWidth) >= 2;
     });
     ok(theme + "/visible keyboard focus", focus);
@@ -153,7 +153,7 @@ try {
   process.exitCode = 1;
 } finally {
   await writeFile("evidence/states.json", JSON.stringify(checks, null, 2));
-  await b.close();
+  await browser.close();
   console.log(
     JSON.stringify(
       { checks: checks.length, failures: checks.filter((x) => !x.passed) },

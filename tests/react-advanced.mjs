@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import AxeBuilder from "@axe-core/playwright";
+import { AxeBuilder } from "@axe-core/playwright";
 
 const base = process.env.REACT_BASE_URL || "http://localhost:4174/react/";
 const browser = await chromium.launch({

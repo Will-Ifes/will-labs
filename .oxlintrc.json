@@ -3,7 +3,7 @@
   "plugins": ["typescript", "react", "jsx-a11y", "import"],
   "categories": {
     "correctness": "error",
-    "suspicious": "warn"
+    "suspicious": "error"
   },
   "rules": {
     "typescript/no-explicit-any": "error",
@@ -17,7 +17,7 @@
     "typescript/consistent-type-imports": "error",
     "typescript/consistent-type-definitions": ["error", "type"],
     "react/rules-of-hooks": "error",
-    "react/exhaustive-deps": "warn",
+    "react/exhaustive-deps": "error",
     "react/jsx-key": "error",
     "react/no-danger": "error",
     "jsx-a11y/alt-text": "error",
@@ -28,7 +28,7 @@
     "jsx-a11y/label-has-associated-control": "error",
     "jsx-a11y/no-autofocus": "error",
     "jsx-a11y/role-has-required-aria-props": "error",
-    "import/no-cycle": "warn",
+    "import/no-cycle": "error",
     "eqeqeq": [
       "error",
       "always",
@@ -39,7 +39,7 @@
     "no-var": "error",
     "prefer-const": "error",
     "no-console": [
-      "warn",
+      "error",
       {
         "allow": ["warn", "error"]
       }
@@ -53,14 +53,20 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unassigned-import": "off",
     "jsx-a11y/prefer-tag-over-role": "off",
-    "react/refs": "warn",
-    "react/set-state-in-effect": "warn",
-    "react/preserve-manual-memoization": "warn",
-    "react/exhaustive-effect-dependencies": "warn",
-    "jsx-a11y/no-noninteractive-tabindex": "warn",
-    "jsx-a11y/no-static-element-interactions": "warn",
-    "jsx-a11y/no-noninteractive-element-interactions": "warn",
-    "jsx-a11y/interactive-supports-focus": "warn"
+    "react/refs": "error",
+    "react/set-state-in-effect": "error",
+    "react/preserve-manual-memoization": "error",
+    "react/exhaustive-effect-dependencies": "error",
+    "jsx-a11y/no-noninteractive-tabindex": [
+      "error",
+      {
+        "roles": ["region", "tabpanel"],
+        "tags": []
+      }
+    ],
+    "jsx-a11y/no-static-element-interactions": "error",
+    "jsx-a11y/no-noninteractive-element-interactions": "error",
+    "jsx-a11y/interactive-supports-focus": "error"
   },
   "ignorePatterns": [
     "**/dist/**",
@@ -68,5 +74,13 @@
     "apps/docs/**",
     "src/legacy/**",
     "packages/ui/**"
+  ],
+  "overrides": [
+    {
+      "files": ["tests/**", "scripts/**", "packages/tokens/*.mjs"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
   ]
 }

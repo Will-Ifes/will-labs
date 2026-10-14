@@ -1,4 +1,5 @@
 import {
+  useEffectEvent,
   useLayoutEffect,
   useRef,
   type CSSProperties,
@@ -40,8 +41,7 @@ export function FloatingLayer({
   style,
 }: FloatingLayerProps) {
   const panelRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef(onClose);
-  closeRef.current = onClose;
+  const requestClose = useEffectEvent(onClose);
   useLayoutEffect(() => {
     if (!open || !anchorRef.current || !panelRef.current) return;
     const anchor = anchorRef.current;
@@ -96,7 +96,7 @@ export function FloatingLayer({
         order.reduce(
           (best, candidate) =>
             space[candidate] > space[best] ? candidate : best,
-          order[0],
+          preferred,
         );
       const horizontal = side === "left" || side === "right";
       panel.style.maxWidth = `${Math.max(0, horizontal ? space[side] : width - 2 * margin)}px`;
@@ -130,7 +130,7 @@ export function FloatingLayer({
       );
       panel.style.left = `${Math.round(left)}px`;
       panel.style.top = `${Math.round(top)}px`;
-      panel.dataset.placement = side;
+      panel.setAttribute("data-placement", side);
       panel.style.setProperty(
         "--wl-arrow-left",
         `${Math.round(Math.max(12, Math.min(fitted.width - 12, rect.left + rect.width / 2 - left)))}px`,
@@ -157,16 +157,16 @@ export function FloatingLayer({
         !panel.contains(event.target as Node) &&
         !anchor.contains(event.target as Node)
       )
-        closeRef.current(false);
+        requestClose(false);
     };
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         event.stopPropagation();
-        closeRef.current(true);
+        requestClose(true);
       }
     };
-    const route = () => closeRef.current(false);
+    const route = () => requestClose(false);
     const observer = new ResizeObserver(schedule);
     observer.observe(anchor);
     observer.observe(panel);

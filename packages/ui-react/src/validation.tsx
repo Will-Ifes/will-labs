@@ -29,8 +29,8 @@ export function ValidationMessage({
   help,
 }: {
   id?: string;
-  error?: string;
-  help?: string;
+  error?: string | undefined;
+  help?: string | undefined;
 }) {
   if (!error && !help) return null;
   return (

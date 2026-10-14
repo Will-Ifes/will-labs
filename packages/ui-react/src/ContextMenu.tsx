@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 export type ContextMenuItem = { id: string; label: string; disabled?: boolean };
 export function ContextMenu({
@@ -19,11 +25,9 @@ export function ContextMenu({
   const open = (x: number, y: number) => setPoint({ x, y });
   const close = (restore = false) => {
     setPoint(null);
-    if (restore)
-      requestAnimationFrame(() =>
-        trigger.current?.focus({ preventScroll: true }),
-      );
+    if (restore) trigger.current?.focus({ preventScroll: true });
   };
+  const closeFromListener = useEffectEvent(close);
   useEffect(() => {
     if (!point) return;
     const frame = requestAnimationFrame(() => {
@@ -44,15 +48,15 @@ export function ContextMenu({
         !menu.current?.contains(event.target as Node) &&
         !trigger.current?.contains(event.target as Node)
       )
-        close();
+        closeFromListener();
     };
     const key = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        close(true);
+        closeFromListener(true);
       }
     };
-    const resize = () => close();
+    const resize = () => closeFromListener();
     document.addEventListener("pointerdown", outside);
     document.addEventListener("keydown", key);
     window.addEventListener("resize", resize);
@@ -95,6 +99,7 @@ export function ContextMenu({
             ref={menu}
             className="wl-react-context-menu"
             role="menu"
+            tabIndex={-1}
             aria-label={label}
             style={{ left: position.x, top: position.y }}
             onKeyDown={(event) => {
