@@ -1,6 +1,6 @@
 # 14. Observabilidade e operação
 
-Base para o Lab 09 (Observability) e o Troubleshooting Lab. Entra no OpsFlow a partir da Sprint 11.
+Base para o Lab 09 (Observability) e o Troubleshooting Lab. Entra no WilFlowLab a partir da Sprint 11.
 
 ## Logs
 
@@ -42,7 +42,7 @@ Base para o Lab 09 (Observability) e o Troubleshooting Lab. Entra no OpsFlow a p
 
 ## Alertas e SLO
 
-- SLO inicial do OpsFlow definido no Lab 09 (por exemplo, 99% das requisições abaixo de 500ms em 30 dias).
+- SLO inicial do WilFlowLab definido no Lab 09 (por exemplo, 99% das requisições abaixo de 500ms em 30 dias).
 - Alerta só para o que exige ação humana: queda, taxa de erro acima do limite, certificado perto de expirar, custo perto do teto.
 - Todo alerta aponta para um runbook.
 

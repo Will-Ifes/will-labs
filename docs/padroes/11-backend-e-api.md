@@ -1,6 +1,6 @@
 # 11. Backend e API
 
-O backend do OpsFlow começa na Sprint 2 (API de fluxos com Postgres). A stack foi decidida nas ADRs [005](../adr/ADR-005-banco-de-dados.md), [011](../adr/ADR-011-hospedagem.md) e [012](../adr/ADR-012-api.md): TypeScript, Hono e Zod em Cloudflare Workers, com Postgres no Neon via Drizzle. As regras abaixo valem para qualquer runtime.
+O backend do WilFlowLab começa na Sprint 2 (API de fluxos com Postgres). A stack foi decidida nas ADRs [005](../adr/ADR-005-banco-de-dados.md), [011](../adr/ADR-011-hospedagem.md) e [012](../adr/ADR-012-api.md): TypeScript, Hono e Zod em Cloudflare Workers, com Postgres no Neon via Drizzle. As regras abaixo valem para qualquer runtime.
 
 ## Camadas (obrigatório)
 
