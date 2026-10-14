@@ -1,6 +1,6 @@
 # Padrões de engenharia do Will Labs
 
-Estes documentos definem **como** o Will Labs é construído: frontend, backend, banco, testes, CI/CD, operação, Labs e documentação. Valem para pessoas e agentes, e para todos os 16 Labs e o OpsFlow.
+Estes documentos definem **como** o Will Labs é construído: frontend, backend, banco, testes, CI/CD, operação, Labs e documentação. Valem para pessoas e agentes, e para todos os 16 Labs e o WilFlowLab.
 
 Eles complementam três fontes que continuam valendo:
 

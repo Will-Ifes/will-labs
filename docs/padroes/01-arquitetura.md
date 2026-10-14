@@ -5,7 +5,7 @@
 O Will Labs é um monorepo (npm workspaces, [ADR-002](../adr/ADR-002-repositorio.md)) com duas metades:
 
 - **Design system:** tokens, componentes e a documentação que os exibe. É o que existe hoje.
-- **Produto (Fluxos/OpsFlow):** a aplicação que gera os problemas reais dos Labs. Começa na Sprint 2. Este guia já define a arquitetura dele, para que o código nasça no lugar certo.
+- **Produto (WilFlowLab):** a aplicação que gera os problemas reais dos Labs. Começa na Sprint 2. Este guia já define a arquitetura dele, para que o código nasça no lugar certo.
 
 ```
 packages/
@@ -15,7 +15,7 @@ packages/
 apps/
   site/          camada 3 · catálogo, Lab e demonstrações (consumidor do design system)
   docs/          guia original, congelado
-  (futuro) web/  frontend do produto (OpsFlow), por feature
+  (futuro) web/  frontend do produto (WilFlowLab), por feature
   (futuro) api/  backend do produto, por módulo (ver 11-backend-e-api.md)
 labs/            conteúdo e demonstrações dos 16 Labs (ver 15-labs.md)
 ```

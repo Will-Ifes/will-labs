@@ -59,7 +59,7 @@ A avaliação automática cobre os cenários registrados e não substitui testes
 |  ·  | Leitor de tela                    | [Roteiro manual](docs/plano/roteiro-leitor-de-tela.md) pronto, ainda não executado |
 |  ·  | Firefox e WebKit                  | Só smoke test (Dropdown, Select, carregamento); a suíte completa roda em Chromium  |
 |  ·  | Desempenho (Web Vitals)           | Previsto na Sprint 12                                                              |
-|  ·  | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~8 min                                       |
+|  ·  | Limite de bundle e de tempo de CI | Registrados, sem limite: 113 kB gzip, ~6 min                                       |
 
 ## Onde o projeto está
 
@@ -67,7 +67,7 @@ A avaliação automática cobre os cenários registrados e não substitui testes
 | ----------------- | :--: | ---------------------------------------------------------------------------------- |
 | 0 · Fundação      | ●●●● | Repositório, licença MIT, ADRs, lint, commits e hooks locais                       |
 | 1 · Design system | ●●●○ | Tokens, componentes e catálogo público. Falta executar o roteiro de leitor de tela |
-| 2 · OpsFlow v0.1  | ○○○○ | API, banco e telas do produto                                                      |
+| 2 · WilFlowLab v0.1 | ○○○○ | API, banco e telas do produto                                                      |
 | 3 · Lançamento    | ○○○○ | Trilha e Labs 01 e 02                                                              |
 
 <sub>Plano completo: 17 sprints e 16 Labs. "Fluxos" no catálogo é uma demonstração sem backend.</sub>

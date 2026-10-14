@@ -30,7 +30,7 @@ Labs relacionados: 04-architecture
 
 ## Contexto
 
-O problema real do OpsFlow, com números quando houver.
+O problema real do WilFlowLab, com números quando houver.
 
 ## Opções consideradas
 

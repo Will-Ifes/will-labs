@@ -21,7 +21,7 @@ labs/
   06-security/
     lab.json                 metadados (abaixo)
     content/
-      learn.md               aba Learn: problema do OpsFlow, conceito, por que existe
+      learn.md               aba Learn: problema do WilFlowLab, conceito, por que existe
       architecture.md        aba Architecture: onde encaixa, o que acontece se cair
       how-to-test.md         bloco fixo "Como testar isso"
       production.md          bloco fixo "Considerações de produção": custo, limites, falha
@@ -29,7 +29,7 @@ labs/
       CsrfDemo.tsx           aba Try: componente interativo
       csrf-demo.model.ts     lógica da demonstração, pura e testada
       CsrfDemo.test.tsx
-    code.ts                  aba Code: trechos com link para o commit real do OpsFlow
+    code.ts                  aba Code: trechos com link para o commit real do WilFlowLab
     index.ts                 exporta a definição do Lab para o site
 ```
 
@@ -47,7 +47,7 @@ O site monta a página com o componente `LabPage` (quatro abas: Learn, Try, Code
   "problem": "Qualquer pessoa edita qualquer fluxo; a interface esconde o botão, mas a API aceita.",
   "related": ["05-testing", "08-devops-automation"],
   "adrs": ["ADR-006"],
-  "commits": ["<sha-do-commit-no-opsflow>"],
+  "commits": ["<sha-do-commit-no-wilflowlab>"],
   "monthlyCostBrl": 0,
   "reviewedAt": "2026-10-13",
   "status": "draft"
@@ -60,7 +60,7 @@ O site monta a página com o componente `LabPage` (quatro abas: Learn, Try, Code
 
 ## Padrão de conteúdo
 
-- **Learn abre pelo problema do OpsFlow**, nunca por "o que é X". A primeira frase descreve o que deu errado no produto.
+- **Learn abre pelo problema do WilFlowLab**, nunca por "o que é X". A primeira frase descreve o que deu errado no produto.
 - **Try** é interativo e faz algo real no navegador. Padrões permitidos, cada um um componente do design system:
 
 | Padrão              | Uso                                            | Labs                                      |
@@ -69,7 +69,7 @@ O site monta a página com o componente `LabPage` (quatro abas: Learn, Try, Code
 | Simulador           | Configurar algo e ver o resultado              | Infrastructure, Observability             |
 | Cenário de decisão  | Restrições dadas, escolher e ver consequências | Engineering Decisions, Architecture       |
 
-- **Code** aponta para código real do OpsFlow, com link para o commit. Trecho inventado é proibido.
+- **Code** aponta para código real do WilFlowLab, com link para o commit. Trecho inventado é proibido.
 - **Architecture** mostra o diagrama com o componente destacado e responde: por que existe, quanto custa, alternativa, o que acontece se cair, backup, monitoramento.
 - Textos seguem a [voz do conteúdo](../design-system/voz-e-conteudo.md). Preço tem data ("valores de outubro de 2026").
 
@@ -81,7 +81,7 @@ O site monta a página com o componente `LabPage` (quatro abas: Learn, Try, Code
 
 ## Definição de pronto (obrigatório, do plano)
 
-- [ ] Começa por um problema real do OpsFlow.
+- [ ] Começa por um problema real do WilFlowLab.
 - [ ] Tem demonstração interativa funcionando no navegador.
 - [ ] Aponta para código real, com link para o commit.
 - [ ] Tem "Como testar" com teste automatizado correspondente.

@@ -13,3 +13,7 @@ A marca pública é **Will Labs**. O produto de fluxos é apresentado como uma �
 ## Consequências
 
 A narrativa fica mais simples, mas a navegação deverá distinguir claramente **Labs** (conteúdo de ensino) de **Fluxos** (produto usado como estudo de caso). Se a área de fluxos ganhar identidade própria no futuro, uma nova ADR poderá revisar a decisão. Nome de domínio e disponibilidade ainda precisam ser confirmados antes da publicação.
+
+## Revisão em 14/10/2026
+
+A área de fluxos ganhou nome próprio: o produto se chama **WilFlowLab** (provisório), dentro da marca Will Labs. Guias, padrões e roadmap usam esse nome; "Fluxos" segue como nome da demonstração no catálogo. Domínio ainda não checado (D1 no roadmap).
