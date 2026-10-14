@@ -10,7 +10,7 @@
 
 [![CI](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/ci.yml) [![Deploy](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/Will-Ifes/will-labs/actions/workflows/pages.yml)
 
-[**Ver catálogo**](https://will-ifes.github.io/will-labs/) &nbsp;·&nbsp; [Componentes](packages/ui-react) &nbsp;·&nbsp; [Padrões](docs/padroes/README.md) &nbsp;·&nbsp; [Decisões](docs/adr)
+[**Ver catálogo**](https://will-ifes.github.io/will-labs/) &nbsp;·&nbsp; [Componentes](packages/ui-react) &nbsp;·&nbsp; [Padrões](docs/padroes/README.md) &nbsp;·&nbsp; [Roadmap](docs/plano/roadmap.md) &nbsp;·&nbsp; [Decisões](docs/adr)
 
 </div>
 
