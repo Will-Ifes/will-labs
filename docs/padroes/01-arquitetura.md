@@ -12,11 +12,12 @@ packages/
   tokens/        camada 0 · fundação visual
   ui/            camada 0' · contratos e CSS compartilhados com o guia original (legado em migração)
   ui-react/      camada 1 e 2 · primitivas e componentes compostos
+  contracts/     schemas Zod compartilhados entre api e web (ADR-012)
 apps/
   site/          camada 3 · catálogo, Lab e demonstrações (consumidor do design system)
   docs/          guia original, congelado
-  (futuro) web/  frontend do produto (WilFlowLab), por feature
-  (futuro) api/  backend do produto, por módulo (ver 11-backend-e-api.md)
+  web/           frontend do produto (WilFlowLab), por feature
+  api/           backend do produto, por módulo (ver 11-backend-e-api.md)
 labs/            conteúdo e demonstrações dos 16 Labs (ver 15-labs.md)
 ```
 

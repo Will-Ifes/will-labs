@@ -6,3 +6,5 @@ node_modules/
 # Generated React bundles and TypeScript declarations
 packages/ui-react/dist/
 apps/site/dist/
+
+apps/web/dist/
