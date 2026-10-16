@@ -1,0 +1,20 @@
+{
+  "name": "@will-labs/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@will-labs/contracts": "0.1.0",
+    "@will-labs/tokens": "1.0.0",
+    "@will-labs/ui": "1.0.0",
+    "@will-labs/ui-react": "1.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.7"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit"
+  }
+}

@@ -34,7 +34,11 @@ jobs:
       - name: Build dos pacotes
         run: npm run build
       - name: Tipos (TypeScript)
-        run: npm run typecheck:react
+        run: npm run typecheck
+      - name: Testes unitários (Vitest)
+        run: npm run test:unit
+      - name: Build do WilFlowLab web
+        run: npm run build -w @will-labs/web
       - name: Mensagens de commit (PR)
         if: github.event_name == 'pull_request'
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose

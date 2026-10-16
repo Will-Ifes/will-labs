@@ -10,8 +10,8 @@ Legenda: ✅ feito · 🟡 parcial · ⬜ não iniciado · 🔁 contínuo
 
 | #   | Item                                                                              | Situação   | Depende de |
 | --- | --------------------------------------------------------------------------------- | ---------- | ---------- |
-| 1   | WilFlowLab v0.1: estrutura (`apps/api`, `apps/web`, `packages/contracts`, Vitest) | ⬜ próximo | —          |
-| 2   | WilFlowLab v0.1: schema Drizzle, migration e seed                                 | ⬜         | Item 1     |
+| 1   | WilFlowLab v0.1: estrutura (`apps/api`, `apps/web`, `packages/contracts`, Vitest) | ✅         | —          |
+| 2   | WilFlowLab v0.1: schema Drizzle, migration e seed                                 | ⬜ próximo | Item 1     |
 | 3   | WilFlowLab v0.1: API de fluxos e execuções com testes                             | ⬜         | Item 2     |
 | 4   | WilFlowLab v0.1: telas de fluxos e de execuções                                   | ⬜         | Item 3     |
 | 5   | Contas Cloudflare e Neon e segredos no GitHub                                     | ⬜         | **Will**   |

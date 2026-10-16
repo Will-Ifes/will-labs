@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background: var(--wl-bg);
+  color: var(--wl-text);
+  font-family: var(--wl-font);
+}
+
+.wf-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--wl-space-8) var(--wl-space-4);
+  display: grid;
+  gap: var(--wl-space-4);
+}
