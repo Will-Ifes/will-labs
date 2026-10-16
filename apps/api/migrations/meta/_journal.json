@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792122091788,
+      "tag": "20261016034131_create_flow_tables",
+      "breakpoints": true
+    }
+  ]
+}

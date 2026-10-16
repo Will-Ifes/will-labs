@@ -35,7 +35,12 @@ jobs:
         run: npm run build
       - name: Tipos (TypeScript)
         run: npm run typecheck
-      - name: Testes unitários (Vitest)
+      - name: Migrations em dia com o schema
+        run: |
+          npm run db:generate -w @will-labs/api -- --name schema_drift
+          git diff --exit-code --stat -- apps/api/migrations
+          test -z "$(git ls-files --others --exclude-standard apps/api/migrations)"
+      - name: Testes unitários e de banco (Vitest)
         run: npm run test:unit
       - name: Build do WilFlowLab web
         run: npm run build -w @will-labs/web
