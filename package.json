@@ -27,7 +27,7 @@
     "typecheck:react": "npm run typecheck -w @will-labs/ui-react && npm run typecheck -w @will-labs/site",
     "test:react": "node tests/react-site.mjs && node tests/react-advanced.mjs",
     "format:check": "prettier --check packages/ui-react apps/site packages/contracts apps/api apps/web test vitest.config.ts tests scripts docs/padroes .github .oxlintrc.json commitlint.config.js",
-    "lint": "oxlint -c .oxlintrc.json --deny-warnings packages/ui-react/src apps/site/src packages/contracts/src apps/api/src apps/web/src test vitest.config.ts packages/tokens tests scripts commitlint.config.js",
+    "lint": "oxlint -c .oxlintrc.json --deny-warnings packages/ui-react/src apps/site/src packages/contracts/src apps/api/src apps/api/scripts apps/api/seeds apps/api/drizzle.config.ts apps/web/src test vitest.config.ts packages/tokens tests scripts commitlint.config.js",
     "lint:commits": "commitlint --from origin/main --to HEAD --verbose",
     "prepare": "git config core.hooksPath .githooks || true",
     "test:cross-browser": "node --test tests/cross-browser.test.mjs",
@@ -35,7 +35,9 @@
     "typecheck:product": "npm run typecheck -w @will-labs/contracts && npm run typecheck -w @will-labs/api && npm run typecheck -w @will-labs/web",
     "test:unit": "vitest run",
     "dev:api": "npm run dev -w @will-labs/api",
-    "dev:web": "npm run dev -w @will-labs/web"
+    "dev:web": "npm run dev -w @will-labs/web",
+    "db:migrate": "npm run db:migrate -w @will-labs/api",
+    "seed": "npm run seed -w @will-labs/api"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",

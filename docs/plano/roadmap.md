@@ -11,8 +11,8 @@ Legenda: ✅ feito · 🟡 parcial · ⬜ não iniciado · 🔁 contínuo
 | #   | Item                                                                              | Situação   | Depende de |
 | --- | --------------------------------------------------------------------------------- | ---------- | ---------- |
 | 1   | WilFlowLab v0.1: estrutura (`apps/api`, `apps/web`, `packages/contracts`, Vitest) | ✅         | —          |
-| 2   | WilFlowLab v0.1: schema Drizzle, migration e seed                                 | ⬜ próximo | Item 1     |
-| 3   | WilFlowLab v0.1: API de fluxos e execuções com testes                             | ⬜         | Item 2     |
+| 2   | WilFlowLab v0.1: schema Drizzle, migration e seed                                 | ✅         | Item 1     |
+| 3   | WilFlowLab v0.1: API de fluxos e execuções com testes                             | ⬜ próximo | Item 2     |
 | 4   | WilFlowLab v0.1: telas de fluxos e de execuções                                   | ⬜         | Item 3     |
 | 5   | Contas Cloudflare e Neon e segredos no GitHub                                     | ⬜         | **Will**   |
 | 6   | Teste com NVDA ([roteiro](roteiro-leitor-de-tela.md))                             | ⬜         | **Will**   |
@@ -160,15 +160,15 @@ Acrescentado depois do PDF:
 
 Entregável público: produto com CRUD e execução. Stack decidida nas ADRs 005, 007, 011 e 012.
 
-- ⬜ Tabelas `flows`, `steps`, `executions`, `execution_logs`
-- ⬜ Postgres em plano gratuito (Neon) e migrations
+- ✅ Tabelas `flows`, `steps`, `executions`, `execution_logs`
+- 🟡 Postgres e migrations: migrations e Postgres local (PGlite) ✅; Neon ⬜
 - ⬜ API de fluxos: criar, listar, detalhar, editar, excluir
 - ⬜ Execução de fluxo com registro de início, fim e status
 - ⬜ Tela de lista de fluxos e formulário de criação
 - ⬜ Tela de execuções com status e detalhe com log de passos
-- ⬜ Script de seed com dados de demonstração
+- ✅ Script de seed com dados de demonstração
 - ✅ ADR-005: escolha do banco
-- ⬜ Variáveis de ambiente documentadas em `.env.example`
+- 🟡 Variáveis de ambiente em `.env.example` (`apps/api`; cresce a cada variável nova)
 
 ### Sprint 3 · Primeiro lançamento ⬜
 
